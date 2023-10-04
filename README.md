@@ -23,5 +23,8 @@
 * Extensions for Visual Studio Code:
 * Basic command:
   ```
+  npm install <module-name>
+  npm install //reinstalls all modules that are listed on package.json file and dependencies
+  npm update //updates all modules that are listed on package.json file and dependencies
   ```
 * Framework used:
