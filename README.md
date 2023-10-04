@@ -12,6 +12,7 @@
   ```
   dotnet new webapi -n <name> //create dotnet webapi app
   dotnet add package <packagename>
+  dotnet new gitignore //create gitignore file
   dotnet run
   dotnet watch run
   ```
