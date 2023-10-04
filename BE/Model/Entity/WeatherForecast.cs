@@ -1,4 +1,4 @@
-namespace BE;
+namespace BE.Model.Entity;
 
 public class WeatherForecast
 {
