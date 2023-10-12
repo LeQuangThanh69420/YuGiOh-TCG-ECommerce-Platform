@@ -15,7 +15,7 @@ namespace BE.Controllers
                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
                 {
                     smtpClient.Port = 587;
-                    smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "THANHLONGLOLlol123123123123123");
+                    smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "nhappassvaoday");
                     smtpClient.EnableSsl = true;
 
                     // Tạo đối tượng MailMessage để cấu hình email
