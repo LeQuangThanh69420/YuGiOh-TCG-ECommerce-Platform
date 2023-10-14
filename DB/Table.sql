@@ -8,43 +8,27 @@ CREATE DATABASE TCG;
 
 USE TCG;
 
-CREATE TABLE CardType {
-    CardTypeId bigint NOT NULL IDENTITY(1,1) PRIMARY KEY,
-    CardType nvarchar(50) NOT NULL,
-};
+CREATE TABLE CardType (
+    CardTypeName nvarchar(50) PRIMARY KEY,
+);
 
-CREATE TABLE CardOrigin {
-    CardOriginId bigint NOT NULL IDENTITY(1,1) PRIMARY KEY,
-    CardOrigin nvarchar(50) NOT NULL,
-};
+CREATE TABLE CardOrigin (
+    CardOriginName nvarchar(50) PRIMARY KEY,
+);
 
-CREATE TABLE CardElement {
-    CardElementId bigint NOT NULL IDENTITY(1,1) PRIMARY KEY,
-    CardElement nvarchar(50) NOT NULL,
-};
+CREATE TABLE CardElement (
+    CardElementName nvarchar(50) PRIMARY KEY,
+);
 
-CREATE TABLE CardRarity {
-    CardRarityId bigint NOT NULL IDENTITY(1,1) PRIMARY KEY,
-    CardRarity nvarchar(50) NOT NULL,
-};
-CREATE TABLE Card {
+CREATE TABLE CardRarity (
+    CardRarityName nvarchar(50) PRIMARY KEY,
+);
+CREATE TABLE Card (
     CardId bigint NOT NULL IDENTITY(1,1) PRIMARY KEY ,
-    CardName nvarchar(100) NOT NULL,
-    CardTypeID bigint NOT NULL FOREIGN KEY REFERENCES CardType(Card),
-    CardOriginId bigint NOT NULL FOREIGN KEY REFERENCES CardOrigin(Card),
-    CardElementId bigint NOT NULL FOREIGN KEY REFERENCES CardElement(Card),
-    CardRarityId bigint NOT NULL FOREIGN KEY REFERENCES CardRarity(Card),
-};
-
-CREATE TABLE Transaction {
-    OrderId bigint NOT NULL IDENTITY(1,1) PRIMARY KEY ,
-    OrderPrice int NOT NULL,
-    OrderTime date NOT NULL,
-};
-
-INSERT INTO CardType (CardType) VALUES ('Normal');
-INSERT INTO CardType (CardType) VALUES ('Spell');
-INSERT INTO CardType (CardType) VALUES ('Trap');
-INSERT INTO CardType (CardType) VALUES ()
-
-INSERT INTO Card (CardName, CardType, CardOrigin, CardElement, CardRarity) VALUES ('')
+    CardName nvarchar(100) NOT NULL UNIQUE,
+    CardImageURL nvarchar(255) /*NOT NULL UNIQUE*/,
+    CardTypeName nvarchar(50) NOT NULL FOREIGN KEY REFERENCES CardType(CardTypeName),
+    CardOriginName nvarchar(50) FOREIGN KEY REFERENCES CardOrigin(CardOriginName),
+    CardElementName nvarchar(50) FOREIGN KEY REFERENCES CardElement(CardElementName),
+    CardRarityName nvarchar(50) NOT NULL FOREIGN KEY REFERENCES CardRarity(CardRarityName),
+);
