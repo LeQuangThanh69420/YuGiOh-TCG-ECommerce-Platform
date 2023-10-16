@@ -24,7 +24,7 @@ CREATE TABLE CardRarity (
     CardRarityName nvarchar(50) PRIMARY KEY,
 );
 CREATE TABLE Card (
-    CardId bigint NOT NULL IDENTITY(1,1) PRIMARY KEY ,
+    CardId bigint IDENTITY(1,1) PRIMARY KEY,
     CardName nvarchar(100) NOT NULL UNIQUE,
     CardImageURL nvarchar(255) NOT NULL UNIQUE,
     CardTypeName nvarchar(50) NOT NULL FOREIGN KEY REFERENCES CardType(CardTypeName),
