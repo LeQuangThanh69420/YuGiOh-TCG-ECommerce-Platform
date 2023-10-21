@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BE.Model.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BE.Context
@@ -12,6 +13,6 @@ namespace BE.Context
         {
         }
         public DbSet<Card> Card {get; set; }
-        public DbSet<CardElement> CardElement {get; set;}
+        public DbSet<CardElement> CardElement {get; set;
     }
 }
