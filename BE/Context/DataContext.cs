@@ -11,5 +11,7 @@ namespace BE.Context
         public DataContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<Card> Card {get; set; }
+        public DbSet<CardElement> CardElement {get; set;}
     }
 }
