@@ -26,6 +26,7 @@
     align-items: flex-start;
     justify-content: space-between;
     position: relative;
+    cursor: pointer;
 }
 
 .cards:hover {
