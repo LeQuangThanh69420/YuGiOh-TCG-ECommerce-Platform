@@ -14,8 +14,7 @@ CREATE TABLE "User" (
     Password varchar(10) NOT NULL,
     Email varchar(50) NOT NULL UNIQUE,
     Money int NOT NULL,
-    AvatarUrl nvarchar(180),
-);
+);--AvatarUrl nvarchar(180),
 
 CREATE TABLE CardType (
     CardTypeName nvarchar(10) PRIMARY KEY,
@@ -32,6 +31,7 @@ CREATE TABLE CardElement (
 CREATE TABLE CardRarity (
     CardRarityName nvarchar(5) PRIMARY KEY,
 );
+
 CREATE TABLE Card (
     CardId bigint IDENTITY(1,1) PRIMARY KEY,
     CardName nvarchar(60) NOT NULL UNIQUE,
