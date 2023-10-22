@@ -22,7 +22,7 @@ function Header({ setCards }) {
                 </div>
                 <div className='search-bar'>
                     <span>Search</span>
-                    <input type="text" name="" id="" value={inputNameValue} onChange={event => setInputNameValue(event.target.value)}/>
+                    <input type="text" name="" id="" placeholder='Enter card name' value={inputNameValue} onChange={event => setInputNameValue(event.target.value)}/>
                     <button onClick={handleSearchByName}>Search</button>
                 </div>
                 <div className='users-button'>

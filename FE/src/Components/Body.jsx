@@ -15,17 +15,16 @@ function Body({ cards, setCards }) {
         <div className='body-session'>
             < div className="body-container" >
                 {
-                    cards.map((item, index) =>
+                    cards.length ? cards.map((item, index) =>
                         <div className='cards' key={index}>
-                            <div className='card-name'>
-                                {item.cardName}
-                            </div>
-                            <img src={item.cardImageURL} alt="" className='cards-img' />
-                            <div className='rarity'>
+                            <div className={`rarity ${item.cardRarityName}`}>
                                 {item.cardRarityName}
                             </div>
+                            <img src={item.cardImageURL} alt="" className='cards-img' />
                         </div>
-                    )
+                    ) : <p className='not-found'>
+                        Sorry, we couldn't find what you want :(
+                    </p>
                 }
             </div >
         </div>

@@ -39,3 +39,14 @@ button {
 button:hover {
     background: rgb(0, 117, 184);
 }
+
+input {
+    padding: 0px 8px;
+    border-radius: 4px;
+    border: 1px solid black;
+}
+
+input:focus {
+    outline: 1px solid rgb(0, 117, 184);
+    border: 1px solid rgb(0, 117, 184);
+}
