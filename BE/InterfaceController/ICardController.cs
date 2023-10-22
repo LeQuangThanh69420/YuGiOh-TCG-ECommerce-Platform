@@ -10,10 +10,10 @@ namespace BE.InterfaceController
 {
     public interface ICardController
     {
-        ActionResult<List<Card>> searchCard(CardSearchInputDto input);
-        ActionResult<List<CardType>> getCardType();
-        ActionResult<List<CardOrigin>> getCardOrigin();
-        ActionResult<List<CardElement>> getCardElement();
-        ActionResult<List<CardRarity>> getCardRarity();
+        Task<ActionResult<List<CardSearchOutputDto>>> searchCard(CardSearchInputDto input);
+        Task<ActionResult<List<CardType>>> getCardType();
+        Task<ActionResult<List<CardOrigin>>> getCardOrigin();
+        Task<ActionResult<List<CardElement>>> getCardElement();
+        Task<ActionResult<List<CardRarity>>> getCardRarity();
     }
 }

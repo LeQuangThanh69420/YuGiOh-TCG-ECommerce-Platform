@@ -8,14 +8,13 @@ CREATE DATABASE TCG;
 
 USE TCG;
 
-CREATE TABLE User (
+CREATE TABLE "User" (
     UserId bigint IDENTITY(1,1) PRIMARY KEY,
     Username varchar(20) NOT NULL UNIQUE,
     Password varchar(10) NOT NULL,
     Email varchar(50) NOT NULL UNIQUE,
     Money int NOT NULL,
-    AvatarUrl nvarchar(180),
-);
+);--AvatarUrl nvarchar(180),
 
 CREATE TABLE CardType (
     CardTypeName nvarchar(10) PRIMARY KEY,
@@ -32,6 +31,7 @@ CREATE TABLE CardElement (
 CREATE TABLE CardRarity (
     CardRarityName nvarchar(5) PRIMARY KEY,
 );
+
 CREATE TABLE Card (
     CardId bigint IDENTITY(1,1) PRIMARY KEY,
     CardName nvarchar(60) NOT NULL UNIQUE,
@@ -43,16 +43,16 @@ CREATE TABLE Card (
 );
 
 CREATE TABLE UserCard (
-    UserCardId biggint IDENTITY(1,1) PRIMARY KEY,
-    UserId bigint NOT NULL FOREIGN KEY REFERENCES User(UserId),
+    UserCardId bigint IDENTITY(1,1) PRIMARY KEY,
+    UserId bigint NOT NULL FOREIGN KEY REFERENCES "User"(UserId),
     CardId bigint NOT NULL FOREIGN KEY REFERENCES Card(CardId),
     OnHold bit NOT NULL,
 );
 
 CREATE TABLE Deal (
     DealId bigint IDENTITY(1,1) PRIMARY KEY,
-    SellUserId bigint NOT NULL FOREIGN KEY REFERENCES User(UserId),
-    BuyUserId bigint FOREIGN KEY REFERENCES User(UserId),
+    SellUserId bigint NOT NULL FOREIGN KEY REFERENCES "User"(UserId),
+    BuyUserId bigint FOREIGN KEY REFERENCES "User"(UserId),
     UserCardId bigint NOT NULL,
     Price int NOT NULL,
 );
