@@ -8,6 +8,15 @@ CREATE DATABASE TCG;
 
 USE TCG;
 
+CREATE TABLE User (
+    UserId bigint IDENTITY(1,1) PRIMARY KEY,
+    Username varchar(20) NOT NULL UNIQUE,
+    Password varchar(10) NOT NULL,
+    Email varchar(50) NOT NULL UNIQUE,
+    Money int NOT NULL,
+    AvatarUrl nvarchar(180),
+);
+
 CREATE TABLE CardType (
     CardTypeName nvarchar(10) PRIMARY KEY,
 );
@@ -26,9 +35,29 @@ CREATE TABLE CardRarity (
 CREATE TABLE Card (
     CardId bigint IDENTITY(1,1) PRIMARY KEY,
     CardName nvarchar(60) NOT NULL UNIQUE,
-    CardImageURL nvarchar(120) NOT NULL UNIQUE,
+    CardImageURL nvarchar(180) NOT NULL UNIQUE,
     CardTypeName nvarchar(10) NOT NULL FOREIGN KEY REFERENCES CardType(CardTypeName),
     CardOriginName nvarchar(20) FOREIGN KEY REFERENCES CardOrigin(CardOriginName),
     CardElementName nvarchar(10) FOREIGN KEY REFERENCES CardElement(CardElementName),
     CardRarityName nvarchar(5) NOT NULL FOREIGN KEY REFERENCES CardRarity(CardRarityName),
 );
+
+CREATE TABLE UserCard (
+    UserCardId biggint IDENTITY(1,1) PRIMARY KEY,
+    UserId bigint NOT NULL FOREIGN KEY REFERENCES User(UserId),
+    CardId bigint NOT NULL FOREIGN KEY REFERENCES Card(CardId),
+    OnHold bit NOT NULL,
+);
+
+CREATE TABLE Deal (
+    DealId bigint IDENTITY(1,1) PRIMARY KEY,
+    SellUserId bigint NOT NULL FOREIGN KEY REFERENCES User(UserId),
+    BuyUserId bigint FOREIGN KEY REFERENCES User(UserId),
+    UserCardId bigint NOT NULL,
+    Price int NOT NULL,
+);
+
+--Todo:
+--Comment
+--Event
+--Gacha
