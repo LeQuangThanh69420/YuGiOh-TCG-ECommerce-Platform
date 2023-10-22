@@ -22,5 +22,29 @@ namespace BE.Controllers
         {
             return _context.Card.ToList();
         }
+
+        [HttpGet("getCardType")]
+        public ActionResult<List<CardType>> getCardType()
+        {
+            return _context.CardType.ToList();
+        }
+
+        [HttpGet("getCardOrigin")]
+        public ActionResult<List<CardOrigin>> getCardOrigin()
+        {
+            return _context.CardOrigin.ToList();
+        }
+
+        [HttpGet("getCardElement")]
+        public ActionResult<List<CardElement>> getCardElement()
+        {
+            return _context.CardElement.ToList();
+        }
+        
+        [HttpGet("getCardRarity")]
+        public ActionResult<List<CardRarity>> getCardRarity()
+        {
+            return _context.CardRarity.ToList();
+        }
     }
 }
