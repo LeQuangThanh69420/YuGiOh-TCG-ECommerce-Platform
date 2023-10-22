@@ -1,0 +1,82 @@
+
+.body-session {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0px 100px;
+}
+
+.body-container {
+    width: 1180px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    gap: 30px 30px;
+    flex-wrap: wrap;
+}
+
+.not-found {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.cards {
+    width: 200px;
+    border-radius: 8px;
+    border: 1px solid rgb(213, 213, 213);
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+}
+
+.cards:hover {
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cards-img {
+    width: 164px;
+}
+
+.card-name {
+    height: 36px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.rarity {
+    color: white;
+    font-weight: 500;
+    width: 40px;
+    padding: 0px 4px;
+    clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
+    font-size: 14px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.UR {
+    background-image: linear-gradient(120deg, rgb(184, 3, 255), rgb(27, 202, 255));
+}
+
+.SR {
+    background-image: linear-gradient(120deg, rgb(229, 111, 0), rgb(255, 200, 0));
+}
+
+.R {
+    background-image: linear-gradient(120deg, rgb(22, 22, 181), rgb(27, 202, 255));
+    padding-left: 8px;
+}
+
+.N {
+    background-image: linear-gradient(120deg, rgb(48, 48, 48), rgb(203, 203, 203));
+    padding-left: 8px;
+}

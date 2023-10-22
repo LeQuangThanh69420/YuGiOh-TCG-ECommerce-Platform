@@ -9,26 +9,26 @@ CREATE DATABASE TCG;
 USE TCG;
 
 CREATE TABLE CardType (
-    CardTypeName nvarchar(50) PRIMARY KEY,
+    CardTypeName nvarchar(10) PRIMARY KEY,
 );
 
 CREATE TABLE CardOrigin (
-    CardOriginName nvarchar(50) PRIMARY KEY,
+    CardOriginName nvarchar(20) PRIMARY KEY,
 );
 
 CREATE TABLE CardElement (
-    CardElementName nvarchar(50) PRIMARY KEY,
+    CardElementName nvarchar(10) PRIMARY KEY,
 );
 
 CREATE TABLE CardRarity (
-    CardRarityName nvarchar(50) PRIMARY KEY,
+    CardRarityName nvarchar(5) PRIMARY KEY,
 );
 CREATE TABLE Card (
-    CardId bigint NOT NULL IDENTITY(1,1) PRIMARY KEY ,
-    CardName nvarchar(100) NOT NULL UNIQUE,
-    CardImageURL nvarchar(255) NOT NULL UNIQUE,
-    CardTypeName nvarchar(50) NOT NULL FOREIGN KEY REFERENCES CardType(CardTypeName),
-    CardOriginName nvarchar(50) FOREIGN KEY REFERENCES CardOrigin(CardOriginName),
-    CardElementName nvarchar(50) FOREIGN KEY REFERENCES CardElement(CardElementName),
-    CardRarityName nvarchar(50) NOT NULL FOREIGN KEY REFERENCES CardRarity(CardRarityName),
+    CardId bigint IDENTITY(1,1) PRIMARY KEY,
+    CardName nvarchar(60) NOT NULL UNIQUE,
+    CardImageURL nvarchar(120) NOT NULL UNIQUE,
+    CardTypeName nvarchar(10) NOT NULL FOREIGN KEY REFERENCES CardType(CardTypeName),
+    CardOriginName nvarchar(20) FOREIGN KEY REFERENCES CardOrigin(CardOriginName),
+    CardElementName nvarchar(10) FOREIGN KEY REFERENCES CardElement(CardElementName),
+    CardRarityName nvarchar(5) NOT NULL FOREIGN KEY REFERENCES CardRarity(CardRarityName),
 );
