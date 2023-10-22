@@ -13,6 +13,5 @@ namespace BE.Context
         {
         }
         public DbSet<Card> Card {get; set; }
-        public DbSet<CardElement> CardElement {get; set;
     }
 }
