@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BE.Context;
 using BE.InterfaceController;
+using BE.Model.Dto;
 using BE.Model.Entity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,16 @@ namespace BE.Controllers
         }
 
         [HttpGet("searchCard")]
-        public ActionResult<List<Card>> searchCard()
+        public ActionResult<List<Card>> searchCard([FromQuery]CardSearchInputDto input)
         {
-            return _context.Card.ToList();
+            var card = from Card in _context.Card 
+            where (string.IsNullOrWhiteSpace(input.CardName) || Card.CardName.Contains(input.CardName))
+            && (string.IsNullOrWhiteSpace(input.CardTypeName) || Card.CardTypeName == input.CardTypeName)
+            && (string.IsNullOrWhiteSpace(input.CardOriginName) || Card.CardOriginName == input.CardOriginName)
+            && (string.IsNullOrWhiteSpace(input.CardElementName) || Card.CardElementName == input.CardElementName)
+            && (string.IsNullOrWhiteSpace(input.CardRarityName) || Card.CardRarityName == input.CardRarityName)
+            select Card;
+            return card.ToList();
         }
 
         [HttpGet("getCardType")]
