@@ -8,10 +8,12 @@ namespace BE.Controllers
     public class EmailModel
     {
         public string To { get; set; }
+        public string Subject { get; set; }
         public string Body { get; set; }
     }
     public class EmailController : BaseApiController
     {
+        [NonAction]
         public async Task<ActionResult> SendEmail(EmailModel emailModel)
         {
             try
@@ -20,14 +22,14 @@ namespace BE.Controllers
                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
                 {
                     smtpClient.Port = 587;
-                    smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "nhappassvaoday");
+                    smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "THANHLONGLOLlol123123123123123");
                     smtpClient.EnableSsl = true;
                     // Tạo đối tượng MailMessage để cấu hình email
                     MailMessage mail = new MailMessage();
                     mail.From = new MailAddress("thanh0204466@huce.edu.vn");
                     mail.To.Add(emailModel.To);
-                    mail.Subject = "Mail kich hoat tai khoan";
-                    mail.Body = "Bấm vào liên kết để kích hoạt tài khoản " + emailModel.Body;
+                    mail.Subject = emailModel.Subject;
+                    mail.Body = "<html><body><p style='color: red;'><b>" + emailModel.Body + "</b></p></body></html>";
                     // Gửi email
                     await smtpClient.SendMailAsync(mail);
                 }
