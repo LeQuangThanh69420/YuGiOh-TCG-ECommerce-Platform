@@ -1,0 +1,54 @@
+
+.select-option-container {
+    display: flex;
+    gap: 30px;
+    background: rgb(0, 154, 244);
+    align-items: center;
+    height: 100%;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.options-box {
+    position: absolute;
+    width: 100%;
+    background: rgb(0, 154, 244);
+    border-radius: 0px 0px 4px 4px;
+    top: 32px;
+    padding-bottom: 4px;
+}
+
+.options-container {
+    position: relative;
+    display: flex;
+    height: 32px;
+    padding: 4px 0px;
+}
+
+.options-container > input {
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    width: 130px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.options-container > input:disabled {
+    background: white;
+    color: black;
+    border-radius: 4px;
+}
+
+.option {
+    cursor: pointer;
+    padding: 0px 8px;
+    margin: 0;
+}
+
+.option:hover {
+    background: rgb(40, 176, 255)
+}
