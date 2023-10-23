@@ -1,4 +1,5 @@
 using BE.Context;
+using BE.Controllers;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
 
@@ -14,7 +15,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Services.AddScoped<EmailController>();
 builder.Services.AddCors();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -34,7 +35,7 @@ app.UseHttpsRedirection();
 
 //add cors
 app.UseCors("CorsPolicy");
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200"));
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:5173"));
 //app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().SetIsOriginAllowed(origin => true));
 
 app.UseAuthentication();

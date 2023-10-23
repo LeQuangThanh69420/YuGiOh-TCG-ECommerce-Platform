@@ -12,6 +12,8 @@ namespace BE.Model.Entity
         public string Password { get; set; }
         public string Email { get; set; }
         public int Money { get; set; }
+        public bool Actived { get; set; }
+        public int? ActiveCode { get; set; }
         //public string AvatarUrl { get; set; }
     }
 }

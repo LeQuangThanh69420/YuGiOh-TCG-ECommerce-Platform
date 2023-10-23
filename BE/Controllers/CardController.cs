@@ -19,8 +19,8 @@ namespace BE.Controllers
             _context = context;
         }
 
-        [HttpGet("searchCard")]
-        public async Task<ActionResult<List<CardSearchOutputDto>>> searchCard([FromQuery]CardSearchInputDto input)
+        [HttpGet("SearchCard")]
+        public async Task<ActionResult<List<CardSearchOutputDto>>> SearchCard([FromQuery]CardSearchInputDto input)
         {
             var card = from Card in _context.Card
             where (string.IsNullOrWhiteSpace(input.CardName) || Card.CardName.Contains(input.CardName))
@@ -35,26 +35,26 @@ namespace BE.Controllers
             return await card.ToListAsync();
         }
 
-        [HttpGet("getCardType")]
-        public async Task<ActionResult<List<CardType>>> getCardType()
+        [HttpGet("GetCardType")]
+        public async Task<ActionResult<List<CardType>>> GetCardType()
         {
             return await _context.CardType.ToListAsync();
         }
 
-        [HttpGet("getCardOrigin")]
-        public async Task<ActionResult<List<CardOrigin>>> getCardOrigin()
+        [HttpGet("GetCardOrigin")]
+        public async Task<ActionResult<List<CardOrigin>>> GetCardOrigin()
         {
             return await _context.CardOrigin.ToListAsync();
         }
 
-        [HttpGet("getCardElement")]
-        public async Task<ActionResult<List<CardElement>>> getCardElement()
+        [HttpGet("GetCardElement")]
+        public async Task<ActionResult<List<CardElement>>> GetCardElement()
         {
             return await _context.CardElement.ToListAsync();
         }
         
-        [HttpGet("getCardRarity")]
-        public async Task<ActionResult<List<CardRarity>>> getCardRarity()
+        [HttpGet("GetCardRarity")]
+        public async Task<ActionResult<List<CardRarity>>> GetCardRarity()
         {
             return  await _context.CardRarity.ToListAsync();
         }
