@@ -5,9 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BE.Controllers
 {
-    public class EmailController //: BaseApiController
+    public class EmailModel
     {
-        public /*ActionResult*/ void SendEmail( EmailModel emailModel)
+        public string To { get; set; }
+        public string Body { get; set; }
+    }
+    public class EmailController : BaseApiController
+    {
+        public async Task<ActionResult> SendEmail(EmailModel emailModel)
         {
             try
             {
@@ -17,31 +22,21 @@ namespace BE.Controllers
                     smtpClient.Port = 587;
                     smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "nhappassvaoday");
                     smtpClient.EnableSsl = true;
-
                     // Tạo đối tượng MailMessage để cấu hình email
                     MailMessage mail = new MailMessage();
                     mail.From = new MailAddress("thanh0204466@huce.edu.vn");
                     mail.To.Add(emailModel.To);
-                    mail.Subject = emailModel.Subject;
-                    mail.Body = emailModel.Body;
-
+                    mail.Subject = "Mail kich hoat tai khoan";
+                    mail.Body = "Bấm vào liên kết để kích hoạt tài khoản " + emailModel.Body;
                     // Gửi email
-                    smtpClient.Send(mail);
+                    await smtpClient.SendMailAsync(mail);
                 }
-
-                //return Ok("Email sent successfully!");
+                return Ok("Email sent successfully!");
             }
             catch (Exception ex)
             {
-                //return BadRequest($"Email sending failed: {ex.Message}");
+                return BadRequest($"Email sending failed: {ex.Message}");
             }
         }
     }
-}
-
-public class EmailModel
-{
-    public string To { get; set; }
-    public string Subject { get; set; }
-    public string Body { get; set; }
 }

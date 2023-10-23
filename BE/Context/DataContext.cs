@@ -17,5 +17,6 @@ namespace BE.Context
         public DbSet<CardElement> CardElement {get; set; }
         public DbSet<CardOrigin> CardOrigin { get; set; }
         public DbSet<CardRarity> CardRarity { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }
