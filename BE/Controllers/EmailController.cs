@@ -29,7 +29,7 @@ namespace BE.Controllers
                     mail.From = new MailAddress("thanh0204466@huce.edu.vn");
                     mail.To.Add(emailModel.To);
                     mail.Subject = emailModel.Subject;
-                    mail.Body = "<html><body><p style='color: red;'><b>" + emailModel.Body + "</b></p></body></html>";
+                    mail.Body = emailModel.Body;
                     // Gửi email
                     await smtpClient.SendMailAsync(mail);
                 }
