@@ -26,6 +26,10 @@ namespace BE.Controllers
         {
             return await _context.User.AnyAsync(x => x.Username == Username.ToLower());
         }
+        private async Task<bool> EmailExists(string Email)
+        {
+            return await _context.User.AnyAsync(x => x.Email == Email.ToLower());
+        }
 
         [HttpPost("Register")]
         public async Task<ActionResult> Register(UserRegisterInputDto input)
@@ -34,12 +38,16 @@ namespace BE.Controllers
             {
                 return BadRequest("Ten tai khoan da co nguoi dung.");
             }
+            if (await EmailExists(input.Email))
+            {
+                return BadRequest("Email da co nguoi dung.");
+            }
             var activeCode = new Random().Next(1000, 9999);
             var rs = await _email.SendEmail(new EmailModel()
             {
                 To = input.Email,
                 Subject = "Kich hoat tai khoan YuGhiOh TCG",
-                Body = "<h1>Bấm vào liên kết để kích hoạt tài khoản</h1> http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode,
+                Body = "Bấm vào liên kết để kích hoạt tài khoản http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode,
             });
             if ((int)rs.GetType().GetProperty("StatusCode").GetValue(rs, null) == 200)
             {
