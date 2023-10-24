@@ -14,6 +14,8 @@ CREATE TABLE "User" (
     Password varchar(10) NOT NULL,
     Email varchar(50) NOT NULL UNIQUE,
     Money int NOT NULL,
+    Actived bit NOT NULL,
+    ActiveCode int,
 );--AvatarUrl nvarchar(180),
 
 CREATE TABLE CardType (
