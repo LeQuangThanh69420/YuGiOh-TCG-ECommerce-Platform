@@ -3,6 +3,7 @@ import './Header.css'
 import SearchSelection from './SearchSelection/SearchSelection';
 
 function Header({ setCards }) {
+
     const [inputNameValue, setInputNameValue] = useState('');
     const [types, setTypes] = useState([]);
     const [origins, setOrigins] = useState([]);
@@ -31,14 +32,14 @@ function Header({ setCards }) {
     useEffect(() => {
         fetch('http://localhost:5233/api/Card/getCardType')
             .then(res => res.json())
-            .then(data => {setTypes(data)});
+            .then(data => { setTypes(data) });
     }, [])
     //get origins
     useEffect(() => {
         fetch('http://localhost:5233/api/Card/getCardOrigin')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 setOrigins(data)
             });
     }, [])
@@ -46,13 +47,13 @@ function Header({ setCards }) {
     useEffect(() => {
         fetch('http://localhost:5233/api/Card/getCardElement')
             .then(res => res.json())
-            .then(data => {setElements(data)});
+            .then(data => { setElements(data) });
     }, [])
     //get rarities
     useEffect(() => {
         fetch('http://localhost:5233/api/Card/getCardRarity')
             .then(res => res.json())
-            .then(data => {setRarities(data)});
+            .then(data => { setRarities(data) });
     }, [])
 
     const handleAddName = () => {
@@ -83,11 +84,13 @@ function Header({ setCards }) {
                     <button>Login</button>
                 </div>
             </div>
-            <div className='search-opt'>
-                <SearchSelection type="Type" selections={types} propSet="type" onSelect={updateSearchObject} />
-                <SearchSelection type="Origin" selections={origins} propSet="origin" onSelect={updateSearchObject} />
-                <SearchSelection type="Element" selections={elements} propSet="element" onSelect={updateSearchObject} />
-                <SearchSelection type="Rarity" selections={rarities} propSet="rarity" onSelect={updateSearchObject} />
+            <div className='search-opt-container'>
+                <div className='search-opt'>
+                    <SearchSelection type="Type" selections={types} propSet="type" onSelect={updateSearchObject} />
+                    <SearchSelection type="Origin" selections={origins} propSet="origin" onSelect={updateSearchObject} />
+                    <SearchSelection type="Element" selections={elements} propSet="element" onSelect={updateSearchObject} />
+                    <SearchSelection type="Rarity" selections={rarities} propSet="rarity" onSelect={updateSearchObject} />
+                </div>
             </div>
         </div>
 

@@ -8,9 +8,10 @@ function ClientView() {
     const [cards, setCards] = useState([]);
 
     //console.log(cards);
-    useEffect(() => {
-        fetch
-    }, [])
+
+    // useEffect(() => {
+
+    // }, [cards])
 
     return(
         <div className="main-content">

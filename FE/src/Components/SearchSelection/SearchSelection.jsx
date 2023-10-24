@@ -12,6 +12,11 @@ function SearchSelection({ type, selections, propSet, onSelect }) {
         onSelect(propSet, inputValue);
     }, [inputValue])
 
+    const handleChoose = (event) => {
+        setInputValue(event.target.innerHTML);
+        setIsHover(false);
+    }
+
     return (
         <div className='select-option-container'>
             <div>
@@ -23,7 +28,7 @@ function SearchSelection({ type, selections, propSet, onSelect }) {
                     <div className='options-box' onMouseOver={() => { setIsHover(true) }} onMouseLeave={() => { setIsHover(false) }}>
                         {
                             selections.map((item, index) =>
-                                <p className='option' key={index} onClick={(event) => {setInputValue(event.target.innerHTML)}}>
+                                <p className='option' key={index} onClick={event => handleChoose(event)}>
                                     {propSet === 'type' && item.cardTypeName}
                                     {propSet === 'origin' && item.cardOriginName}
                                     {propSet === 'element' && item.cardElementName}
