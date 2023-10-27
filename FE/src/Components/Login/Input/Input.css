@@ -1,0 +1,63 @@
+
+.input-container {
+    width: 100%;
+    position: relative;
+}
+
+label {
+    font-size: 14px;
+}
+
+.input-label.focus {
+    color: rgb(0, 154, 244);
+}
+
+.input-label.ok {
+    color: black;
+}
+
+.input-label.error {
+    color: red;
+}
+
+.input-container > input {
+    outline: none;
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+}
+
+input.ispassword {
+    padding-right: 48px;
+}
+
+.error > label {
+    color: red;
+}
+
+.error > input {
+    border: 1px solid red;
+}
+
+.input-field {
+    width: 100%;
+}
+
+.eye-icon {
+    position: absolute;
+    width: 30px;
+    height: 24px;
+    bottom: 8px;
+    right: 12px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.close {
+    background-image: url('../../../asset/EyeClose.svg');
+}
+
+.open {
+    background-image: url('../../../asset/EyeOpen.svg');
+}

@@ -7,11 +7,6 @@ function ClientView() {
 
     const [cards, setCards] = useState([]);
 
-    //console.log(cards);
-    useEffect(() => {
-        fetch
-    }, [])
-
     return(
         <div className="main-content">
             <Header setCards={setCards}/>
