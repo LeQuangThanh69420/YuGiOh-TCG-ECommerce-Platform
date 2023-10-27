@@ -18,6 +18,8 @@ CREATE TABLE "User" (
     ActiveCode int,
 );--AvatarUrl nvarchar(180),
 
+
+
 CREATE TABLE CardType (
     CardTypeName nvarchar(10) PRIMARY KEY,
 );
