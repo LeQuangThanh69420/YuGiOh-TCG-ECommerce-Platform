@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Header.css'
 import SearchSelection from './SearchSelection/SearchSelection';
+import { Link } from 'react-router-dom';
 
 function Header({ setCards }) {
 
@@ -81,7 +82,7 @@ function Header({ setCards }) {
                     <button onClick={handleAddName}>Search</button>
                 </div>
                 <div className='users-button'>
-                    <button>Login</button>
+                    <Link to={"/login"}>Login</Link>
                 </div>
             </div>
             <div className='search-opt-container'>
