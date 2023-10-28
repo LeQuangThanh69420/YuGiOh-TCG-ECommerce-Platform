@@ -57,9 +57,11 @@ CREATE TABLE Deal (
     DealId bigint IDENTITY(1,1) PRIMARY KEY,
     SellUserId bigint NOT NULL FOREIGN KEY REFERENCES "User"(UserId),
     BuyUserId bigint FOREIGN KEY REFERENCES "User"(UserId),
-    UserCardId bigint NOT NULL,
+    CardId bigint foreign key references Card(CardId) NOT NULL,
     Price int NOT NULL,
 );
+
+drop table deal
 
 --Todo:
 --Comment

@@ -44,7 +44,6 @@ function Input({ label, type, regex }) {
             <input type={internalType} id={`input-${type}`} value={inputValue} className={`is${type}`} onChange={(event) => setInputValue(event.target.value)} onBlur={handleBlur} onFocus={handleFocus} />
             {type === 'password' &&
                 <div className={`eye-icon ${eye}`} onClick={handleClickEye}>
-
                 </div>}
         </div>
     )
