@@ -46,8 +46,8 @@ namespace BE.Controllers
             var rs = await _email.SendEmail(new EmailModel()
             {
                 To = input.Email,
-                Subject = "Kich hoat tai khoan YuGhiOh TCG",
-                Body = "Bấm vào liên kết để kích hoạt tài khoản http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode,
+                Subject = "Kích hoạt tài khoản YuGhiOh TCG",
+                Body = "<h3>Bấm nút để kích hoạt</h3><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #008cff; color: white; border-radius: 6px; border: none;'>Bấm tôi</button></a>",
             });
             if ((int)rs.GetType().GetProperty("StatusCode").GetValue(rs, null) == 200)
             {
@@ -94,11 +94,11 @@ namespace BE.Controllers
             });
         }
 
-        /*[HttpPost("ForgetPassword")]
+        [HttpPost("ForgetPassword")]
         public async Task<ActionResult> ForgetPassword()
         {
             return Ok();
-        }*/
+        }
 
     }
 }
