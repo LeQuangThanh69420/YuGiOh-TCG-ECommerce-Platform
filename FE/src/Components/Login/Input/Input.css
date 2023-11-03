@@ -4,6 +4,10 @@
     position: relative;
 }
 
+.main-container-1 {
+    width: 100%;
+}
+
 label {
     font-size: 14px;
 }
@@ -60,4 +64,10 @@ input.ispassword {
 
 .open {
     background-image: url('../../../asset/EyeOpen.svg');
+}
+
+.error-message {
+    margin: 0;
+    font-size: 10px;
+    color: red;
 }
