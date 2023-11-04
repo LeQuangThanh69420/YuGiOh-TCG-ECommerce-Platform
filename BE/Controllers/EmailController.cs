@@ -26,6 +26,7 @@ namespace BE.Controllers
                     smtpClient.EnableSsl = true;
                     // Tạo đối tượng MailMessage để cấu hình email
                     MailMessage mail = new MailMessage();
+                    mail.IsBodyHtml = true;
                     mail.From = new MailAddress("thanh0204466@huce.edu.vn");
                     mail.To.Add(emailModel.To);
                     mail.Subject = emailModel.Subject;
