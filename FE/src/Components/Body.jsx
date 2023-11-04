@@ -10,7 +10,6 @@ function Body({ cards, setCards }) {
             .then(data => { setCards(data) })
     }, [])
 
-
     return (
         <div className='body-session'>
             < div className="body-container" >

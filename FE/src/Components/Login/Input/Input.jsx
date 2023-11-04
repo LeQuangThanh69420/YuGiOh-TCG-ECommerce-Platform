@@ -1,12 +1,17 @@
 import './Input.css'
 import { useEffect, useState } from "react"
 
-function Input({ label, type, regex }) {
+function Input({ label, type, regex, errorMessage }) {
     const [inputValue, setInputValue] = useState('');
     const [error, setError] = useState('');
     const [labelStatus, setLabelStatus] = useState('');
     const [eye, setEye] = useState('close');
     const [internalType, setInternalType] = useState('');
+    const [internalErrorMessage, setInternalErrorMessage] = useState('');
+
+    useEffect(() => {
+        setInternalErrorMessage(errorMessage);
+    }, [errorMessage])
 
     useEffect(() => {
         setInternalType(type);
@@ -28,7 +33,7 @@ function Input({ label, type, regex }) {
     }
 
     const handleClickEye = () => {
-        if(eye === 'close') {
+        if (eye === 'close') {
             setEye('open');
             setInternalType('text');
         }
@@ -39,13 +44,17 @@ function Input({ label, type, regex }) {
     }
 
     return (
-        <div className={`input-container ${error}`}>
-            <label htmlFor={`input-${type}`} className={`input-label ${labelStatus}`}>{label}</label>
-            <input type={internalType} id={`input-${type}`} value={inputValue} className={`is${type}`} onChange={(event) => setInputValue(event.target.value)} onBlur={handleBlur} onFocus={handleFocus} />
-            {type === 'password' &&
-                <div className={`eye-icon ${eye}`} onClick={handleClickEye}>
-
-                </div>}
+        <div className='main-container-1'>
+            <div className={`input-container ${error}`}>
+                <label htmlFor={`input-${type}`} className={`input-label ${labelStatus}`}>{label}</label>
+                <input type={internalType} id={`input-${type}`} value={inputValue} className={`is${type}`} onChange={(event) => setInputValue(event.target.value)} onBlur={handleBlur} onFocus={handleFocus} />
+                {type === 'password' &&
+                    <div className={`eye-icon ${eye}`} onClick={handleClickEye}>
+                    </div>}
+            </div>
+            {error && <p className='error-message'>
+                {internalErrorMessage}
+            </p>}
         </div>
     )
 }
