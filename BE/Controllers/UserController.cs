@@ -32,15 +32,15 @@ namespace BE.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<ActionResult> Register(UserRegisterInputDto input)
+        public async Task<ActionResult> Register([FromBody] UserRegisterInputDto input)
         {
             if (await UserExists(input.Username))
             {
-                return BadRequest("Ten tai khoan da co nguoi dung.");
+                return BadRequest("Tên tài khoản đã có người sử dụng!");
             }
             if (await EmailExists(input.Email))
             {
-                return BadRequest("Email da co nguoi dung.");
+                return BadRequest("Email đã có người sử dụng!");
             }
             var activeCode = new Random().Next(1000, 9999);
             var rs = await _email.SendEmail(new EmailModel()
@@ -70,23 +70,24 @@ namespace BE.Controllers
         public async Task<ActionResult> ActiveUser(string username, int activeCode)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
+            if (user == null) return Unauthorized("URL không tồn tại!");
             if (user.ActiveCode == activeCode)
             {
                 user.Actived = true;
                 user.ActiveCode = null;
                 await _context.SaveChangesAsync();
-                return Ok("Kich hoat thanh cong");
+                return Ok("Kích hoạt tài khoản thành công!");
             }
-            else return NotFound("URL khong ton tai");
+            else return NotFound("URL không tồn tại!");
         }
 
         [HttpPost("Login")]
-        public async Task<ActionResult<UserLoginOutputDto>> Login(UserLoginInputDto input)
+        public async Task<ActionResult<UserLoginOutputDto>> Login([FromBody] UserLoginInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized("tk ko ton tai");
-            if (input.Password != user.Password) return Unauthorized("Sai mk");
-            if (user.Actived != true) return Unauthorized("chua dc kick hoat");
+            if (user == null) return Unauthorized("Tài khoản không tồn tại!");
+            if (input.Password != user.Password) return Unauthorized("Sai mật khẩu, vui lòng kiểm tra lại!");
+            if (user.Actived != true) return Unauthorized("Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!");
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
@@ -95,10 +96,33 @@ namespace BE.Controllers
         }
 
         [HttpPost("ForgetPassword")]
-        public async Task<ActionResult> ForgetPassword()
+        public async Task<ActionResult> ForgetPassword([FromBody] UserForgetPasswordInputDto input)
         {
-            return Ok();
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
+            if (user == null) return Unauthorized("Tài khoản không tồn tại!");
+            if (user.Email != input.Email) return Unauthorized("Email không đúng");
+            else
+            {
+                return await _email.SendEmail(new EmailModel()
+                {
+                    To = user.Email,
+                    Subject = "Mật khẩu gửi lại!",
+                    Body = "<h3>Mật khẩu của bạn</h3>" + user.Password,
+                });
+            }
         }
 
+        [HttpPost("ChangePassword")]
+        public async Task<ActionResult<long>> ChangePassword([FromBody] UserChangePasswordInputDto input)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
+            if (user == null) return Unauthorized("Tài khoản không tồn tại!");
+            else
+            {
+                user.Password = input.NewPassword;
+                await _context.SaveChangesAsync();
+                return Ok("Thay đổi mật khẩu thành công");
+            }
+        }
     }
 }

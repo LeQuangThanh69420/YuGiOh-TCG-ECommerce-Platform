@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE.Model.Dto
 {
-    public class UserLoginInputDto
+    public class UserChangePasswordInputDto
     {
-        [Required] public string Username { get; set; }
-        [Required] public string Password { get; set; }
+        public string Username { get; set; }
+        [StringLength(10, MinimumLength = 6)] public string NewPassword { get; set; }
     }
 }
