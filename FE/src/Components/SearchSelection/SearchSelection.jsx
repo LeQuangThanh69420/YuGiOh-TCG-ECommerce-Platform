@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
-import './SearchSelection.css'
+import './../../styles/SearchSelection.css'
 
 
 function SearchSelection({ type, selections, propSet, onSelect }) {
