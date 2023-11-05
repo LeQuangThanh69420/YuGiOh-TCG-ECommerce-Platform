@@ -1,4 +1,4 @@
-import './Login.css'
+import './../../styles/Login.css'
 import Input from './Input/Input'
 
 function Login() {

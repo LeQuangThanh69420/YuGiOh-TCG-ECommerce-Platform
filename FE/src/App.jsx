@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { useState } from 'react'
-import './App.css'
+import './styles/App.css'
 import ClientView from './Components/ClientView'
 
 function App() {

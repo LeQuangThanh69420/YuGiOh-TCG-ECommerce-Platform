@@ -20,7 +20,7 @@ namespace BE.Controllers
         }
 
         [HttpGet("SearchCard")]
-        public async Task<ActionResult<List<CardSearchOutputDto>>> SearchCard([FromQuery]CardSearchInputDto input)
+        public async Task<ActionResult<List<CardSearchOutputDto>>> SearchCard([FromQuery] CardSearchInputDto input)
         {
             var card = from Card in _context.Card
             where (string.IsNullOrWhiteSpace(input.CardName) || Card.CardName.Contains(input.CardName))

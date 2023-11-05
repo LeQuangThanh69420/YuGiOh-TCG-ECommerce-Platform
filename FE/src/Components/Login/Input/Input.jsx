@@ -1,4 +1,4 @@
-import './Input.css'
+import './../../../styles/Input.css'
 import { useEffect, useState } from "react"
 
 function Input({ label, type, regex, errorMessage }) {

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
-import './Body.css'
+import './../styles/Body.css'
 
 function Body({ cards, setCards }) {
 
