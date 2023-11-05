@@ -59,6 +59,7 @@ namespace BE.Controllers
                     Money = 0,
                     Actived = false,
                     ActiveCode = activeCode,
+                    AvatarUrl = "https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png",
                 };
                 _context.User.Add(newUser);
                 await _context.SaveChangesAsync();
@@ -107,7 +108,7 @@ namespace BE.Controllers
                 {
                     To = user.Email,
                     Subject = "Mật khẩu gửi lại!",
-                    Body = "<h3>Mật khẩu của bạn</h3>" + user.Password,
+                    Body = "<h3>Vui lòng không chia sẻ mật khẩu cho bất kỳ ai, kể cả ADMIN!</h3><h3>Mật khẩu của bạn là:</h3>" + user.Password,
                 });
             }
         }

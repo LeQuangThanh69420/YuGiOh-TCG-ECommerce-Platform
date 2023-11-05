@@ -10,6 +10,6 @@ namespace BE.Model.Dto
     {
         [Required][StringLength(20, MinimumLength = 6)] public string Username { get; set; }
         [Required][StringLength(10, MinimumLength = 6)] public string Password { get; set; }
-        [Required][StringLength(10)] public string Email { get; set; }
+        [Required][StringLength(50)] public string Email { get; set; }
     }
 }
