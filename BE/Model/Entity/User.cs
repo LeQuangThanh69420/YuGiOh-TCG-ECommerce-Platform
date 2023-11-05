@@ -14,6 +14,6 @@ namespace BE.Model.Entity
         public int Money { get; set; }
         public bool Actived { get; set; }
         public int? ActiveCode { get; set; }
-        //public string AvatarUrl { get; set; }
+        public string AvatarUrl { get; set; }
     }
 }
