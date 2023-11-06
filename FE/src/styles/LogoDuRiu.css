@@ -1,0 +1,24 @@
+
+.logo-container {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    text-decoration: none;
+}
+
+.duriu-logo-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #252525;
+    margin: 0;
+}
+
+
+.logo-container:hover {
+    text-decoration: none;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+}

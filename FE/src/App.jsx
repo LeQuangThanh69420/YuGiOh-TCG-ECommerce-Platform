@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import './styles/App.css'
-import ClientView from './Components/ClientView'
+import ClientView from './Components/User-Cards/ClientView'
 
 function App() {
 

@@ -59,11 +59,11 @@ input.ispassword {
 }
 
 .close {
-    background-image: url('../../../asset/EyeClose.svg');
+    background-image: url('./../asset/EyeClose.svg');
 }
 
 .open {
-    background-image: url('../../../asset/EyeOpen.svg');
+    background-image: url('./../asset/EyeOpen.svg');
 }
 
 .error-message {

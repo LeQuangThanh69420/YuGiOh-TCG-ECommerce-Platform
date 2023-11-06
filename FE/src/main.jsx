@@ -7,6 +7,7 @@ import Root from './Root'
 import Login from './Components/Login/Login.jsx'
 import SignUp from './Components/SignUp/SingUp.jsx'
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
         path='/sign-up'
         element={<SignUp />}
       />
+
     </Route>
   )
 )
