@@ -77,7 +77,7 @@ export default function Root() {
                 <div className="icon-20 discord"></div>
                 <a
                   className="footer-options"
-                  href="https://discord.gg/pYAtdutn"
+                  href="https://discord.gg/XMggUdNRG"
                   target="blank"
                 >
                   Discord
