@@ -1,7 +1,7 @@
 import Header from "./Header"
 import Body from "./Body"
 import { useEffect, useState } from "react";
-import './../styles/ClientView.css'
+import './../../styles/ClientView.css'
 
 function ClientView() {
 
