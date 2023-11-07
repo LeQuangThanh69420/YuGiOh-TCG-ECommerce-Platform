@@ -10,8 +10,8 @@ USE TCG;
 
 CREATE TABLE "User" (
     UserId bigint IDENTITY(1,1) PRIMARY KEY,
-    Username varchar(20) NOT NULL UNIQUE,
-    Password varchar(10) NOT NULL,
+    Username varchar(16) NOT NULL UNIQUE CHECK (LEN(Username) >= 8),
+    Password varchar(16) NOT NULL CHECK (LEN(Password) >= 8),
     Email varchar(50) NOT NULL UNIQUE,
     Money int NOT NULL,
     Actived bit NOT NULL,
@@ -56,13 +56,6 @@ CREATE TABLE Deal (
     DealId bigint IDENTITY(1,1) PRIMARY KEY,
     SellUserId bigint NOT NULL FOREIGN KEY REFERENCES "User"(UserId),
     BuyUserId bigint FOREIGN KEY REFERENCES "User"(UserId),
-    CardId bigint foreign key references Card(CardId) NOT NULL,
+    UserCardId bigint foreign key references UserCard(UserCardId) NOT NULL,
     Price int NOT NULL,
 );
-
-drop table deal
-
---Todo:
---Comment
---Event
---Gacha
