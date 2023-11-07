@@ -86,9 +86,9 @@ namespace BE.Controllers
         public async Task<ActionResult<UserLoginOutputDto>> Login([FromBody] UserLoginInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized("Tài khoản không tồn tại!");
-            if (input.Password != user.Password) return Unauthorized("Sai mật khẩu, vui lòng kiểm tra lại!");
-            if (user.Actived != true) return Unauthorized("Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!");
+            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
+            if (input.Password != user.Password) return Unauthorized(new {message = "Sai mật khẩu, vui lòng kiểm tra lại!"});
+            if (user.Actived != true) return Unauthorized(new {message = "Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!"} );
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,

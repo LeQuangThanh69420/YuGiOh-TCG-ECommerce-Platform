@@ -1,7 +1,7 @@
 import './../../../styles/Input.css'
 import { useEffect, useState } from "react"
 
-function Input({ label, type, regex, errorMessage }) {
+function Input({ label, type, regex, errorMessage, setData }) {
     const [inputValue, setInputValue] = useState('');
     const [error, setError] = useState('');
     const [labelStatus, setLabelStatus] = useState('');
@@ -16,6 +16,10 @@ function Input({ label, type, regex, errorMessage }) {
     useEffect(() => {
         setInternalType(type);
     }, [type])
+
+    useEffect(() => {
+        setData(inputValue)
+    }, [inputValue])
 
     const handleBlur = () => {
         if (!inputValue.match(regex)) {
