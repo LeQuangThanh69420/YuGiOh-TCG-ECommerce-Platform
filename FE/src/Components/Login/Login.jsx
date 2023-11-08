@@ -1,22 +1,18 @@
 import "./../../styles/Login.css";
 import Input from "./Input/Input";
 import LogoDuRiu from "../Shared/LogoDuRiu";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = () => {
-    console.log(userName);
-    console.log(password);
-    console.log(
-      JSON.stringify({
-        username: userName,
-        password: password,
-      })
-    );
+    let status;
+
     fetch("http://localhost:5233/api/User/Login", {
       method: "POST",
       headers: {
@@ -28,9 +24,19 @@ function Login() {
       }),
     })
       .then((response) => {
-        response.json();
+        status = response.status;
+        return response.json();
       })
-      .then((data) => console.log(data))
+      .then((data) => {
+        if(status === 200) {
+          localStorage.setItem('userData', JSON.stringify(data));
+          navigate('/');
+        } else {
+          //toast fires here
+          console.log(data.message);
+        }
+      })
+
   };
 
   return (
@@ -53,7 +59,7 @@ function Login() {
             <Input
               label={"Password"}
               type={"password"}
-              regex={/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/}
+              regex={/^(?!\s*$).+/}
               errorMessage={
                 "Password must has at least 8 characters, 1 number, 1 uppercase and 1 special character!"
               }

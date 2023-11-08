@@ -6,10 +6,15 @@ import './../../styles/ClientView.css'
 function ClientView() {
 
     const [cards, setCards] = useState([]);
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        setUserData(JSON.parse(localStorage.getItem('userData')));
+    }, [])
 
     return(
         <div className="main-content">
-            <Header setCards={setCards}/>
+            <Header setCards={setCards} userData={userData}/>
             <Body cards={cards} setCards={setCards}/>
         </div>
     ) 
