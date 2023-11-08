@@ -34,11 +34,11 @@ namespace BE.Controllers
                     // Gửi email
                     await smtpClient.SendMailAsync(mail);
                 }
-                return Ok("Gửi Email thành công, vui lòng kiểm tra Email!");
+                return Ok(new {message = "Gửi Email thành công, vui lòng kiểm tra Email!"});
             }
             catch (Exception ex)
             {
-                return BadRequest($"Gửi Email thất bại, Error: {ex.Message}");
+                return BadRequest(new {message = $"Gửi Email thất bại, Error: {ex.Message}"});
             }
         }
     }

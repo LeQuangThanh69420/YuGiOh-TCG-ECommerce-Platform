@@ -8,8 +8,8 @@ namespace BE.Model.Dto
 {
     public class UserRegisterInputDto
     {
-        [Required][StringLength(20, MinimumLength = 6)] public string Username { get; set; }
-        [Required][StringLength(10, MinimumLength = 6)] public string Password { get; set; }
+        [Required][StringLength(16, MinimumLength = 8)] public string Username { get; set; }
+        [Required][StringLength(16, MinimumLength = 8)] public string Password { get; set; }
         [Required][StringLength(50)] public string Email { get; set; }
     }
 }

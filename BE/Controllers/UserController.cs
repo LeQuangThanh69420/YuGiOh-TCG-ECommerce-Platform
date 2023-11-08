@@ -36,11 +36,11 @@ namespace BE.Controllers
         {
             if (await UserExists(input.Username))
             {
-                return BadRequest("Tên tài khoản đã có người sử dụng!");
+                return BadRequest(new {message = "Tên tài khoản đã có người sử dụng!"});
             }
             if (await EmailExists(input.Email))
             {
-                return BadRequest("Email đã có người sử dụng!");
+                return BadRequest(new {message = "Email đã có người sử dụng!"});
             }
             var activeCode = new Random().Next(1000, 9999);
             var rs = await _email.SendEmail(new EmailModel()
@@ -71,24 +71,24 @@ namespace BE.Controllers
         public async Task<ActionResult> ActiveUser(string username, int activeCode)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
-            if (user == null) return Unauthorized("URL không tồn tại!");
+            if (user == null) return Unauthorized(new {message = "URL không tồn tại!"});
             if (user.ActiveCode == activeCode)
             {
                 user.Actived = true;
                 user.ActiveCode = null;
                 await _context.SaveChangesAsync();
-                return Ok("Kích hoạt tài khoản thành công!");
+                return Ok(new {message = "Kích hoạt tài khoản thành công!"});
             }
-            else return NotFound("URL không tồn tại!");
+            else return NotFound(new {message = "URL không tồn tại!"});
         }
 
         [HttpPost("Login")]
         public async Task<ActionResult<UserLoginOutputDto>> Login([FromBody] UserLoginInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized("Tài khoản không tồn tại!");
-            if (input.Password != user.Password) return Unauthorized("Sai mật khẩu, vui lòng kiểm tra lại!");
-            if (user.Actived != true) return Unauthorized("Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!");
+            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
+            if (input.Password != user.Password) return Unauthorized(new {message = "Sai mật khẩu, vui lòng kiểm tra lại!"});
+            if (user.Actived != true) return Unauthorized(new {message = "Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!"});
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
@@ -101,8 +101,8 @@ namespace BE.Controllers
         public async Task<ActionResult> ForgetPassword([FromBody] UserForgetPasswordInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized("Tài khoản không tồn tại!");
-            if (user.Email != input.Email) return Unauthorized("Email không đúng");
+            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
+            if (user.Email != input.Email) return Unauthorized(new {message = "Email không đúng"});
             else
             {
                 return await _email.SendEmail(new EmailModel()
@@ -115,16 +115,18 @@ namespace BE.Controllers
         }
 
         [HttpPost("ChangePassword")]
-        public async Task<ActionResult<long>> ChangePassword([FromBody] UserChangePasswordInputDto input)
+        public async Task<ActionResult> ChangePassword([FromBody] UserChangePasswordInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized("Tài khoản không tồn tại!");
+            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
             else
             {
                 user.Password = input.NewPassword;
                 await _context.SaveChangesAsync();
-                return Ok("Thay đổi mật khẩu thành công");
+                return Ok(new {message = "Thay đổi mật khẩu thành công"});
             }
         }
+
+        //[HttpPost("ChangeEmail")]
     }
 }
