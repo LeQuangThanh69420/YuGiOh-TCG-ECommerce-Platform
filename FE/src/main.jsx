@@ -5,7 +5,7 @@ import './styles/index.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Root from './Root'
 import Login from './Components/Login/Login.jsx'
-import SignUp from './Components/SignUp/SingUp.jsx'
+import SignUp from './Components/SignUp/SignUp.jsx'
 
 
 const router = createBrowserRouter(
