@@ -1,0 +1,51 @@
+.CardDetails {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+  
+.CardDetails-content {
+    background: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    color: black;
+    display: flex;
+    max-height: 700px;
+}
+
+.CardDetails-close{
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+    font-size: 30px;
+}
+
+.CardDetails-Image{
+   width: 100%;
+}
+
+.CardDetails-info > div{
+    display: flex;
+    gap: 30px;
+    font-size: 30px;
+}
+
+.CardDetails-info > div > p{
+    font-size: 20px;
+}
+
+.CardDetails-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
