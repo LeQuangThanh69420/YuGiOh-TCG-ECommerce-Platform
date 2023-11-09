@@ -1,4 +1,5 @@
 import React from 'react';
+import './../../styles/CardDetails.css';
 
 const CardDetails = ({ isOpen, onClose, card }) => {
   if (!isOpen) return null;

@@ -12,7 +12,8 @@
 }
   
 .CardDetails-content {
-    background: #fff;
+    position: relative;
+    background: white;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -20,6 +21,7 @@
     color: black;
     display: flex;
     max-height: 700px;
+    gap: 30px;
 }
 
 .CardDetails-close{
@@ -30,14 +32,15 @@
     color: white;
 }
 
-.CardDetails-Image{
-   width: 100%;
+.CardDetails-Image > img{
+    width: 300px;
 }
 
 .CardDetails-info > div{
     display: flex;
     gap: 30px;
     font-size: 30px;
+    font-weight: 500;
 }
 
 .CardDetails-info > div > p{
@@ -47,6 +50,6 @@
 .CardDetails-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 

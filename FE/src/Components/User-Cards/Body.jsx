@@ -56,11 +56,11 @@ function Body({ cards, setCards }) {
                         <img src={selectedCard.cardImageURL} alt="" />
                     </div>
                     <div className="CardDetails-info">
-                        <div className="CardDetails-CardName">Name: <p>Ten The</p></div>
-                        <div className="CardDetails-CardType">Type: <p>Ten Type</p></div>
+                        <div className="CardDetails-CardName">Name: <p>{selectedCard.cardName}</p></div>
+                        <div className="CardDetails-CardType">Type: <p>{selectedCard.cardTypeName}</p></div>
                         <div className="CardDetails-Rarity">Rarity: <p>{checkRarity(selectedCard)}</p></div>
-                        <div className="CardDetails-Origin">Origin: <p>Ten Origin</p></div>
-                        <div className="Card-Element">Element: <p>Ten Element</p></div>
+                        <div className="CardDetails-Origin">Origin: <p>{ (selectedCard.cardOriginName === null) ? "None" : selectedCard.cardOriginName}</p></div>
+                        <div className="CardDetails-Element">Element: <p>{ (selectedCard.cardElementName === null) ? "None" : selectedCard.cardElementName}</p></div>
                     </div>
                 </div>
             }/>
