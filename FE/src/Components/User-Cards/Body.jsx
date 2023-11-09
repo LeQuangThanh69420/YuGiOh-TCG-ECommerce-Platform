@@ -56,11 +56,11 @@ function Body({ cards, setCards }) {
                         <img src={selectedCard.cardImageURL} alt="" />
                     </div>
                     <div className="CardDetails-info">
-                        <div className="CardDetails-CardName">Name: <p>{selectedCard.cardName}</p></div>
-                        <div className="CardDetails-CardType">Type: <p>{selectedCard.cardTypeName}</p></div>
-                        <div className="CardDetails-Rarity">Rarity: <p>{checkRarity(selectedCard)}</p></div>
-                        <div className="CardDetails-Origin">Origin: <p>{ (selectedCard.cardOriginName === null) ? "None" : selectedCard.cardOriginName}</p></div>
-                        <div className="CardDetails-Element">Element: <p>{ (selectedCard.cardElementName === null) ? "None" : selectedCard.cardElementName}</p></div>
+                        <div className="CardDetails-CardName"><div className='CardDetails-CardName-infoLabel'>Name:</div> <div className='CardDetails-CardName-infoName'>{selectedCard.cardName}</div></div>
+                        <div className="CardDetails-CardType"><div className='CardDetails-CardName-infoLabel'>Type:</div> <div className='CardDetails-CardName-infoName'>{selectedCard.cardTypeName}</div></div>
+                        <div className="CardDetails-Rarity"><div className='CardDetails-CardName-infoLabel'>Rarity:</div> <div className='CardDetails-CardName-infoName'>{checkRarity(selectedCard)}</div></div>
+                        <div className="CardDetails-Origin"><div className='CardDetails-CardName-infoLabel'>Origin:</div> <div className='CardDetails-CardName-infoName'>{ (selectedCard.cardOriginName === null) ? "None" : selectedCard.cardOriginName}</div></div>
+                        <div className="CardDetails-Element"><div className='CardDetails-CardName-infoLabel'>Element:</div> <div className='CardDetails-CardName-infoName'>{ (selectedCard.cardElementName === null) ? "None" : selectedCard.cardElementName}</div></div>
                     </div>
                 </div>
             }/>

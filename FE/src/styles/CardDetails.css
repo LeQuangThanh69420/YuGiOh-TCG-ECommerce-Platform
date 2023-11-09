@@ -39,11 +39,16 @@
 .CardDetails-info > div{
     display: flex;
     gap: 30px;
+    justify-content: start;
+    align-items: center;
+}
+
+.CardDetails-CardName-infoLabel{
     font-size: 30px;
     font-weight: 500;
 }
 
-.CardDetails-info > div > p{
+.CardDetails-CardName-infoName{
     font-size: 20px;
 }
 
