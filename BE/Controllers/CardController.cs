@@ -29,7 +29,12 @@ namespace BE.Controllers
             && (string.IsNullOrWhiteSpace(input.CardElementName) || Card.CardElementName == input.CardElementName)
             && (string.IsNullOrWhiteSpace(input.CardRarityName) || Card.CardRarityName == input.CardRarityName)
             select new CardSearchOutputDto() {
+                CardId = Card.CardId,
+                CardName = Card.CardName,
                 CardImageURL = Card.CardImageURL,
+                CardTypeName = Card.CardTypeName,
+                CardOriginName = Card.CardOriginName,
+                CardElementName = Card.CardElementName,
                 CardRarityName = Card.CardRarityName
             };
             return await card.ToListAsync();
