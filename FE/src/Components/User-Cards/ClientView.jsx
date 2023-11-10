@@ -14,12 +14,6 @@ function ClientView() {
         setUserData(JSON.parse(localStorage.getItem('userData')));
     }, [])
 
-    useEffect(() => {
-        if(!localStorage.getItem('userData')) {
-            navigate('/login')
-        }
-    }, [])
-
     return(
         <div className="main-content">
             <Header setCards={setCards} userData={userData}/>
