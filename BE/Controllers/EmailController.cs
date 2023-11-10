@@ -22,22 +22,23 @@ namespace BE.Controllers
                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
                 {
                     smtpClient.Port = 587;
-                    smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "THANHLONGLOLlol123123123123123");
+                    smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "THANHLONGLOLlol123123123123123123");
                     smtpClient.EnableSsl = true;
                     // Tạo đối tượng MailMessage để cấu hình email
                     MailMessage mail = new MailMessage();
+                    mail.IsBodyHtml = true;
                     mail.From = new MailAddress("thanh0204466@huce.edu.vn");
                     mail.To.Add(emailModel.To);
                     mail.Subject = emailModel.Subject;
-                    mail.Body = "<html><body><p style='color: red;'><b>" + emailModel.Body + "</b></p></body></html>";
+                    mail.Body = emailModel.Body;
                     // Gửi email
                     await smtpClient.SendMailAsync(mail);
                 }
-                return Ok("Email sent successfully!");
+                return Ok(new {message = "Gửi Email thành công, vui lòng kiểm tra Email!"});
             }
             catch (Exception ex)
             {
-                return BadRequest($"Email sending failed: {ex.Message}");
+                return BadRequest(new {message = $"Gửi Email thất bại, Error: {ex.Message}"});
             }
         }
     }

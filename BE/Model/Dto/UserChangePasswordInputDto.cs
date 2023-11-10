@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace BE.Model.Dto
 {
-    public class UserLoginOutputDto
+    public class UserChangePasswordInputDto
     {
         public string Username { get; set; }
-        public string AvaterURL {get; set; }
-        public string Token { get; set; }
+        [StringLength(10, MinimumLength = 6)] public string NewPassword { get; set; }
     }
 }

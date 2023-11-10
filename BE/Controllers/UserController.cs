@@ -26,20 +26,28 @@ namespace BE.Controllers
         {
             return await _context.User.AnyAsync(x => x.Username == Username.ToLower());
         }
+        private async Task<bool> EmailExists(string Email)
+        {
+            return await _context.User.AnyAsync(x => x.Email == Email.ToLower());
+        }
 
         [HttpPost("Register")]
-        public async Task<ActionResult> Register(UserRegisterInputDto input)
+        public async Task<ActionResult> Register([FromBody] UserRegisterInputDto input)
         {
             if (await UserExists(input.Username))
             {
-                return BadRequest("Ten tai khoan da co nguoi dung.");
+                return BadRequest(new {message = "Tên tài khoản đã có người sử dụng!"});
+            }
+            if (await EmailExists(input.Email))
+            {
+                return BadRequest(new {message = "Email đã có người sử dụng!"});
             }
             var activeCode = new Random().Next(1000, 9999);
             var rs = await _email.SendEmail(new EmailModel()
             {
                 To = input.Email,
-                Subject = "Kich hoat tai khoan YuGhiOh TCG",
-                Body = "<h1>Bấm vào liên kết để kích hoạt tài khoản</h1> http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode,
+                Subject = "Kích hoạt tài khoản YuGhiOh TCG",
+                Body = "<h3>Bấm nút để kích hoạt</h3><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #008cff; color: white; border-radius: 6px; border: none;'>Bấm tôi</button></a>",
             });
             if ((int)rs.GetType().GetProperty("StatusCode").GetValue(rs, null) == 200)
             {
@@ -51,6 +59,7 @@ namespace BE.Controllers
                     Money = 0,
                     Actived = false,
                     ActiveCode = activeCode,
+                    AvatarUrl = "https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png",
                 };
                 _context.User.Add(newUser);
                 await _context.SaveChangesAsync();
@@ -62,35 +71,62 @@ namespace BE.Controllers
         public async Task<ActionResult> ActiveUser(string username, int activeCode)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
+            if (user == null) return Unauthorized(new {message = "URL không tồn tại!"});
             if (user.ActiveCode == activeCode)
             {
                 user.Actived = true;
                 user.ActiveCode = null;
                 await _context.SaveChangesAsync();
-                return Ok("Kich hoat thanh cong");
+                return Ok(new {message = "Kích hoạt tài khoản thành công!"});
             }
-            else return NotFound("URL khong ton tai");
+            else return NotFound(new {message = "URL không tồn tại!"});
         }
 
         [HttpPost("Login")]
-        public async Task<ActionResult<UserLoginOutputDto>> Login(UserLoginInputDto input)
+        public async Task<ActionResult<UserLoginOutputDto>> Login([FromBody] UserLoginInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized("tk ko ton tai");
-            if (input.Password != user.Password) return Unauthorized("Sai mk");
-            if (user.Actived != true) return Unauthorized("chua dc kick hoat");
+            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
+            if (input.Password != user.Password) return Unauthorized(new {message = "Sai mật khẩu, vui lòng kiểm tra lại!"});
+            if (user.Actived != true) return Unauthorized(new {message = "Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!"});
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
+                AvaterURL = user.AvatarUrl,
                 Token = "daylatoken",
             });
         }
 
-        /*[HttpPost("ForgetPassword")]
-        public async Task<ActionResult> ForgetPassword()
+        [HttpPost("ForgetPassword")]
+        public async Task<ActionResult> ForgetPassword([FromBody] UserForgetPasswordInputDto input)
         {
-            return Ok();
-        }*/
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
+            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
+            if (user.Email != input.Email) return Unauthorized(new {message = "Email không đúng"});
+            else
+            {
+                return await _email.SendEmail(new EmailModel()
+                {
+                    To = user.Email,
+                    Subject = "Mật khẩu gửi lại!",
+                    Body = "<h3>Vui lòng không chia sẻ mật khẩu cho bất kỳ ai, kể cả ADMIN!</h3><h3>Mật khẩu của bạn là:</h3>" + user.Password,
+                });
+            }
+        }
 
+        [HttpPost("ChangePassword")]
+        public async Task<ActionResult> ChangePassword([FromBody] UserChangePasswordInputDto input)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
+            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
+            else
+            {
+                user.Password = input.NewPassword;
+                await _context.SaveChangesAsync();
+                return Ok(new {message = "Thay đổi mật khẩu thành công"});
+            }
+        }
+
+        //[HttpPost("ChangeEmail")]
     }
 }

@@ -1,5 +1,12 @@
 --INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
 Use TCG
+
+--User
+INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('thenthen', 'thenthen', 'then@gmail.com', 1000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
+INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('hoenghoeng', 'hoenghoeng', 'hoeng@gmail.com', 1000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
+INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('juanjuan', 'juanjuan', 'juan@gmail.com', 1000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
+INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('thengtheng', 'thengtheng', 'theng@gmail.com', 1000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
+
 -- Card Type
 INSERT INTO CardType (CardTypeName) VALUES ('Normal');
 INSERT INTO CardType (CardTypeName) VALUES ('Spell');
@@ -257,3 +264,31 @@ INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElem
 INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES ('Right Arm of the Forbidden One', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697285370/samples/YuGiOhCardStorage/70903634_mgiegc.jpg', 'Normal', 'Spellcaster', 'Dark', 'N');
 INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES ('Right Leg of the Forbidden One', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697285392/samples/YuGiOhCardStorage/8124921_jcsinw.jpg', 'Normal', 'Spellcaster', 'Dark', 'N');
 INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES ('Evil Twins Ki-sikil & Lil-la', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697287361/samples/YuGiOhCardStorage/62098216_hq6e9c.jpg', 'Normal', 'Fiend', 'Dark', 'UR');
+
+--UserCard
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 188, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 189, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 190, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 191, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 192, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 193, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 194, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 195, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 196, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 197, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (2, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (2, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (2, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (3, 35, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (3, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (3, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (4, 35, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (4, 35, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (4, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (4, 209, 0);
+
+--Deal

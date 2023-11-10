@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
-import './Body.css'
+import './../../styles/Body.css'
 
 function Body({ cards, setCards }) {
 
@@ -9,7 +9,6 @@ function Body({ cards, setCards }) {
             .then(res => res.json())
             .then(data => { setCards(data) })
     }, [])
-
 
     return (
         <div className='body-session'>

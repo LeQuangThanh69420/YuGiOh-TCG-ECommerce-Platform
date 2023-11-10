@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace BE.Model.Dto
 {
-    public class UserLoginOutputDto
+    public class UserForgetPasswordInputDto
     {
         public string Username { get; set; }
-        public string AvaterURL {get; set; }
-        public string Token { get; set; }
+        public string Email { get; set; }
     }
 }
