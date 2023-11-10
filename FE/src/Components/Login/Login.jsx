@@ -1,7 +1,7 @@
 import "./../../styles/Login.css";
 import Input from "./Input/Input";
 import LogoDuRiu from "../Shared/LogoDuRiu";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function Login() {
@@ -39,6 +39,10 @@ function Login() {
 
   };
 
+  const handleFlip = () => {
+    
+  }
+
   return (
     <div className="login-screen">
       <div className="go-home">
@@ -46,13 +50,13 @@ function Login() {
       </div>
       <div className="login-container">
         <div className="bg-img"></div>
-        <div className="main-form">
+        <div className="main-form" onClick={handleFlip}>
           <p className="title-login">Login</p>
           <Input
             label={"Username"}
             type="email"
             regex={/^(?!\s*$).+/}
-            errorMessage="Username can not be empty"
+            errorMessage="Username can not be empty!"
             setData={setUserName}
           />
           <div className="password-container">
@@ -61,7 +65,7 @@ function Login() {
               type={"password"}
               regex={/^(?!\s*$).+/}
               errorMessage={
-                "Password must has at least 8 characters, 1 number, 1 uppercase and 1 special character!"
+                "Password can not be empty!"
               }
               setData={setPassword}
             />
@@ -72,7 +76,7 @@ function Login() {
           </button>
           <div className="create-account">
             <p>
-              Don't have an account? <a href="">Create one now</a>
+              Don't have an account? <Link to={'/sign-up'}>Create one now</Link>
             </p>
           </div>
         </div>
