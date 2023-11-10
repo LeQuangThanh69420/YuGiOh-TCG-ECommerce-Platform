@@ -40,16 +40,8 @@
 
 .main-form {
     z-index: 1;
-    width: 400px;
-    background: white;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 2px solid #D0D0D0;
-    border-radius: 8px;
-    gap: 30px;
-    box-shadow: 6px 12px 14px rgba(0, 0, 0, 0.4);
+    perspective: 1500px;
+    position: relative;
 }
 
 .title-login {

@@ -92,7 +92,7 @@ namespace BE.Controllers
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
-                AvaterURL = user.AvatarUrl,
+                AvatarURL = user.AvatarUrl,
                 Token = "daylatoken",
             });
         }

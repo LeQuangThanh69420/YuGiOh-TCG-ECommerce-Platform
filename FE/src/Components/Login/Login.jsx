@@ -1,22 +1,21 @@
 import "./../../styles/Login.css";
-import Input from "./Input/Input";
+import Input from "../Shared/Input/Input";
 import LogoDuRiu from "../Shared/LogoDuRiu";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useReducer, useRef, useState } from "react";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+  const frontRef = useRef();
+  const backRef = useRef();
+
   const handleSubmit = () => {
-    console.log(userName);
-    console.log(password);
-    console.log(
-      JSON.stringify({
-        username: userName,
-        password: password,
-      })
-    );
+    let status;
+
     fetch("http://localhost:5233/api/User/Login", {
       method: "POST",
       headers: {
@@ -28,46 +27,78 @@ function Login() {
       }),
     })
       .then((response) => {
-        response.json();
+        status = response.status;
+        return response.json();
       })
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (status === 200) {
+          localStorage.setItem('userData', JSON.stringify(data));
+          navigate('/');
+        } else {
+          console.log(data.message);
+        }
+      })
+
   };
+
+  useEffect(() => {
+    console.log('mount');
+    frontRef.current.style.transform = 'rotateY(180deg)';
+    backRef.current.style.transform = 'rotateY(0deg)';
+
+    setTimeout(() => {
+      frontRef.current.style.transform = 'rotateY(360deg)';
+      backRef.current.style.transform = 'rotateY(180deg)';
+    }, 200);
+  }, [])
+
+  const handleNavigateSignUp = () => {
+    frontRef.current.style.transform = 'rotateY(540deg)';
+    backRef.current.style.transform = 'rotateY(360deg)';
+    setTimeout(() => {
+      navigate('/sign-up')
+    }, 500)
+  }
 
   return (
     <div className="login-screen">
       <div className="go-home">
-        <LogoDuRiu logoColor={"#00336e"} logoNameColor={"#00336e"} />
+        <LogoDuRiu logoColor={"#1988ff"} logoNameColor={"#1988ff"} />
       </div>
       <div className="login-container">
         <div className="bg-img"></div>
-        <div className="main-form">
-          <p className="title-login">Login</p>
-          <Input
-            label={"Username"}
-            type="email"
-            regex={/^(?!\s*$).+/}
-            errorMessage="Username can not be empty"
-            setData={setUserName}
-          />
-          <div className="password-container">
+        <div className="main-form xl">
+          <div className="front-card xl absolute" ref={frontRef} style={{ transition: 'transform 0.5s linear' }}>
+            <p className="title-login">Login</p>
             <Input
-              label={"Password"}
-              type={"password"}
-              regex={/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/}
-              errorMessage={
-                "Password must has at least 8 characters, 1 number, 1 uppercase and 1 special character!"
-              }
-              setData={setPassword}
+              label={"Username"}
+              type="email"
+              regex={/^(?!\s*$).+/}
+              errorMessage="Username can not be empty!"
+              setData={setUserName}
             />
-            <p className="links">Forgot Password?</p>
+            <div className="password-container">
+              <Input
+                label={"Password"}
+                type={"password"}
+                regex={/^(?!\s*$).+/}
+                errorMessage={
+                  "Password can not be empty!"
+                }
+                setData={setPassword}
+              />
+              <p className="links">Forgot Password?</p>
+            </div>
+            <button className="login-button" onClick={handleSubmit}>
+              Login
+            </button>
+            <div className="create-account">
+              <p>
+                Don't have an account? <span className="links" to={'/sign-up'} onClick={handleNavigateSignUp}>Create one now</span>
+              </p>
+            </div>
           </div>
-          <button className="login-button" onClick={handleSubmit}>
-            Login
-          </button>
-          <div className="create-account">
-            <p>
-              Don't have an account? <a href="">Create one now</a>
-            </p>
+          <div className="back-card xl absolute" ref={backRef} style={{ transition: 'transform 0.5s linear' }}>
           </div>
         </div>
       </div>
