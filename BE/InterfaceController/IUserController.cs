@@ -12,5 +12,8 @@ namespace BE.InterfaceController
         Task<ActionResult> Register(UserRegisterInputDto input);
         Task<ActionResult> ActiveUser(string username, int activeCode);
         Task<ActionResult<UserLoginOutputDto>> Login(UserLoginInputDto input);
+        Task<ActionResult> ForgetPassword(UserForgetPasswordInputDto input);
+        Task<ActionResult> ChangePassword(UserChangePasswordInputDto input);
+        Task<ActionResult> ChangeEmail(UserChangeEmailInputDto input);
     }
 }
