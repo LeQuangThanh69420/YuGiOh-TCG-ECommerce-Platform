@@ -15,8 +15,9 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddScoped<EmailController>();
 builder.Services.AddCors();
+//add scoped
+builder.Services.AddScoped<EmailController>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

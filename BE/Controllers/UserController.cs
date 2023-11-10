@@ -71,7 +71,7 @@ namespace BE.Controllers
         public async Task<ActionResult> ActiveUser(string username, int activeCode)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
-            if (user == null) return Unauthorized(new {message = "URL không tồn tại!"});
+            if (user == null) return NotFound(new {message = "URL không tồn tại!"});
             if (user.ActiveCode == activeCode)
             {
                 user.Actived = true;
@@ -86,9 +86,9 @@ namespace BE.Controllers
         public async Task<ActionResult<UserLoginOutputDto>> Login([FromBody] UserLoginInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
-            if (input.Password != user.Password) return Unauthorized(new {message = "Sai mật khẩu, vui lòng kiểm tra lại!"});
-            if (user.Actived != true) return Unauthorized(new {message = "Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!"});
+            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (input.Password != user.Password) return BadRequest(new {message = "Sai mật khẩu, vui lòng kiểm tra lại!"});
+            if (user.Actived != true) return BadRequest(new {message = "Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!"});
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
@@ -101,15 +101,15 @@ namespace BE.Controllers
         public async Task<ActionResult> ForgetPassword([FromBody] UserForgetPasswordInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
-            if (user.Email != input.Email) return Unauthorized(new {message = "Email không đúng"});
+            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (user.Email != input.Email) return BadRequest(new {message = "Email không đúng"});
             else
             {
                 return await _email.SendEmail(new EmailModel()
                 {
                     To = user.Email,
-                    Subject = "Mật khẩu gửi lại!",
-                    Body = "<h3>Vui lòng không chia sẻ mật khẩu cho bất kỳ ai, kể cả ADMIN!</h3><h3>Mật khẩu của bạn là:</h3>" + user.Password,
+                    Subject = "Mật khẩu bạn quên!",
+                    Body = "<h2>Vui lòng không chia sẻ mật khẩu cho bất kỳ ai, kể cả ADMIN!</h2><h3>Mật khẩu của bạn là:</h3>" + user.Password,
                 });
             }
         }
@@ -118,7 +118,8 @@ namespace BE.Controllers
         public async Task<ActionResult> ChangePassword([FromBody] UserChangePasswordInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return Unauthorized(new {message = "Tài khoản không tồn tại!"});
+            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (user.Password != input.CurrentPassword) return BadRequest(new {message = "Sai Mật Khẩu Cũ"});
             else
             {
                 user.Password = input.NewPassword;
@@ -127,6 +128,23 @@ namespace BE.Controllers
             }
         }
 
-        //[HttpPost("ChangeEmail")]
+        [HttpPost("ChangeEmail")]
+        public async Task<ActionResult> ChangeEmail([FromBody] UserChangeEmailInputDto input)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
+            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (user.Password != input.CurrentPassword) return BadRequest(new {message = "Sai Mật Khẩu Cũ"});
+            if (user.Email != input.CurrentEmail) return BadRequest(new {message = "Sai Email Cũ"});
+            if (await EmailExists(input.NewEmail))
+            {
+                return BadRequest(new {message = "Email đã có người sử dụng!"});
+            }
+            else
+            {
+                user.Email = input.NewEmail;
+                await _context.SaveChangesAsync();
+                return Ok(new {message = "Thay đổi Email thành công"});
+            }
+        }
     }
 }
