@@ -99,8 +99,9 @@ body {
 }
 
 .links {
-    color: rgb(0, 154, 244);
+    color: rgb(93, 0, 233);
     font-size: 12px;
+    font-weight: 500;
     margin: 0;
     cursor: pointer;
 }
@@ -186,16 +187,17 @@ body {
 
 .front-card {
     background: white;
-    padding: 40px 20px;
+    padding: 28px 38px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 2px solid #D0D0D0;
     border-radius: 8px;
-    gap: 30px;
+    gap: 64px;
     backface-visibility: hidden;
     transform: rotateY(180deg);
-    justify-content: center;
+    background-image: url('./../asset/front-card.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 397px 580px;
 }
 
 /*define sizes*/

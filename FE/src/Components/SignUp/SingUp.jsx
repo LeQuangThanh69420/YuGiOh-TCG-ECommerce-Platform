@@ -53,6 +53,10 @@ function SignUp() {
 
     }, [])
 
+    const handleNavigateLogin = () => {
+        
+    }
+
     return (
         <div className="login-screen">
             <div className="go-home">
@@ -83,11 +87,11 @@ function SignUp() {
                             <p className="links">Forgot Password?</p>
                         </div>
                         <button className="login-button">
-                            Login
+                            Sign Up
                         </button>
                         <div className="create-account">
                             <p>
-                                Don't have an account? <span className="links" to={'/sign-up'} >Create one now</span>
+                                Already have an account? <span className="links" onClick={handleNavigateLogin}>Login now</span>
                             </p>
                         </div>
                     </div>

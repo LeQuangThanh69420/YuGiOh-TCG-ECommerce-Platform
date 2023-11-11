@@ -63,39 +63,46 @@ function Login() {
   return (
     <div className="login-screen">
       <div className="go-home">
-        <LogoDuRiu logoColor={"#1988ff"} logoNameColor={"#1988ff"} />
+        <LogoDuRiu logoColor={"#9200AE"} logoNameColor={"#9200AE"} />
       </div>
       <div className="login-container">
         <div className="bg-img"></div>
         <div className="main-form xl">
           <div className="front-card xl absolute" ref={frontRef} style={{ transition: 'transform 0.5s linear' }}>
             <p className="title-login">Login</p>
-            <Input
-              label={"Username"}
-              type="email"
-              regex={/^(?!\s*$).+/}
-              errorMessage="Username can not be empty!"
-              setData={setUserName}
-            />
-            <div className="password-container">
+            <div className="login-inputs">
               <Input
-                label={"Password"}
-                type={"password"}
+                label={"Username"}
+                type="email"
                 regex={/^(?!\s*$).+/}
-                errorMessage={
-                  "Password can not be empty!"
-                }
-                setData={setPassword}
+                icon={"person"}
+                errorMessage="Username can not be empty!"
+                setData={setUserName}
               />
-              <p className="links">Forgot Password?</p>
+              <div className="password-container">
+                <Input
+                  label={"Password"}
+                  type={"password"}
+                  regex={/^(?!\s*$).+/}
+                  icon="lock"
+                  errorMessage={
+                    "Password can not be empty!"
+                  }
+                  setData={setPassword}
+                />
+                <p className="links">Forgot Password?</p>
+              </div>
+              <div className="login-button-container">
+                <button className="login-button" onClick={handleSubmit}>
+                  Login
+                </button>
+                <div className="create-account">
+                  Don't have an account? <span className="links" onClick={handleNavigateSignUp}>Create one now</span>
+                </div>
+              </div>
             </div>
-            <button className="login-button" onClick={handleSubmit}>
-              Login
-            </button>
-            <div className="create-account">
-              <p>
-                Don't have an account? <span className="links" to={'/sign-up'} onClick={handleNavigateSignUp}>Create one now</span>
-              </p>
+            <div className="login-desc">
+
             </div>
           </div>
           <div className="back-card xl absolute" ref={backRef} style={{ transition: 'transform 0.5s linear' }}>
