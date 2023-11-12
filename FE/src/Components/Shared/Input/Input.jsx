@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 function Input({ label, type, icon, regex, errorMessage, setData }) {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
-  const [labelStatus, setLabelStatus] = useState("");
   const [eye, setEye] = useState("close");
   const [internalType, setInternalType] = useState("");
   const [internalErrorMessage, setInternalErrorMessage] = useState("");
@@ -26,16 +25,13 @@ function Input({ label, type, icon, regex, errorMessage, setData }) {
   const handleBlur = () => {
     if (!inputValue.match(regex)) {
       setError("error");
-      setLabelStatus("error");
     } else {
       setError("");
-      setLabelStatus("ok");
     }
   };
 
   const handleFocus = () => {
     setError("");
-    setLabelStatus("focus");
   };
 
   const handleClickEye = () => {

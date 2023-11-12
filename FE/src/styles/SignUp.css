@@ -2,3 +2,14 @@
 .sign-up-section {
     
 }
+
+.sign-up-card {
+    gap: 54px;
+}
+
+.sign-up-inputs {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 24px;
+    gap: 18px;
+}

@@ -6,6 +6,11 @@
     background-image: url('./../asset/lock.svg');
 }
 
+.mail {
+    background-image: url('./../asset/mail.svg');
+
+}
+
 .icon-1 {
     width: 24px;
     height: 24px;

@@ -1,4 +1,5 @@
 import './../../styles/SignUp.css'
+import './../../styles/IconDefine.css'
 import LogoDuRiu from "../Shared/LogoDuRiu";
 import Input from "./../Shared/Input/Input";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,8 +9,10 @@ function SignUp() {
 
     const navigate = useNavigate();
 
+    const [email, setEmail] = useState("")
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
 
     const frontRef = useRef();
     const backRef = useRef();
@@ -54,45 +57,74 @@ function SignUp() {
     }, [])
 
     const handleNavigateLogin = () => {
-        
+        frontRef.current.style.transform = 'rotateY(180deg)';
+        backRef.current.style.transform = 'rotateY(0deg)';
+        setTimeout(() => {
+            navigate('/login')
+        }, 500);
     }
 
     return (
         <div className="login-screen">
             <div className="go-home">
-                <LogoDuRiu logoColor={"#1988ff"} logoNameColor={"#1988ff"} />
+                <LogoDuRiu logoColor={"#45B2FF"} logoNameColor={"#45B2FF"} />
             </div>
             <div className="login-container">
                 <div className="bg-img"></div>
                 <div className="main-form xl">
-                    <div className="front-card xl absolute" ref={frontRef} style={{ transition: 'transform 0.5s linear' }}>
+                    <div className="front-card xl absolute sign-up-card" ref={frontRef} style={{ transition: 'transform 0.5s linear' }}>
                         <p className="title-login">Sign Up</p>
-                        <Input
-                            label={"Username"}
-                            type="email"
-                            regex={/^(?!\s*$).+/}
-                            errorMessage="Username can not be empty!"
-                            setData={setUserName}
-                        />
-                        <div className="password-container">
+                        <div className="sign-up-inputs">
                             <Input
-                                label={"Password"}
-                                type={"password"}
-                                regex={/^(?!\s*$).+/}
-                                errorMessage={
-                                    "Password can not be empty!"
-                                }
-                                setData={setPassword}
+                                label={"Email"}
+                                type="email"
+                                regex={/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
+                                icon={"mail"}
+                                errorMessage="Email must have this format: 'abc@xyz.ijk'"
+                                setData={setEmail}
                             />
-                            <p className="links">Forgot Password?</p>
+                            <Input
+                                label={"Username"}
+                                type="text"
+                                regex={/^(?!\s*$).+/}
+                                icon={"person"}
+                                errorMessage="Username can not be empty!"
+                                setData={setUserName}
+                            />
+                            <div className="password-container">
+                                <Input
+                                    label={"Password"}
+                                    type={"password"}
+                                    regex={/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,16}$/}
+                                    icon="lock"
+                                    errorMessage={
+                                        "Password must have 1 number, 1 uppercase, 1 special character"
+                                    }
+                                    setData={setPassword}
+                                />
+                            </div>
+                            <div className="password-container">
+                                <Input
+                                    label={"Repeat password"}
+                                    type={"password"}
+                                    regex={/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,16}$/}
+                                    icon="lock"
+                                    errorMessage={
+                                        "Password can not be empty!"
+                                    }
+                                    setData={setRepeatPassword}
+                                />
+                            </div>
+                            <div className="login-button-container">
+                                <button className="login-button" onClick={handleSubmit}>
+                                    Submit
+                                </button>
+                                <div className="create-account">
+                                    Already have an account? <span className="links" onClick={handleNavigateLogin}>Login now</span>
+                                </div>
+                            </div>
                         </div>
-                        <button className="login-button">
-                            Sign Up
-                        </button>
-                        <div className="create-account">
-                            <p>
-                                Already have an account? <span className="links" onClick={handleNavigateLogin}>Login now</span>
-                            </p>
+                        <div className="login-desc">
                         </div>
                     </div>
                     <div className="back-card xl absolute" ref={backRef} style={{ transition: 'transform 0.5s linear' }}>

@@ -47,14 +47,14 @@ function Login() {
     backRef.current.style.transform = 'rotateY(0deg)';
 
     setTimeout(() => {
-      frontRef.current.style.transform = 'rotateY(360deg)';
-      backRef.current.style.transform = 'rotateY(180deg)';
+      frontRef.current.style.transform = 'rotateY(0deg)';
+      backRef.current.style.transform = 'rotateY(-180deg)';
     }, 200);
   }, [])
 
   const handleNavigateSignUp = () => {
-    frontRef.current.style.transform = 'rotateY(540deg)';
-    backRef.current.style.transform = 'rotateY(360deg)';
+    frontRef.current.style.transform = 'rotateY(180deg)';
+    backRef.current.style.transform = 'rotateY(0deg)';
     setTimeout(() => {
       navigate('/sign-up')
     }, 500)
@@ -63,12 +63,12 @@ function Login() {
   return (
     <div className="login-screen">
       <div className="go-home">
-        <LogoDuRiu logoColor={"#9200AE"} logoNameColor={"#9200AE"} />
+        <LogoDuRiu logoColor={"#45B2FF"} logoNameColor={"#45B2FF"} />
       </div>
       <div className="login-container">
         <div className="bg-img"></div>
         <div className="main-form xl">
-          <div className="front-card xl absolute" ref={frontRef} style={{ transition: 'transform 0.5s linear' }}>
+          <div className="front-card xl absolute login-card" ref={frontRef} style={{ transition: 'transform 0.5s linear' }}>
             <p className="title-login">Login</p>
             <div className="login-inputs">
               <Input
@@ -92,17 +92,14 @@ function Login() {
                 />
                 <p className="links">Forgot Password?</p>
               </div>
-              <div className="login-button-container">
-                <button className="login-button" onClick={handleSubmit}>
-                  Login
-                </button>
-                <div className="create-account">
-                  Don't have an account? <span className="links" onClick={handleNavigateSignUp}>Create one now</span>
-                </div>
-              </div>
             </div>
-            <div className="login-desc">
-
+            <div className="login-button-container">
+              <button className="login-button" onClick={handleSubmit}>
+                Login
+              </button>
+              <div className="create-account">
+                Don't have an account? <span className="links" onClick={handleNavigateSignUp}>Create one now</span>
+              </div>
             </div>
           </div>
           <div className="back-card xl absolute" ref={backRef} style={{ transition: 'transform 0.5s linear' }}>
