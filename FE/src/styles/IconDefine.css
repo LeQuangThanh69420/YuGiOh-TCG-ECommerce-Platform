@@ -1,0 +1,23 @@
+.person {
+    background-image: url('./../asset/person.svg');
+}
+
+.lock {
+    background-image: url('./../asset/lock.svg');
+}
+
+.mail {
+    background-image: url('./../asset/mail.svg');
+
+}
+
+.icon-1 {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    z-index: 3;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 6px;
+    left: 6px;
+}

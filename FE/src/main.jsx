@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import App from './Components/User-Cards/App.jsx'
 import './styles/index.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Root from './Root'
 import Login from './Components/Login/Login.jsx'
-import SignUp from './Components/SignUp/SingUp.jsx'
+import SignUp from './Components/SignUp/SignUp.jsx'
 
 
 const router = createBrowserRouter(
@@ -14,11 +14,11 @@ const router = createBrowserRouter(
       path='/'
       element={<Root />}
     >
-      <Route 
+      <Route
         index
         element={<App />}
       />
-      <Route 
+      <Route
         path='/login'
         element={<Login />}
       />
@@ -26,13 +26,10 @@ const router = createBrowserRouter(
         path='/sign-up'
         element={<SignUp />}
       />
-
     </Route>
   )
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>,
+  <RouterProvider router={router} />
 )

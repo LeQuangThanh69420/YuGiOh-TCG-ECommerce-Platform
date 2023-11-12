@@ -25,26 +25,30 @@ body {
 
 button {
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     height: 28px;
     width: 80px;
-    background: rgb(0, 154, 244);
+    background-image: linear-gradient(150deg,  rgb(93, 0, 233), rgb(105, 0, 143));
     color: white;
     font-weight: 500;
     cursor: pointer;
 }
 
 button:hover {
-    background: rgb(0, 117, 184);
+    background-image: linear-gradient(150deg,  rgb(80, 0, 201), rgb(88, 0, 120));
+
 }
 
 input {
     padding: 0px 8px;
-    border-radius: 4px;
-    border: 1px solid black;
+    border: none;
+    border-bottom: 2px solid #979797;
+    background-color: white;
+    border-radius: 4px 4px 0px 0px;
 }
 
 input:focus {
-    outline: 1px solid rgb(0, 117, 184);
-    border: 1px solid rgb(0, 117, 184);
+    outline: none;
+    border-bottom: 2px solid rgb(146, 0, 174);
 }
+

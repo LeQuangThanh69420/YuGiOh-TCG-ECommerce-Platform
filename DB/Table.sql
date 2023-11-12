@@ -58,4 +58,5 @@ CREATE TABLE Deal (
     BuyUserId bigint FOREIGN KEY REFERENCES "User"(UserId),
     UserCardId bigint foreign key references UserCard(UserCardId) NOT NULL,
     Price int NOT NULL,
+    CreateDate datetime2(0) NOT NULL,
 );

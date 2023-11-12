@@ -1,0 +1,24 @@
+.AdSlider{
+    max-width: 1180px;
+    height: 240px;
+    background-color: white;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    gap: 20px;
+}
+
+.Slider-Container > img{
+    border-radius: 8px;
+}
+
+.AdSlider-Ads{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.Slider-Slider{
+    width: 760px;
+    height: 240px;
+}

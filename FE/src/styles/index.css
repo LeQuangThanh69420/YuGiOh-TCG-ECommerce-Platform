@@ -99,8 +99,9 @@ body {
 }
 
 .links {
-    color: rgb(0, 154, 244);
+    color: rgb(93, 0, 233);
     font-size: 12px;
+    font-weight: 500;
     margin: 0;
     cursor: pointer;
 }
@@ -112,6 +113,9 @@ body {
 
 
 /* Icon defination here: */
+.gap-32 {
+    gap: 32px !important;
+}
 
 .icon-20 {
     width: 20px;
@@ -172,3 +176,42 @@ body {
 .csharp {
     background-image: url('./../asset/Logo_C_sharp.svg.png');
 }
+
+.back-card {
+    background-image: url('./../asset/back-card.png');
+    z-index: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    backface-visibility: hidden;
+    
+    
+}
+
+.front-card {
+    padding: 28px 38px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background-image: url('./../asset/front-card.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 397px 580px;
+}
+
+/*define sizes*/
+
+.xl {
+    width: 397px;
+    height: 580px;
+    border-radius: 8px;
+}
+
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
