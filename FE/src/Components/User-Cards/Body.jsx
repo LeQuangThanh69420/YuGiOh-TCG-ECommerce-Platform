@@ -34,7 +34,7 @@ function Body({ cards, setCards }) {
 
     return (
         <>
-            <div className='body-session'>
+            <div className='body-session'>  
                 < div className="body-container" >
                     {
                         cards.length ? cards.map((item, index) =>

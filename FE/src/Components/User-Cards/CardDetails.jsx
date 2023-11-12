@@ -7,7 +7,7 @@ const CardDetails = ({ isOpen, onClose, card }) => {
   return (
     <div className="CardDetails">
       <div>
-      <span class="CardDetails-close" onClick={onClose}>&times;</span>
+      <span className="CardDetails-close" onClick={onClose}>&times;</span>
         {card}
       </div>
     </div>
