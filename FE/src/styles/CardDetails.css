@@ -1,5 +1,6 @@
 .CardDetails {
     position: fixed;
+    padding: 48px 0px;
     top: 0;
     left: 0;
     width: 100%;
@@ -21,7 +22,7 @@
     z-index: 2;
     color: black;
     display: flex;
-    max-height: 700px;
+    height: 800px;
     gap: 30px;
 }
 
@@ -34,7 +35,7 @@
 }
 
 .CardDetails-Image > img{
-    width: 300px;
+    width: 500px;
 }
 
 .CardDetails-info > div{
@@ -45,12 +46,12 @@
 }
 
 .CardDetails-CardName-infoLabel{
-    font-size: 30px;
-    font-weight: 500;
+    font-size: 40px;
+    font-weight: 600;
 }
 
 .CardDetails-CardName-infoName{
-    font-size: 20px;
+    font-size: 35px;
 }
 
 .CardDetails-info {
