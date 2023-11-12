@@ -34,3 +34,11 @@
     height: 100%;
     border-radius: 8px;
 }
+
+.Slider-pic{
+    cursor: pointer;
+}
+
+.AdSlider-Ads-AdElement{
+    cursor: pointer;
+}

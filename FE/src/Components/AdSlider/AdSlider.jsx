@@ -19,10 +19,10 @@ function AdSlider(){
                     <ImageSlider slides={slides} />
                 </div>
                 <div className="AdSlider-Ads">
-                    <div className="AdSlider-Ads-FirstAdElement">
+                    <div className="AdSlider-Ads-AdElement">
                         <img src={SmallAd1} alt="chitnhau" />
                     </div>
-                    <div className="AdSlider-Ads-SecondAdElement">
+                    <div className="AdSlider-Ads-AdElement">
                         <img src={SmallAd2} alt="chitnhau" />
                     </div>
                 </div>
