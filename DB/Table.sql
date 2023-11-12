@@ -49,7 +49,7 @@ CREATE TABLE UserCard (
     UserCardId bigint IDENTITY(1,1) PRIMARY KEY,
     UserId bigint NOT NULL FOREIGN KEY REFERENCES "User"(UserId),
     CardId bigint NOT NULL FOREIGN KEY REFERENCES Card(CardId),
-    OnHold bit NOT NULL,
+    OnDeal bit NOT NULL,
 );
 
 CREATE TABLE Deal (
@@ -58,4 +58,5 @@ CREATE TABLE Deal (
     BuyUserId bigint FOREIGN KEY REFERENCES "User"(UserId),
     UserCardId bigint foreign key references UserCard(UserCardId) NOT NULL,
     Price int NOT NULL,
+    CreateDate datetime2(0) NOT NULL,
 );

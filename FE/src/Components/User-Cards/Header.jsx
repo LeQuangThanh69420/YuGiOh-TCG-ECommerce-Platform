@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import "./../../styles/Header.css";
 import SearchSelection from "../SearchSelection/SearchSelection";
 import { Link } from "react-router-dom";
 import LogoDuRiu from "../Shared/LogoDuRiu";
 
-function Header({ setCards }) {
+function Header({ setCards, userData }) {
     const [inputNameValue, setInputNameValue] = useState("");
     const [types, setTypes] = useState([]);
     const [origins, setOrigins] = useState([]);
@@ -27,10 +28,6 @@ function Header({ setCards }) {
             .then((data) => {
                 setCards(data);
             });
-    }, [searchObject]);
-
-    useEffect(() => {
-        console.log(searchObject);
     }, [searchObject]);
 
     //get types
@@ -97,7 +94,10 @@ function Header({ setCards }) {
                     <button onClick={handleAddName}>Search</button>
                 </div>
                 <div className="users-button">
-                    <Link to={"/login"} >Login</Link>
+                    {!userData && <Link to={"/login"} >Login</Link>}
+                    {userData && 
+                        <img src={userData.avatarURL} alt="" className="header-user-avt"/>
+                    }
                 </div>
             </div>
             <div className="search-opt-container">
