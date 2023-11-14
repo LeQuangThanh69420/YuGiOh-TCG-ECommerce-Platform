@@ -27,7 +27,7 @@ namespace BE.Controllers
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
             join Card in _context.Card on UserCard.CardId equals Card.CardId 
             join User in _context.User on UserCard.UserId equals User.UserId
-            where (string.IsNullOrWhiteSpace(input.Username) || User.Username.Contains(input.Username))
+            where (string.IsNullOrWhiteSpace(input.SellUsername) || User.Username.Contains(input.SellUsername))
             && (string.IsNullOrWhiteSpace(input.CardName) || Card.CardName.Contains(input.CardName))
             && (string.IsNullOrWhiteSpace(input.CardTypeName) || Card.CardTypeName == input.CardTypeName)
             && (string.IsNullOrWhiteSpace(input.CardOriginName) || Card.CardOriginName == input.CardOriginName)
@@ -35,27 +35,28 @@ namespace BE.Controllers
             && (string.IsNullOrWhiteSpace(input.CardRarityName) || Card.CardRarityName == input.CardRarityName)
             && (input.PriceFrom == null || Deal.Price >= input.PriceFrom) && (input.PriceTo == null || Deal.Price <= input.PriceTo)
             && (input.DateFrom == null || Deal.CreateDate >= input.DateFrom) && (input.DateTo == null || Deal.CreateDate <= input.DateTo)
+            && (Deal.BuyUserId != null)
             select new DealSearchOutputDto() {
                 DealId = Deal.DealId,
                 CardId = Card.CardId,
-                Username = User.Username,
+                SellUsername = User.Username,
                 CardName = Card.CardName,
                 CardImageURL = Card.CardImageURL,
                 CardTypeName = Card.CardTypeName,
                 CardOriginName = Card.CardOriginName,
                 CardElementName = Card.CardElementName,
                 CardRarityName = Card.CardRarityName,
+                Price = Deal.Price,
                 CreateDate = Deal.CreateDate,
-                Price = Deal.Price
             };
             return await deal.ToListAsync();
         }
         [HttpPost("CreateDeal")]
         public async Task<ActionResult> CreateDeal(DealCreateInputDto input)
         {
-            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
-            var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId && uc.UserId == user.UserId);
+            var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
+            if (selluser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId && uc.UserId == selluser.UserId);
             if (usercard.UserCardId == null) return BadRequest(new {message = "Không sở hữu thẻ này!"});
             if (usercard.OnDeal == true) return BadRequest(new {message = "Card đang nằm trong một deal khác!"});
             if (input.Price <= 0) return BadRequest(new {message = "Giá tiền không thoả mãn"});
@@ -63,7 +64,7 @@ namespace BE.Controllers
             {
                 var newdeal = new Deal 
                 {
-                    SellUserId = user.UserId,
+                    SellUserId = selluser.UserId,
                     BuyUserId = null,
                     UserCardId = usercard.UserCardId,
                     Price = input.Price,

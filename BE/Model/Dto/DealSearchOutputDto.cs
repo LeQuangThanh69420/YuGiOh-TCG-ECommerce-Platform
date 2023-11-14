@@ -8,7 +8,7 @@ namespace BE.Model.Dto
     public class DealSearchOutputDto
     {
         public long DealId { get; set; }
-        public string Username { get; set; }
+        public string SellUsername { get; set; }
         public long CardId { get; set; }
         public string CardName { get; set; }
         public string CardImageURL { get; set; }
@@ -16,7 +16,7 @@ namespace BE.Model.Dto
         public string? CardOriginName { get; set; }
         public string? CardElementName { get; set; }
         public string CardRarityName { get; set; }
-        public DateTime CreateDate { get; set; }
         public int Price { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
