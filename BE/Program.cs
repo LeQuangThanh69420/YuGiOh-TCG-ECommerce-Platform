@@ -18,6 +18,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddCors();
 //add scoped
 builder.Services.AddScoped<EmailController>();
+builder.Services.AddScoped<UserCardController>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
