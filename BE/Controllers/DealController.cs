@@ -33,9 +33,9 @@ namespace BE.Controllers
             && (string.IsNullOrWhiteSpace(input.CardOriginName) || Card.CardOriginName == input.CardOriginName)
             && (string.IsNullOrWhiteSpace(input.CardElementName) || Card.CardElementName == input.CardElementName)
             && (string.IsNullOrWhiteSpace(input.CardRarityName) || Card.CardRarityName == input.CardRarityName)
-            && (input.PriceFrom == null || Deal.Price >= input.PriceFrom) && (input.PriceTo == null || Deal.Price <= input.PriceTo)
+            && (input.PriceFrom == null || input.PriceFrom == 0 || Deal.Price >= input.PriceFrom) && (input.PriceTo == null || Deal.Price <= input.PriceTo)
             && (input.DateFrom == null || Deal.CreateDate >= input.DateFrom) && (input.DateTo == null || Deal.CreateDate <= input.DateTo)
-            && (Deal.BuyUserId != null)
+            && (Deal.BuyUserId == null)
             select new DealSearchOutputDto() {
                 DealId = Deal.DealId,
                 CardId = Card.CardId,
@@ -51,8 +51,9 @@ namespace BE.Controllers
             };
             return await deal.ToListAsync();
         }
+
         [HttpPost("CreateDeal")]
-        public async Task<ActionResult> CreateDeal(DealCreateInputDto input)
+        public async Task<ActionResult> CreateDeal([FromBody] DealCreateInputDto input)
         {
             var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
             if (selluser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
@@ -76,8 +77,9 @@ namespace BE.Controllers
             }
             return Ok(new {message = "Tạo mới giao dịch thành công!"});
         }
+
         [HttpPut("EditDeal")]
-        public async Task<ActionResult> EditDeal(DealEditInputDto input)
+        public async Task<ActionResult> EditDeal([FromBody] DealEditInputDto input)
         {
             var deal = await _context.Deal.SingleOrDefaultAsync(d => d.DealId == input.DealId);
             if (input.DealId == null ) return BadRequest(new {message = "Không có giao dịch này!"});
@@ -92,21 +94,23 @@ namespace BE.Controllers
             }
             return Ok(new {message = "Sửa giao dịch thành công!"});
         }
+
         [HttpDelete("DeleteDeal")]
-        public async Task<ActionResult> DeleteDeal(DealDeleteInputDto input)
+        public async Task<ActionResult> DeleteDeal([FromBody] DealDeleteInputDto input)
         {
             var deal = await _context.Deal.SingleOrDefaultAsync(d => d.DealId == input.DealId);
             if (deal == null) return NotFound(new {message = "Không tìm thấy giao dịch này!" });
             else
-            {   
+            {
                 _context.Deal.Remove(deal);
                 await _userCard.RemoveOnDeal(deal.UserCardId);
                 await _context.SaveChangesAsync();
             }
             return Ok(new {message = "Xóa giao dịch thành công!" });
         }
+        
         [HttpPost("AcceptDeal")]
-        public async Task<ActionResult> AcceptDeal(DealAcceptInputDto input)
+        public async Task<ActionResult> AcceptDeal([FromBody] DealAcceptInputDto input)
         {
             var buyuser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.BuyUsername);
             if (buyuser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
@@ -116,7 +120,7 @@ namespace BE.Controllers
             if (input.DealId != deal.DealId || input.DealId == null ) return BadRequest(new {message = "Không có giao dịch này!"});
             if (deal.BuyUserId != null) return BadRequest(new {message = "Giao dịch không tồn tại"});
             else
-            {   
+            {
                 deal.BuyUserId = buyuser.UserId;
                 await _userCard.ChangeOwner(deal.UserCardId, buyuser.UserId);
                 buyuser.Money -= deal.Price;
