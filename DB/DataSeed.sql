@@ -266,29 +266,29 @@ INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElem
 INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES ('Evil Twins Ki-sikil & Lil-la', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697287361/samples/YuGiOhCardStorage/62098216_hq6e9c.jpg', 'Normal', 'Fiend', 'Dark', 'UR');
 
 --UserCard
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 1, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 1, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 188, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 189, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 190, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 191, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 192, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 193, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 194, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 195, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 196, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 197, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 209, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (1, 209, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (2, 1, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (2, 209, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (2, 209, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (3, 35, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (3, 209, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (3, 209, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (4, 35, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (4, 35, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (4, 209, 0);
-INSERT INTO UserCard (UserId, CardId, OnHold) VALUES (4, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 188, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 189, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 190, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 191, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 192, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 193, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 194, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 195, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 196, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 197, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (2, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (2, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (2, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (3, 35, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (3, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (3, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (4, 35, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (4, 35, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (4, 209, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (4, 209, 0);
 
 --Deal

@@ -146,5 +146,11 @@ namespace BE.Controllers
                 return Ok(new {message = "Thay đổi Email thành công"});
             }
         }
+
+        [HttpPost("ChangeAvatarUrl")]
+        public async Task<ActionResult> ChangeAvatarUrl()
+        {
+            return Ok();
+        }
     }
 }
