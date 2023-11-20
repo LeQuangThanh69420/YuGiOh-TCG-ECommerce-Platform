@@ -1,12 +1,10 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './Components/User-Cards/App.jsx'
+import ClientView from './Components/User-Cards/ClientView.jsx'
 import './styles/index.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Root from './Root'
 import Login from './Components/Login/Login.jsx'
 import SignUp from './Components/SignUp/SignUp.jsx'
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,7 +14,7 @@ const router = createBrowserRouter(
     >
       <Route
         index
-        element={<App />}
+        element={<ClientView />}
       />
       <Route
         path='/login'
@@ -26,10 +24,14 @@ const router = createBrowserRouter(
         path='/sign-up'
         element={<SignUp />}
       />
+      <Route 
+        path='/user'
+        element={<></>}
+      />
     </Route>
   )
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+    <RouterProvider router={router} />
 )

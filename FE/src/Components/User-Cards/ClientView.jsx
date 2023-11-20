@@ -3,10 +3,8 @@ import Body from "./Body"
 import AdSlider from "../AdSlider/Adslider";
 import { useEffect, useState } from "react";
 import './../../styles/ClientView.css'
-import { useNavigate } from "react-router-dom";
 
 function ClientView() {
-    const navigate = useNavigate();
 
     const [cards, setCards] = useState([]);
     const [userData, setUserData] = useState(null);

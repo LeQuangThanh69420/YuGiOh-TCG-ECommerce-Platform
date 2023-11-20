@@ -2,10 +2,13 @@ import "./../../styles/Login.css";
 import Input from "../Shared/Input/Input";
 import LogoDuRiu from "../Shared/LogoDuRiu";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useContext, useEffect, useReducer, useRef, useState } from "react";
+import { AppData } from "../../Root";
 
 function Login() {
   const navigate = useNavigate();
+
+  const {setIsShow, setMessage, setType} = useContext(AppData);
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -31,11 +34,15 @@ function Login() {
         return response.json();
       })
       .then((data) => {
+        setIsShow(true);
         if (status === 200) {
           localStorage.setItem('userData', JSON.stringify(data));
+          setMessage('Login Successfully!');
+          setType('toast-success');
           navigate('/');
         } else {
-          console.log(data.message);
+          setMessage(data.message)
+          setType('toast-error')
         }
       })
 
