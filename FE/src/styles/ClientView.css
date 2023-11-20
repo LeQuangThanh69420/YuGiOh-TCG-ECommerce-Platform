@@ -1,4 +1,9 @@
 
 .main-content {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
 }
