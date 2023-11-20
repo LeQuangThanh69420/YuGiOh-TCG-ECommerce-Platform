@@ -263,7 +263,7 @@ INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElem
 INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES ('Left Leg of the Forbidden One', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697285335/samples/YuGiOhCardStorage/44519536_qbnnoj.jpg', 'Normal', 'Spellcaster', 'Dark', 'N');
 INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES ('Right Arm of the Forbidden One', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697285370/samples/YuGiOhCardStorage/70903634_mgiegc.jpg', 'Normal', 'Spellcaster', 'Dark', 'N');
 INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES ('Right Leg of the Forbidden One', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697285392/samples/YuGiOhCardStorage/8124921_jcsinw.jpg', 'Normal', 'Spellcaster', 'Dark', 'N');
-INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES ('Evil Twins Ki-sikil & Lil-la', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697287361/samples/YuGiOhCardStorage/62098216_hq6e9c.jpg', 'Normal', 'Fiend', 'Dark', 'UR');
+INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName) VALUES (N'Evil★Twins Ki-sikil & Lil-la', 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1697287361/samples/YuGiOhCardStorage/62098216_hq6e9c.jpg', 'Normal', 'Fiend', 'Dark', 'UR');
 
 --UserCard
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
@@ -290,5 +290,3 @@ INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (4, 35, 0);
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (4, 35, 0);
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (4, 209, 0);
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (4, 209, 0);
-
---Deal
