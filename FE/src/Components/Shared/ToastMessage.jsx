@@ -14,6 +14,7 @@ function ToastMessages({ type, message = 'Unidentified error!', isDisplay, setIs
     }
 
     useEffect(() => {
+        console.log(isDisplay);
         if(isDisplay) {
             timeOut2.current = setTimeout(() => {
                 toastRef.current.className += ' toast-close' 

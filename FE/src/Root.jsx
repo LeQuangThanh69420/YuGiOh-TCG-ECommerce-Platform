@@ -11,8 +11,13 @@ export default function Root() {
   const [type, setType] = useState('');
   const [message, setMessage] = useState('');
 
+  const showToast = () => {
+    setIsShow(false);
+    setIsShow(true);
+  }
+
   return (
-    <AppData.Provider value={{ setIsShow, setType, setMessage }}>
+    <AppData.Provider value={{ showToast, setType, setMessage }}>
       <Outlet />
       <ToastMessages isDisplay={isShow} type={type} message={message} setIsDisplay={setIsShow}/>
       <div className="footer-section">
