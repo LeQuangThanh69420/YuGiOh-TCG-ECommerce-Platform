@@ -19,7 +19,7 @@ function Body({ cards, setCards }) {
     };
 
     useEffect(() => {
-        fetch('http://localhost:5233/api/Card/searchCard')
+        fetch(import.meta.env.VITE_API_URL + '/Card/searchCard')
             .then(res => res.json())
             .then(data => { setCards(data) })
     }, [])

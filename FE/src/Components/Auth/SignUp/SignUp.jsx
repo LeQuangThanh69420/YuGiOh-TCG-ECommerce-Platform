@@ -1,16 +1,16 @@
-import './../../styles/SignUp.css'
-import './../../styles/IconDefine.css'
-import LogoDuRiu from "../Shared/LogoDuRiu";
-import Input from "./../Shared/Input/Input";
+import './../../../styles/SignUp.css'
+import './../../../styles/IconDefine.css'
+import LogoDuRiu from '../../Shared/LogoDuRiu';
+import Input from "../../Shared/Input/Input";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
-import { AppData } from '../../Root';
+import { AppData } from '../../../Root';
 
 function SignUp() {
 
     const navigate = useNavigate();
 
-    const {showToast, setType, setMessage} = useContext(AppData)
+    const { showToast, setType, setMessage } = useContext(AppData)
 
     const [email, setEmail] = useState("")
     const [userName, setUserName] = useState("");
@@ -22,35 +22,35 @@ function SignUp() {
 
     const handleSubmit = () => {
         let status;
-
-        fetch("http://localhost:5233/api/User/Register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: userName,
-                password: password,
-                email: email,
-            }),
-        })
-            .then((response) => {
-                status = response.status;
-                return response.json();
+        if (password === repeatPassword) {
+            fetch(import.meta.env.VITE_API_URL + "/User/Register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: userName,
+                    password: password,
+                    email: email,
+                }),
             })
-            .then((data) => {
-                if (status === 200) {
-                    showToast();
-                    setType('toast-success');
-                    setMessage('Sign up successfully, please check your email!')
-                    handleNavigateLogin();
-                } else {
-                    showToast();
-                    setType('toast-error');
-                    setMessage(data.message)
-                }
-            })
-
+                .then((response) => {
+                    status = response.status;
+                    return response.json();
+                })
+                .then((data) => {
+                    if (status === 200) {
+                        showToast();
+                        setType('toast-success');
+                        setMessage('Sign up successfully, please check your email!')
+                        handleNavigateLogin();
+                    } else {
+                        showToast();
+                        setType('toast-error');
+                        setMessage(data.message)
+                    }
+                })
+        }
     };
 
     useEffect(() => {
@@ -115,7 +115,7 @@ function SignUp() {
                                 <Input
                                     label={"Repeat password"}
                                     type={"password"}
-                                    icon="lock"
+                                    icon="key"
                                     regex={password}
                                     errorMessage={
                                         "Make sure to repeat password correctly!"

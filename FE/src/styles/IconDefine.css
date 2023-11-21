@@ -8,7 +8,10 @@
 
 .mail {
     background-image: url('./../asset/mail.svg');
+}
 
+.key {
+    background-image: url('./../asset/key.svg');
 }
 
 .icon-1 {

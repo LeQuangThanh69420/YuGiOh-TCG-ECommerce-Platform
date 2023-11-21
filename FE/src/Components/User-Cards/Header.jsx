@@ -22,7 +22,7 @@ function Header({ setCards, userData }) {
 
     useEffect(() => {
         fetch(
-            `http://localhost:5233/api/Card/searchCard?CardName=${searchObject.name}&CardTypeName=${searchObject.type}&CardOriginName=${searchObject.origin}&CardElementName=${searchObject.element}&CardRarityName=${searchObject.rarity}`
+            `${import.meta.env.VITE_API_URL}/Card/searchCard?CardName=${searchObject.name}&CardTypeName=${searchObject.type}&CardOriginName=${searchObject.origin}&CardElementName=${searchObject.element}&CardRarityName=${searchObject.rarity}`
         )
             .then((res) => res.json())
             .then((data) => {
@@ -32,7 +32,7 @@ function Header({ setCards, userData }) {
 
     //get types
     useEffect(() => {
-        fetch("http://localhost:5233/api/Card/getCardType")
+        fetch(import.meta.env.VITE_API_URL + "/Card/getCardType")
             .then((res) => res.json())
             .then((data) => {
                 setTypes(data);
@@ -40,7 +40,7 @@ function Header({ setCards, userData }) {
     }, []);
     //get origins
     useEffect(() => {
-        fetch("http://localhost:5233/api/Card/getCardOrigin")
+        fetch(import.meta.env.VITE_API_URL + "/Card/getCardOrigin")
             .then((res) => res.json())
             .then((data) => {
                 //console.log(data);
@@ -49,7 +49,7 @@ function Header({ setCards, userData }) {
     }, []);
     //get elements
     useEffect(() => {
-        fetch("http://localhost:5233/api/Card/getCardElement")
+        fetch(import.meta.env.VITE_API_URL + "/Card/getCardElement")
             .then((res) => res.json())
             .then((data) => {
                 setElements(data);
@@ -57,7 +57,7 @@ function Header({ setCards, userData }) {
     }, []);
     //get rarities
     useEffect(() => {
-        fetch("http://localhost:5233/api/Card/getCardRarity")
+        fetch(import.meta.env.VITE_API_URL + "/Card/getCardRarity")
             .then((res) => res.json())
             .then((data) => {
                 setRarities(data);
