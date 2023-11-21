@@ -14,7 +14,6 @@ function ToastMessages({ type, message = 'Unidentified error!', isDisplay, setIs
     }
 
     useEffect(() => {
-        console.log(isDisplay);
         if(isDisplay) {
             timeOut2.current = setTimeout(() => {
                 toastRef.current.className += ' toast-close' 
@@ -23,6 +22,12 @@ function ToastMessages({ type, message = 'Unidentified error!', isDisplay, setIs
                 setIsDisplay(false)
             }, 5000);
         } 
+
+        return () => {
+            console.log('unmounted');
+            clearTimeout(timeOut.current);
+            clearTimeout(timeOut2.current)
+        }
     }, [isDisplay])
 
     return (

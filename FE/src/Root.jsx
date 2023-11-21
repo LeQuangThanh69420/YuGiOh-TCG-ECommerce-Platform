@@ -1,6 +1,6 @@
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import ToastMessages from "./Components/Shared/ToastMessage";
-import { createContext, useState } from "react";
+import { createContext, useReducer, useRef, useState } from "react";
 
 
 export const AppData = createContext();
@@ -11,15 +11,25 @@ export default function Root() {
   const [type, setType] = useState('');
   const [message, setMessage] = useState('');
 
+  const timeOut1 = useRef();
+
   const showToast = () => {
-    setIsShow(false);
-    setIsShow(true);
+    if (isShow) {
+      clearTimeout(timeOut1.current);
+      timeOut1.current = setIsShow(false);
+      setTimeout(() => {
+        setIsShow(true);
+      }, 0);
+    } else {
+      setIsShow(true);
+      console.log('show');
+    }
   }
 
   return (
     <AppData.Provider value={{ showToast, setType, setMessage }}>
       <Outlet />
-      <ToastMessages isDisplay={isShow} type={type} message={message} setIsDisplay={setIsShow}/>
+      <ToastMessages isDisplay={isShow} type={type} message={message} setIsDisplay={setIsShow} />
       <div className="footer-section">
         <div className="footer-container">
           <div className="footer-left-container">
