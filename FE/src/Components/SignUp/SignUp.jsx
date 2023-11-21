@@ -3,11 +3,14 @@ import './../../styles/IconDefine.css'
 import LogoDuRiu from "../Shared/LogoDuRiu";
 import Input from "./../Shared/Input/Input";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AppData } from '../../Root';
 
 function SignUp() {
 
     const navigate = useNavigate();
+
+    const {showToast, setType, setMessage} = useContext(AppData)
 
     const [email, setEmail] = useState("")
     const [userName, setUserName] = useState("");
@@ -20,7 +23,7 @@ function SignUp() {
     const handleSubmit = () => {
         let status;
 
-        fetch("http://localhost:5233/api/User/Login", {
+        fetch("http://localhost:5233/api/User/Register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -28,6 +31,7 @@ function SignUp() {
             body: JSON.stringify({
                 username: userName,
                 password: password,
+                email: email,
             }),
         })
             .then((response) => {
@@ -36,10 +40,14 @@ function SignUp() {
             })
             .then((data) => {
                 if (status === 200) {
-                    localStorage.setItem('userData', JSON.stringify(data));
-                    navigate('/');
+                    showToast();
+                    setType('toast-success');
+                    setMessage('Sign up successfully, please check your email!')
+                    handleNavigateLogin();
                 } else {
-                    console.log(data.message);
+                    showToast();
+                    setType('toast-error');
+                    setMessage(data.message)
                 }
             })
 
@@ -107,10 +115,10 @@ function SignUp() {
                                 <Input
                                     label={"Repeat password"}
                                     type={"password"}
-                                    regex={/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,16}$/}
                                     icon="lock"
+                                    regex={password}
                                     errorMessage={
-                                        "Password can not be empty!"
+                                        "Make sure to repeat password correctly!"
                                     }
                                     setData={setRepeatPassword}
                                 />

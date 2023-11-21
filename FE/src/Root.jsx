@@ -22,7 +22,6 @@ export default function Root() {
       }, 0);
     } else {
       setIsShow(true);
-      console.log('show');
     }
   }
 

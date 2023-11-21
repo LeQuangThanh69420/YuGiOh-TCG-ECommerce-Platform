@@ -49,7 +49,6 @@ function Login() {
   };
 
   useEffect(() => {
-    console.log('mount');
     frontRef.current.style.transform = 'rotateY(180deg)';
     backRef.current.style.transform = 'rotateY(0deg)';
 
