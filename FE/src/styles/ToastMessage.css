@@ -2,7 +2,6 @@
 .toast-container {
     display: flex;
     height: 50px;
-    width: 380px;
     align-items: center;
     gap: 24px;
     position: fixed;

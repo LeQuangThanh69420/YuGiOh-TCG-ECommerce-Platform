@@ -8,7 +8,7 @@ import { AppData } from "../../Root";
 function Login() {
   const navigate = useNavigate();
 
-  const {setIsShow, setMessage, setType} = useContext(AppData);
+  const {showToast, setMessage, setType} = useContext(AppData);
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +34,7 @@ function Login() {
         return response.json();
       })
       .then((data) => {
-        setIsShow(true);
+        showToast();
         if (status === 200) {
           localStorage.setItem('userData', JSON.stringify(data));
           setMessage('Login Successfully!');

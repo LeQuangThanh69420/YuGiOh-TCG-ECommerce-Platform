@@ -51,7 +51,7 @@ function Input({ label, type, icon, regex, errorMessage, setData }) {
         </div>
         <input
           type={internalType}
-          id={`input-${type}`}
+          id={`input-${label}`}
           value={inputValue}
           className={`${icon && 'isIcon'} is${type}`}
           placeholder={label}
