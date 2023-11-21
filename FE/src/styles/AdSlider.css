@@ -1,8 +1,6 @@
 .AdSlider{
     max-width: 1180px;
     height: 240px;
-    background-color: white;
-    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     display: flex;
     gap: 20px;
@@ -23,6 +21,10 @@
     height: 240px;
 }
 
+.Slider-pic-hidden{
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+}
+
 .Slider-pic-container{
     display: flex;
     height: 100%;
@@ -41,4 +43,8 @@
 
 .AdSlider-Ads-AdElement{
     cursor: pointer;
+}
+
+.AdSlider-Ads-AdElement > img{
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
 }

@@ -48,7 +48,7 @@ function ImageSlider({ slides }) {
             </div>
             <div className="Slider-Container-dotsParent">
                 {slides.map((slide, slideIndex) => (
-                    <div key={slideIndex} onClick={() => goToSlide(slideIndex)}>•</div>
+                    <div key={slideIndex} onClick={() => goToSlide(slideIndex)} style={slideIndex == currentIndex ? {color: "white"}: {color: "gray"}}>•</div>
                 ))}
             </div>
         </div>
