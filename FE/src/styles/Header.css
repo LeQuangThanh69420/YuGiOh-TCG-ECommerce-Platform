@@ -12,7 +12,7 @@
     width: 100%;
     min-height: 80px;
     display: flex;
-    padding: 20px 40px;
+    padding: 8px 40px;
     justify-content: space-between;
     align-items: center;
     background: white;
@@ -51,5 +51,5 @@
 
 .header-nav-icons {
     display: flex;
-    gap: 14px;
+    gap: 32px;
 }

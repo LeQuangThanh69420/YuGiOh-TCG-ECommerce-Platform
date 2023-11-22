@@ -14,6 +14,26 @@
     background-image: url('./../asset/key.svg');
 }
 
+.home-gray {
+    background-image: url('./../asset/homeGray.svg');
+}
+
+.home-purple {
+    background-image: url('./../asset/homePurple.svg');
+}
+
+.coin-gray {
+    background-image: url('./../asset/coinGray.svg');
+}
+
+.card-gray {
+    background-image: url('./../asset/cardsGray.svg');
+}
+
+.gacha-gray {
+    background-image: url('./../asset/gachaGray.svg');
+}
+
 .icon-1 {
     width: 24px;
     height: 24px;
@@ -23,4 +43,13 @@
     background-position: center;
     top: 6px;
     left: 6px;
+}
+
+.icon-2 {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
 }

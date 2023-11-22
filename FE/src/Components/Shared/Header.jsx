@@ -7,7 +7,7 @@ import LogoDuRiu from "./LogoDuRiu";
 import { AppData } from "../../Root";
 
 import "./../../styles/Header.css";
-import './../../styles/'
+import './../../styles/IconDefine.css';
 
 function Header({ userData }) {
 
@@ -18,9 +18,11 @@ function Header({ userData }) {
             <div className="header-bar">
                 <LogoDuRiu logoColor={'#000'} logoNameColor={'#7400CC'} />
                 <div className="header-nav-icons">
-                    <div className="home-grayy">
-
+                    <div className="icon-2 home-gray">
                     </div>
+                    <div className="icon-2 card-gray"></div>
+                    <div className="icon-2 gacha-gray"></div>
+                    <div className="icon-2 coin-gray"></div>
                 </div>
                 <div className="users-button">
                     {!userData && <Link to={"/login"} >Login</Link>}
