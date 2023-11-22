@@ -94,9 +94,9 @@ function SignUp() {
                             <Input
                                 label={"Username"}
                                 type="text"
-                                regex={/^(?!\s*$).+/}
+                                regex={/^.{8,16}$/}
                                 icon={"person"}
-                                errorMessage="Username can not be empty!"
+                                errorMessage="Username must be 8-16 characters!"
                                 setData={setUserName}
                             />
                             <div className="password-container">
@@ -106,7 +106,7 @@ function SignUp() {
                                     regex={/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,16}$/}
                                     icon="lock"
                                     errorMessage={
-                                        "Password must have 1 number, 1 uppercase, 1 special character"
+                                        "Password must have 1 number, 1 uppercase, 1 special character and has 8-16 characters"
                                     }
                                     setData={setPassword}
                                 />
