@@ -21,20 +21,22 @@ function Body({ cards, setCards }) {
     useEffect(() => {
         fetch(import.meta.env.VITE_API_URL + '/Card/searchCard')
             .then(res => res.json())
-            .then(data => { setCards(data) })
+            .then(data => {
+                setCards(data)
+            })
     }, [])
 
     function checkRarity(selectedCard) {
-        if(selectedCard.cardRarityName == 'R') return 'Rare'
-        else if(selectedCard.cardRarityName == 'N') return 'Normal'
-        else if(selectedCard.cardRarityName == 'SR') return 'Super Rare'
-        else if(selectedCard.cardRarityName == 'UR') return 'Ultra Rare'
+        if (selectedCard.cardRarityName == 'R') return 'Rare'
+        else if (selectedCard.cardRarityName == 'N') return 'Normal'
+        else if (selectedCard.cardRarityName == 'SR') return 'Super Rare'
+        else if (selectedCard.cardRarityName == 'UR') return 'Ultra Rare'
         else return 'Bucac'
     }
 
     return (
         <>
-            <div className='body-session'>  
+            <div className='body-session'>
                 < div className="body-container" >
                     {
                         cards.length ? cards.map((item, index) =>
@@ -59,11 +61,11 @@ function Body({ cards, setCards }) {
                         <div className="CardDetails-CardName"><div className='CardDetails-CardName-infoLabel'>Name:</div> <div className='CardDetails-CardName-infoName'>{selectedCard.cardName}</div></div>
                         <div className="CardDetails-CardType"><div className='CardDetails-CardName-infoLabel'>Type:</div> <div className='CardDetails-CardName-infoName'>{selectedCard.cardTypeName}</div></div>
                         <div className="CardDetails-Rarity"><div className='CardDetails-CardName-infoLabel'>Rarity:</div> <div className='CardDetails-CardName-infoName'>{checkRarity(selectedCard)}</div></div>
-                        <div className="CardDetails-Origin"><div className='CardDetails-CardName-infoLabel'>Origin:</div> <div className='CardDetails-CardName-infoName'>{ (selectedCard.cardOriginName === null) ? "None" : selectedCard.cardOriginName}</div></div>
-                        <div className="CardDetails-Element"><div className='CardDetails-CardName-infoLabel'>Element:</div> <div className='CardDetails-CardName-infoName'>{ (selectedCard.cardElementName === null) ? "None" : selectedCard.cardElementName}</div></div>
+                        <div className="CardDetails-Origin"><div className='CardDetails-CardName-infoLabel'>Origin:</div> <div className='CardDetails-CardName-infoName'>{(selectedCard.cardOriginName === null) ? "None" : selectedCard.cardOriginName}</div></div>
+                        <div className="CardDetails-Element"><div className='CardDetails-CardName-infoLabel'>Element:</div> <div className='CardDetails-CardName-infoName'>{(selectedCard.cardElementName === null) ? "None" : selectedCard.cardElementName}</div></div>
                     </div>
                 </div>
-            }/>
+            } />
         </>
 
     )

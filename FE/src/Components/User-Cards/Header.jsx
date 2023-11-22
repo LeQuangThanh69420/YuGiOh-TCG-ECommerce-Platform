@@ -4,6 +4,7 @@ import "./../../styles/Header.css";
 import SearchSelection from "../SearchSelection/SearchSelection";
 import { Link } from "react-router-dom";
 import LogoDuRiu from "../Shared/LogoDuRiu";
+import { searchCard, getSomeThingOfCard } from "../../api/apiCard";
 
 function Header({ setCards, userData }) {
     const [inputNameValue, setInputNameValue] = useState("");
@@ -21,47 +22,38 @@ function Header({ setCards, userData }) {
     });
 
     useEffect(() => {
-        fetch(
-            `${import.meta.env.VITE_API_URL}/Card/searchCard?CardName=${searchObject.name}&CardTypeName=${searchObject.type}&CardOriginName=${searchObject.origin}&CardElementName=${searchObject.element}&CardRarityName=${searchObject.rarity}`
-        )
-            .then((res) => res.json())
-            .then((data) => {
+        searchCard(searchObject.name, searchObject.type, searchObject.origin, searchObject.element, searchObject.rarity)
+            .then(data => {
+                console.log(data);
                 setCards(data);
-            });
+            })
     }, [searchObject]);
 
     //get types
     useEffect(() => {
-        fetch(import.meta.env.VITE_API_URL + "/Card/getCardType")
-            .then((res) => res.json())
-            .then((data) => {
-                setTypes(data);
-            });
+        getSomeThingOfCard('GET_TYPE').then(data => {
+            console.log(data);
+            setTypes(data);
+        })
     }, []);
     //get origins
     useEffect(() => {
-        fetch(import.meta.env.VITE_API_URL + "/Card/getCardOrigin")
-            .then((res) => res.json())
-            .then((data) => {
-                //console.log(data);
-                setOrigins(data);
-            });
+        getSomeThingOfCard('GET_ORIGIN').then(data => {
+            console.log(data);
+            setOrigins(data);
+        })
     }, []);
-    //get elements
+    // //get elements
     useEffect(() => {
-        fetch(import.meta.env.VITE_API_URL + "/Card/getCardElement")
-            .then((res) => res.json())
-            .then((data) => {
-                setElements(data);
-            });
+        getSomeThingOfCard('GET_ELEMENT').then(data => {
+            setElements(data);
+        })
     }, []);
-    //get rarities
+    // //get rarities
     useEffect(() => {
-        fetch(import.meta.env.VITE_API_URL + "/Card/getCardRarity")
-            .then((res) => res.json())
-            .then((data) => {
-                setRarities(data);
-            });
+        getSomeThingOfCard('GET_RARITY').then(data => {
+            setRarities(data)
+        })
     }, []);
 
     const handleAddName = () => {
@@ -80,8 +72,8 @@ function Header({ setCards, userData }) {
     return (
         <div className="main-container">
             <div className="header-bar">
-                <LogoDuRiu />
-                <div className="search-bar">
+                <LogoDuRiu logoColor={'#000'} logoNameColor={'#7400CC'}/>
+                {/* <div className="search-bar">
                     <span>Search</span>
                     <input
                         type="text"
@@ -92,15 +84,15 @@ function Header({ setCards, userData }) {
                         onChange={(event) => setInputNameValue(event.target.value)}
                     />
                     <button onClick={handleAddName}>Search</button>
-                </div>
+                </div> */}
                 <div className="users-button">
                     {!userData && <Link to={"/login"} >Login</Link>}
-                    {userData && 
-                        <img src={userData.avatarURL} alt="" className="header-user-avt"/>
+                    {userData &&
+                        <img src={userData.avatarURL} alt="" className="header-user-avt" />
                     }
                 </div>
             </div>
-            <div className="search-opt-container">
+            {/* <div className="search-opt-container">
                 <div className="search-opt">
                     <SearchSelection
                         type="Type"
@@ -127,7 +119,7 @@ function Header({ setCards, userData }) {
                         onSelect={updateSearchObject}
                     />
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

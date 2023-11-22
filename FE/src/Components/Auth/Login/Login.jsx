@@ -70,7 +70,7 @@ function Login() {
   return (
     <div className="login-screen">
       <div className="go-home">
-        <LogoDuRiu logoColor={"#45B2FF"} logoNameColor={"#45B2FF"} />
+        <LogoDuRiu logoColor={"#7400CC"} logoNameColor={"#7400CC"} />
       </div>
       <div className="login-container">
         <div className="bg-img"></div>
