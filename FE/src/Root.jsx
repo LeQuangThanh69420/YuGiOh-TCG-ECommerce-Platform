@@ -13,7 +13,10 @@ export default function Root() {
   const [isShow, setIsShow] = useState(false);
   const [type, setType] = useState('');
   const [message, setMessage] = useState('');
+
   const [currentRoute, setCurrentRoute] = useState(location.pathname)
+
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')));
 
   const timeOut1 = useRef();
 
@@ -30,7 +33,7 @@ export default function Root() {
   }
 
   return (
-    <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute }}>
+    <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute, userData, setUserData }}>
       <Outlet />
       <ToastMessages isDisplay={isShow} type={type} message={message} setIsDisplay={setIsShow} />
       <div className="footer-section">

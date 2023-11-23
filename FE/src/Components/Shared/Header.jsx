@@ -9,9 +9,9 @@ import { AppData } from "../../Root";
 import "./../../styles/Header.css";
 import './../../styles/IconDefine.css';
 
-function Header({ userData }) {
+function Header() {
 
-    const { currentRoute, setCurrentRoute } = useContext(AppData);
+    const { currentRoute, setCurrentRoute, userData } = useContext(AppData);
 
     return (
         <div className="main-container">
@@ -32,15 +32,13 @@ function Header({ userData }) {
                         <div className={`icon-2 ${currentRoute === '/buy-riu-coin' ? 'coin-purple' : 'coin-gray'}`}></div>
                     </Link>
                 </div>
-                {!userData &&
+                {!userData ?
                     <Link to={'/login'}>
                         <button className="users-button">
                             Login
                         </button>
                     </Link>
-                }
-                {userData &&
-                    <img src={userData.avatarURL} alt="" className="header-user-avt" />
+                   : <img src={userData.avatarURL} alt="" className="header-user-avt" />
                 }
             </div>
         </div>
