@@ -14,6 +14,7 @@
 .BodyRiuCoin {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   padding: 20px 10px;
 }
 
@@ -23,6 +24,7 @@
   /* Allow the NapTien divs to wrap to the next line on smaller screens */
   justify-content: flex-end;
   /* Adjust as needed for your layout */
+  padding-top: 30px;
 }
 
 .NapTien {
@@ -61,4 +63,26 @@
   padding-left: 215px;
   padding-top: 27px;
   z-index: 2;
+}
+
+.QRcode-container{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 30px;
+}
+
+.QRcode{
+  background-image: url("../asset/QRcodeRiuCoin.png");
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+}
+
+.QRcodeManual-head{
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.QRcodeManual-body{
+  font-size: 20px;
 }

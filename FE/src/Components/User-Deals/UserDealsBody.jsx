@@ -9,3 +9,5 @@ function UserDealsBody(){
         </>
     )
 }
+
+export default UserDealsBody
