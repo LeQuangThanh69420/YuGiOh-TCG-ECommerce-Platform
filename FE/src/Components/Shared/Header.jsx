@@ -26,7 +26,7 @@ function Header({ userData }) {
                         <div className={`icon-2 ${currentRoute === '/cards' ? 'card-purple' : 'card-gray'}`}></div>
                     </Link>
                     <Link to={'/gacha'} onClick={() => setCurrentRoute('/gacha')}>
-                        <div className={`icon-2 ${currentRoute === 'gacha' ? 'gacha-purple' : 'gacha-gray'}`}></div>
+                        <div className={`icon-2 ${currentRoute === '/gacha' ? 'gacha-purple' : 'gacha-gray'}`}></div>
                     </Link>
                     <Link to={'/buy-riu-coin'} onClick={() => setCurrentRoute('/buy-riu-coin')}>
                         <div className={`icon-2 ${currentRoute === '/buy-riu-coin' ? 'coin-purple' : 'coin-gray'}`}></div>

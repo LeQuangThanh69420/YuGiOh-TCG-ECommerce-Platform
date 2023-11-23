@@ -34,8 +34,16 @@
     background-image: url('./../asset/cardsGray.svg');
 }
 
+.card-purple {
+    background-image: url('./../asset/cardsPurple.svg');
+}
+
 .gacha-gray {
     background-image: url('./../asset/gachaGray.svg');
+}
+
+.gacha-purple {
+    background-image: url('./../asset/gachaPurple.svg');
 }
 
 .icon-1 {

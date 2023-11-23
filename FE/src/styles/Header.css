@@ -6,10 +6,13 @@
     position: sticky;
     z-index: 5;
     top: 0;
+    width: 100%;
+    align-items: center;
+    background: white;
 }
 
 .header-bar {
-    width: 100%;
+    width: 1200px;
     min-height: 80px;
     display: flex;
     padding: 8px 40px;

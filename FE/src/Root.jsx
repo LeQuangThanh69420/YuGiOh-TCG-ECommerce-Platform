@@ -1,6 +1,6 @@
 import { createContext, useRef, useState } from "react";
 
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
 
 import ToastMessages from "./Components/Shared/ToastMessage";
 
@@ -8,10 +8,12 @@ export const AppData = createContext();
 
 export default function Root() {
 
+  const location = useLocation();
+
   const [isShow, setIsShow] = useState(false);
   const [type, setType] = useState('');
   const [message, setMessage] = useState('');
-  const [currentRoute, setCurrentRoute] = useState('/');
+  const [currentRoute, setCurrentRoute] = useState(location.pathname)
 
   const timeOut1 = useRef();
 
