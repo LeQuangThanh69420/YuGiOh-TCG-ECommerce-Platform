@@ -2,6 +2,7 @@ import LogoDuRiu from '../Shared/LogoDuRiu'
 import "./../../styles/NapRiuCoin.css";
 import { Amount } from '../../constants/RiuCoinAmount';
 import Header from '../Shared/Header';
+import deptrai from '../../asset/deptrai.png'
 
 function NapRiuCoin() {
 
@@ -25,6 +26,17 @@ function NapRiuCoin() {
                                 </svg>
                             </div>
                         ))}
+                    </div>
+                    <div className="QRcode-container">
+                        <div className="QRcode"></div>
+                        <div className="QRcodeManual">
+                            <div className="QRcodeManual-head">Top-up code:</div>
+                            <div className="QRcodeManual-body">“Username” + transfer description <br />
+                            Example: thenthen nap RiuCoin goi 666k</div>
+                        </div>
+                        <div className="QRcode-deptrai">
+                            <img src={deptrai} alt="" />
+                        </div>
                     </div>
                 </div>
             </div>
