@@ -32,12 +32,16 @@ function Header({ userData }) {
                         <div className={`icon-2 ${currentRoute === '/buy-riu-coin' ? 'coin-purple' : 'coin-gray'}`}></div>
                     </Link>
                 </div>
-                <div className="users-button">
-                    {!userData && <Link to={"/login"} >Login</Link>}
-                    {userData &&
-                        <img src={userData.avatarURL} alt="" className="header-user-avt" />
-                    }
-                </div>
+                {!userData &&
+                    <Link to={'/login'}>
+                        <button className="users-button">
+                            Login
+                        </button>
+                    </Link>
+                }
+                {userData &&
+                    <img src={userData.avatarURL} alt="" className="header-user-avt" />
+                }
             </div>
         </div>
     );

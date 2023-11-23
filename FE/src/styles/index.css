@@ -14,12 +14,13 @@ body {
 button {
   border: none;
   border-radius: 8px;
-  height: 28px;
+  height: 40px;
   width: 80px;
   background: rgb(116, 0, 204);
   color: white;
   font-weight: 500;
   cursor: pointer;
+  font-size: 14px;
 }
 
 button:hover {

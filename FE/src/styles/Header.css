@@ -1,24 +1,22 @@
 .main-container {
     display: flex; /*chay sang ngang*/
-    flex-direction: column;
-    width: 100%;
     box-shadow: 3px 2px 20px rgba(0, 0, 0, 0.2);
     position: sticky;
     z-index: 5;
     top: 0;
     width: 100%;
-    align-items: center;
+    justify-content: center;
     background: white;
+    padding: 0px 100px;
 }
 
 .header-bar {
-    width: 1200px;
+    width: 1180px;
     min-height: 80px;
     display: flex;
-    padding: 8px 40px;
-    justify-content: space-between;
     align-items: center;
     background: white;
+    justify-content: space-between;
 }
 
 .logo {

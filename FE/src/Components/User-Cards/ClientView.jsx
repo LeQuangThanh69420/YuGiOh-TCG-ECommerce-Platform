@@ -9,7 +9,7 @@ import './../../styles/ClientView.css'
 function ClientView() {
 
     const [cards, setCards] = useState([]);
-
+    
     return(
         <div className="main-content">
             <Header />

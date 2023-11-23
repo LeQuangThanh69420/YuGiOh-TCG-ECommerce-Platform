@@ -1,9 +1,11 @@
-import "./../../../styles/Login.css";
+import { useContext, useEffect, useReducer, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import Input from "../../Shared/Input/Input";
 import LogoDuRiu from "../../Shared/LogoDuRiu";
-import { Link, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useReducer, useRef, useState } from "react";
 import { AppData } from "../../../Root";
+
+import "./../../../styles/Login.css";
 
 function Login() {
 
