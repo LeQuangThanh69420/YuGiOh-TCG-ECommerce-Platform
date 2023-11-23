@@ -3,9 +3,8 @@ import ClientView from './Components/User-Cards/ClientView.jsx'
 import './styles/index.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import Root from './Root'
-import Login from './Components/Login/Login.jsx'
-import SignUp from './Components/SignUp/SignUp.jsx'
-import NapRiuCoin from './Components/NapRiuCoin/NapRiuCoin.jsx'
+import Login from './Components/Auth/Login/Login.jsx'
+import SignUp from './Components/Auth/SignUp/SignUp.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,10 +27,6 @@ const router = createBrowserRouter(
       <Route 
         path='/user'
         element={<></>}
-      />
-      <Route
-        path='/top-up'
-        element={<NapRiuCoin />}
       />
     </Route>
   )

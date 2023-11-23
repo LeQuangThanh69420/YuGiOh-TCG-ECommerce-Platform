@@ -25,7 +25,6 @@ function ImageSlider({ slides }) {
         if (timerRef.current) {
             clearTimeout(timerRef.current)
         }
-        console.log('chit')
         timerRef.current = setTimeout(() => {
             goToNext()
         }, 3000)

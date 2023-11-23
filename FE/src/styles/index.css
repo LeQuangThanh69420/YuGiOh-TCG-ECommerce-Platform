@@ -16,14 +16,14 @@ button {
   border-radius: 8px;
   height: 28px;
   width: 80px;
-  background-image: linear-gradient(150deg, rgb(93, 0, 233), rgb(105, 0, 143));
+  background: rgb(116, 0, 204);
   color: white;
   font-weight: 500;
   cursor: pointer;
 }
 
 button:hover {
-  background-image: linear-gradient(150deg, rgb(80, 0, 201), rgb(88, 0, 120));
+  background: rgb(100, 0, 176);
 }
 
 input {
@@ -145,11 +145,12 @@ body {
 }
 
 .links {
-  color: rgb(93, 0, 233);
+  color: #7400CC;
   font-size: 12px;
   font-weight: 500;
   margin: 0;
   cursor: pointer;
+  z-index: 3;
 }
 
 .links:hover {

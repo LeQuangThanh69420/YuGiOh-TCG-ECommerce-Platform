@@ -1,11 +1,12 @@
-import "./../../styles/Login.css";
-import Input from "../Shared/Input/Input";
-import LogoDuRiu from "../Shared/LogoDuRiu";
+import "./../../../styles/Login.css";
+import Input from "../../Shared/Input/Input";
+import LogoDuRiu from "../../Shared/LogoDuRiu";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useReducer, useRef, useState } from "react";
-import { AppData } from "../../Root";
+import { AppData } from "../../../Root";
 
 function Login() {
+
   const navigate = useNavigate();
 
   const {showToast, setMessage, setType} = useContext(AppData);
@@ -19,7 +20,7 @@ function Login() {
   const handleSubmit = () => {
     let status;
 
-    fetch("http://localhost:5233/api/User/Login", {
+    fetch(import.meta.env.VITE_API_URL +"/User/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +50,6 @@ function Login() {
   };
 
   useEffect(() => {
-    console.log('mount');
     frontRef.current.style.transform = 'rotateY(180deg)';
     backRef.current.style.transform = 'rotateY(0deg)';
 
@@ -70,7 +70,7 @@ function Login() {
   return (
     <div className="login-screen">
       <div className="go-home">
-        <LogoDuRiu logoColor={"#45B2FF"} logoNameColor={"#45B2FF"} />
+        <LogoDuRiu logoColor={"#7400CC"} logoNameColor={"#7400CC"} />
       </div>
       <div className="login-container">
         <div className="bg-img"></div>

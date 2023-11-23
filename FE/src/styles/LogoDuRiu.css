@@ -10,7 +10,7 @@
   font-weight: 600;
   color: #252525;
   margin: 0;
-  text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
 }
 
 .logo-container:hover {
@@ -20,4 +20,9 @@
 .logo-header {
   display: flex;
   align-items: center;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
 }

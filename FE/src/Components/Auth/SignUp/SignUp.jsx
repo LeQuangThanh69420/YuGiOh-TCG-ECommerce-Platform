@@ -1,13 +1,16 @@
-import './../../styles/SignUp.css'
-import './../../styles/IconDefine.css'
-import LogoDuRiu from "../Shared/LogoDuRiu";
-import Input from "./../Shared/Input/Input";
+import './../../../styles/SignUp.css'
+import './../../../styles/IconDefine.css'
+import LogoDuRiu from '../../Shared/LogoDuRiu';
+import Input from "../../Shared/Input/Input";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AppData } from '../../../Root';
 
 function SignUp() {
 
     const navigate = useNavigate();
+
+    const { showToast, setType, setMessage } = useContext(AppData)
 
     const [email, setEmail] = useState("")
     const [userName, setUserName] = useState("");
@@ -19,30 +22,35 @@ function SignUp() {
 
     const handleSubmit = () => {
         let status;
-
-        fetch("http://localhost:5233/api/User/Login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: userName,
-                password: password,
-            }),
-        })
-            .then((response) => {
-                status = response.status;
-                return response.json();
+        if (password === repeatPassword) {
+            fetch(import.meta.env.VITE_API_URL + "/User/Register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: userName,
+                    password: password,
+                    email: email,
+                }),
             })
-            .then((data) => {
-                if (status === 200) {
-                    localStorage.setItem('userData', JSON.stringify(data));
-                    navigate('/');
-                } else {
-                    console.log(data.message);
-                }
-            })
-
+                .then((response) => {
+                    status = response.status;
+                    return response.json();
+                })
+                .then((data) => {
+                    if (status === 200) {
+                        showToast();
+                        setType('toast-success');
+                        setMessage('Sign up successfully, please check your email!')
+                        handleNavigateLogin();
+                    } else {
+                        showToast();
+                        setType('toast-error');
+                        setMessage(data.message)
+                    }
+                })
+        }
     };
 
     useEffect(() => {
@@ -67,7 +75,7 @@ function SignUp() {
     return (
         <div className="login-screen">
             <div className="go-home">
-                <LogoDuRiu logoColor={"#45B2FF"} logoNameColor={"#45B2FF"} />
+                <LogoDuRiu logoColor={"#7400CC"} logoNameColor={"#7400CC"} />
             </div>
             <div className="login-container">
                 <div className="bg-img"></div>
@@ -86,9 +94,9 @@ function SignUp() {
                             <Input
                                 label={"Username"}
                                 type="text"
-                                regex={/^(?!\s*$).+/}
+                                regex={/^.{8,16}$/}
                                 icon={"person"}
-                                errorMessage="Username can not be empty!"
+                                errorMessage="Username must be 8-16 characters!"
                                 setData={setUserName}
                             />
                             <div className="password-container">
@@ -98,7 +106,7 @@ function SignUp() {
                                     regex={/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,16}$/}
                                     icon="lock"
                                     errorMessage={
-                                        "Password must have 1 number, 1 uppercase, 1 special character"
+                                        "Password must have 1 number, 1 uppercase, 1 special character and has 8-16 characters"
                                     }
                                     setData={setPassword}
                                 />
@@ -107,10 +115,10 @@ function SignUp() {
                                 <Input
                                     label={"Repeat password"}
                                     type={"password"}
-                                    regex={/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,16}$/}
-                                    icon="lock"
+                                    icon="key"
+                                    regex={password}
                                     errorMessage={
-                                        "Password can not be empty!"
+                                        "Make sure to repeat password correctly!"
                                     }
                                     setData={setRepeatPassword}
                                 />

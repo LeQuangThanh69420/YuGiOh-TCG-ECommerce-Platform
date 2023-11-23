@@ -24,7 +24,6 @@ function ToastMessages({ type, message = 'Unidentified error!', isDisplay, setIs
         } 
 
         return () => {
-            console.log('unmounted');
             clearTimeout(timeOut.current);
             clearTimeout(timeOut2.current)
         }
