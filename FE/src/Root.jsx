@@ -11,7 +11,7 @@ export default function Root() {
   const [isShow, setIsShow] = useState(false);
   const [type, setType] = useState('');
   const [message, setMessage] = useState('');
-  const [currentRoute, setCurrentRoute] = useState('');
+  const [currentRoute, setCurrentRoute] = useState('/');
 
   const timeOut1 = useRef();
 

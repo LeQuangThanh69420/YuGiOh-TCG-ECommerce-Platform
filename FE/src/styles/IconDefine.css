@@ -26,6 +26,10 @@
     background-image: url('./../asset/coinGray.svg');
 }
 
+.coin-purple {
+    background-image: url('./../asset/coinPurple.svg');
+}
+
 .card-gray {
     background-image: url('./../asset/cardsGray.svg');
 }

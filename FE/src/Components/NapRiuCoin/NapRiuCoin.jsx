@@ -1,17 +1,14 @@
 import LogoDuRiu from '../Shared/LogoDuRiu'
 import "./../../styles/NapRiuCoin.css";
 import { Amount } from '../../constants/RiuCoinAmount';
+import Header from '../Shared/Header';
 
 function NapRiuCoin() {
 
     return (
         <>
             <div className="NapRiuCoinAll">
-                <div className="HeaderRiuCoin">
-                    <div className="logoDuRiuCoin">
-                        <LogoDuRiu />
-                    </div>
-                </div>
+                <Header />
                 <div className="BodyRiuCoin">
                     <div className="top-up-container">
                         {Amount.map((tien) => (
