@@ -5,7 +5,7 @@ import { AppData } from "../../Root";
 import logoImg from './../../asset/logoDuRiuImg2.png'
 import "./../../styles/LogoDuRiu.css";
 
-function LogoDuRiu({ logoColor, logoNameColor }) {
+function LogoDuRiu({ logoNameColor }) {
 
   const { setCurrentRoute } = useContext(AppData)
 

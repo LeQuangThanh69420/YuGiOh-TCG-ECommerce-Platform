@@ -11,7 +11,7 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const {showToast, setMessage, setType} = useContext(AppData);
+  const {showToast, setMessage, setType, setUserData} = useContext(AppData);
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +42,7 @@ function Login() {
           localStorage.setItem('userData', JSON.stringify(data));
           setMessage('Login Successfully!');
           setType('toast-success');
+          setUserData(data);
           navigate('/');
         } else {
           setMessage(data.message)
