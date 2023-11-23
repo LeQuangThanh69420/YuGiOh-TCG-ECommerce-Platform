@@ -11,18 +11,26 @@ import './../../styles/IconDefine.css';
 
 function Header({ userData }) {
 
-    const {currentRoute, setCurrentRoute} = useContext(AppData);
+    const { currentRoute, setCurrentRoute } = useContext(AppData);
 
     return (
         <div className="main-container">
             <div className="header-bar">
                 <LogoDuRiu logoColor={'#000'} logoNameColor={'#7400CC'} />
                 <div className="header-nav-icons">
-                    <div className="icon-2 home-gray">
-                    </div>
-                    <div className="icon-2 card-gray"></div>
-                    <div className="icon-2 gacha-gray"></div>
-                    <div className="icon-2 coin-gray"></div>
+                    <Link to={'/'} onClick={() => setCurrentRoute('/')}>
+                        <div className={`icon-2 ${currentRoute === '/' ? 'home-purple' : 'home-gray'}`}>
+                        </div>
+                    </Link>
+                    <Link to={'/cards'} onClick={() => setCurrentRoute('/cards')}>
+                        <div className={`icon-2 ${currentRoute === '/cards' ? 'card-purple' : 'card-gray'}`}></div>
+                    </Link>
+                    <Link to={'/gacha'} onClick={() => setCurrentRoute('/gacha')}>
+                        <div className={`icon-2 ${currentRoute === 'gacha' ? 'gacha-purple' : 'gacha-gray'}`}></div>
+                    </Link>
+                    <Link to={'/buy-riu-coin'} onClick={() => setCurrentRoute('/buy-riu-coin')}>
+                        <div className={`icon-2 ${currentRoute === '/buy-riu-coin' ? 'coin-purple' : 'coin-gray'}`}></div>
+                    </Link>
                 </div>
                 <div className="users-button">
                     {!userData && <Link to={"/login"} >Login</Link>}

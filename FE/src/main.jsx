@@ -5,6 +5,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Root from './Root'
 import Login from './Components/Auth/Login/Login.jsx'
 import SignUp from './Components/Auth/SignUp/SignUp.jsx'
+import NapRiuCoin from './Components/NapRiuCoin/NapRiuCoin.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,14 +25,18 @@ const router = createBrowserRouter(
         path='/sign-up'
         element={<SignUp />}
       />
-      <Route 
+      <Route
         path='/user'
         element={<></>}
+      />
+      <Route
+        path='/buy-riu-coin'
+        element={<NapRiuCoin />}
       />
     </Route>
   )
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
 )
