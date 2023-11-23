@@ -65,11 +65,11 @@ CREATE TABLE Deal (
 go
 CREATE proc SearchOwnedStack
     @UserId bigint,
-    @CardName nvarchar(60),
-    @CardTypeName nvarchar(10),
-    @CardOriginName nvarchar(20),
-    @CardElementName nvarchar(10),
-    @CardRarityName nvarchar(5)
+    @CardName nvarchar(60) = NULL,
+    @CardTypeName nvarchar(10) = NULL,
+    @CardOriginName nvarchar(20) = NULL,
+    @CardElementName nvarchar(10) = NULL,
+    @CardRarityName nvarchar(5) = NULL
 as
 begin
     select 

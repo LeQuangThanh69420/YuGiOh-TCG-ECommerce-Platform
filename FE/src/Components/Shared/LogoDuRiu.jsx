@@ -2,9 +2,7 @@ import { useContext } from "react";
 
 import { Link } from "react-router-dom";
 import { AppData } from "../../Root";
-
-import logoImg from './../../asset/logoDuRiuImg.png'
-
+import logoImg from './../../asset/logoDuRiuImg2.png'
 import "./../../styles/LogoDuRiu.css";
 
 function LogoDuRiu({ logoColor, logoNameColor }) {
