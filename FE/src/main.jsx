@@ -5,6 +5,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Root from './Root'
 import Login from './Components/Login/Login.jsx'
 import SignUp from './Components/SignUp/SignUp.jsx'
+import NapRiuCoin from './Components/NapRiuCoin/NapRiuCoin.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,10 @@ const router = createBrowserRouter(
       <Route 
         path='/user'
         element={<></>}
+      />
+      <Route
+        path='/top-up'
+        element={<NapRiuCoin />}
       />
     </Route>
   )

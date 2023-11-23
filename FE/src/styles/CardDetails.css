@@ -1,6 +1,5 @@
 .CardDetails {
     position: fixed;
-    padding: 48px 0px;
     top: 0;
     left: 0;
     width: 100%;
@@ -12,51 +11,52 @@
     z-index: 1;
     backdrop-filter: blur(5px);
 }
-  
+
 .CardDetails-content {
     position: relative;
     background: white;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 2;
     color: black;
     display: flex;
-    height: 800px;
+    max-height: 800px;
+    min-height: 300px;
     gap: 30px;
+    overflow: hidden; /* Prevent content overflow */
 }
 
-.CardDetails-close{
+.CardDetails-close {
     cursor: pointer;
-    display: flex;
-    justify-content: right;
+    align-self: flex-end; /* Align to the end of the container */
     font-size: 30px;
     color: white;
-}
-
-.CardDetails-Image > img{
-    width: 500px;
-}
-
-.CardDetails-info > div{
-    display: flex;
-    gap: 30px;
-    justify-content: start;
-    align-items: center;
-}
-
-.CardDetails-CardName-infoLabel{
-    font-size: 40px;
-    font-weight: 600;
-}
-
-.CardDetails-CardName-infoName{
-    font-size: 35px;
 }
 
 .CardDetails-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 20px;
+    flex-grow: 1; /* Allow the info section to grow to fill available space */
 }
 
+.CardDetails-CardName-infoLabel {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.CardDetails-CardName-infoName {
+    font-size: 16px;
+}
+
+.CardDetails-Image {
+    overflow: hidden; /* Ensure child elements don't overflow */
+}
+
+.CardDetails-Image-Card {
+    width: 230px;
+    height: 100%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

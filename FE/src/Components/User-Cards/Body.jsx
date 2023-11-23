@@ -53,12 +53,13 @@ function Body({ cards, setCards }) {
             <CardDetails isOpen={isCardDetailsOpen} onClose={closeDetails} card={
                 selectedCard && <div className="CardDetails-content">
                     <div className="CardDetails-Image">
-                        <img src={selectedCard.cardImageURL} alt="" />
+                        <div className="CardDetails-Image-Card" style={{backgroundImage: `url(${selectedCard.cardImageURL})` }}></div>
                     </div>
                     <div className="CardDetails-info">
+                    <div className="CardDetails-Rarity">
+                        <div className='CardDetails-CardName-infoLabel'>Rarity:</div> <div className='CardDetails-CardName-infoName'>{checkRarity(selectedCard)}</div></div>
                         <div className="CardDetails-CardName"><div className='CardDetails-CardName-infoLabel'>Name:</div> <div className='CardDetails-CardName-infoName'>{selectedCard.cardName}</div></div>
                         <div className="CardDetails-CardType"><div className='CardDetails-CardName-infoLabel'>Type:</div> <div className='CardDetails-CardName-infoName'>{selectedCard.cardTypeName}</div></div>
-                        <div className="CardDetails-Rarity"><div className='CardDetails-CardName-infoLabel'>Rarity:</div> <div className='CardDetails-CardName-infoName'>{checkRarity(selectedCard)}</div></div>
                         <div className="CardDetails-Origin"><div className='CardDetails-CardName-infoLabel'>Origin:</div> <div className='CardDetails-CardName-infoName'>{ (selectedCard.cardOriginName === null) ? "None" : selectedCard.cardOriginName}</div></div>
                         <div className="CardDetails-Element"><div className='CardDetails-CardName-infoLabel'>Element:</div> <div className='CardDetails-CardName-infoName'>{ (selectedCard.cardElementName === null) ? "None" : selectedCard.cardElementName}</div></div>
                     </div>
