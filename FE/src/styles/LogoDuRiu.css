@@ -10,7 +10,7 @@
   font-weight: 600;
   color: #252525;
   margin: 0;
-  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  /* -webkit-text-stroke: 1px rgb(0, 0, 0); */
 }
 
 .logo-container:hover {

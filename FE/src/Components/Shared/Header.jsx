@@ -22,7 +22,7 @@ function Header({ userData }) {
                     </div>
                     <div className="icon-2 card-gray"></div>
                     <div className="icon-2 gacha-gray"></div>
-                    <div className="icon-2 coin-gray"></div>
+                    <Link to={"top-up"}><div className="icon-2 coin-gray"></div></Link>
                 </div>
                 <div className="users-button">
                     {!userData && <Link to={"/login"} >Login</Link>}
