@@ -47,7 +47,7 @@ namespace BE.Controllers
             {
                 To = input.Email,
                 Subject = "Kích hoạt tài khoản YuGhiOh TCG",
-                Body = "<h3>Bấm nút để kích hoạt</h3><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #008cff; color: white; border-radius: 6px; border: none;'>Bấm tôi</button></a>",
+                Body = "<h3>Bấm nút để kích hoạt</h3><a href='http://trai4chet2tlqserver.id.vn:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #008cff; color: white; border-radius: 6px; border: none;'>Bấm tôi</button></a>",
             });
             if ((int)rs.GetType().GetProperty("StatusCode").GetValue(rs, null) == 200)
             {
@@ -151,6 +151,14 @@ namespace BE.Controllers
         public async Task<ActionResult> ChangeAvatarUrl()
         {
             return Ok();
+        }
+
+        [HttpGet("GetMoney")]
+        public async Task<ActionResult> GetMoney([FromQuery] string Username)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == Username);
+            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            return Ok(new {money = user.Money});
         }
     }
 }

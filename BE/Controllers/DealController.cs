@@ -52,6 +52,62 @@ namespace BE.Controllers
             return await deal.ToListAsync();
         }
 
+        [HttpGet("GetBuyedDeal")]
+        public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBuyedDeal(string Username)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
+            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            var deal = from Deal in _context.Deal 
+            join User in _context.User on Deal.SellUserId equals User.UserId 
+            join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
+            join Card in _context.Card on UserCard.CardId equals Card.CardId 
+            orderby Deal.CreateDate
+            where (Deal.BuyUserId != null)
+            && (Deal.BuyUserId == user.UserId)
+            select new DealGetBuyedOutputDto() {
+                DealId = Deal.DealId,
+                SellUsername = User.Username,
+                CardId = Card.CardId,
+                CardName = Card.CardName,
+                CardImageURL = Card.CardImageURL,
+                CardTypeName = Card.CardTypeName,
+                CardOriginName = Card.CardOriginName,
+                CardElementName = Card.CardElementName,
+                CardRarityName = Card.CardRarityName,
+                Price = Deal.Price,
+                CreateDate = Deal.CreateDate,
+            };
+            return await deal.ToListAsync();
+        }
+
+        [HttpGet("GetSelledDeal")]
+        public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSelledDeal(string Username)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
+            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            var deal = from Deal in _context.Deal 
+            join User in _context.User on Deal.BuyUserId equals User.UserId 
+            join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
+            join Card in _context.Card on UserCard.CardId equals Card.CardId 
+            where (Deal.BuyUserId != null)
+            && (Deal.SellUserId == user.UserId)
+            orderby Deal.CreateDate
+            select new DealGetSelledOutputDto() {
+                DealId = Deal.DealId,
+                BuyUsername = User.Username,
+                CardId = Card.CardId,
+                CardName = Card.CardName,
+                CardImageURL = Card.CardImageURL,
+                CardTypeName = Card.CardTypeName,
+                CardOriginName = Card.CardOriginName,
+                CardElementName = Card.CardElementName,
+                CardRarityName = Card.CardRarityName,
+                Price = Deal.Price,
+                CreateDate = Deal.CreateDate,
+            };
+            return await deal.ToListAsync();
+        }
+
         [HttpPost("CreateDeal")]
         public async Task<ActionResult> CreateDeal([FromBody] DealCreateInputDto input)
         {
