@@ -47,7 +47,7 @@ namespace BE.Controllers
             {
                 To = input.Email,
                 Subject = "Active your YuGhiOh TCG account",
-                Body = "<h3>Click the button to active your account!</h3><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #7400cc; color: white; border-radius: 6px; border: none;'>Click me!!!</button></a>",
+                Body = "<h2>Dear" + input.Username + ", click the button to active your account!</h2><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #7400cc; color: white; border-radius: 6px; border: none;'>Click me!!!</button></a>",
             });
             if ((int)rs.GetType().GetProperty("StatusCode").GetValue(rs, null) == 200)
             {
@@ -109,7 +109,7 @@ namespace BE.Controllers
                 {
                     To = user.Email,
                     Subject = "Forgot your password!",
-                    Body = "<h2>Please don't share your password for anyone, even ADMIN!</h2><h3>Your password is:</h3>" + user.Password,
+                    Body = "<h2>Dear" + user.Username + ", please don't share your password for anyone, even ADMIN!</h2><h3>Your password is:</h3>" + user.Password,
                 });
             }
         }
@@ -154,7 +154,7 @@ namespace BE.Controllers
             if (user == null) return BadRequest(new {message = "User not found!"});
             user.AvatarUrl = input.NewAvatarUrl;
             await _context.SaveChangesAsync();
-            return Ok(new {message = "Change Avatar successful"});
+            return Ok(new {message = "Change Avatar successful!"});
         }
 
         [HttpGet("GetMoney")]
