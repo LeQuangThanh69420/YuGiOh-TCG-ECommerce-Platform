@@ -1,10 +1,14 @@
-import './../../../styles/SignUp.css'
-import './../../../styles/IconDefine.css'
+import { useContext, useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import { checkSession } from "../../../utils/checkSession";
+
 import LogoDuRiu from '../../Shared/LogoDuRiu';
 import Input from "../../Shared/Input/Input";
-import { Link, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useRef, useState } from "react";
 import { AppData } from '../../../Root';
+
+import './../../../styles/IconDefine.css'
+import './../../../styles/SignUp.css'
 
 function SignUp() {
 
@@ -52,6 +56,12 @@ function SignUp() {
                 })
         }
     };
+
+    useEffect(() => {
+        if(checkSession()) {
+            navigate('/')
+        }
+    }, [])
 
     useEffect(() => {
         frontRef.current.style.transform = 'rotateY(180deg)';

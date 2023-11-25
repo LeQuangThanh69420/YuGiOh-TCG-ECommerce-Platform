@@ -1,5 +1,7 @@
-import { useContext, useEffect, useReducer, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { checkSession } from "../../../utils/checkSession";
 
 import Input from "../../Shared/Input/Input";
 import LogoDuRiu from "../../Shared/LogoDuRiu";
@@ -15,6 +17,7 @@ function Login() {
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [showModalInput, setShowModalInput] = useState('');
 
   const frontRef = useRef();
   const backRef = useRef();
@@ -52,6 +55,24 @@ function Login() {
 
   };
 
+  const handleForgetPassword = () => {
+
+  }
+
+  const handleNavigateSignUp = () => {
+    frontRef.current.style.transform = 'rotateY(180deg)';
+    backRef.current.style.transform = 'rotateY(0deg)';
+    setTimeout(() => {
+      navigate('/sign-up')
+    }, 500)
+  }
+
+  useEffect(() => {
+    if(checkSession()) {
+      navigate('/')
+    }
+  }, [])
+
   useEffect(() => {
     frontRef.current.style.transform = 'rotateY(180deg)';
     backRef.current.style.transform = 'rotateY(0deg)';
@@ -61,14 +82,6 @@ function Login() {
       backRef.current.style.transform = 'rotateY(-180deg)';
     }, 200);
   }, [])
-
-  const handleNavigateSignUp = () => {
-    frontRef.current.style.transform = 'rotateY(180deg)';
-    backRef.current.style.transform = 'rotateY(0deg)';
-    setTimeout(() => {
-      navigate('/sign-up')
-    }, 500)
-  }
 
   return (
     <div className="login-screen">
@@ -100,7 +113,7 @@ function Login() {
                   }
                   setData={setPassword}
                 />
-                <p className="links">Forgot Password?</p>
+                <p className="links" onClick={handleForgetPassword}>Forgot Password?</p>
               </div>
             </div>
             <div className="login-button-container">
