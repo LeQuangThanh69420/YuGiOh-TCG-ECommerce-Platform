@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { logOut } from "../../api/apiUser";
 
 import LogoDuRiu from "./LogoDuRiu";
 import { AppData } from "../../Root";
@@ -11,7 +13,9 @@ import './../../styles/IconDefine.css';
 
 function Header() {
 
-    const { currentRoute, userData } = useContext(AppData);
+    const navigate = useNavigate();
+
+    const { currentRoute, userData, setUserData, showToast, setType, setMessage } = useContext(AppData);
 
     const [isOpenInfo, setIsOpenInfo] = useState(false);
 
@@ -20,7 +24,12 @@ function Header() {
     }
 
     const handleLogOut = () => {
-        
+        setIsOpenInfo(false);
+        logOut(() => setUserData({}));
+        navigate('/login');
+        setType('toast-success');
+        setMessage('Log out successfully!')
+        showToast();
     }
 
     return (
@@ -42,7 +51,7 @@ function Header() {
                         <div className={`icon-2 ${currentRoute === '/buy-riu-coin' ? 'coin-purple' : 'coin-gray'}`}></div>
                     </Link>
                 </div>
-                {!userData ?
+                {!userData.username ?
                     <Link to={'/login'}>
                         <button className="users-button">
                             Login
@@ -77,6 +86,7 @@ function Header() {
                 </div>
             </div>}
         </div>
+        
     );
 }
 
