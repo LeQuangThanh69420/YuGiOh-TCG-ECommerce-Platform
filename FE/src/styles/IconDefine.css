@@ -46,6 +46,18 @@
     background-image: url('./../asset/gachaPurple.svg');
 }
 
+.riu-coin-icon {
+    background-image: url('./../asset/RiuCoinIcon.svg');
+}
+
+.log-out {
+    background-image: url('./../asset/LogOut.svg');
+}
+
+.info-icon {
+    background-image: url('./../asset/InfoIcon.svg');
+}
+
 .icon-1 {
     width: 24px;
     height: 24px;
@@ -66,6 +78,15 @@
     cursor: pointer;
 }
 
+.icon-3 {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .icon-2:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }

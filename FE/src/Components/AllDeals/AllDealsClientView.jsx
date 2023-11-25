@@ -10,7 +10,6 @@ function AllDealsClientView() {
     return (
         <>
             <div className="AllDeals-main-content">
-                <Header />
                 <AdSlider />
                 <AllDealsBody deals={deals} setDeals={setDeals} />
             </div>

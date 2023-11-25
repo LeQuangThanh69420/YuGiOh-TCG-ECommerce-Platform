@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
-import isRegex from "../../../utils/isRegex";
-
 import "./../../../styles/Input.css";
 import './../../../styles/IconDefine.css'
 
 
-function Input({ label, type, icon, regex, errorMessage, setData }) {
+function Input({ label, type, icon, isRegexChecking = true, regex, errorMessage, setData }) {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
   const [eye, setEye] = useState("close");
@@ -26,17 +24,19 @@ function Input({ label, type, icon, regex, errorMessage, setData }) {
   }, [inputValue]);
 
   const handleBlur = () => {
-    console.log(isRegex(regex), regex);
-    if (isRegex(regex)) {
-      if (inputValue.match(regex)) {
-        setError('')
+    if (isRegexChecking) {
+      if (!inputValue.match(regex)) {
+        setError(true);
       } else {
-        setError('error')
+        setError(false);
       }
     } else {
-      console.log('deo phai regex');
+      if (inputValue !== regex) {
+        setError(true);
+      } else {
+        setError(false);
+      }
     }
-
   };
 
   const handleFocus = () => {

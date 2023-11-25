@@ -9,6 +9,8 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 button {
@@ -25,6 +27,11 @@ button {
 
 button:hover {
   background: rgb(100, 0, 176);
+}
+
+a {
+  color: unset;
+  text-decoration: none;
 }
 
 input {
@@ -47,6 +54,7 @@ input:focus {
   flex-direction: column;
   gap: 40px;
   position: relative;
+  background: #F8F8F8;
 }
 
 body {
@@ -60,11 +68,10 @@ body {
 
 .footer-section {
   width: 100%;
-  height: 440px;
   display: flex;
   flex-direction: column;
   padding: 24px 112px;
-  background: rgb(247, 247, 247);
+  background: #F1F1F1;
   gap: 24px;
 }
 

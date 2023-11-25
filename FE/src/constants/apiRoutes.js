@@ -17,7 +17,8 @@ const API_ROUTES = {
     CHANGE_EMAIL: '/User/ChangeEmail',
     CHANGE_AVATAR: '/User/ChangeAvatarUrl',
     USERCARD_SEARCH_OWNED_SEPARATE: '/UserCard/SearchOwnedSeparate',
-    USERCARD_SEARCH_OWNED_STACK: '/UserCard/SearchOwnedSStack'
+    USERCARD_SEARCH_OWNED_STACK: '/UserCard/SearchOwnedSStack',
+    GET_MONEY: '/User/GetMoney',
 }
 
 export default API_ROUTES
