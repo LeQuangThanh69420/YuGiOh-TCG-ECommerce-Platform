@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     >
       <Route
         index
-        element={<ClientView />}
+        element={<AllDeals />}
       />
       <Route
         path='/login'
@@ -41,7 +41,7 @@ const router = createBrowserRouter(
       />
       <Route
         path='/cards'
-        element={<AllCards />}
+        element={<ClientView />}
       />
       <Route 
         path='/gacha'

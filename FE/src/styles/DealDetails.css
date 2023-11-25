@@ -1,0 +1,116 @@
+.DealDetails {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+.DealDetails-content {
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    min-height: 300px;
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.DealDetails-close {
+    cursor: pointer;
+    z-index: 1;
+}
+
+.DealDetails-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.DealDetails-DealName-infoLabel {
+    font-size: 27px;
+    font-weight: 600;
+    @media (min-height: 400px) {
+        /* Adjust the styles for screens wider than 576px */
+        font-size: 17px;
+        /* Two NapTien divs per row */
+    }
+    
+    @media (min-height: 800px) {
+        /* Adjust the styles for screens wider than 768px */
+        font-size: 27px;
+        /* Three NapTien divs per row */
+    }
+}
+
+.DealDetails-DealName-infoName {
+    font-size: 21px;
+    @media (min-height: 400px) {
+        /* Adjust the styles for screens wider than 576px */
+        font-size: 13px;
+        /* Two NapTien divs per row */
+    }
+    
+    @media (min-height: 800px) {
+        /* Adjust the styles for screens wider than 768px */
+        font-size: 21px;
+        /* Three NapTien divs per row */
+    }
+}
+
+.DealDetails-Image > img {
+    width: 300px;
+    @media (min-height: 400px) {
+        /* Adjust the styles for screens wider than 576px */
+        width: 200px;
+        /* Two NapTien divs per row */
+    }
+    
+      @media (min-height: 800px) {
+        /* Adjust the styles for screens wider than 768px */
+        width: 300px;
+        /* Three NapTien divs per row */
+    }
+}
+
+.DealDetails-Image{
+    border: 3px solid gray;
+    padding: 7px;
+    border-radius: 7px;
+}
+
+.DealDetails-body{
+    display: flex;
+    gap: 30px;
+}
+
+.DealDetails-DuRiu > img{
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+}
+
+.DealDetails-DuRiu{
+    font-size: 25px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: blueviolet;
+}
+
+.DealDetails-head{
+    display: flex;
+    padding-bottom: 10px;
+    justify-content: space-between;
+}
