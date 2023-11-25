@@ -146,7 +146,6 @@ namespace BE.Controllers
                 return Ok(new {message = "Change Email successfully!"});
             }
         }
-<<<<<<< HEAD
         
         [HttpPost("ChangeAvatarUrl")]
         public async Task<ActionResult> ChangeAvatarUrl([FromBody] UserChangeAvatarUrlInputDto input)
@@ -164,7 +163,6 @@ namespace BE.Controllers
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == Username);
             if (user == null) return BadRequest(new {message = "User not fould!"});
             return Ok(new {money = user.Money});
->>>>>>> main
         }
     }
 }
