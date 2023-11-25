@@ -8,7 +8,54 @@
 
 .mail {
     background-image: url('./../asset/mail.svg');
+}
 
+.key {
+    background-image: url('./../asset/key.svg');
+}
+
+.home-gray {
+    background-image: url('./../asset/homeGray.svg');
+}
+
+.home-purple {
+    background-image: url('./../asset/homePurple.svg');
+}
+
+.coin-gray {
+    background-image: url('./../asset/coinGray.svg');
+}
+
+.coin-purple {
+    background-image: url('./../asset/coinPurple.svg');
+}
+
+.card-gray {
+    background-image: url('./../asset/cardsGray.svg');
+}
+
+.card-purple {
+    background-image: url('./../asset/cardsPurple.svg');
+}
+
+.gacha-gray {
+    background-image: url('./../asset/gachaGray.svg');
+}
+
+.gacha-purple {
+    background-image: url('./../asset/gachaPurple.svg');
+}
+
+.riu-coin-icon {
+    background-image: url('./../asset/RiuCoinIcon.svg');
+}
+
+.log-out {
+    background-image: url('./../asset/LogOut.svg');
+}
+
+.info-icon {
+    background-image: url('./../asset/InfoIcon.svg');
 }
 
 .icon-1 {
@@ -20,4 +67,26 @@
     background-position: center;
     top: 6px;
     left: 6px;
+}
+
+.icon-2 {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+}
+
+.icon-3 {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.icon-2:hover {
+    transform: scale(1.05);
 }

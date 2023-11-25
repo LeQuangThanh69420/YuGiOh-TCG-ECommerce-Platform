@@ -1,14 +1,23 @@
-import "./../../styles/Login.css";
-import Input from "../Shared/Input/Input";
-import LogoDuRiu from "../Shared/LogoDuRiu";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { checkSession } from "../../../utils/checkSession";
+
+import Input from "../../Shared/Input/Input";
+import LogoDuRiu from "../../Shared/LogoDuRiu";
+import { AppData } from "../../../Root";
+
+import "./../../../styles/Login.css";
 
 function Login() {
+
   const navigate = useNavigate();
+
+  const {showToast, setMessage, setType, setUserData} = useContext(AppData);
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [showModalInput, setShowModalInput] = useState('');
 
   const frontRef = useRef();
   const backRef = useRef();
@@ -16,7 +25,7 @@ function Login() {
   const handleSubmit = () => {
     let status;
 
-    fetch("http://localhost:5233/api/User/Login", {
+    fetch(import.meta.env.VITE_API_URL +"/User/Login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,26 +40,24 @@ function Login() {
         return response.json();
       })
       .then((data) => {
+        showToast();
         if (status === 200) {
           localStorage.setItem('userData', JSON.stringify(data));
+          setMessage('Login Successfully!');
+          setType('toast-success');
+          setUserData(data);
           navigate('/');
         } else {
-          console.log(data.message);
+          setMessage(data.message)
+          setType('toast-error')
         }
       })
 
   };
 
-  useEffect(() => {
-    console.log('mount');
-    frontRef.current.style.transform = 'rotateY(180deg)';
-    backRef.current.style.transform = 'rotateY(0deg)';
+  const handleForgetPassword = () => {
 
-    setTimeout(() => {
-      frontRef.current.style.transform = 'rotateY(0deg)';
-      backRef.current.style.transform = 'rotateY(-180deg)';
-    }, 200);
-  }, [])
+  }
 
   const handleNavigateSignUp = () => {
     frontRef.current.style.transform = 'rotateY(180deg)';
@@ -60,10 +67,26 @@ function Login() {
     }, 500)
   }
 
+  useEffect(() => {
+    if(checkSession()) {
+      navigate('/')
+    }
+  }, [])
+
+  useEffect(() => {
+    frontRef.current.style.transform = 'rotateY(180deg)';
+    backRef.current.style.transform = 'rotateY(0deg)';
+
+    setTimeout(() => {
+      frontRef.current.style.transform = 'rotateY(0deg)';
+      backRef.current.style.transform = 'rotateY(-180deg)';
+    }, 200);
+  }, [])
+
   return (
     <div className="login-screen">
       <div className="go-home">
-        <LogoDuRiu logoColor={"#45B2FF"} logoNameColor={"#45B2FF"} />
+        <LogoDuRiu logoColor={"#7400CC"} logoNameColor={"#7400CC"} />
       </div>
       <div className="login-container">
         <div className="bg-img"></div>
@@ -90,7 +113,7 @@ function Login() {
                   }
                   setData={setPassword}
                 />
-                <p className="links">Forgot Password?</p>
+                <p className="links" onClick={handleForgetPassword}>Forgot Password?</p>
               </div>
             </div>
             <div className="login-button-container">

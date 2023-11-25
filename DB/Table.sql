@@ -60,3 +60,35 @@ CREATE TABLE Deal (
     Price int NOT NULL,
     CreateDate datetime2(0) NOT NULL,
 );
+
+--Procedure
+go
+CREATE proc SearchOwnedStack
+    @UserId bigint,
+    @CardName nvarchar(60) = NULL,
+    @CardTypeName nvarchar(10) = NULL,
+    @CardOriginName nvarchar(20) = NULL,
+    @CardElementName nvarchar(10) = NULL,
+    @CardRarityName nvarchar(5) = NULL
+as
+begin
+    select 
+        Card.CardId, 
+        CardName, 
+        CardImageURL, 
+        CardTypeName, 
+        CardOriginName, 
+        CardElementName, 
+        CardRarityName, 
+        OnDeal, 
+        Count(UserId) as Quantity 
+    from UserCard right join Card on UserCard.CardId = Card.CardId AND UserCard.UserId = @UserId
+    where (UserId = @UserId or UserId IS NULL)
+    and (@CardName = '' or @CardName IS NULL or CardName like '%' + @CardName + '%')
+    and (@CardTypeName = '' or @CardTypeName IS NULL or CardTypeName = @CardTypeName)
+    and (@CardOriginName = '' or @CardOriginName IS NULL or CardOriginName = @CardOriginName)
+    and (@CardElementName ='' or @CardElementName IS NULL or CardElementName = @CardElementName)
+    and (@CardRarityName = '' or @CardRarityName IS NULL or CardRarityName = @CardRarityName)
+    GROUP by UserId, Card.CardId, CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName, OnDeal
+    ORDER BY Quantity DESC
+end

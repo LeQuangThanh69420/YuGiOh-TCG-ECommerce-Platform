@@ -1,51 +1,134 @@
-.main-container {
-    display: flex; /*chay sang ngang*/
-    flex-direction: column;
-    width: 100%;
-    box-shadow: 3px 2px 20px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    z-index: 1;
-    top: 0;
+.header-main-container {
+  display: flex; /*chay sang ngang*/
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  justify-content: center;
+  background: white;
+  padding: 12px 100px;
 }
 
 .header-bar {
-    width: 100%;
-    min-height: 80px;
-    display: flex;
-    padding: 20px 40px;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-
-}
-
-.logo {
-    
+  width: 1180px;
+  display: flex;
+  align-items: center;
+  background: white;
+  justify-content: space-between;
 }
 
 .search-bar {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .search-opt {
-    width: 100%;
-    height: 40px;
-    display: flex;
-    background: white;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4px 30px;
-    width: 1180px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  background: white;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 30px;
+  width: 1180px;
 }
 
 .search-opt-container {
-    display: flex;
-    justify-content: center;
-    background: white;
+  display: flex;
+  justify-content: center;
+  background: white;
 }
 
 .header-user-avt {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.header-user-avt:hover {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
+.header-nav-icons {
+  display: flex;
+  gap: 32px;
+}
+
+.header-user-option {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: absolute;
+  right: 60px;
+  top: 72px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.header-user-info {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.header-user-avt-display {
+  width: 32px;
+  height: 32px;
+}
+
+.user-info-child {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.user-name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.user-money {
+  display: flex;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffc400;
+}
+
+.option-line {
+  width: 100%;
+  height: 1px;
+  background: #979797;
+}
+
+.header-option-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.header-option-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.header-option-button:hover {
+    background: #F0F0F0;
+}
+.logout-text {
+    font-weight: 500;
+    color: #cc0000;
+}
+.info-text {
+    font-weight: 500;
 }

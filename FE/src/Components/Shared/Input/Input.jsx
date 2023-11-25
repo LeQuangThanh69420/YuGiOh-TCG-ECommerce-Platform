@@ -1,9 +1,10 @@
-import "./../../../styles/Input.css";
-import './../../../styles/IconDefine.css'
 import { useEffect, useState } from "react";
 
+import "./../../../styles/Input.css";
+import './../../../styles/IconDefine.css'
 
-function Input({ label, type, icon, regex, errorMessage, setData }) {
+
+function Input({ label, type, icon, isRegexChecking = true, regex, errorMessage, setData }) {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
   const [eye, setEye] = useState("close");
@@ -23,10 +24,18 @@ function Input({ label, type, icon, regex, errorMessage, setData }) {
   }, [inputValue]);
 
   const handleBlur = () => {
-    if (!inputValue.match(regex)) {
-      setError("error");
+    if (isRegexChecking) {
+      if (!inputValue.match(regex)) {
+        setError(true);
+      } else {
+        setError(false);
+      }
     } else {
-      setError("");
+      if (inputValue !== regex) {
+        setError(true);
+      } else {
+        setError(false);
+      }
     }
   };
 
@@ -51,7 +60,7 @@ function Input({ label, type, icon, regex, errorMessage, setData }) {
         </div>
         <input
           type={internalType}
-          id={`input-${type}`}
+          id={`input-${label}`}
           value={inputValue}
           className={`${icon && 'isIcon'} is${type}`}
           placeholder={label}
