@@ -36,18 +36,18 @@ namespace BE.Controllers
         {
             if (await UserExists(input.Username))
             {
-                return BadRequest(new {message = "Tên tài khoản đã có người sử dụng!"});
+                return BadRequest(new {message = "Username already in use!"});
             }
             if (await EmailExists(input.Email))
             {
-                return BadRequest(new {message = "Email đã có người sử dụng!"});
+                return BadRequest(new {message = "Email already in use!"});
             }
             var activeCode = new Random().Next(1000, 9999);
             var rs = await _email.SendEmail(new EmailModel()
             {
                 To = input.Email,
-                Subject = "Kích hoạt tài khoản YuGhiOh TCG",
-                Body = "<h3>Bấm nút để kích hoạt</h3><a href='http://trai4chet2tlqserver.id.vn:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #008cff; color: white; border-radius: 6px; border: none;'>Bấm tôi</button></a>",
+                Subject = "Active your YuGhiOh TCG account",
+                Body = "<h3>Click the button to active your account!</h3><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #7400cc; color: white; border-radius: 6px; border: none;'>Click me!!!</button></a>",
             });
             if ((int)rs.GetType().GetProperty("StatusCode").GetValue(rs, null) == 200)
             {
@@ -71,24 +71,24 @@ namespace BE.Controllers
         public async Task<ActionResult> ActiveUser(string username, int activeCode)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
-            if (user == null) return NotFound(new {message = "URL không tồn tại!"});
+            if (user == null) return NotFound(new {message = "URL not fould!"});
             if (user.ActiveCode == activeCode)
             {
                 user.Actived = true;
                 user.ActiveCode = null;
                 await _context.SaveChangesAsync();
-                return Ok(new {message = "Kích hoạt tài khoản thành công!"});
+                return Ok(new {message = "Active account successfully!"});
             }
-            else return NotFound(new {message = "URL không tồn tại!"});
+            else return NotFound(new {message = "URL not found!"});
         }
 
         [HttpPost("Login")]
         public async Task<ActionResult<UserLoginOutputDto>> Login([FromBody] UserLoginInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
-            if (input.Password != user.Password) return BadRequest(new {message = "Sai mật khẩu, vui lòng kiểm tra lại!"});
-            if (user.Actived != true) return BadRequest(new {message = "Tài khoản chưa kích hoạt, vui lòng kiểm tra Email!"});
+            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (input.Password != user.Password) return BadRequest(new {message = "Wrong password, please check again!"});
+            if (user.Actived != true) return BadRequest(new {message = "Account is unactivated, please check your Email!"});
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
@@ -101,15 +101,15 @@ namespace BE.Controllers
         public async Task<ActionResult> ForgetPassword([FromBody] UserForgetPasswordInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
-            if (user.Email != input.Email) return BadRequest(new {message = "Email không đúng"});
+            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user.Email != input.Email) return BadRequest(new {message = "Wrong Email!"});
             else
             {
                 return await _email.SendEmail(new EmailModel()
                 {
                     To = user.Email,
-                    Subject = "Mật khẩu bạn quên!",
-                    Body = "<h2>Vui lòng không chia sẻ mật khẩu cho bất kỳ ai, kể cả ADMIN!</h2><h3>Mật khẩu của bạn là:</h3>" + user.Password,
+                    Subject = "Forgot your password!",
+                    Body = "<h2>Please don't share your password for anyone, even ADMIN!</h2><h3>Your password is:</h3>" + user.Password,
                 });
             }
         }
@@ -118,13 +118,13 @@ namespace BE.Controllers
         public async Task<ActionResult> ChangePassword([FromBody] UserChangePasswordInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
-            if (user.Password != input.CurrentPassword) return BadRequest(new {message = "Sai Mật Khẩu Cũ"});
+            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user.Password != input.CurrentPassword) return BadRequest(new {message = "Wrong current password!"});
             else
             {
                 user.Password = input.NewPassword;
                 await _context.SaveChangesAsync();
-                return Ok(new {message = "Thay đổi mật khẩu thành công"});
+                return Ok(new {message = "Change password successfully!"});
             }
         }
 
@@ -132,32 +132,36 @@ namespace BE.Controllers
         public async Task<ActionResult> ChangeEmail([FromBody] UserChangeEmailInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
-            if (user.Password != input.CurrentPassword) return BadRequest(new {message = "Sai Mật Khẩu Cũ"});
-            if (user.Email != input.CurrentEmail) return BadRequest(new {message = "Sai Email Cũ"});
+            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user.Password != input.CurrentPassword) return BadRequest(new {message = "Wrong current password!"});
+            if (user.Email != input.CurrentEmail) return BadRequest(new {message = "Wrong current Email!"});
             if (await EmailExists(input.NewEmail))
             {
-                return BadRequest(new {message = "Email đã có người sử dụng!"});
+                return BadRequest(new {message = "Email already in use!"});
             }
             else
             {
                 user.Email = input.NewEmail;
                 await _context.SaveChangesAsync();
-                return Ok(new {message = "Thay đổi Email thành công"});
+                return Ok(new {message = "Change Email successfully!"});
             }
         }
-
+        
         [HttpPost("ChangeAvatarUrl")]
-        public async Task<ActionResult> ChangeAvatarUrl()
+        public async Task<ActionResult> ChangeAvatarUrl([FromBody] UserChangeAvatarUrlInputDto input)
         {
-            return Ok();
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
+            if (user == null) return BadRequest(new {message = "User not found!"});
+            user.AvatarUrl = input.NewAvatarUrl;
+            await _context.SaveChangesAsync();
+            return Ok(new {message = "Change Avatar successful"});
         }
 
         [HttpGet("GetMoney")]
         public async Task<ActionResult> GetMoney([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (user == null) return BadRequest(new {message = "User not fould!"});
             return Ok(new {money = user.Money});
         }
     }

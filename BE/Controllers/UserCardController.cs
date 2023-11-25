@@ -24,7 +24,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedSeparate([FromQuery] UserCardSearchOwnedInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
-            if (user == null) return BadRequest(new { message = "Tài khoản không tồn tại!" });
+            if (user == null) return BadRequest(new { message = "User not fould!" });
             var userCard = from UserCard in _context.UserCard
                            join Card in _context.Card on UserCard.CardId equals Card.CardId
                            where (UserCard.UserId == user.UserId)
@@ -52,7 +52,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedStack([FromQuery] UserCardSearchOwnedInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
-            if (user == null) return BadRequest(new { message = "Tài khoản không tồn tại!" });
+            if (user == null) return BadRequest(new { message = "User not fould!" });
             var result = await _context.SearchOwnedOutput
                 .FromSqlRaw("EXEC SearchOwnedStack @UserId, @CardName, @CardTypeName, @CardOriginName, @CardElementName, @CardRarityName",
                     new SqlParameter("@UserId", user.UserId),

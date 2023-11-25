@@ -8,6 +8,7 @@ namespace BE.Model.Dto
 {
     public class DealEditInputDto
     {
+        [Required] public string SellUsername { get; set; }
         [Required] public long DealId { get; set; }
         [Required] public long UserCardId { get; set; }
         [Required] public int Price { get; set; }
