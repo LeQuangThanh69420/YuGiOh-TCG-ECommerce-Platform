@@ -29,9 +29,23 @@ button:hover {
   background: rgb(100, 0, 176);
 }
 
+.button-2 {
+  background: white;
+  color: #7400CC;
+}
+
+.button-2:hover {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
 a {
   color: unset;
   text-decoration: none;
+}
+
+p {
+  margin: 0;
 }
 
 input {

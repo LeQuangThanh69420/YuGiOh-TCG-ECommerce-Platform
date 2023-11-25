@@ -40,7 +40,6 @@ export default function Root() {
   }, [location.pathname])
 
   useEffect(() => {
-    console.log('change');
     if (userData.username) {
       getMoney(userData.username).then(money => {
         setUserData(prev => ({

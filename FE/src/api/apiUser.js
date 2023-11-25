@@ -14,3 +14,21 @@ export const logOut = async (cleanUpData) => {
   localStorage.removeItem("userData");
   cleanUpData();
 };
+
+export const forgetPassword = async (username, email) => {
+  try {
+    const response = await fetch(`${API_URL}${API_ROUTES.FORGET_PASSWORD}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        email: email,
+      }),
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};

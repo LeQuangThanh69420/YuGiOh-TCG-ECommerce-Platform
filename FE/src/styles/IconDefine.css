@@ -90,3 +90,7 @@
 .icon-2:hover {
     transform: scale(1.05);
 }
+
+.text-primary {
+    color: #7400CC;
+}
