@@ -12,8 +12,7 @@ function ClientView() {
     
     return(
         <div className="main-content">
-            <Header />
-            <AdSlider />
+            <Header />  
             <Body cards={cards} setCards={setCards}/>
         </div>
     ) 

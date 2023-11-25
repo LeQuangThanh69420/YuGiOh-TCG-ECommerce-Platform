@@ -8,6 +8,7 @@ import SignUp from './Components/Auth/SignUp/SignUp.jsx'
 import NapRiuCoin from './Components/NapRiuCoin/NapRiuCoin.jsx'
 import AllCards from './Components/AllCards/AllCards.jsx'
 import Gacha from './Components/Gacha/Gacha.jsx'
+import AllDeals from './Components/AllDeals/AllDealsClientView.jsx'
 
 import './styles/index.css'
 
@@ -19,7 +20,7 @@ const router = createBrowserRouter(
     >
       <Route
         index
-        element={<ClientView />}
+        element={<AllDeals />}
       />
       <Route
         path='/login'
@@ -39,7 +40,7 @@ const router = createBrowserRouter(
       />
       <Route
         path='/cards'
-        element={<AllCards />}
+        element={<ClientView />}
       />
       <Route 
         path='/gacha'
