@@ -146,5 +146,15 @@ namespace BE.Controllers
                 return Ok(new {message = "Thay đổi Email thành công"});
             }
         }
+        
+        [HttpPost("ChangeAvatar")]
+        public async Task<ActionResult> ChangeAvatar([FromBody] UserChangeAvatarInputDto input)
+        {
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
+            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            user.AvatarUrl = input.NewAvatar;
+            await _context.SaveChangesAsync();
+            return Ok(new {message = "Thay đổi Avatar thành công"});
+        }
     }
 }

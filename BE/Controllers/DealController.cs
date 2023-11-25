@@ -54,6 +54,8 @@ namespace BE.Controllers
         [HttpPost("CreateDeal")]
         public async Task<ActionResult> CreateDeal(DealCreateInputDto input)
         {
+            TimeZoneInfo vietnamTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+            DateTime vietnamTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, vietnamTimeZone);
             var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
             if (selluser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
             var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId && uc.UserId == selluser.UserId);
@@ -68,7 +70,7 @@ namespace BE.Controllers
                     BuyUserId = null,
                     UserCardId = usercard.UserCardId,
                     Price = input.Price,
-                    CreateDate = DateTime.UtcNow,
+                    CreateDate = vietnamTime,
                 };
                 _context.Deal.Add(newdeal);
                 await _userCard.MakeOnDeal(usercard.UserCardId);
@@ -79,6 +81,8 @@ namespace BE.Controllers
         [HttpPut("EditDeal")]
         public async Task<ActionResult> EditDeal(DealEditInputDto input)
         {
+            var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
+            if (selluser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
             var deal = await _context.Deal.SingleOrDefaultAsync(d => d.DealId == input.DealId);
             if (input.DealId == null ) return BadRequest(new {message = "Không có giao dịch này!"});
             if (input.Price <= 0) return BadRequest(new {message = "Giá tiền không thoả mãn"});
@@ -95,6 +99,8 @@ namespace BE.Controllers
         [HttpDelete("DeleteDeal")]
         public async Task<ActionResult> DeleteDeal(DealDeleteInputDto input)
         {
+            var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
+            if (selluser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
             var deal = await _context.Deal.SingleOrDefaultAsync(d => d.DealId == input.DealId);
             if (deal == null) return NotFound(new {message = "Không tìm thấy giao dịch này!" });
             else

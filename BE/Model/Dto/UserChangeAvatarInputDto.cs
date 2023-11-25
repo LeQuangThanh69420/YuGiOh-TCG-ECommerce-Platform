@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE.Model.Dto
 {
-    public class DealDeleteInputDto
+    public class UserChangeAvatarInputDto
     {
-        [Required] public string SellUsername { get; set; }
-        [Required] public long DealId { get; set; }
+        [Required] public string Username { get; set; }
+        [Required] public string NewAvatar { get; set; }
     }
 }
