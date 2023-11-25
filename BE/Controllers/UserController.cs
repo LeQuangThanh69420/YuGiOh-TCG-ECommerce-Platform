@@ -147,14 +147,14 @@ namespace BE.Controllers
             }
         }
         
-        [HttpPost("ChangeAvatar")]
-        public async Task<ActionResult> ChangeAvatar([FromBody] UserChangeAvatarInputDto input)
+        [HttpPost("ChangeAvatarUrl")]
+        public async Task<ActionResult> ChangeAvataUrl([FromBody] UserChangeAvatarUrlInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
-            user.AvatarUrl = input.NewAvatar;
+            if (user == null) return BadRequest(new {message = "User not found!"});
+            user.AvatarUrl = input.NewAvatarUrl;
             await _context.SaveChangesAsync();
-            return Ok(new {message = "Thay đổi Avatar thành công"});
+            return Ok(new {message = "Change Avatar successful"});
         }
     }
 }

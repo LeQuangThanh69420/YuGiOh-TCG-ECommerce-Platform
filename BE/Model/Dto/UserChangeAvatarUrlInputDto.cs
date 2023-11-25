@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BE.Model.Dto
 {
-    public class UserChangeAvatarInputDto
+    public class UserChangeAvatarUrlInputDto
     {
         [Required] public string Username { get; set; }
-        [Required] public string NewAvatar { get; set; }
+        [Required] public string NewAvatarUrl { get; set; }
     }
 }
