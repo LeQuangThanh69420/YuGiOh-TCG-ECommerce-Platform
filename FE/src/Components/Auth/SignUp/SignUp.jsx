@@ -22,6 +22,8 @@ function SignUp() {
 
     const handleSubmit = () => {
         let status;
+
+        console.log(email, userName, password, repeatPassword);
         if (password === repeatPassword) {
             fetch(import.meta.env.VITE_API_URL + "/User/Register", {
                 method: "POST",
