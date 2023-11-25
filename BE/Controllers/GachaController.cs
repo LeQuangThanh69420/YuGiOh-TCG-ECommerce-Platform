@@ -31,7 +31,7 @@ namespace BE.Controllers
                 user.Money -= price;
                 _context.SaveChanges();
             }
-            else return BadRequest(new {message = "Tài khoản không đủ tiền"});
+            else return BadRequest(new {message = "Account don't have enough money!"});
 
             for (int i = 0; i < 10; i++)
             {

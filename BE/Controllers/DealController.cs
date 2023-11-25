@@ -57,7 +57,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBuyedDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (user == null) return BadRequest(new {message = "User not fould!"});
             var deal = from Deal in _context.Deal 
             join User in _context.User on Deal.SellUserId equals User.UserId 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
@@ -85,7 +85,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSelledDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
-            if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (user == null) return BadRequest(new {message = "User not fould!"});
             var deal = from Deal in _context.Deal 
             join User in _context.User on Deal.BuyUserId equals User.UserId 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
@@ -113,7 +113,7 @@ namespace BE.Controllers
         public async Task<ActionResult> CreateDeal([FromBody] DealCreateInputDto input)
         {
             var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
-            if (selluser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (selluser == null) return BadRequest(new {message = "User not fould!"});
             var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId && uc.UserId == selluser.UserId);
             if (usercard.UserCardId == null) return BadRequest(new {message = "Không sở hữu thẻ này!"});
             if (usercard.OnDeal == true) return BadRequest(new {message = "Card đang nằm trong một deal khác!"});
@@ -170,10 +170,10 @@ namespace BE.Controllers
         public async Task<ActionResult> AcceptDeal([FromBody] DealAcceptInputDto input)
         {
             var buyuser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.BuyUsername);
-            if (buyuser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (buyuser == null) return BadRequest(new {message = "User not fould!"});
             var deal = await _context.Deal.SingleOrDefaultAsync(d => d.DealId == input.DealId);
             if (buyuser.UserId == deal.SellUserId) return BadRequest(new {message = "Không thể mua thẻ của chính mình"});
-            if (buyuser.Money < deal.Price) return BadRequest(new {message = "Tài khoản không đủ tiền"});
+            if (buyuser.Money < deal.Price) return BadRequest(new {message = "Account don't have enough money!"});
             if (input.DealId != deal.DealId || input.DealId == null ) return BadRequest(new {message = "Không có giao dịch này!"});
             if (deal.BuyUserId != null) return BadRequest(new {message = "Giao dịch không tồn tại"});
             else

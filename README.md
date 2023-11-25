@@ -1,6 +1,6 @@
 # Đồ án Ưeb nâng cao
 ## Technical Stack:
-### Tài liệu : [Drive](https://drive.google.com/drive/folders/1SS-jAJN-UVAisVLvm16JNszcTf6jP_EJ?usp=sharing)
+### Tài liệu  - Document: [Drive](https://drive.google.com/drive/folders/1SS-jAJN-UVAisVLvm16JNszcTf6jP_EJ?usp=sharing)
 ### DB: mssql
 ### BE: .NET 7.0
 * Extensions for Visual Studio Code:
@@ -19,7 +19,6 @@
   ```
 * Framework used:
   - Microsoft.EntityFrameworkCore
-  - Microsoft.EntityFrameworkCore.Design
   - Microsoft.EntityFrameworkCore.SqlServer
 ### FE: Nodejs
 * Extensions for Visual Studio Code:
@@ -28,5 +27,9 @@
   npm install <module-name>
   npm install //reinstalls all modules that are listed on package.json file and dependencies
   npm update //updates all modules that are listed on package.json file and dependencies
+  npm create vite@latest
+  npm run dev
   ```
 * Framework used:
+  - React
+  - Vite(build tool)
