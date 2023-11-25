@@ -19,7 +19,7 @@ export default function Root() {
 
   const [currentRoute, setCurrentRoute] = useState(location.pathname)
 
-  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')));
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')) ? JSON.parse(localStorage.getItem('userData')) : {});
 
   const timeOut1 = useRef();
 
@@ -40,7 +40,8 @@ export default function Root() {
   }, [location.pathname])
 
   useEffect(() => {
-    if (userData) {
+    console.log('change');
+    if (userData.username) {
       getMoney(userData.username).then(money => {
         setUserData(prev => ({
           ...prev,
@@ -48,7 +49,7 @@ export default function Root() {
         }))
       })
     }
-  }, [userData])
+  }, [userData.username])
 
   return (
     <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute, userData, setUserData }}>
