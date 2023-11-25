@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BE.Context;
+using BE.InterfaceController;
 using BE.Model.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -11,7 +12,7 @@ using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace BE.Controllers
 {
-    public class UserCardController : BaseApiController
+    public class UserCardController : BaseApiController, IUserCardController
     {
         private readonly DataContext _context;
         public UserCardController(DataContext context)

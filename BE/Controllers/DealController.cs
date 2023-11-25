@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BE.Context;
+using BE.InterfaceController;
 using BE.Model.Dto;
 using BE.Model.Entity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BE.Controllers
 {
-    public class DealController : BaseApiController
+    public class DealController : BaseApiController, IDealController
     {
         private readonly DataContext _context;
         private readonly UserCardController _userCard;
@@ -53,7 +54,7 @@ namespace BE.Controllers
         }
 
         [HttpGet("GetBuyedDeal")]
-        public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBuyedDeal(string Username)
+        public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBuyedDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
             if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
@@ -81,7 +82,7 @@ namespace BE.Controllers
         }
 
         [HttpGet("GetSelledDeal")]
-        public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSelledDeal(string Username)
+        public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSelledDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
             if (user == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
