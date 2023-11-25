@@ -146,11 +146,16 @@ namespace BE.Controllers
                 return Ok(new {message = "Change Email successfully!"});
             }
         }
-
+<<<<<<< HEAD
+        
         [HttpPost("ChangeAvatarUrl")]
-        public async Task<ActionResult> ChangeAvatarUrl()
+        public async Task<ActionResult> ChangeAvatarUrl([FromBody] UserChangeAvatarUrlInputDto input)
         {
-            return Ok();
+            var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
+            if (user == null) return BadRequest(new {message = "User not found!"});
+            user.AvatarUrl = input.NewAvatarUrl;
+            await _context.SaveChangesAsync();
+            return Ok(new {message = "Change Avatar successful"});
         }
 
         [HttpGet("GetMoney")]
@@ -159,6 +164,7 @@ namespace BE.Controllers
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == Username);
             if (user == null) return BadRequest(new {message = "User not fould!"});
             return Ok(new {money = user.Money});
+>>>>>>> main
         }
     }
 }
