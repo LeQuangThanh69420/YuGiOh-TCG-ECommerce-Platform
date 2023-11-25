@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -11,24 +11,34 @@ import './../../styles/IconDefine.css';
 
 function Header() {
 
-    const { currentRoute, setCurrentRoute, userData } = useContext(AppData);
+    const { currentRoute, userData } = useContext(AppData);
+
+    const [isOpenInfo, setIsOpenInfo] = useState(false);
+
+    const handleClickAvatar = () => {
+        setIsOpenInfo(!isOpenInfo);
+    }
+
+    const handleLogOut = () => {
+        
+    }
 
     return (
-        <div className="main-container">
+        <div className="header-main-container">
             <div className="header-bar">
                 <LogoDuRiu logoColor={'#000'} logoNameColor={'#7400CC'} />
                 <div className="header-nav-icons">
-                    <Link to={'/'} onClick={() => setCurrentRoute('/')}>
+                    <Link to={'/'}>
                         <div className={`icon-2 ${currentRoute === '/' ? 'home-purple' : 'home-gray'}`}>
                         </div>
                     </Link>
-                    <Link to={'/cards'} onClick={() => setCurrentRoute('/cards')}>
+                    <Link to={'/cards'}>
                         <div className={`icon-2 ${currentRoute === '/cards' ? 'card-purple' : 'card-gray'}`}></div>
                     </Link>
-                    <Link to={'/gacha'} onClick={() => setCurrentRoute('/gacha')}>
+                    <Link to={'/gacha'} >
                         <div className={`icon-2 ${currentRoute === '/gacha' ? 'gacha-purple' : 'gacha-gray'}`}></div>
                     </Link>
-                    <Link to={'/buy-riu-coin'} onClick={() => setCurrentRoute('/buy-riu-coin')}>
+                    <Link to={'/buy-riu-coin'}>
                         <div className={`icon-2 ${currentRoute === '/buy-riu-coin' ? 'coin-purple' : 'coin-gray'}`}></div>
                     </Link>
                 </div>
@@ -38,9 +48,34 @@ function Header() {
                             Login
                         </button>
                     </Link>
-                   : <img src={userData.avatarURL} alt="" className="header-user-avt" />
+                    : <img src={userData.avatarURL} className="header-user-avt" onClick={handleClickAvatar} />
                 }
             </div>
+            {isOpenInfo && <div className="header-user-option">
+                <div className="header-user-info">
+                    <div className="user-info-child">
+                        <img src={userData.avatarURL} className="header-user-avt-display" />
+                        <p className="user-name">{userData.username}</p>
+                    </div>
+                    <div className="user-money">
+                        <span>{userData.money}</span>
+                        <div className="riu-coin-icon icon-3"></div>
+                    </div>
+                </div>
+                <div className="option-line"></div>
+                <div className="header-option-buttons">
+                    <Link to={'/user'} onClick={() => setIsOpenInfo(false)}>
+                        <div className="header-option-button">
+                            <span className="info-text">Your Profile</span>
+                            <div className="info-icon icon-3"></div>
+                        </div>
+                    </Link>
+                    <div className="header-option-button" onClick={handleLogOut}>
+                        <span className="logout-text">Log Out</span>
+                        <div className="log-out icon-3"></div>
+                    </div>
+                </div>
+            </div>}
         </div>
     );
 }

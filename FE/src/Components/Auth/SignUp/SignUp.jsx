@@ -116,6 +116,7 @@ function SignUp() {
                                     label={"Repeat password"}
                                     type={"password"}
                                     icon="key"
+                                    isRegexChecking = {false}
                                     regex={password}
                                     errorMessage={
                                         "Make sure to repeat password correctly!"

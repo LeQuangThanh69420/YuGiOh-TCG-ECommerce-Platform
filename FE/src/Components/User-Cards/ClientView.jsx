@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
-import AdSlider from "../AdSlider/Adslider";
 import Body from "./Body"
-import Header from "../Shared/Header";
 
 import './../../styles/ClientView.css'
 
@@ -12,7 +10,6 @@ function ClientView() {
     
     return(
         <div className="main-content">
-            <Header />  
             <Body cards={cards} setCards={setCards}/>
         </div>
     ) 

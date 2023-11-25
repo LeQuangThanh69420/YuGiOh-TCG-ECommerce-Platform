@@ -78,16 +78,6 @@
     font-weight: 500;
 }
 
-a {
-    max-width: fit-content;
-    text-decoration: none;
-    color: #19abff;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 .login-inputs {
     padding: 24px 25px 24px 23px;
     display: flex;
