@@ -65,3 +65,7 @@
     background-position: center;
     cursor: pointer;
 }
+
+.icon-2:hover {
+    transform: scale(1.1);
+}

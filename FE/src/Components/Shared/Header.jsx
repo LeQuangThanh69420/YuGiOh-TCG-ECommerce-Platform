@@ -11,24 +11,24 @@ import './../../styles/IconDefine.css';
 
 function Header() {
 
-    const { currentRoute, setCurrentRoute, userData } = useContext(AppData);
+    const { currentRoute, userData } = useContext(AppData);
 
     return (
         <div className="main-container">
             <div className="header-bar">
                 <LogoDuRiu logoColor={'#000'} logoNameColor={'#7400CC'} />
                 <div className="header-nav-icons">
-                    <Link to={'/'} onClick={() => setCurrentRoute('/')}>
+                    <Link to={'/'}>
                         <div className={`icon-2 ${currentRoute === '/' ? 'home-purple' : 'home-gray'}`}>
                         </div>
                     </Link>
-                    <Link to={'/cards'} onClick={() => setCurrentRoute('/cards')}>
+                    <Link to={'/cards'}>
                         <div className={`icon-2 ${currentRoute === '/cards' ? 'card-purple' : 'card-gray'}`}></div>
                     </Link>
-                    <Link to={'/gacha'} onClick={() => setCurrentRoute('/gacha')}>
+                    <Link to={'/gacha'} >
                         <div className={`icon-2 ${currentRoute === '/gacha' ? 'gacha-purple' : 'gacha-gray'}`}></div>
                     </Link>
-                    <Link to={'/buy-riu-coin'} onClick={() => setCurrentRoute('/buy-riu-coin')}>
+                    <Link to={'/buy-riu-coin'}>
                         <div className={`icon-2 ${currentRoute === '/buy-riu-coin' ? 'coin-purple' : 'coin-gray'}`}></div>
                     </Link>
                 </div>
@@ -38,7 +38,7 @@ function Header() {
                             Login
                         </button>
                     </Link>
-                   : <img src={userData.avatarURL} alt="" className="header-user-avt" />
+                    : <img src={userData.avatarURL} alt="" className="header-user-avt" />
                 }
             </div>
         </div>

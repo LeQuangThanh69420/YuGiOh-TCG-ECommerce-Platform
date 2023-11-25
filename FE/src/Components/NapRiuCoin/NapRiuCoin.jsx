@@ -1,5 +1,6 @@
 import { Amount } from '../../constants/RiuCoinAmount';
-import Header from '../Shared/Header';
+
+import deptrai from '../../asset/deptrai.png'
 
 import "./../../styles/NapRiuCoin.css";
 
@@ -8,7 +9,6 @@ function NapRiuCoin() {
     return (
         <>
             <div className="NapRiuCoinAll">
-                <Header />
                 <div className="BodyRiuCoin">
                     <div className="top-up-container">
                         {Amount.map((tien, index) => (

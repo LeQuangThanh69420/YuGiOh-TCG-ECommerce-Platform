@@ -8,6 +8,8 @@ import SignUp from './Components/Auth/SignUp/SignUp.jsx'
 import NapRiuCoin from './Components/NapRiuCoin/NapRiuCoin.jsx'
 import AllCards from './Components/AllCards/AllCards.jsx'
 import Gacha from './Components/Gacha/Gacha.jsx'
+import AllDeals from './Components/AllDeals/AllDealsClientView.jsx'
+import User from './Components/User/User.jsx'
 
 import './styles/index.css'
 
@@ -44,6 +46,10 @@ const router = createBrowserRouter(
       <Route 
         path='/gacha'
         element={<Gacha />}
+      />
+      <Route
+      path='/user'
+      element={<User />}
       />
     </Route>
   )
