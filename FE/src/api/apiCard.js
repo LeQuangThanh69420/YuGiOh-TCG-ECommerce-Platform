@@ -12,6 +12,8 @@ export const searchCard = async (name, type, origin, element, rarity) => {
   }
 };
 
+
+//something la 1 route ben trong API_ROUTES
 export const getSomeThingOfCard = async (someThing) => {
     const url = `${API_URL}${API_ROUTES[someThing]}`;
     try {

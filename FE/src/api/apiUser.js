@@ -32,3 +32,21 @@ export const forgetPassword = async (username, email) => {
     console.log(error);
   }
 };
+
+export const logIn = async (username, password) => {
+  try {
+    const response = await fetch(`${API_URL}${API_ROUTES.LOGIN}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};

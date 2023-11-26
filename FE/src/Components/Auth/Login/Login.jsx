@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { checkSession } from "../../../utils/checkSession";
-import { forgetPassword } from "../../../api/apiUser";
+import { forgetPassword, logIn } from "../../../api/apiUser";
 import INPUT_FORGET_PASSWORD from "../../../constants/inputsForgetPassword";
 
 import Input from "../../Shared/Input/Input";
@@ -28,36 +28,22 @@ function Login() {
   const frontRef = useRef();
   const backRef = useRef();
 
-  const handleSubmit = () => {
-    let status;
-
-    fetch(import.meta.env.VITE_API_URL + "/User/Login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: userName,
-        password: password,
-      }),
-    })
-      .then((response) => {
-        status = response.status;
-        return response.json();
-      })
-      .then((data) => {
+  const handleSubmit = async () => {
+    const response = await logIn(userName, password);
+    response.json().then(data => {
+      if (response.status === 200) {
+        localStorage.setItem('userData', JSON.stringify(data));
+        setUserData(data);
+        setType('toast-success');
+        setMessage('Login successfully!')
         showToast();
-        if (status === 200) {
-          localStorage.setItem("userData", JSON.stringify(data));
-          setMessage("Login Successfully!");
-          setType("toast-success");
-          setUserData(data);
-          navigate("/");
-        } else {
-          setMessage(data.message);
-          setType("toast-error");
-        }
-      });
+        navigate('/')
+      } else {
+        setType('toast-error');
+        setMessage(data.message);
+        showToast();
+      }
+    })
   };
 
   const handleNavigateSignUp = () => {
