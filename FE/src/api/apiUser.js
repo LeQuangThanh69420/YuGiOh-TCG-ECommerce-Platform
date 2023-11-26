@@ -50,3 +50,23 @@ export const logIn = async (username, password) => {
     console.log(error);
   }
 };
+
+export const signUp = async (username, password, email) => {
+  try {
+    const response = await fetch(`${API_URL}${API_ROUTES.REGISTER}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        email: email,
+      }),
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
