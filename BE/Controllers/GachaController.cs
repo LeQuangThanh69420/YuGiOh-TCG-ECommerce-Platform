@@ -26,7 +26,7 @@ namespace BE.Controllers
             List<Card> allCards = new List<Card>();
             int price = 1000;
 
-            if(user.Money > price)
+            if(user.Money >= price)
             {
                 user.Money -= price;
                 _context.SaveChanges();
