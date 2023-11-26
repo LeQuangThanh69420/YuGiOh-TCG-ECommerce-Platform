@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import '../../styles/AllDeals.css'
 import DealDetails from "./DealDetail";
 import DuRiuLogo from '../../asset/logoDuRiuImg2.png'
+import {searchDeal} from '../../api/apiDeal'
 
 function AllDealsBody({ deals, setDeals }) {
     const [selectedDeal, setSelectedDeal] = useState(null);
@@ -17,14 +18,6 @@ function AllDealsBody({ deals, setDeals }) {
         setDealDetailsOpen(false);
     };
 
-    useEffect(() => {
-        fetch(import.meta.env.VITE_API_URL + '/Deal/searchDeal')
-            .then(res => res.json())
-            .then(data => {
-                setDeals(data)
-            })
-    }, [])
-
     function checkRarity(selectedDeal) {
         if (selectedDeal.cardRarityName == 'R') return 'Rare'
         else if (selectedDeal.cardRarityName == 'N') return 'Normal'
@@ -32,6 +25,12 @@ function AllDealsBody({ deals, setDeals }) {
         else if (selectedDeal.cardRarityName == 'UR') return 'Ultra Rare'
         else return 'Bucac'
     }
+
+    useEffect(() => {
+        searchDeal().then((response) => response.json()).then((data) => {
+            setDeals(data)
+          });
+    }, [])
 
     return (
         <>
