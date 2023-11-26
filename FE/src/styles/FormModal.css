@@ -8,3 +8,30 @@
     align-items: center;
     justify-content: center;
 }
+
+.form-modal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 20px 28px 14px 28px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.form-modal-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.form-modal-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
