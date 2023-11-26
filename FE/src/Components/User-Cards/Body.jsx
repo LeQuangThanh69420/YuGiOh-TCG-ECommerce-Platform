@@ -4,6 +4,7 @@ import "./../../styles/Body.css";
 import "./../../styles/CardDetails.css";
 import CardDetails from "./CardDetails";
 import DuRiuLogo from "../../asset/logoDuRiuImg2.png";
+import { searchDeal } from "../../api/apiDeal";
 
 function Body({ cards, setCards }) {
   const [isCardDetailsOpen, setCardDetailsOpen] = useState(false);

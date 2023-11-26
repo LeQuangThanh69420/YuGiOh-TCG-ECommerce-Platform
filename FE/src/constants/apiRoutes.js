@@ -5,6 +5,8 @@ const API_ROUTES = {
     GET_ELEMENT: '/Card/GetCardElement',
     GET_RARITY: '/Card/GetCardRarity',
     SEARCH_DEAL: '/Deal/SearchDeal',
+    GET_BOUGHT_DEAL: '/Deal/GetBoughtDeal',
+    GET_SOLD_DEAL: '/Deal/GetSoldDeal',
     CREATE_DEAL: '/Deal/CreateDeal',
     EDIT_DEAL: '/Deal/EditDeal',
     DELETE_DEAL: '/Deal/DeleteDeal',
