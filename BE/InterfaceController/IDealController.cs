@@ -12,11 +12,11 @@ namespace BE.InterfaceController
         //[HttpGet("SearchDeal")]
         Task<ActionResult<List<DealSearchOutputDto>>> SearchDeal(DealSearchInputDto input);
 
-        //[HttpGet("GetBuyedDeal")]
-        Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBuyedDeal(string Username);
+        //[HttpGet("GetBoughtDeal")]
+        Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBoughtDeal(string Username);
 
-        //[HttpGet("GetSelledDeal")]
-        Task<ActionResult<List<DealGetSelledOutputDto>>> GetSelledDeal(string Username);
+        //[HttpGet("GetSoldDeal")]
+        Task<ActionResult<List<DealGetSelledOutputDto>>> GetSoldDeal(string Username);
     
         //[HttpPost("CreateDeal")]
         Task<ActionResult> CreateDeal(DealCreateInputDto input);

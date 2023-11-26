@@ -53,8 +53,8 @@ namespace BE.Controllers
             return await deal.ToListAsync();
         }
 
-        [HttpGet("GetBuyedDeal")]
-        public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBuyedDeal([FromQuery] string Username)
+        [HttpGet("GetBoughtDeal")]
+        public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBoughtDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
             if (user == null) return BadRequest(new {message = "User not fould!"});
@@ -81,8 +81,8 @@ namespace BE.Controllers
             return await deal.ToListAsync();
         }
 
-        [HttpGet("GetSelledDeal")]
-        public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSelledDeal([FromQuery] string Username)
+        [HttpGet("GetSoldDeal")]
+        public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSoldDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
             if (user == null) return BadRequest(new {message = "User not fould!"});
