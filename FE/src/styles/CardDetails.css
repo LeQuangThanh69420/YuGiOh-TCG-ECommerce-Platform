@@ -15,7 +15,7 @@
 .CardDetails-content {
     position: relative;
     background: white;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     color: black;
@@ -83,9 +83,10 @@
 }
 
 .CardDetails-Image{
-    border: 3px solid gray;
+    border: 3px solid #3d3b3f;
     padding: 7px;
     border-radius: 7px;
+    display: flex;
 }
 
 .CardDetails-body{
@@ -101,12 +102,12 @@
 
 .CardDetails-DuRiu{
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
-    color: blueviolet;
+    color: black;
 }
 
 .CardDetails-head{

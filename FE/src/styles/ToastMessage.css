@@ -13,7 +13,7 @@
     font-size: 18px;
     font-weight: 500;
     border-radius: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
     animation: fade-in 0.3s linear;
 }
 

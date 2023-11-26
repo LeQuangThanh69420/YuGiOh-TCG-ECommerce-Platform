@@ -80,59 +80,6 @@ body {
   width: 100%;
 }
 
-.footer-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 24px 112px;
-  background: #F1F1F1;
-  gap: 24px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid #dcdcdc;
-  padding: 24px;
-  gap: 48px;
-}
-
-.footer-left-container {
-  display: flex;
-  gap: 48px;
-}
-
-.footer-right-container {
-  display: flex;
-  gap: 48px;
-}
-
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.footer-col-title {
-  font-size: 20px;
-  font-weight: 500;
-  margin: 0;
-  margin-bottom: 12px;
-}
-
-.footer-options {
-  margin: 0;
-  font-size: 14px;
-  color: #979797;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.footer-options:hover {
-  color: rgb(116, 0, 204);
-  text-decoration: none;
-}
-
 .social-medias {
   display: flex;
   gap: 10px;

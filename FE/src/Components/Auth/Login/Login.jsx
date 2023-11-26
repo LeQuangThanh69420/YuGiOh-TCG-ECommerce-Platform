@@ -158,7 +158,7 @@ function Login() {
       {showModalInput && (
         <div className="forgot-password-screen" onClick={() => setShowModalInput(false)}>
           <div className="forgot-password-container" onClick={(event) => { event.stopPropagation() }}>
-            <p className="forgot-password-title">Enter your <span className="text-primary">Email</span> to get <span className="text-primary">Password</span> back</p>
+            <p className="forgot-password-title">Fill up this <span className="text-primary">Form</span> to get <span className="text-primary">Password</span> back</p>
             <div className="recovery-email-container">
               <div className="recovery-inputs">
                 <Input

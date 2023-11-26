@@ -51,7 +51,7 @@ function AllDealsBody({ deals, setDeals }) {
                                     <button className="AllDeals-buy">Buy</button>
                                 </div>
                             </div>
-                        ) : <p className='not-found'>
+                        ) : <p className='not-found text-secondary'>
                             Sorry, we couldn't find what you want :(
                         </p>
                     }

@@ -64,7 +64,7 @@ function Header() {
                 <div className="header-user-info">
                     <div className="user-info-child">
                         <img src={userData.avatarURL} className="header-user-avt-display" />
-                        <p className="user-name">{userData.username}</p>
+                        <p className="user-name text-secondary">{userData.username}</p>
                     </div>
                     <div className="user-money">
                         <span>{userData.money}</span>
@@ -75,7 +75,7 @@ function Header() {
                 <div className="header-option-buttons">
                     <Link to={'/user'} onClick={() => setIsOpenInfo(false)}>
                         <div className="header-option-button">
-                            <span className="info-text">Your Profile</span>
+                            <span className="info-text text-secondary">Your Profile</span>
                             <div className="info-icon icon-3"></div>
                         </div>
                     </Link>

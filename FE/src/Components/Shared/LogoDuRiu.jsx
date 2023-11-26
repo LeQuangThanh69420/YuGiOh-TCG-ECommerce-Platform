@@ -11,7 +11,7 @@ function LogoDuRiu({ logoNameColor }) {
     <Link className="logo-container" to={'/'}>
       <img src={logoImg} alt="" className="logo-img" />
       <p className="duriu-logo-name" style={{ color: logoNameColor }}>
-        DuRiu Studio
+         DuRiu <span className="text-secondary">Studio</span>
       </p>
     </Link>
   );

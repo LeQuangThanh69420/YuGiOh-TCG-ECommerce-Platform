@@ -29,8 +29,8 @@ function NapRiuCoin() {
                     <div className="QRcode-container">
                         <div className="QRcode"></div>
                         <div className="QRcodeManual">
-                            <div className="QRcodeManual-head">Top-up code:</div>
-                            <div className="QRcodeManual-body">“Username” + transfer description <br />
+                            <div className="QRcodeManual-head text-secondary">Top-up code:</div>
+                            <div className="QRcodeManual-body text-third">“Username” + transfer description <br />
                             Example: thenthen nap RiuCoin goi 666k</div>
                         </div>
                         <div className="QRcode-deptrai">
