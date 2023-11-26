@@ -2,11 +2,12 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { checkSession } from "../../../utils/checkSession";
-
 import { forgetPassword } from "../../../api/apiUser";
+import INPUT_FORGET_PASSWORD from "../../../constants/inputsForgetPassword";
 
 import Input from "../../Shared/Input/Input";
 import LogoDuRiu from "../../Shared/LogoDuRiu";
+import FormModal from "../../Shared/FormModal";
 import { AppData } from "../../../Root";
 
 import "./../../../styles/Login.css";
@@ -18,8 +19,10 @@ function Login() {
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [recoveryUsername, setRecoveryUsername] = useState('');
-  const [recoveryEmail, setRecoveryEmail] = useState("");
+  const [modalFormValues, setModalFormValues] = useState({
+    recoveryUsername: "",
+    recoveryEmail: "",
+  });
   const [showModalInput, setShowModalInput] = useState("");
 
   const frontRef = useRef();
@@ -66,20 +69,20 @@ function Login() {
   };
 
   const handleSubmitForget = async () => {
-    const response = await forgetPassword(recoveryUsername, recoveryEmail);
-    response.json().then(data => {
-      if(response.status === 200) {
-        setShowModalInput(false)
-        setType('toast-success');
+    const response = await forgetPassword(modalFormValues.recoveryUsername, modalFormValues.recoveryEmail);
+    response.json().then((data) => {
+      if (response.status === 200) {
+        setShowModalInput(false);
+        setType("toast-success");
         setMessage(data.message);
         showToast();
       } else {
-        setType('toast-error');
-        setMessage(data.message); 
+        setType("toast-error");
+        setMessage(data.message);
         showToast();
       }
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     if (checkSession()) {
@@ -155,39 +158,29 @@ function Login() {
           </div>
         </div>
       </div>
-      {showModalInput && (
-        <div className="forgot-password-screen" onClick={() => setShowModalInput(false)}>
-          <div className="forgot-password-container" onClick={(event) => { event.stopPropagation() }}>
-            <p className="forgot-password-title">Fill up this <span className="text-primary">Form</span> to get <span className="text-primary">Password</span> back</p>
-            <div className="recovery-email-container">
-              <div className="recovery-inputs">
-                <Input
-                  type={'text'}
-                  label={'Enter your username'}
-                  icon={'person'}
-                  regex={/^.{8,16}$/}
-                  errorMessage={'Username must be 8-16 characters!'}
-                  setData={setRecoveryUsername}
-                />
-                <Input
-                  type="email"
-                  label={"Email for password recovery"}
-                  icon={"mail"}
-                  regex={
-                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                  }
-                  errorMessage="Email must have this format: 'abc@xyz.ijk'"
-                  setData={setRecoveryEmail}
-                />
-              </div>
-              <div className="forget-password-buttons">
-                <button className="button-2" onClick={() => setShowModalInput(false)}>Cancel</button>
-                <button onClick={handleSubmitForget}>Submit</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <FormModal
+        title={<>Fill up this <span className="text-primary">Form</span> to get your <span className="text-primary">Password</span> back</>}
+        isDisplay={showModalInput}
+        setIsDisplay={setShowModalInput}
+        inputs={INPUT_FORGET_PASSWORD}
+        onSubmit={handleSubmitForget}
+        renderInput={(item) => (
+          <Input
+            type={item.type}
+            icon={item.icon_class_name}
+            label={item.label}
+            regex={item.regex}
+            errorMessage={item.error_message}
+            setData={(inputValue) => {
+              setModalFormValues(prev => ({
+                ...prev,
+                [item.data_key]: inputValue,
+              }))
+            }}
+            key={item.id}
+          />
+        )}
+      />
     </>
   );
 }
