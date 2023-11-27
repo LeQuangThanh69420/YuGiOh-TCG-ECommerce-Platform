@@ -57,7 +57,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBoughtDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
-            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user == null) return BadRequest(new {message = "User not found!"});
             var deal = from Deal in _context.Deal 
             join User in _context.User on Deal.SellUserId equals User.UserId 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
@@ -85,7 +85,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSoldDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
-            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user == null) return BadRequest(new {message = "User not found!"});
             var deal = from Deal in _context.Deal 
             join User in _context.User on Deal.BuyUserId equals User.UserId 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
@@ -115,11 +115,12 @@ namespace BE.Controllers
             TimeZoneInfo vietnamTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
             DateTime vietnamTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, vietnamTimeZone);
             var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
-            if (selluser == null) return BadRequest(new {message = "User not fould!"});
-            var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId && uc.UserId == selluser.UserId);
-            if (usercard.UserCardId == null) return BadRequest(new {message = "Không sở hữu thẻ này!"});
-            if (usercard.OnDeal == true) return BadRequest(new {message = "Card đang nằm trong một deal khác!"});
-            if (input.Price <= 0) return BadRequest(new {message = "Giá tiền không thoả mãn"});
+            if (selluser == null) return BadRequest(new {message = "User not found!"});
+            var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId);
+            if (usercard == null) return BadRequest(new {message = "Your Card not found!"});
+            if (usercard.UserId != selluser.UserId) return BadRequest(new {message = "You don't owned this Card!"});
+            if (usercard.OnDeal == true) return BadRequest(new {message = "Card already on another Deal!"});
+            if (input.Price <= 0) return BadRequest(new {message = "Price invalid!"});
             else 
             {
                 var newdeal = new Deal 
@@ -134,17 +135,22 @@ namespace BE.Controllers
                 await _userCard.MakeOnDeal(usercard.UserCardId);
                 await _context.SaveChangesAsync();
             }
-            return Ok(new {message = "Tạo mới giao dịch thành công!"});
+            return Ok(new {message = "Create Deal successfully!"});
         }
 
         [HttpPut("EditDeal")]
         public async Task<ActionResult> EditDeal([FromBody] DealEditInputDto input)
         {
             var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
-            if (selluser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (selluser == null) return BadRequest(new {message = "User not found!"});
             var deal = await _context.Deal.SingleOrDefaultAsync(d => d.DealId == input.DealId);
-            if (input.DealId == null ) return BadRequest(new {message = "Không có giao dịch này!"});
-            if (input.Price <= 0) return BadRequest(new {message = "Giá tiền không thoả mãn"});
+            if (deal == null) return NotFound(new {message = "Deal not found!"});
+            if (deal.SellUserId != selluser.UserId) return NotFound(new {message = "You don't owned this Deal!"});
+            var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId);
+            if (usercard == null) return BadRequest(new {message = "Your Card not found!"});
+            if (usercard.UserId != selluser.UserId) return BadRequest(new {message = "You don't owned this Card!"});
+            if (usercard.OnDeal == true) return BadRequest(new {message = "Card already on another Deal!"});
+            if (input.Price <= 0) return BadRequest(new {message = "Price invalid!"});
             else
             {
                 await _userCard.RemoveOnDeal(deal.UserCardId);
@@ -153,48 +159,49 @@ namespace BE.Controllers
                 deal.Price = input.Price;
                 await _context.SaveChangesAsync();
             }
-            return Ok(new {message = "Sửa giao dịch thành công!"});
+            return Ok(new {message = "Edit Deal successfully!"});
         }
 
         [HttpDelete("DeleteDeal")]
         public async Task<ActionResult> DeleteDeal([FromBody] DealDeleteInputDto input)
         {
             var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
-            if (selluser == null) return BadRequest(new {message = "Tài khoản không tồn tại!"});
+            if (selluser == null) return BadRequest(new {message = "User not found!"});
             var deal = await _context.Deal.SingleOrDefaultAsync(d => d.DealId == input.DealId);
-            if (deal == null) return NotFound(new {message = "Không tìm thấy giao dịch này!" });
+            if (deal == null) return NotFound(new {message = "Deal not found!"});
+            if (deal.SellUserId != selluser.UserId) return NotFound(new {message = "You don't owned this Deal!"});
             else
             {
                 _context.Deal.Remove(deal);
                 await _userCard.RemoveOnDeal(deal.UserCardId);
                 await _context.SaveChangesAsync();
             }
-            return Ok(new {message = "Xóa giao dịch thành công!" });
+            return Ok(new {message = "Delete Deal successfully!"});
         }
         
         [HttpPost("AcceptDeal")]
         public async Task<ActionResult> AcceptDeal([FromBody] DealAcceptInputDto input)
         {
             var buyuser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.BuyUsername);
-            if (buyuser == null) return BadRequest(new {message = "User not fould!"});
+            if (buyuser == null) return BadRequest(new {message = "User not found!"});
             var deal = await _context.Deal.SingleOrDefaultAsync(d => d.DealId == input.DealId);
-            if (buyuser.UserId == deal.SellUserId) return BadRequest(new {message = "Không thể mua thẻ của chính mình"});
+            if (deal == null) return NotFound(new {message = "Deal not found!"});
+            if (buyuser.UserId == deal.SellUserId) return BadRequest(new {message = "Can't buy your own card!"});
             if (buyuser.Money < deal.Price) return BadRequest(new {message = "Account don't have enough money!"});
-            if (input.DealId != deal.DealId || input.DealId == null ) return BadRequest(new {message = "Không có giao dịch này!"});
-            if (deal.BuyUserId != null) return BadRequest(new {message = "Giao dịch không tồn tại"});
+            if (deal.BuyUserId != null) return BadRequest(new {message = "Deal does not exist!"});
             else
             {
                 deal.BuyUserId = buyuser.UserId;
                 await _userCard.ChangeOwner(deal.UserCardId, buyuser.UserId);
                 buyuser.Money -= deal.Price;
-                var seller = await _context.User.SingleOrDefaultAsync(u => u.UserId == deal.SellUserId);
-                if (seller != null)
+                var selluser = await _context.User.SingleOrDefaultAsync(u => u.UserId == deal.SellUserId);
+                if (selluser != null)
                 {
-                    seller.Money += deal.Price;
+                    selluser.Money += deal.Price;
                 }
                 await _context.SaveChangesAsync();
             }
-            return Ok(new {message = "Mua hàng thành công!"});
+            return Ok(new {message = "Purchase successfully!"});
         }
     }
 }
