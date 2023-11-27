@@ -87,6 +87,24 @@
     background-size: contain;
 }
 
+.icon-4 {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.icon-5 {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .icon-2:hover {
     transform: scale(1.05);
 }
@@ -109,4 +127,8 @@
 
 .text-fifth {
     color: #6400B0;
+}
+
+.text-sixth {
+    color: #FFC400;
 }

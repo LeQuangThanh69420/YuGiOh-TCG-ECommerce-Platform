@@ -25,6 +25,7 @@
   justify-content: center;
   /* Adjust as needed for your layout */
   padding-top: 30px;
+  gap: 12px;
 }
 
 .NapTien {

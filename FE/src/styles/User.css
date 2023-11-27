@@ -1,0 +1,80 @@
+.user-screen {
+    width: 100%;
+    padding: 0px 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.user-container {
+    width: 1180px;
+}
+
+.user-profile {
+    width: 100%;
+    display: flex;
+    gap: 32px;
+    background: white;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 24px 32px;
+}
+
+.user-avatar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 120px;
+    height: 120px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.main-info-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.title-profile {
+    font-weight: 600;
+    font-size: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.info-row {
+    display: flex;
+    gap: 8px;
+    gap: 12px;
+    align-items: flex-end;
+    width: 100%;
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.info-row:hover {
+    background: #F0F0F0;
+}
+
+.user-title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.user-value {
+    display: flex;
+    gap: 8px;
+    font-weight: 500;
+    align-items: center;
+    font-size: 17px;
+}

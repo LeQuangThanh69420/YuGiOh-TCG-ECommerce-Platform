@@ -23,6 +23,8 @@ button {
   font-weight: 500;
   cursor: pointer;
   font-size: 14px;
+  min-width:max-content;
+  padding: 0px 12px;
 }
 
 button:hover {
