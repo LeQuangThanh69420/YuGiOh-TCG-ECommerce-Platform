@@ -1,4 +1,5 @@
 import API_ROUTES from "../constants/apiRoutes";
+import { HEADER } from "../constants/apiHeaderConfig";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -37,9 +38,7 @@ export const getSoldDeals = async (username) => {
 export const createDeal = async (sellUsername, userCardId, price) => {
   const response = fetch(`${API_URL}${API_ROUTES.CREATE_DEAL}`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: HEADER,
     body: JSON.stringify({
       sellUsername: sellUsername,
       userCardId: userCardId,
@@ -53,9 +52,7 @@ export const editDeal = async (sellUsername, dealId, userCardId, price) => {
   const response = async () => {
     fetch(`${API_URL}${API_ROUTES.EDIT_DEAL}`, {
       method: "PUT",
-      header: {
-        "Content-Type": "application/json",
-      },
+      header: HEADER,
       body: JSON.stringify({
         sellUsername: sellUsername,
         dealId: dealId,
@@ -70,9 +67,7 @@ export const editDeal = async (sellUsername, dealId, userCardId, price) => {
 export const deleteDeal = async (sellUsername, dealId) => {
   const response = fetch(`${API_URL}${API_ROUTES.DELETE_DEAL}`, {
     method: "DELETE",
-    header: {
-      "Content-Type": "application/json",
-    },
+    header: HEADER,
     body: JSON.stringify({
       sellUsername: sellUsername,
       dealId: dealId,
