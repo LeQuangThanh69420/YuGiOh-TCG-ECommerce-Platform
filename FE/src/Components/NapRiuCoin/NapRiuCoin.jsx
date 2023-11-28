@@ -12,7 +12,7 @@ function NapRiuCoin() {
                 <div className="BodyRiuCoin">
                     <div className="top-up-container">
                         {Amount.map((tien, index) => (
-                            <div className="NapTien icon-2" key={index}>
+                            <div className="NapTien" key={index}>
                                 <div className="NapTienVaRiuCoin">
                                     <div className='riu-coin-icon NapTienRiuCoinIcon'></div>
                                     <div className="RiuCoinAmount">{tien.RiuCoin}</div>
