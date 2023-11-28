@@ -16,6 +16,7 @@
   align-items: center;
   background: white;
   justify-content: space-between;
+  position: relative;
 }
 
 .search-bar {
@@ -62,8 +63,8 @@
   flex-direction: column;
   gap: 12px;
   position: absolute;
-  right: 60px;
-  top: 72px;
+  right: -18px;
+  top: 56px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   background: white;
   border-radius: 8px;

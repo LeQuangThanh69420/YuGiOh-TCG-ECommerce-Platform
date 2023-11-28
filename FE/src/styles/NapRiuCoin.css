@@ -15,16 +15,19 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 20px 10px;
+  align-items: center;
+  padding: 20px 100px;
+  gap: 30px;
 }
 
 .top-up-container {
+  width: 100%;
+  max-width: 1180px;
   display: flex;
   flex-wrap: wrap;
   /* Allow the NapTien divs to wrap to the next line on smaller screens */
   justify-content: center;
   /* Adjust as needed for your layout */
-  padding-top: 30px;
   gap: 12px;
 }
 
@@ -70,14 +73,16 @@
 .QRcode-container{
   display: flex;
   justify-content: space-evenly;
-  padding-top: 30px;
+  gap: 30px;
+  align-items: center;
 }
 
 .QRcode{
   background-image: url("../asset/QRcodeRiuCoin.png");
   background-size: contain;
-  width: 200px;
-  height: 200px;
+  background-repeat: no-repeat;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 .QRcodeManual-head{

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import "./../../styles/Body.css";
-import "./../../styles/CardDetails.css";
 import CardDetails from "./CardDetails";
-import DuRiuLogo from "../../asset/logoDuRiuImg2.png";
 import { searchDeal } from "../../api/apiDeal";
+
+import "./../../styles/CardDetails.css";
+import "./../../styles/Body.css";
 
 function Body({ cards, setCards }) {
   const [isCardDetailsOpen, setCardDetailsOpen] = useState(false);

@@ -27,10 +27,10 @@
 .cards {
     width: 200px;
     border-radius: 8px;
-    border: 1px solid rgb(213, 213, 213);
+    border: 1px solid #979797;
     display: flex;
     flex-direction: column;
-    padding: 18px;
+    padding: 12px;
     align-items: flex-start;
     justify-content: space-between;
     position: relative;
@@ -38,11 +38,12 @@
 }
 
 .cards:hover {
-    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
 
 .cards-img {
-    width: 164px;
+    width: 100%;
 }
 
 .card-name {

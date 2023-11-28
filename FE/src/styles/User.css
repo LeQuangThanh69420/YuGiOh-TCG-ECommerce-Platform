@@ -7,16 +7,20 @@
 
 .user-container {
     width: 1180px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .user-profile {
     width: 100%;
     display: flex;
-    gap: 32px;
+    gap: 40px;
     background: white;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 24px 32px;
+    align-items: center;
 }
 
 .user-avatar-container {
@@ -29,6 +33,7 @@
 .user-avatar {
     width: 120px;
     height: 120px;
+    cursor: pointer;
 }
 
 .user-info {
@@ -50,16 +55,16 @@
     display: flex;
     gap: 14px;
     align-items: center;
+    padding: 0px 12px;
 }
 
 .info-row {
     display: flex;
     gap: 8px;
-    gap: 12px;
     align-items: flex-end;
     width: 100%;
     border-radius: 8px;
-    padding: 4px 8px;
+    padding: 4px 12px;
 }
 
 .info-row:hover {
@@ -69,6 +74,7 @@
 .user-title {
     font-weight: 600;
     font-size: 18px;
+    cursor: default;
 }
 
 .user-value {
@@ -77,4 +83,62 @@
     font-weight: 500;
     align-items: center;
     font-size: 17px;
+}
+
+.upload-avatar-screen {
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.upload-avatar-container {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 24px;
+    padding: 36px 32px 32px 24px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.upload-avatar-top {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.avatar-preview {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar-btns {
+    display: flex;
+    gap: 14px;
+}
+
+.upload-avt-dropzone {
+    width: 100%;
+    height: 360px;
+    border: 1px solid #BCBCBC;
+    border-radius: 8px;
 }

@@ -1,6 +1,7 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 import { AppData } from "../../Root"
+import UploadAvatar from "./UploadAvatar"
 
 import './../../styles/User.css'
 
@@ -8,19 +9,24 @@ export default function User() {
 
   const { userData } = useContext(AppData)
 
+  const [isChanging, setIsChanging] = useState(false);
+
+  const handleOpenChangeAvatar = () => {
+    setIsChanging(true);
+  }
+
   return (
     <div className="user-screen">
       <div className="user-container">
         <div className="user-profile">
           <div className="user-avatar-container">
-            <img src={userData.avatarURL} className="user-avatar" />
-            <button>Change Avatar</button>
+            <img src={userData.avatarURL} className="user-avatar" onClick={handleOpenChangeAvatar} />
           </div>
           <div className="user-info">
-            <p className="text-secondary title-profile">
+            <div className="text-secondary title-profile">
               <div className="info-icon icon-4"></div>
               <span>Your <span className="text-primary">Profile</span></span>
-            </p>
+            </div>
             <div className="main-info-container">
               <div className="info-row">
                 <span className="text-secondary user-title">User name: </span><span className="text-third user-value">{userData.username}</span>
@@ -35,13 +41,10 @@ export default function User() {
                 <span className="text-secondary user-title">Email: </span><span className="text-third user-value">email goes here</span>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-      <div className="">
-
-      </div>
+      {isChanging && <UploadAvatar onClose={() => setIsChanging(false)} />}
     </div>
   )
 }
