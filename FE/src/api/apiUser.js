@@ -105,10 +105,10 @@ export const changeAvatarURL = async (username, newAvatarURL) => {
   const response = await fetch(`${API_URL}${API_ROUTES.CHANGE_AVATAR}`, {
     method: "POST",
     headers: HEADER,
-    body: {
+    body: JSON.stringify({
       username: username,
       newAvatarURL: newAvatarURL,
-    },
+    }),
   });
 
   return response;

@@ -34,6 +34,9 @@
     width: 120px;
     height: 120px;
     cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .user-info {
@@ -98,7 +101,7 @@
 }
 
 .upload-avatar-container {
-    width: 800px;
+    width: 1020px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -141,4 +144,35 @@
     height: 360px;
     border: 1px solid #BCBCBC;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dragging-over {
+    border: 1px solid #7400CC;
+}
+
+.dragging-over > div > span {
+    color: #7400CC;
+}
+
+.upload-text {
+    position: relative;
+}
+
+.upload-text::before {
+    content: '';
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    top: -20px;
 }

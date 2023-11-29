@@ -58,6 +58,14 @@
     background-image: url('./../asset/InfoIcon.svg');
 }
 
+.icon-upload {
+    background-image: url('./../asset/upload.svg');
+}
+
+.icon-upload-purple {
+    background-image: url('./../asset/uploadPurple.svg');
+}
+
 .icon-1 {
     width: 24px;
     height: 24px;
@@ -99,6 +107,15 @@
 .icon-5 {
     width: 20px;
     height: 20px;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.icon-6 {
+    width: 54px;
+    height: 54px;
     display: flex;
     background-position: center;
     background-repeat: no-repeat;

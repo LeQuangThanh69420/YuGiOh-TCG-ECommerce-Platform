@@ -51,6 +51,15 @@ export default function Root() {
     }
   }, [userData.username])
 
+  useEffect(() => {
+    const { username, avatarURL, token } = userData;
+    localStorage.setItem('userData', JSON.stringify({
+      username: username,
+      avatarURL: avatarURL,
+      token: token,
+    }))
+  }, [userData.avatarURL])
+
   return (
     <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute, userData, setUserData }}>
       {!(currentRoute === '/login' || currentRoute === '/sign-up') && <Header />}
