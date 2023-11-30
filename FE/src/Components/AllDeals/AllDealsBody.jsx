@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import '../../styles/AllDeals.css'
-import DealDetails from "./DealDetail";
+import DealDetails from "../Shared/DealDetail";
 import DuRiuLogo from '../../asset/logoDuRiuImg2.png'
 import {searchDeal} from '../../api/apiDeal'
 
