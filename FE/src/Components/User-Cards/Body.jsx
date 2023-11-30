@@ -32,7 +32,7 @@ function Body({ cards, setCards }) {
     else if (selectedCard.cardRarityName == "N") return "Normal";
     else if (selectedCard.cardRarityName == "SR") return "Super Rare";
     else if (selectedCard.cardRarityName == "UR") return "Ultra Rare";
-    else return "Bucac";
+    else return;
   }
 
   return (
