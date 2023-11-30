@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+
 import CardDetails from "../Shared/CardDetails";
+import Pagination from "../Shared/Pagination";
 
 import "./../../styles/CardDetails.css";
 import "./../../styles/Body.css";
@@ -8,6 +10,8 @@ import "./../../styles/Body.css";
 function Body({ cards, setCards }) {
   const [isCardDetailsOpen, setCardDetailsOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+
+  const [pagedList, setPagedList] = useState([]);
 
   const openDetails = (cards) => {
     setSelectedCard(cards);
@@ -30,27 +34,31 @@ function Body({ cards, setCards }) {
   return (
     <>
       <div className="body-session">
-        <div className="body-container">
-          {cards.length ? (
-            cards.map((item, index) => (
-              <div
-                className="cards"
-                key={index}
-                onClick={() => openDetails(item)}
-              >
-                <div className={`rarity ${item.cardRarityName}`}>
-                  {item.cardRarityName}
+        <div className="body-container-wrapper">
+          <div className="body-container">
+            {pagedList.length ? (
+              pagedList.map((item, index) => (
+                <div
+                  className="cards"
+                  key={index}
+                  onClick={() => openDetails(item)}
+                >
+                  <div className={`rarity ${item.cardRarityName}`}>
+                    {item.cardRarityName}
+                  </div>
+                  <img src={item.cardImageURL} alt="" className="cards-img" />
                 </div>
-                <img src={item.cardImageURL} alt="" className="cards-img" />
-              </div>
-            ))
-          ) : (
-            <p className="not-found text-secondary">
-              Sorry, we couldn't find what you want :(
-            </p>
-          )}
+              ))
+            ) : (
+              <p className="not-found text-secondary">
+                Sorry, we couldn't find what you want :(
+              </p>
+            )}
+          </div>
+          <Pagination list={cards} numberItem={10} setPagedList={setPagedList}/>
         </div>
       </div>
+
       <CardDetails
         isOpen={isCardDetailsOpen}
         selectedCard={selectedCard}
