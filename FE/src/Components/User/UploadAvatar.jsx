@@ -50,17 +50,21 @@ export default function UploadAvatar({ onClose }) {
             setType('toast-error');
             setMessage('Only accept PNG/JPG files!')
         }
+
     }
 
     const handleSaveAvatar = async () => {
-        try {
-            uploadFile(chosenFile).then((URL) => {
-                handleChangeAvatarURL(URL)
-            })
-        } catch (error) {
-            console.log(error);
+        if (chosenFile) {
+            console.log('co file');
+            try {
+                uploadFile(chosenFile).then((URL) => {
+                    handleChangeAvatarURL(URL)
+                })
+            } catch (error) {
+                console.log(error);
+            }
         }
-        //handleChangeAvatarURL('https://firebasestorage.googleapis.com/v0/b/upload-file-ac9d3.appspot.com/o/user-avatars%2Fyugi.png-33420-30102023?alt=media&token=2f96352d-30b5-4e15-9a11-0d71fe68f12b')
+
     }
 
     const handleChangeAvatarURL = async (URL) => {
@@ -70,11 +74,13 @@ export default function UploadAvatar({ onClose }) {
             setType('toast-success');
             setMessage(data.message);
             onClose();
+            setUserData(prev => ({
+                ...prev,
+                avatarURL: URL,
+            }))
+            setChosenFile(undefined);
         });
-        setUserData(prev => ({
-            ...prev,
-            avatarURL: URL,
-        }))
+
     }
 
     return (
