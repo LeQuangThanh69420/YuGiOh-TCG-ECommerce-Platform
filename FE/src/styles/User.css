@@ -3,10 +3,12 @@
     padding: 0px 100px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .user-container {
-    width: 1180px;
+    width: 100%;
+    max-width: 1180px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -97,6 +99,7 @@
     position: fixed;
     z-index: 5;
     top: 0;
+    left: 0;
     background: rgba(0, 0, 0, 0.1);
     padding: 0px 40px;
 }

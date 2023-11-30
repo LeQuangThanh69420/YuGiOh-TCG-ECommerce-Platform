@@ -54,7 +54,6 @@ export default function UploadAvatar({ onClose }) {
     }
 
     const handleSaveAvatar = async () => {
-        console.log(chosenFile);
         if (chosenFile) {
             try {
                 uploadFile(chosenFile).then((URL) => {

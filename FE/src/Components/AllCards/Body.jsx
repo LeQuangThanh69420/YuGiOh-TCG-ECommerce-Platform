@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import CardDetails from "./CardDetails";
+import CardDetails from "../Shared/CardDetails";
 
 import "./../../styles/CardDetails.css";
 import "./../../styles/Body.css";
