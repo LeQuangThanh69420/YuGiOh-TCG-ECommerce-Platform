@@ -117,6 +117,7 @@ namespace BE.Controllers
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
             if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.Email != input.Email) return BadRequest(new {message = "Wrong Email!"});
+            if (user.Actived == false) return BadRequest(new {message = "Account Account is unactivated!"});
             else
             {
                 return await _email.SendEmail(new EmailModel()
