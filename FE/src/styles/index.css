@@ -23,6 +23,28 @@ button {
   font-weight: 500;
   cursor: pointer;
   font-size: 14px;
+  min-width:max-content;
+  padding: 0px 12px;
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 80px;
+  background: rgb(116, 0, 204);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  min-width:max-content;
+  padding: 0px 12px;
+}
+
+.button:hover {
+  background: rgb(100, 0, 176);
 }
 
 button:hover {

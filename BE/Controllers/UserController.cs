@@ -71,7 +71,7 @@ namespace BE.Controllers
         public async Task<ActionResult> ActiveUser(string username, int activeCode)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
-            if (user == null) return NotFound(new {message = "URL not fould!"});
+            if (user == null) return NotFound(new {message = "URL not found!"});
             if (user.ActiveCode == activeCode)
             {
                 user.Actived = true;
@@ -86,7 +86,7 @@ namespace BE.Controllers
         public async Task<ActionResult<UserLoginOutputDto>> Login([FromBody] UserLoginInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user == null) return BadRequest(new {message = "User not found!"});
             if (input.Password != user.Password) return BadRequest(new {message = "Wrong password, please check again!"});
             if (user.Actived != true) return BadRequest(new {message = "Account is unactivated, please check your Email!"});
             else return Ok(new UserLoginOutputDto()
@@ -101,7 +101,7 @@ namespace BE.Controllers
         public async Task<ActionResult> ForgetPassword([FromBody] UserForgetPasswordInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.Email != input.Email) return BadRequest(new {message = "Wrong Email!"});
             else
             {
@@ -118,7 +118,7 @@ namespace BE.Controllers
         public async Task<ActionResult> ChangePassword([FromBody] UserChangePasswordInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.Password != input.CurrentPassword) return BadRequest(new {message = "Wrong current password!"});
             else
             {
@@ -132,7 +132,7 @@ namespace BE.Controllers
         public async Task<ActionResult> ChangeEmail([FromBody] UserChangeEmailInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
-            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.Password != input.CurrentPassword) return BadRequest(new {message = "Wrong current password!"});
             if (user.Email != input.CurrentEmail) return BadRequest(new {message = "Wrong current Email!"});
             if (await EmailExists(input.NewEmail))
@@ -161,7 +161,7 @@ namespace BE.Controllers
         public async Task<ActionResult> GetMoney([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == Username);
-            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user == null) return BadRequest(new {message = "User not found!"});
             return Ok(new {money = user.Money});
         }
     }

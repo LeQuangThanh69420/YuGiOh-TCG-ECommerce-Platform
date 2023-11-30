@@ -268,6 +268,12 @@ INSERT INTO Card (CardName, CardImageURL, CardTypeName, CardOriginName, CardElem
 --UserCard
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
+INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 1, 0);
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 188, 0);
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 189, 0);
 INSERT INTO UserCard (UserId, CardId, OnDeal) VALUES (1, 190, 0);

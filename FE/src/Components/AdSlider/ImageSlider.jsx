@@ -9,14 +9,12 @@ function ImageSlider({ slides }) {
         const isFirstIndex = currentIndex === 0
         const newIndex = isFirstIndex ? slides.length - 1 : currentIndex - 1
         setCurrentIndex(newIndex)
-        event.preventDefault();
     }
 
     const goToNext = useCallback(() => {
         const isLastSlide = currentIndex === slides.length - 1
         const newIndex = isLastSlide ? 0 : currentIndex + 1
         setCurrentIndex(newIndex)
-        event.preventDefault();
     }, [currentIndex, slides])
 
     function goToSlide(slideIndex) {

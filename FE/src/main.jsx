@@ -33,7 +33,7 @@ const router = createBrowserRouter(
       />
       <Route
         path='/user'
-        element={<></>}
+        element={<User />}
       />
       <Route
         path='/buy-riu-coin'

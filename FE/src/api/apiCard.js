@@ -2,7 +2,7 @@ import API_ROUTES from "../constants/apiRoutes";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export const searchCard = async (name, type, origin, element, rarity) => {
+export const searchCard = async (name = '', type = '', origin = '', element = '', rarity = '') => {
   const url = `${API_URL}${API_ROUTES.SEARCH_CARD}?CardName=${name}&CardTypeName=${type}&CardOriginName=${origin}&CardElementName=${element}&CardRarityName=${rarity}`;
   try {
     const response = await fetch(url);
