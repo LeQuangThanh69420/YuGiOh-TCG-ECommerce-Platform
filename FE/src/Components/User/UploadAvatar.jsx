@@ -55,7 +55,6 @@ export default function UploadAvatar({ onClose }) {
 
     const handleSaveAvatar = async () => {
         if (chosenFile) {
-            console.log('co file');
             try {
                 uploadFile(chosenFile).then((URL) => {
                     handleChangeAvatarURL(URL)
@@ -86,6 +85,10 @@ export default function UploadAvatar({ onClose }) {
     return (
         <div className='upload-avatar-screen' onClick={onClose}>
             <div className='upload-avatar-container' onClick={(event) => { event.stopPropagation() }}>
+                <p className='upload-avatar-title'>
+                    <span className='text-secondary'>Change</span>
+                    <span className='text-primary'> Avatar</span>
+                </p>
                 <div className='upload-avatar-top'>
                     <div className='avatar-container'>
                         <img src={chosingAvatar} className='avatar-preview' />
