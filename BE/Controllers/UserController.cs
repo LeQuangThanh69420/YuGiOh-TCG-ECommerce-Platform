@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using BE._services;
 using BE.Context;
 using BE.InterfaceController;
 using BE.Model.Dto;
@@ -16,10 +17,13 @@ namespace BE.Controllers
     {
         private readonly DataContext _context;
         private readonly EmailController _email;
-        public UserController(DataContext context, EmailController email)
+        private readonly ContentService _content;
+
+        public UserController(DataContext context, EmailController email, ContentService content)
         {
             _context = context;
             _email = email;
+            _content = content;
         }
 
         private async Task<bool> UserExists(string Username)
@@ -70,16 +74,26 @@ namespace BE.Controllers
         [HttpGet("ActiveUser/{username}/{activeCode}")]
         public async Task<ActionResult> ActiveUser(string username, int activeCode)
         {
+            string message;
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
-            if (user == null) return NotFound(new {message = "URL not found!"});
+            if (user == null) 
+            {
+                message = "URL not found!";
+                return await _content.ContentWrite(message);
+            }
             if (user.ActiveCode == activeCode)
             {
                 user.Actived = true;
                 user.ActiveCode = null;
                 await _context.SaveChangesAsync();
-                return Ok(new {message = "Active account successfully!"});
+                message = "Active account successfully!";
+                return await _content.ContentWrite(message);
             }
-            else return NotFound(new {message = "URL not found!"});
+            else 
+            {
+                message = "URL not found!";
+                return await _content.ContentWrite(message);
+            }
         }
 
         [HttpPost("Login")]
@@ -103,6 +117,7 @@ namespace BE.Controllers
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == input.Username);
             if (user == null) return BadRequest(new {message = "User not found!"});
             if (user.Email != input.Email) return BadRequest(new {message = "Wrong Email!"});
+            if (user.Actived == false) return BadRequest(new {message = "Account Account is unactivated!"});
             else
             {
                 return await _email.SendEmail(new EmailModel()

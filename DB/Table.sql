@@ -16,7 +16,7 @@ CREATE TABLE "User" (
     Money int NOT NULL,
     Actived bit NOT NULL,
     ActiveCode int,
-    AvatarUrl nvarchar(180) NOT NULL,
+    AvatarUrl nvarchar(300) NOT NULL,
 );
 
 CREATE TABLE CardType (
