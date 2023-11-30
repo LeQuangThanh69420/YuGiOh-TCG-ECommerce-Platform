@@ -1,15 +1,16 @@
 import './../../styles/CardDetails.css';
 
-const CardDetails = ({ isOpen,  card , onClose}) => {
-  
-  if (!isOpen) return null;
+const CardDetails = ({ isOpen, card, onClose }) => {
 
   return (
-    <div className="CardDetails" onClick={onClose}>
-      <div>
-        {card}
-      </div>
-    </div>
+    <>
+      {isOpen && <div className="CardDetails" onClick={onClose}>
+        <div>
+          {card}
+        </div>
+      </div>}
+    </>
+
   );
 };
 
