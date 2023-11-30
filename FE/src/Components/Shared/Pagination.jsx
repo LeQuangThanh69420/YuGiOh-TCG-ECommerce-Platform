@@ -85,9 +85,8 @@ export default function Pagination({ list, numberItem, setPagedList }) {
 
     useEffect(() => {
         const pagedList = list.slice((currentPage - 1) * numberItem, currentPage * numberItem);
-        //setPagedList(pagedList)
-        console.log(pagedList);
-    }, [currentPage])
+        setPagedList(pagedList)
+    }, [currentPage, list])
 
     return (
         <>
