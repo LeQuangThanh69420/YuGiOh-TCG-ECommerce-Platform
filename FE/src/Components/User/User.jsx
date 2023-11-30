@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 
 import { AppData } from "../../Root"
 import UploadAvatar from "./UploadAvatar"
+import Pagination from "./../Shared/Pagination"
 
 import './../../styles/User.css'
 
@@ -44,6 +45,7 @@ export default function User() {
           </div>
         </div>
       </div>
+      <Pagination list={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]} numberItem={2}/>
       {isChanging && <UploadAvatar onClose={() => setIsChanging(false)} />}
     </div>
   )
