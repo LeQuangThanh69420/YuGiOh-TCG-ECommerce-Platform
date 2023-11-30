@@ -1,7 +1,10 @@
 using BE.Context;
 using BE.Controllers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Hosting;
 using System.Net.Mail;
+using BE._services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,7 @@ builder.Services.AddCors();
 //add scoped
 builder.Services.AddScoped<EmailController>();
 builder.Services.AddScoped<UserCardController>();
+builder.Services.AddScoped<ContentService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -32,6 +36,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Serve static files
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "_assets")),
+    RequestPath = "/assets",
+    ServeUnknownFileTypes = true
+});
 
 app.UseHttpsRedirection();
 
