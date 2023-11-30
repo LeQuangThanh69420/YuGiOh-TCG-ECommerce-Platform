@@ -12,7 +12,7 @@ export const getMoney = async (username) => {
 };
 
 export const logOut = async (cleanUpData) => {
-  localStorage.removeItem("userData");
+  localStorage.setItem("userData", '{}');
   cleanUpData();
 };
 
