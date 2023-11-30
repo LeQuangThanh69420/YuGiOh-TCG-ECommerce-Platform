@@ -34,6 +34,9 @@
     width: 120px;
     height: 120px;
     cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .user-info {
@@ -95,18 +98,27 @@
     z-index: 5;
     top: 0;
     background: rgba(0, 0, 0, 0.1);
+    padding: 0px 40px;
 }
 
 .upload-avatar-container {
-    width: 800px;
+    width: 1020px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 24px;
-    padding: 36px 32px 32px 24px;
+    padding: 24px 32px 32px 24px;
     background: white;
     border-radius: 8px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.upload-avatar-title {
+    font-weight: 600;
+    font-size: 26px;
+    text-align: center;
+    padding: 0px 12px;
+    width: 100%;
 }
 
 .upload-avatar-top {
@@ -141,4 +153,35 @@
     height: 360px;
     border: 1px solid #BCBCBC;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dragging-over {
+    border: 1px solid #7400CC;
+}
+
+.dragging-over > div > span {
+    color: #7400CC;
+}
+
+.upload-text {
+    position: relative;
+}
+
+.upload-text::before {
+    content: '';
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    top: -20px;
 }
