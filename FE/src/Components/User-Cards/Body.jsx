@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import CardDetails from "./CardDetails";
-import { searchDeal } from "../../api/apiDeal";
 
 import "./../../styles/CardDetails.css";
 import "./../../styles/Body.css";
@@ -62,9 +61,10 @@ function Body({ cards, setCards }) {
       </div>
       <CardDetails
         isOpen={isCardDetailsOpen}
+        onClose={closeDetails}
         card={
           selectedCard && (
-            <div className="CardDetails-content">
+            <div className="CardDetails-content" onClick={event => event.stopPropagation()}>
               <div className="CardDetails-head">
                 <div className="CardDetails-DuRiu">
                   <span className="text-secondary">Card</span>{" "}
