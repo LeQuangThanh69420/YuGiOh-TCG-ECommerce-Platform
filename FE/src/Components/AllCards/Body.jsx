@@ -35,6 +35,10 @@ function Body({ cards, setCards }) {
     <>
       <div className="body-session">
         <div className="body-container-wrapper">
+          <p className="all-cards-header">
+            <span className="text-secondary">Avaiable</span>
+            <span className="text-primary"> Cards</span>
+          </p>
           <div className="body-container">
             {pagedList.length ? (
               pagedList.map((item, index) => (

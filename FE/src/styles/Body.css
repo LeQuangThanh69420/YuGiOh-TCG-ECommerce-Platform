@@ -17,6 +17,16 @@
   background: white;
 }
 
+.all-cards-header {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: left;
+    width: 100%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
 .body-container {
   width: 100%;
   display: flex;
