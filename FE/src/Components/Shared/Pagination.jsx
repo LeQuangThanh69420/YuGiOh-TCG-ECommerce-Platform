@@ -2,8 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import "./../../styles/Pagination.css";
 
-export default function Pagination({ list, numberItem, setPagedList }) {
-    const [currentPage, setCurrentPage] = useState(1);
+export default function Pagination({ currentPage, list, numberItem, setCurrentPage, setPagedList }) {
 
     const finalPage = useMemo(() => Math.ceil(list.length / numberItem), [list]);
 
@@ -129,26 +128,26 @@ export default function Pagination({ list, numberItem, setPagedList }) {
                         Next
                     </span>
                 </div>
-            ) : (
-                <div className="pagination-bar">
-                    <span className="nav-btn text-primary" onClick={handlePrevious}>
-                        Previous
-                    </span>
-                    <div className="page-numbers">
-                        {Array.from({ length: finalPage }, (_, index) => index + 1).map((item) => (
-                            <span
-                                className={`page-btn ${currentPage === item && "current-page"}`}
-                                key={item}
-                                onClick={() => setCurrentPage(item)}
-                            >
-                                {item}
-                            </span>
-                        ))}
-                    </div>
-                    <span className="nav-btn text-primary" onClick={handleNext}>
-                        Next
-                    </span>
+            ) : (<>{finalPage > 0 && <div className="pagination-bar">
+                <span className="nav-btn text-primary" onClick={handlePrevious}>
+                    Previous
+                </span>
+                <div className="page-numbers">
+                    {Array.from({ length: finalPage }, (_, index) => index + 1).map((item) => (
+                        <span
+                            className={`page-btn ${currentPage === item && "current-page"}`}
+                            key={item}
+                            onClick={() => setCurrentPage(item)}
+                        >
+                            {item}
+                        </span>
+                    ))}
                 </div>
+                <span className="nav-btn text-primary" onClick={handleNext}>
+                    Next
+                </span>
+            </div>}</>
+
             )}
         </>
     );

@@ -66,6 +66,14 @@
     background-image: url('./../asset/uploadPurple.svg');
 }
 
+.arrow-drop-down {
+    background-image: url('./../asset/arrowDropDown.svg');
+}
+
+.arrow-drop-up {
+    background-image: url('./../asset/arrowDropUp.svg');
+}
+
 .icon-1 {
     width: 24px;
     height: 24px;
@@ -120,6 +128,17 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.icon-7 {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 8px;
 }
 
 .icon-2:hover {
