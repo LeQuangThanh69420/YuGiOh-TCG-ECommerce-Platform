@@ -1,14 +1,10 @@
 import { useState } from "react";
 
-import ALL_CARDS_SEARCH_OPTIONS from "./../../../constants/allCardsSeachOptions";
-
 import SearchOption from "./SearchOption";
 
 import "./../../../styles/SearchBar.css";
 
-export default function SearchOptionButton({ searchObject, setData }) {
-
-    console.log(searchObject);
+export default function SearchOptionButton({ listSearchOptions, searchObject, setData, onSearch }) {
 
     const [isDisplay, setIsDisplay] = useState(false);
 
@@ -25,6 +21,11 @@ export default function SearchOptionButton({ searchObject, setData }) {
         }
     }
 
+    const handleSearch = () => {
+        setIsDisplay(false);
+        onSearch();
+    }
+
     return (
         <div className="option-button-container">
             <div
@@ -33,7 +34,7 @@ export default function SearchOptionButton({ searchObject, setData }) {
             ></div>
             {isDisplay && <div className="search-options-container">
                 <div className="search-options-wrapper">
-                    {ALL_CARDS_SEARCH_OPTIONS.map((option) =>
+                    {listSearchOptions.map((option) =>
                         <SearchOption
                             searchName={option.search_name}
                             dataKey={option.data_key}
@@ -46,7 +47,7 @@ export default function SearchOptionButton({ searchObject, setData }) {
                 </div>
                 <div className="reset-apply-buttons">
                     <button className="button-2" onClick={handleReset}>Reset</button>
-                    <button>Apply</button>
+                    <button onClick={handleSearch}>Apply</button>
                 </div>
             </div>}
         </div>

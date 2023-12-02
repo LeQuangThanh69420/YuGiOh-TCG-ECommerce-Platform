@@ -82,7 +82,7 @@
 }
 
 .search-option:hover {
-    background-color: #DCDCDC;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .search-options-container {
@@ -121,3 +121,37 @@
 .reset-apply-buttons > button {
     height: 36px;
 }
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.search-text-container {
+    display: flex;
+    height: 36px;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+}
+
+.search-text {
+    height: 100%;
+    border: 1px solid #58555b;
+    border-radius: 8px;
+    padding: 4px 36px 4px 42px;
+    width: 360px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #58555b;
+}
+
+.search-text::placeholder {
+    font-weight: 500;
+}
+
+.search-text:focus {
+    border: 1px solid #7400CC;
+}
+

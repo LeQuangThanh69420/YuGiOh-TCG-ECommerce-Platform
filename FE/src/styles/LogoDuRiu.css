@@ -1,14 +1,24 @@
+@media ( width < 870px) {
+  .duriu-logo-name {
+    display: none;
+  }
+}
+
 .logo-container {
   display: flex;
   gap: 14px;
   align-items: center;
   text-decoration: none;
+  position: absolute;
+  z-index: 1;
+  left: 0;
 }
 
 .duriu-logo-name {
   font-size: 24px;
   font-weight: 600;
   margin: 0;
+  min-width: max-content;
   /* -webkit-text-stroke: 1px rgb(0, 0, 0); */
 }
 

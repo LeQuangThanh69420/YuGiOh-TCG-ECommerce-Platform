@@ -51,14 +51,16 @@ function Header() {
                         <div className={`icon-2 ${currentRoute === '/buy-riu-coin' ? 'coin-purple' : 'coin-gray'}`}></div>
                     </Link>
                 </div>
-                {!userData.username ?
-                    <Link to={'/login'}>
-                        <button className="users-button">
-                            Login
-                        </button>
-                    </Link>
-                    : <img src={userData.avatarURL} className="header-user-avt" onClick={handleClickAvatar} />
-                }
+                <div className="header-dynamic-button">
+                    {!userData.username ?
+                        <Link to={'/login'}>
+                            <button className="users-button">
+                                Login
+                            </button>
+                        </Link>
+                        : <img src={userData.avatarURL} className="header-user-avt" onClick={handleClickAvatar} />
+                    }
+                </div>
                 {isOpenInfo && <div className="header-user-option">
                     <div className="header-user-info">
                         <div className="user-info-child">

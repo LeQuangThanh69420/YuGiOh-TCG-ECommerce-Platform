@@ -5,7 +5,7 @@ import { searchCard } from "../../api/apiCard";
 
 import CardDetails from "../Shared/CardDetails";
 import Pagination from "../Shared/Pagination";
-import SearchBar from "../Shared/SearchSelections/SearchBar";
+import SearchAllCards from "../Shared/SearchSelections/SearchAllCards";
 
 import "./../../styles/CardDetails.css";
 import "./../../styles/Body.css";
@@ -47,20 +47,10 @@ function Body({ cards, setCards }) {
   };
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_URL + "/Card/searchCard")
-      .then((res) => res.json())
-      .then((data) => {
-        setCards(data);
-      });
-  }, [searchObject]);
-
-  useEffect(() => {
-    searchCard(searchObject.name, searchObject.cardTypeName, searchObject.cardOriginName, searchObject.cardElementName, searchObject.cardRarityName).then(data => {
+    searchCard().then(data => {
       setCards(data)
     })
-    setCurrentPage(1);
-    console.log(pagedList);
-  }, [searchObject])
+  }, []);
 
   return (
     <>
@@ -71,10 +61,10 @@ function Body({ cards, setCards }) {
               <span className="text-secondary">Avaiable</span>
               <span className="text-primary"> Cards</span>
             </div>
-            <SearchBar
+            <SearchAllCards
               searchObject={searchObject}
               setData={setSearchObject}
-              onSearch
+              onSearch={handleSearch}
             />
           </div>
           <div className="body-container">

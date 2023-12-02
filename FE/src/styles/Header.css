@@ -2,7 +2,7 @@
   display: flex; /*chay sang ngang*/
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
-  z-index: 5;
+  z-index: 1;
   top: 0;
   width: 100%;
   justify-content: center;
@@ -17,6 +17,9 @@
   background: white;
   justify-content: space-between;
   position: relative;
+  min-width: 500px;
+  z-index: 1;
+  height: 40px;
 }
 
 .search-bar {
@@ -57,6 +60,18 @@
 .header-nav-icons {
   display: flex;
   gap: 32px;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  justify-content: center;
+  z-index: 0;
+  padding: 0px 120px;
+}
+
+.header-dynamic-button {
+  position: absolute;
+  z-index: 1;
+  right: 0;
 }
 
 .header-user-option {
