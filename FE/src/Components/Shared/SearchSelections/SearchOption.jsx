@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { getSomeThingOfCard } from "../../../api/apiCard"
-import API_ROUTES from "../../../constants/apiRoutes";
 
-import './../../../styles/SearchOption.css'
+import './../../../styles/SearchBar.css'
 
 export default function SearchOption({ searchName, apiRoute, chosenOption, dataKey, setData }) {
 
@@ -13,6 +12,13 @@ export default function SearchOption({ searchName, apiRoute, chosenOption, dataK
     setIsOpenDropDown(!isOpenDropDown)
   }
 
+  const handleChose = (data) => {
+    setData(prev => ({
+      ...prev,
+      [dataKey]: data
+    }))
+  }
+
   useEffect(() => {
     getSomeThingOfCard(apiRoute).then(data => {
       setListOptions(data);
@@ -20,22 +26,19 @@ export default function SearchOption({ searchName, apiRoute, chosenOption, dataK
   }, [])
 
   return (
-    <div className="search-option-container">
       <div className="search-option-box">
         <div className="search-name">
           {searchName}
         </div>
-        <div className="chosen-option" onClick={handleOpenDropDown}>
+        <div className={`chosen-option ${isOpenDropDown && 'chosing'}`} onClick={handleOpenDropDown}>
           {chosenOption}
           <div className={`${isOpenDropDown ? 'arrow-drop-up' : 'arrow-drop-down'} icon-7`}></div>
           {isOpenDropDown && <div className="list-options">
             {listOptions.map((option, index) =>
-              <div key={index} className="list-option" onClick={() => setData(option[dataKey])}>{option[dataKey]}</div>
+              <div key={index} className="list-option" onClick={() => handleChose(option[dataKey])}>{option[dataKey]}</div>
             )}
           </div>}
         </div>
       </div>
-
-    </div>
   )
 }
