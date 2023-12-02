@@ -88,7 +88,7 @@
 .search-options-container {
     position: absolute;
     cursor: default;
-    z-index: 2;
+    z-index: 1;
     background: white;
     top: 120%;
     right: 0;
