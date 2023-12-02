@@ -12,10 +12,20 @@ export default function Gacha() {
                         <div className="Gacha-pulling-background">
                             <div className="Gacha-pulling-background-curve">
                                 <div className="Gacha-pulling-background-dots">
-                                    <div className="Gacha-pulling-img" style={{backgroundImage: `url(${banner[0].img})`}}></div>
-                                    <div className="Gacha-pulling-price-button">
-                                        <div className="Gacha-pulling-price"></div>
-                                        <button className="Gacha-pulling-pull">Pull Card x10</button>
+                                    <div className="Gacha-pulling-img" style={{ backgroundImage: `url(${banner[0].img})` }}></div>
+                                    <div className="Gacha-pulling-right">
+                                        <div className="Gacha-pulling-top"></div>
+                                        <div className="Gacha-pulling-text">
+                                            <div className="Gacha-pulling-text-top text-primary">{banner[0].name}</div>
+                                            <div className="Gacha-pulling-text-bottom text-third">Pack</div>
+                                        </div>
+                                        <div className="Gacha-pulling-price-button">
+                                            <div className="Gacha-pulling-price">
+                                                <div className="Gacha-pulling-riu-price text-sixth">{banner[0].price}</div>
+                                                <div className="Gacha-pulling-riu-coin-icon riu-coin-icon"></div>
+                                            </div>
+                                            <button className="Gacha-pulling-pull">Pull Card x10</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

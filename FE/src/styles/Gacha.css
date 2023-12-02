@@ -40,19 +40,70 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0px 40px;
 }
 
 .Gacha-pulling-img{
     width: 488px;
     height: 100%;
     background-repeat: no-repeat;
+    margin-left: 40px;
     background-position: bottom;
 }
 
 .Gacha-pulling-price-button{
     display: flex;
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 70px;
     align-items: center;
+    padding-bottom: 30px;
+    padding-left: 40px;
+}
+
+.Gacha-pulling-riu-coin-icon{
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+    align-self: center;
+}
+
+.Gacha-pulling-price{
+    display: flex;
+    gap: 5px;
+}
+
+.Gacha-pulling-riu-price{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.Gacha-pulling-text-top{
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+.Gacha-pulling-text-bottom{
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+.Gacha-pulling-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.Gacha-pulling-right{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Gacha-pulling-top{
+    background-image: url('../asset/sharpRectangle.svg');
+    width: 350px; 
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: right top;
+    border-radius: 8px;
 }
