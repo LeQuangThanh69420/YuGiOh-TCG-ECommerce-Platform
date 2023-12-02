@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 
 import ALL_CARDS_SEARCH_OPTIONS from "../../constants/allCardsSeachOptions";
 
+import { searchCard } from "../../api/apiCard";
+
 import CardDetails from "../Shared/CardDetails";
 import Pagination from "../Shared/Pagination";
 import SearchOption from "../Shared/SearchSelections/SearchOption";
@@ -13,6 +15,7 @@ import "./../../styles/Body.css";
 function Body({ cards, setCards }) {
   const [isCardDetailsOpen, setCardDetailsOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [searchObject, setSearchObject] = useState({
     name: '',
     cardTypeName: '',
@@ -40,6 +43,14 @@ function Body({ cards, setCards }) {
         setCards(data);
       });
   }, []);
+
+  useEffect(() => {
+    searchCard(searchObject.name, searchObject.cardTypeName, searchObject.cardOriginName, searchObject.cardElementName, searchObject.cardRarityName).then(data => {
+      setCards(data)
+    })
+    setCurrentPage(1);
+    console.log(pagedList);
+  }, [searchObject])
 
   return (
     <>
@@ -81,7 +92,7 @@ function Body({ cards, setCards }) {
               </p>
             )}
           </div>
-          <Pagination list={cards} numberItem={10} setPagedList={setPagedList} />
+          {<Pagination currentPage={currentPage} list={cards} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setPagedList} />}
         </div>
       </div>
 
