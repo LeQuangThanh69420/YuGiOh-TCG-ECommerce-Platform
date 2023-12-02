@@ -42,7 +42,7 @@ function Gacha() {
                 </div>
                 <div className="Gacha-selection">
                     {banner.map((item, index) =>
-                        <div className="Gacha-selection-banner" onClick={() => {goToPack(item, index)}} style={currentIndex == index ? {backgroundColor: '#6400B0', color: 'white'} : {backgroundColor: '#6D6D6D', color: 'black'}} key={index}>{item.name}</div>
+                        <div className="Gacha-selection-banner" onClick={() => {goToPack(item, index)}} style={currentIndex == index ? {backgroundColor: '#6400B0', color: 'white'} : {backgroundColor: '#979797', color: 'black'}} key={index}>{item.name}</div>
                     )}
                 </div>
                 <div className="Gacha-background">

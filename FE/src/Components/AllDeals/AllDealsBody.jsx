@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import '../../styles/AllDeals.css'
 import DealDetails from "../Shared/DealDetail";
-import DuRiuLogo from '../../asset/logoDuRiuImg2.png'
 import { searchDeal } from '../../api/apiDeal'
 import Pagination from "../Shared/Pagination";
 
 function AllDealsBody({ deals, setDeals }) {
     const [selectedDeal, setSelectedDeal] = useState(null);
     const [isDealDetailsOpen, setDealDetailsOpen] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const [pagedList, setPagedList] = useState([]);
 
@@ -35,7 +35,7 @@ function AllDealsBody({ deals, setDeals }) {
         });
     }, [])
 
-    console.log(pagedList);
+    console.log(pagedList.length);
 
     return (
         <>
@@ -65,7 +65,7 @@ function AllDealsBody({ deals, setDeals }) {
                             </p>
                         }
                     </div>
-                    <Pagination list={deals} numberItem={10} setPagedList={setPagedList} />
+                    {<Pagination currentPage={currentPage} list={deals} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setPagedList} />}
                 </div>
             </div>
             <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails} />
