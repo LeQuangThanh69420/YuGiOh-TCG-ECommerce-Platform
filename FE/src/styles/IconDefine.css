@@ -74,6 +74,17 @@
     background-image: url('./../asset/arrowDropUp.svg');
 }
 
+.search-option {
+    background-image: url('./../asset/searchOptionButton.svg');
+    width: 36px;
+    height: 36px;
+    display: flex;
+    background-position: center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
 .icon-1 {
     width: 24px;
     height: 24px;

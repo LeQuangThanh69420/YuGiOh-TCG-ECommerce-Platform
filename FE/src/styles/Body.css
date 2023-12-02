@@ -36,9 +36,11 @@
   text-align: left;
   width: 100%;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
+  display: flex;;
   gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .body-container {

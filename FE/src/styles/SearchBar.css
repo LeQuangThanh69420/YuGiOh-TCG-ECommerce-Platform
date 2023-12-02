@@ -1,0 +1,123 @@
+
+.search-name {
+    color: #58555b;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.chosen-option {
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #58555b;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    position: relative;
+    font-size: 16px;
+    height: 100%;
+    color: #7400CC;
+    font-weight: 500;
+}
+
+.search-option-box {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+    height: 36px;
+} 
+
+.list-options {
+    position: absolute;
+    background: white;
+    z-index: 1;
+    width: 102%;
+    border-radius: 6px;
+    left: -1px;
+    top: 115%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    max-height: 200px;
+    overflow-y: overlay;
+    border: 1px solid #58555b;
+    overscroll-behavior: contain;
+}
+
+.list-options::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 2;
+}
+
+.list-options::-webkit-scrollbar-thumb {
+    background: #979797;
+    border-radius: 6px;
+}
+
+.list-option {
+    padding: 8px 12px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #58555b;
+}
+
+.list-option:hover {
+    background: #7400CC;
+    color: white;
+    cursor: default;
+}
+
+.option-button-container {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.search-option:hover {
+    background-color: #DCDCDC;
+}
+
+.search-options-container {
+    position: absolute;
+    cursor: default;
+    z-index: 2;
+    background: white;
+    top: 120%;
+    right: 0;
+    padding: 20px;
+    border: 1px solid #979797;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-end;
+    border-radius: 6px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.chosing {
+    border: 1px solid #7400CC;
+    outline: 1px solid #7400CC;
+}
+
+.search-options-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reset-apply-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.reset-apply-buttons > button {
+    height: 36px;
+}

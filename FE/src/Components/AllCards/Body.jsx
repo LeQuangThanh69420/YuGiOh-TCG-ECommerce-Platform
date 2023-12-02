@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 
-import ALL_CARDS_SEARCH_OPTIONS from "../../constants/allCardsSeachOptions";
-
 import { searchCard } from "../../api/apiCard";
 
 import CardDetails from "../Shared/CardDetails";
 import Pagination from "../Shared/Pagination";
-import SearchOption from "../Shared/SearchSelections/SearchOption";
+import SearchBar from "../Shared/SearchSelections/SearchBar";
 
 import "./../../styles/CardDetails.css";
 import "./../../styles/Body.css";
@@ -17,12 +15,12 @@ function Body({ cards, setCards }) {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchObject, setSearchObject] = useState({
-    name: '',
-    cardTypeName: '',
-    cardOriginName: '',
-    cardElementName: '',
-    cardRarityName: '',
-  })
+    name: "",
+    cardTypeName: "",
+    cardOriginName: "",
+    cardElementName: "",
+    cardRarityName: "",
+  });
 
   const [pagedList, setPagedList] = useState([]);
 
@@ -36,13 +34,25 @@ function Body({ cards, setCards }) {
     setCardDetailsOpen(false);
   };
 
+  const handleSearch = () => {
+    searchCard(
+      searchObject.name,
+      searchObject.cardTypeName,
+      searchObject.cardOriginName,
+      searchObject.cardElementName,
+      searchObject.cardRarityName
+    ).then((data) => {
+      setCards(data)
+    });
+  };
+
   useEffect(() => {
     fetch(import.meta.env.VITE_API_URL + "/Card/searchCard")
       .then((res) => res.json())
       .then((data) => {
         setCards(data);
       });
-  }, []);
+  }, [searchObject]);
 
   useEffect(() => {
     searchCard(searchObject.name, searchObject.cardTypeName, searchObject.cardOriginName, searchObject.cardElementName, searchObject.cardRarityName).then(data => {
@@ -61,16 +71,11 @@ function Body({ cards, setCards }) {
               <span className="text-secondary">Avaiable</span>
               <span className="text-primary"> Cards</span>
             </div>
-            <div className="all-cards-search-options">
-              {ALL_CARDS_SEARCH_OPTIONS.map((option) =>
-                <SearchOption dataKey={option.data_key} searchName={option.search_name} apiRoute={option.api_route} chosenOption={searchObject[option.data_key]} setData={(value) => {
-                  setSearchObject(prev => ({
-                    ...prev,
-                    [option.data_key]: value
-                  }))
-                }} key={option.id} />
-              )}
-            </div>
+            <SearchBar
+              searchObject={searchObject}
+              setData={setSearchObject}
+              onSearch
+            />
           </div>
           <div className="body-container">
             {pagedList.length ? (

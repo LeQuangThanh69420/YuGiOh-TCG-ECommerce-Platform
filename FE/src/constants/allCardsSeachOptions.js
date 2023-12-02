@@ -28,4 +28,4 @@ const ALL_CARDS_SEARCH_OPTIONS = [
     },
 ]
 
-export default ALL_CARDS_SEARCH_OPTIONS
+export default ALL_CARDS_SEARCH_OPTIONS;
