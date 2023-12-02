@@ -17,14 +17,26 @@
   background: white;
 }
 
+.all-cards-header-title {
+}
+
+.all-cards-search-options {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .all-cards-header {
-    font-weight: 600;
-    font-size: 24px;
-    text-align: left;
-    width: 100%;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-    padding: 8px 12px;
-    border-radius: 8px;
+  font-weight: 600;
+  font-size: 24px;
+  text-align: left;
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .body-container {

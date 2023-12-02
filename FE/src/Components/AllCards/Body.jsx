@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 
+import ALL_CARDS_SEARCH_OPTIONS from "../../constants/allCardsSeachOptions";
+
 import CardDetails from "../Shared/CardDetails";
 import Pagination from "../Shared/Pagination";
+import SearchOption from "../Shared/SearchSelections/SearchOption";
 
 import "./../../styles/CardDetails.css";
 import "./../../styles/Body.css";
@@ -10,6 +13,13 @@ import "./../../styles/Body.css";
 function Body({ cards, setCards }) {
   const [isCardDetailsOpen, setCardDetailsOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [searchObject, setSearchObject] = useState({
+    name: '',
+    cardTypeName: '',
+    cardOriginName: '',
+    cardElementName: '',
+    cardRarityName: '',
+  })
 
   const [pagedList, setPagedList] = useState([]);
 
@@ -35,10 +45,22 @@ function Body({ cards, setCards }) {
     <>
       <div className="body-session">
         <div className="body-container-wrapper">
-          <p className="all-cards-header">
-            <span className="text-secondary">Avaiable</span>
-            <span className="text-primary"> Cards</span>
-          </p>
+          <div className="all-cards-header">
+            <div className="all-cards-header-title">
+              <span className="text-secondary">Avaiable</span>
+              <span className="text-primary"> Cards</span>
+            </div>
+            <div className="all-cards-search-options">
+              {ALL_CARDS_SEARCH_OPTIONS.map((option) =>
+                <SearchOption dataKey={option.data_key} searchName={option.search_name} apiRoute={option.api_route} chosenOption={searchObject[option.data_key]} setData={(value) => {
+                  setSearchObject(prev => ({
+                    ...prev,
+                    [option.data_key]: value
+                  }))
+                }} key={option.id} />
+              )}
+            </div>
+          </div>
           <div className="body-container">
             {pagedList.length ? (
               pagedList.map((item, index) => (
@@ -59,7 +81,7 @@ function Body({ cards, setCards }) {
               </p>
             )}
           </div>
-          <Pagination list={cards} numberItem={10} setPagedList={setPagedList}/>
+          <Pagination list={cards} numberItem={10} setPagedList={setPagedList} />
         </div>
       </div>
 
