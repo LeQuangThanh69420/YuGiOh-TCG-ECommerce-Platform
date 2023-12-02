@@ -117,11 +117,12 @@
 .Gacha-selection-banner{
     width: 80px;
     height: 30px;
-    background-color: blueviolet;
     align-items: center;
     justify-content: center;
     display: flex;
     border-radius: 6px; 
+    cursor: pointer;
+    box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);
 }
 
 .Gacha-selection{
