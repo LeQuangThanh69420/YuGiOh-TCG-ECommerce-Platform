@@ -39,6 +39,10 @@ function AllDealsBody({ deals, setDeals }) {
         <>
             <div className="AllDeals-body">
                 <div className="AllDeals-body-container-wrapper">
+                    <p className="all-cards-header">
+                        <span className="text-secondary">Avaiable</span>
+                        <span className="text-primary"> Deals</span>
+                    </p>
                     <div className="AllDeals-body-container">
                         {
                             pagedList.length ? pagedList.map((item, index) =>
@@ -59,7 +63,7 @@ function AllDealsBody({ deals, setDeals }) {
                             </p>
                         }
                     </div>
-                    <Pagination list={deals} numberItem={10} setPagedList={setPagedList}/>
+                    <Pagination list={deals} numberItem={10} setPagedList={setPagedList} />
                 </div>
             </div>
             <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails} />
