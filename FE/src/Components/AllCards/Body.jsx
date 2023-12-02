@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 
 import { searchCard } from "../../api/apiCard";
 
-import { searchCard } from "../../api/apiCard";
-
 import CardDetails from "../Shared/CardDetails";
 import Pagination from "../Shared/Pagination";
 import SearchBar from "../Shared/SearchSelections/SearchBar";
