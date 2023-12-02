@@ -35,11 +35,13 @@ function AllDealsBody({ deals, setDeals }) {
         });
     }, [])
 
+    console.log(pagedList);
+
     return (
         <>
             <div className="AllDeals-body">
                 <div className="AllDeals-body-container-wrapper">
-                    <p className="all-cards-header">
+                    <p className="all-deals-header">
                         <span className="text-secondary">Avaiable</span>
                         <span className="text-primary"> Deals</span>
                     </p>

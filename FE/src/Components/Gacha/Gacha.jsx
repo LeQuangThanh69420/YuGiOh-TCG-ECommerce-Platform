@@ -1,10 +1,47 @@
 import Header from "../Shared/Header"
 import "../../styles/Gacha.css"
+import { banner } from "../../constants/gachaBannerInfo"
+
 
 export default function Gacha() {
     return (
         <>
-            <div>Gacha</div>
+            <div className="Gacha">
+                <div className="Gacha-container">
+                    <div className="Gacha-pulling-screen">
+                        <div className="Gacha-pulling-background">
+                            <div className="Gacha-pulling-background-curve">
+                                <div className="Gacha-pulling-background-dots">
+                                    <div className="Gacha-pulling-img" style={{ backgroundImage: `url(${banner[0].img})` }}></div>
+                                    <div className="Gacha-pulling-right">
+                                        <div className="Gacha-pulling-top"></div>
+                                        <div className="Gacha-pulling-text">
+                                            <div className="Gacha-pulling-text-top text-primary">{banner[0].name}</div>
+                                            <div className="Gacha-pulling-text-bottom text-third">Pack</div>
+                                        </div>
+                                        <div className="Gacha-pulling-price-button">
+                                            <div className="Gacha-pulling-price">
+                                                <div className="Gacha-pulling-riu-price text-sixth">{banner[0].price}</div>
+                                                <div className="Gacha-pulling-riu-coin-icon riu-coin-icon"></div>
+                                            </div>
+                                            <button className="Gacha-pulling-pull">Pull Card x10</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="Gacha-selection">
+                    {banner.map((item, index) =>
+                        <div className="Gacha-selection-banner" key={index}>{item.name}</div>
+                    )}
+                </div>
+                <div className="Gacha-background">
+                    <div className="Gacha-background-front"></div>
+                    <div className="Gacha-background-behind"></div>
+                </div>
+            </div>
         </>
     )
 }

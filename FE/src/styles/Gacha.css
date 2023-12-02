@@ -1,0 +1,131 @@
+.Gacha-background-behind {
+    background-color: #979797;
+    width: 100%;
+}
+
+.Gacha {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 100px;
+    gap: 15px;
+}
+
+.Gacha-container{
+    display: flex;
+    justify-content: center;
+}
+
+.Gacha-pulling-screen {
+    width: 960px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background: white;
+}
+
+.Gacha-pulling-background-curve{
+    width: 960px;
+    height: 400px;
+    border-radius: 8px;
+    background-image: url('../asset/gachaCurve.svg');
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Gacha-pulling-background-dots{
+    width: 960px;
+    height: 400px;
+    background-image: url('../asset/GachaBackgroundDots.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.Gacha-pulling-img{
+    width: 488px;
+    height: 100%;
+    background-repeat: no-repeat;
+    margin-left: 40px;
+    background-position: bottom;
+}
+
+.Gacha-pulling-price-button{
+    display: flex;
+    gap: 70px;
+    align-items: center;
+    padding-bottom: 30px;
+    padding-left: 40px;
+}
+
+.Gacha-pulling-riu-coin-icon{
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+    align-self: center;
+}
+
+.Gacha-pulling-price{
+    display: flex;
+    gap: 5px;
+}
+
+.Gacha-pulling-riu-price{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.Gacha-pulling-text-top{
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+.Gacha-pulling-text-bottom{
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+.Gacha-pulling-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.Gacha-pulling-right{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Gacha-pulling-top{
+    background-image: url('../asset/sharpRectangle.svg');
+    width: 350px; 
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: right top;
+    border-radius: 8px;
+}
+
+.Gacha-selection-banner{
+    width: 80px;
+    height: 30px;
+    background-color: blueviolet;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 6px; 
+}
+
+.Gacha-selection{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
