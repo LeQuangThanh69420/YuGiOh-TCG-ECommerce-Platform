@@ -18,6 +18,7 @@
 }
 
 .all-cards-header-title {
+
 }
 
 .all-cards-search-options {
@@ -26,6 +27,7 @@
   width: 100%;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 0px 12px;
 }
 
 .all-cards-header {

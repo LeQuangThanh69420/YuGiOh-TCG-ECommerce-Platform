@@ -1,4 +1,4 @@
-.AllDeals-main-content{
+.AllDeals-main-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.AllDeals-body{
+.AllDeals-body {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -15,13 +15,21 @@
 }
 
 .AllDeals-body-container {
-    width: 1180px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 30px;
+    width: 100%;
     display: flex;
     gap: 30px 30px;
     flex-wrap: wrap;
+}
+
+.AllDeals-body-container-wrapper {
+    width: 1180px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    gap: 30px;
+    align-items: flex-end;
+    padding: 30px;
     background: white;
 }
 
@@ -47,7 +55,7 @@
     width: 164px;
 }
 
-.AllDeals-bottom{
+.AllDeals-bottom {
     position: relative;
     display: flex;
     align-items: center;
@@ -55,11 +63,11 @@
     width: 100%;
 }
 
-.AllDeals-buy{
+.AllDeals-buy {
     width: 70px;
 }
 
-.AllDeals-price{
+.AllDeals-price {
     font-weight: 700;
     font-size: 20px;
     color: green;
