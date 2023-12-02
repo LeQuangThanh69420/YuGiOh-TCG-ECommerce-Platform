@@ -7,6 +7,17 @@
     align-items: center;
 }
 
+.all-deals-header {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: left;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;  
+}
+
 .AllDeals-body {
     display: flex;
     justify-content: center;
