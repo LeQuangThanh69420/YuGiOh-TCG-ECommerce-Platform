@@ -35,6 +35,8 @@ function AllDealsBody({ deals, setDeals }) {
         });
     }, [])
 
+    console.log(pagedList);
+
     return (
         <>
             <div className="AllDeals-body">

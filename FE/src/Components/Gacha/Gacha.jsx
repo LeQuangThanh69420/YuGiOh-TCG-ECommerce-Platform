@@ -32,6 +32,11 @@ export default function Gacha() {
                         </div>
                     </div>
                 </div>
+                <div className="Gacha-selection">
+                    {banner.map((item, index) =>
+                        <div className="Gacha-selection-banner" key={index}>{item.name}</div>
+                    )}
+                </div>
                 <div className="Gacha-background">
                     <div className="Gacha-background-front"></div>
                     <div className="Gacha-background-behind"></div>
