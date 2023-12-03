@@ -9,9 +9,11 @@ namespace BE.InterfaceController
 {
     public interface IUserCardController
     {
+        //[Authorize]
         //[HttpGet("SearchOwnedSeparate")]
         Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedSeparate(UserCardSearchOwnedInputDto input);
 
+        //[Authorize]
         //[HttpGet("SearchOwnedStack")]
         Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedStack(UserCardSearchOwnedInputDto input);
 

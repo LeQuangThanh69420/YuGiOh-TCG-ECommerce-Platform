@@ -6,6 +6,7 @@ using BE.Context;
 using BE.InterfaceController;
 using BE.Model.Dto;
 using BE.Model.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,6 +54,7 @@ namespace BE.Controllers
             return await deal.ToListAsync();
         }
 
+        //[Authorize]
         [HttpGet("GetBoughtDeal")]
         public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBoughtDeal([FromQuery] string Username)
         {
@@ -81,6 +83,7 @@ namespace BE.Controllers
             return await deal.ToListAsync();
         }
 
+        //[Authorize]
         [HttpGet("GetSoldDeal")]
         public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSoldDeal([FromQuery] string Username)
         {
@@ -109,6 +112,7 @@ namespace BE.Controllers
             return await deal.ToListAsync();
         }
 
+        //[Authorize]
         [HttpPost("CreateDeal")]
         public async Task<ActionResult> CreateDeal([FromBody] DealCreateInputDto input)
         {
@@ -138,6 +142,7 @@ namespace BE.Controllers
             return Ok(new {message = "Create Deal successfully!"});
         }
 
+        //[Authorize]
         [HttpPut("EditDeal")]
         public async Task<ActionResult> EditDeal([FromBody] DealEditInputDto input)
         {
@@ -162,6 +167,7 @@ namespace BE.Controllers
             return Ok(new {message = "Edit Deal successfully!"});
         }
 
+        //[Authorize]
         [HttpDelete("DeleteDeal")]
         public async Task<ActionResult> DeleteDeal([FromBody] DealDeleteInputDto input)
         {
@@ -179,6 +185,7 @@ namespace BE.Controllers
             return Ok(new {message = "Delete Deal successfully!"});
         }
         
+        //[Authorize]
         [HttpPost("AcceptDeal")]
         public async Task<ActionResult> AcceptDeal([FromBody] DealAcceptInputDto input)
         {

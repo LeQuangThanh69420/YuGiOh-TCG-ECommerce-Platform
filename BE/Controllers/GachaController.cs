@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BE.Context;
 using BE.Model.Dto;
 using BE.Model.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
@@ -18,6 +19,8 @@ namespace BE.Controllers
         {
             _context = context;
         }
+
+        [Authorize]
         [HttpGet("Gacha")]
         public async Task<ActionResult<List<GachaOutputDto>>> Gacha([FromQuery] GachaInputDto input)
         {

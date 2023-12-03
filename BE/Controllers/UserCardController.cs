@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BE.Context;
 using BE.InterfaceController;
 using BE.Model.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ namespace BE.Controllers
             _context = context;
         }
 
+        //[Authorize]
         [HttpGet("SearchOwnedSeparate")]
         public async Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedSeparate([FromQuery] UserCardSearchOwnedInputDto input)
         {
@@ -48,6 +50,7 @@ namespace BE.Controllers
             return await userCard.ToListAsync();
         }
 
+        //[Authorize]
         [HttpGet("SearchOwnedStack")]
         public async Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedStack([FromQuery] UserCardSearchOwnedInputDto input)
         {

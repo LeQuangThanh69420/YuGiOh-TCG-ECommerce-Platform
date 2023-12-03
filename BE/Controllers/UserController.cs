@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using BE._services;
+using BE._iservices;
 using BE.Context;
 using BE.InterfaceController;
 using BE.Model.Dto;
 using BE.Model.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,13 +18,15 @@ namespace BE.Controllers
     {
         private readonly DataContext _context;
         private readonly EmailController _email;
-        private readonly ContentService _content;
+        private readonly IContentService _contentService;
+        private readonly ITokenService _tokenService;
 
-        public UserController(DataContext context, EmailController email, ContentService content)
+        public UserController(DataContext context, EmailController email, IContentService contentService, ITokenService tokenService)
         {
             _context = context;
             _email = email;
-            _content = content;
+            _contentService = contentService;
+            _tokenService = tokenService;
         }
 
         private async Task<bool> UserExists(string Username)
@@ -79,7 +82,7 @@ namespace BE.Controllers
             if (user == null) 
             {
                 message = "URL not found!";
-                return await _content.ContentWrite(message);
+                return Content(await _contentService.ContentWrite(message), "text/html");
             }
             if (user.ActiveCode == activeCode)
             {
@@ -87,12 +90,12 @@ namespace BE.Controllers
                 user.ActiveCode = null;
                 await _context.SaveChangesAsync();
                 message = "Active account successfully!";
-                return await _content.ContentWrite(message);
+                return Content(await _contentService.ContentWrite(message), "text/html");
             }
             else 
             {
                 message = "URL not found!";
-                return await _content.ContentWrite(message);
+                return Content(await _contentService.ContentWrite(message), "text/html");
             }
         }
 
@@ -107,7 +110,7 @@ namespace BE.Controllers
             {
                 Username = user.Username,
                 AvatarURL = user.AvatarUrl,
-                Token = "daylatoken",
+                Token = _tokenService.CreateToken(user),
             });
         }
 
@@ -129,6 +132,7 @@ namespace BE.Controllers
             }
         }
 
+        //[Authorize]
         [HttpPost("ChangePassword")]
         public async Task<ActionResult> ChangePassword([FromBody] UserChangePasswordInputDto input)
         {
@@ -143,6 +147,7 @@ namespace BE.Controllers
             }
         }
 
+        //[Authorize]
         [HttpPost("ChangeEmail")]
         public async Task<ActionResult> ChangeEmail([FromBody] UserChangeEmailInputDto input)
         {
@@ -162,6 +167,7 @@ namespace BE.Controllers
             }
         }
         
+        [Authorize]
         [HttpPost("ChangeAvatarUrl")]
         public async Task<ActionResult> ChangeAvatarUrl([FromBody] UserChangeAvatarUrlInputDto input)
         {
@@ -172,6 +178,7 @@ namespace BE.Controllers
             return Ok(new {message = "Change Avatar successful!"});
         }
 
+        //[Authorize]
         [HttpGet("GetMoney")]
         public async Task<ActionResult> GetMoney([FromQuery] string Username)
         {

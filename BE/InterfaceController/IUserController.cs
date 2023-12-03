@@ -21,15 +21,19 @@ namespace BE.InterfaceController
         //[HttpPost("ForgetPassword")]
         Task<ActionResult> ForgetPassword(UserForgetPasswordInputDto input);
         
+        //[Authorize]
         //[HttpPost("ChangePassword")]
         Task<ActionResult> ChangePassword(UserChangePasswordInputDto input);
         
+        //[Authorize]
         //[HttpPost("ChangeEmail")]
         Task<ActionResult> ChangeEmail(UserChangeEmailInputDto input);
 
+        //[Authorize]
         //[HttpPost("ChangeAvatarUrl")]
         Task<ActionResult> ChangeAvatarUrl(UserChangeAvatarUrlInputDto input);
 
+        //[Authorize]
         //[HttpGet("GetMoney")]
         Task<ActionResult> GetMoney(string Username);
     }
