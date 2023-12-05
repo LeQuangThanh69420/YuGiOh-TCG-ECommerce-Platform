@@ -35,6 +35,7 @@ function Body({ cards, setCards }) {
   };
 
   const handleSearch = () => {
+    setCurrentPage(1);
     searchCard(
       searchObject.name,
       searchObject.cardTypeName,
