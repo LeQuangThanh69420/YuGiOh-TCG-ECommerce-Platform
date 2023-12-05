@@ -20,6 +20,7 @@
 * Framework used:
   - Microsoft.EntityFrameworkCore
   - Microsoft.EntityFrameworkCore.SqlServer
+  - Microsoft.AspNetCore.Authentication.JwtBearer
 ### FE: Nodejs
 * Extensions for Visual Studio Code:
 * Basic command:
