@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 24px;
 }
 
 .user-container {
@@ -188,4 +189,12 @@
     width: 100%;
     position: absolute;
     top: -20px;
+}
+
+.user-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 1180px;
 }
