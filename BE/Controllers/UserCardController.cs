@@ -26,7 +26,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedSeparate([FromQuery] UserCardSearchOwnedInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
-            if (user == null) return BadRequest(new { message = "User not found!"});
+            if (user == null) return BadRequest(new { message = "User not found!" });
             var userCard = from UserCard in _context.UserCard
                            join Card in _context.Card on UserCard.CardId equals Card.CardId
                            where (UserCard.UserId == user.UserId)
@@ -35,7 +35,7 @@ namespace BE.Controllers
                            && (string.IsNullOrWhiteSpace(input.CardOriginName) || Card.CardOriginName == input.CardOriginName)
                            && (string.IsNullOrWhiteSpace(input.CardElementName) || Card.CardElementName == input.CardElementName)
                            && (string.IsNullOrWhiteSpace(input.CardRarityName) || Card.CardRarityName == input.CardRarityName)
-                           orderby Card.CardRarityName descending
+                           orderby Card.CardRarityName descending, Card.CardName
                            select new UserCardSearchOwnedOutputDto()
                            {
                                CardId = Card.CardId,
@@ -56,7 +56,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedStack([FromQuery] UserCardSearchOwnedInputDto input)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
-            if (user == null) return BadRequest(new { message = "User not found!"});
+            if (user == null) return BadRequest(new { message = "User not found!" });
             var result = await _context.SearchOwnedOutput
                 .FromSqlRaw("EXEC SearchOwnedStack @UserId, @CardName, @CardTypeName, @CardOriginName, @CardElementName, @CardRarityName",
                     new SqlParameter("@UserId", user.UserId),
@@ -68,9 +68,10 @@ namespace BE.Controllers
                 )
                 .ToListAsync();
             List<UserCardSearchOwnedOutputDto> userCard = new List<UserCardSearchOwnedOutputDto>();
-            foreach(var item in result)
+            foreach (var item in result)
             {
-                UserCardSearchOwnedOutputDto uc = new UserCardSearchOwnedOutputDto() {
+                UserCardSearchOwnedOutputDto uc = new UserCardSearchOwnedOutputDto()
+                {
                     CardId = item.CardId,
                     CardName = item.CardName,
                     CardImageURL = item.CardImageURL,
