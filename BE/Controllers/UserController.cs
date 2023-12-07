@@ -109,6 +109,7 @@ namespace BE.Controllers
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
+                Email = user.Email,
                 AvatarURL = user.AvatarUrl,
                 Token = _tokenService.CreateToken(user),
             });
