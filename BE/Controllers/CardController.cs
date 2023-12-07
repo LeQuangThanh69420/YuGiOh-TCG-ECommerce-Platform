@@ -28,6 +28,7 @@ namespace BE.Controllers
             && (string.IsNullOrWhiteSpace(input.CardOriginName) || Card.CardOriginName == input.CardOriginName)
             && (string.IsNullOrWhiteSpace(input.CardElementName) || Card.CardElementName == input.CardElementName)
             && (string.IsNullOrWhiteSpace(input.CardRarityName) || Card.CardRarityName == input.CardRarityName)
+            orderby Card.CardRarityName descending, Card.CardName
             select new CardSearchOutputDto() {
                 CardId = Card.CardId,
                 CardName = Card.CardName,

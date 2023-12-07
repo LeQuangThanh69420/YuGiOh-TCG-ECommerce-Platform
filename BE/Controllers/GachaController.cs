@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BE.Context;
 using BE.Model.Dto;
 using BE.Model.Entity;
+using BE.Model.ValueObject;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace BE.Controllers
     public class GachaController : BaseApiController
     {
         private readonly DataContext _context;
+        private readonly int price = ApiEnvironment.GachaPrice;
         public GachaController(DataContext context)
         {
             _context = context;
@@ -27,7 +29,6 @@ namespace BE.Controllers
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             Card randomCard;
             List<Card> allCards = new List<Card>();
-            int price = 1000;
 
             if(user.Money >= price)
             {
