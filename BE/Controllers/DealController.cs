@@ -64,7 +64,7 @@ namespace BE.Controllers
             join User in _context.User on Deal.SellUserId equals User.UserId 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
             join Card in _context.Card on UserCard.CardId equals Card.CardId 
-            orderby Deal.CreateDate
+            orderby Deal.CreateDate descending
             where (Deal.BuyUserId != null)
             && (Deal.BuyUserId == user.UserId)
             select new DealGetBuyedOutputDto() {
@@ -95,7 +95,7 @@ namespace BE.Controllers
             join Card in _context.Card on UserCard.CardId equals Card.CardId 
             where (Deal.BuyUserId != null)
             && (Deal.SellUserId == user.UserId)
-            orderby Deal.CreateDate
+            orderby Deal.CreateDate descending
             select new DealGetSelledOutputDto() {
                 DealId = Deal.DealId,
                 BuyUsername = User.Username,
