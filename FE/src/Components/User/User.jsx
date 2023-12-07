@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 
 import { AppData } from "../../Root"
 import UploadAvatar from "./UploadAvatar"
-import Pagination from "./../Shared/Pagination"
+import UserCards from "./UserCards"
 
 import './../../styles/User.css'
 
@@ -45,6 +45,7 @@ export default function User() {
           </div>
         </div>
       </div>
+      <UserCards />
       {isChanging && <UploadAvatar onClose={() => setIsChanging(false)} />}
     </div>
   )
