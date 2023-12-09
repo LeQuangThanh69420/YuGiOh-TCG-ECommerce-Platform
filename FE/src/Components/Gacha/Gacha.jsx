@@ -55,4 +55,3 @@ function Gacha() {
 }
 
 export default Gacha
-// style={selectedPack === currentPack ? {backgroundColor: '#6400B0', color: 'white'} : {backgroundColor: '#6D6D6D', color: 'black'}}
