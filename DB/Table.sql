@@ -62,6 +62,9 @@ CREATE TABLE Deal (
 );
 
 --Procedure
+use TCG
+drop proc SearchOwnedStack
+
 go
 CREATE proc SearchOwnedStack
     @UserId bigint,
@@ -90,5 +93,5 @@ begin
     and (@CardElementName ='' or @CardElementName IS NULL or CardElementName = @CardElementName)
     and (@CardRarityName = '' or @CardRarityName IS NULL or CardRarityName = @CardRarityName)
     GROUP by UserId, Card.CardId, CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName, OnDeal
-    ORDER BY CardRarityName DESC, Quantity DESC
+    ORDER BY  CardRarityName DESC, CardName, Quantity DESC
 end

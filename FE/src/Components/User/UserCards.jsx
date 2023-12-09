@@ -78,7 +78,7 @@ export default function UserCards() {
           )}
         </div>
         <div className="user-cards-footer">
-          <Link to={'/user/cards'}>Mange your cards</Link>
+          <Link to={'/user/cards'} className="link">Mange your cards</Link>
           <Pagination currentPage={currentPage} list={cardOwned} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setDisplayCards} />
         </div>
       </div>
