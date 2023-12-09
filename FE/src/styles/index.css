@@ -235,8 +235,6 @@ body {
   background-size: 397px 580px;
 }
 
-/*define sizes*/
-
 .xl {
   width: 397px;
   height: 580px;
@@ -247,4 +245,13 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.link {
+  color: #7400CC;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
 }

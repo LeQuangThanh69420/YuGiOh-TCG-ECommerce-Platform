@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 
+import { Link } from "react-router-dom";
+
 import { getOwnedCardsSeperate, getOwnedCardsStack } from "../../api/apiUserCard"
 
 import { AppData } from "../../Root";
@@ -61,7 +63,6 @@ export default function UserCards() {
               <span className="text-third">Seperate</span>
             }
           </div>
-
         </div>
 
         <div className="user-cards-container">
@@ -76,7 +77,10 @@ export default function UserCards() {
             </div>
           )}
         </div>
-        <Pagination currentPage={currentPage} list={cardOwned} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setDisplayCards} />
+        <div className="user-cards-footer">
+          <Link to={'/user/cards'} className="link">Mange your cards</Link>
+          <Pagination currentPage={currentPage} list={cardOwned} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setDisplayCards} />
+        </div>
       </div>
       <CardDetails isOpen={isOpen} selectedCard={cardSelected} onClose={() => setIsOpen(false)} />
     </>

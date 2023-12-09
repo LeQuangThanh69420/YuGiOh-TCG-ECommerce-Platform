@@ -62,6 +62,9 @@ CREATE TABLE Deal (
 );
 
 --Procedure
+use TCG
+drop proc SearchOwnedStack
+
 go
 CREATE proc SearchOwnedStack
     @UserId bigint,

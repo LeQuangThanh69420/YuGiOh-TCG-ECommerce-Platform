@@ -233,13 +233,19 @@
 }
 
 .not-owned {
-  filter: brightness(0.6);
+  filter: brightness(0.7) grayscale(70%);
+  cursor: default;
 }
 
-.not-owned {
-    cursor: default;
-}
 
 .not-owned:hover {
     transform: none;
+    box-shadow: none;
+}
+
+.user-cards-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
