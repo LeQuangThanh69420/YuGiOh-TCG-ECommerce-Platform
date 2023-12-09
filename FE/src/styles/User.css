@@ -1,218 +1,245 @@
 .user-screen {
-    width: 100%;
-    padding: 0px 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 24px;
+  width: 100%;
+  padding: 0px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .user-container {
-    width: 100%;
-    max-width: 1180px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  width: 100%;
+  max-width: 1180px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .user-profile {
-    width: 100%;
-    display: flex;
-    gap: 40px;
-    background: white;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 24px 32px;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  background: white;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 24px 32px;
+  align-items: center;
 }
 
 .user-avatar-container {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
 }
 
 .user-avatar {
-    width: 120px;
-    height: 120px;
-    cursor: pointer;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .user-info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
 }
 
 .main-info-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .title-profile {
-    font-weight: 600;
-    font-size: 24px;
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    padding: 0px 12px;
+  font-weight: 600;
+  font-size: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 0px 12px;
 }
 
 .info-row {
-    display: flex;
-    gap: 8px;
-    align-items: flex-end;
-    width: 100%;
-    border-radius: 8px;
-    padding: 4px 12px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  width: 100%;
+  border-radius: 8px;
+  padding: 4px 12px;
 }
 
 .info-row:hover {
-    background: #F0F0F0;
+  background: #f0f0f0;
 }
 
 .user-title {
-    font-weight: 600;
-    font-size: 18px;
-    cursor: default;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: default;
 }
 
 .user-value {
-    display: flex;
-    gap: 8px;
-    font-weight: 500;
-    align-items: center;
-    font-size: 17px;
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  align-items: center;
+  font-size: 17px;
 }
 
 .upload-avatar-screen {
-    width: 100%;
-    height: 100%; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.1);
-    padding: 0px 40px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0px 40px;
 }
 
 .upload-avatar-container {
-    width: 1020px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 24px;
-    padding: 24px 32px 32px 24px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+  width: 1020px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 24px 32px 32px 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .upload-avatar-title {
-    font-weight: 600;
-    font-size: 26px;
-    text-align: center;
-    padding: 0px 12px;
-    width: 100%;
+  font-weight: 600;
+  font-size: 26px;
+  text-align: center;
+  padding: 0px 12px;
+  width: 100%;
 }
 
 .upload-avatar-top {
-    display: flex;
-    width: 100%;
-    gap: 30px;
+  display: flex;
+  width: 100%;
+  gap: 30px;
 }
 
 .avatar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
 }
 
 .avatar-preview {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    overflow: hidden;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .avatar-btns {
-    display: flex;
-    gap: 14px;
+  display: flex;
+  gap: 14px;
 }
 
 .upload-avt-dropzone {
-    width: 100%;
-    height: 360px;
-    border: 1px solid #BCBCBC;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 360px;
+  border: 1px solid #bcbcbc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .upload-content-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .dragging-over {
-    border: 1px solid #7400CC;
+  border: 1px solid #7400cc;
 }
 
 .dragging-over > div > span {
-    color: #7400CC;
+  color: #7400cc;
 }
 
 .upload-text {
-    position: relative;
+  position: relative;
 }
 
 .upload-text::before {
-    content: '';
-    height: 30px;
-    width: 100%;
-    position: absolute;
-    top: -20px;
+  content: "";
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  top: -20px;
 }
 
 .user-cards-container {
-    display: flex;
-    gap: 30px;
-    width: 100%;
-    max-width: 1180px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .user-cards-wrapper {
-    background: white;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 24px;
-    align-items: flex-end;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 24px;
+  align-items: flex-end;
+  max-width: 1180px;
+  width: 100%;
 }
 
 .user-cards-title {
-    font-weight: 600;
-    font-size: 24px;
-    text-align: left;
-    width: 100%;
+  font-weight: 600;
+  font-size: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-cards-view-option {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  cursor: pointer;
+  padding: 0px 12px;
+  border-radius: 8px;
+}
+
+.user-cards-view-option:hover {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.not-owned {
+  filter: brightness(0.6);
+}
+
+.not-owned {
+    cursor: default;
+}
+
+.not-owned:hover {
+    transform: none;
 }

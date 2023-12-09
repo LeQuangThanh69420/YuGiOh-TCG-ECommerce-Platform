@@ -103,6 +103,14 @@
   cursor: pointer;
 }
 
+.cards-stack {
+  background-image: url("./../asset/stackCard.svg");
+}
+
+.cards-seperate {
+  background-image: url("./../asset/seperateCard.svg");
+}
+
 .icon-1 {
   width: 24px;
   height: 24px;
@@ -168,6 +176,15 @@
   background-size: contain;
   position: absolute;
   right: 8px;
+}
+
+.icon-8 {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .icon-2:hover {
