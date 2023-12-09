@@ -109,7 +109,6 @@ namespace BE.Controllers
             else return Ok(new UserLoginOutputDto()
             {
                 Username = user.Username,
-                Email = user.Email,
                 AvatarURL = user.AvatarUrl,
                 Token = _tokenService.CreateToken(user),
             });
@@ -180,12 +179,12 @@ namespace BE.Controllers
         }
 
         //[Authorize]
-        [HttpGet("GetMoney")]
-        public async Task<ActionResult> GetMoney([FromQuery] string Username)
+        [HttpGet("GetInfo")]
+        public async Task<ActionResult> GetInfo([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(x => x.Username == Username);
             if (user == null) return BadRequest(new {message = "User not found!"});
-            return Ok(new {money = user.Money});
+            return Ok(new {Money = user.Money, Email = user.Email,});
         }
     }
 }

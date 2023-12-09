@@ -34,7 +34,7 @@ namespace BE.InterfaceController
         Task<ActionResult> ChangeAvatarUrl(UserChangeAvatarUrlInputDto input);
 
         //[Authorize]
-        //[HttpGet("GetMoney")]
-        Task<ActionResult> GetMoney(string Username);
+        //[HttpGet("GetInfo")]
+        Task<ActionResult> GetInfo(string Username);
     }
 }
