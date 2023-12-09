@@ -33,6 +33,10 @@ export default function UserCards() {
   return (
     <>
       <div className="user-cards-wrapper">
+        <p className="user-cards-title">
+          <span className="text-second">Your </span>
+          <span className="text-primary">Cards</span>
+        </p>
         <div className="user-cards-container">
           {displayCards.map((card, index) =>
             <div className="cards" key={index} onClick={() => handleOpenDetail(card)}>
