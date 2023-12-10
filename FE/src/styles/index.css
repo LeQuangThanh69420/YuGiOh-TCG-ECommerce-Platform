@@ -90,7 +90,6 @@ input:focus {
   flex-direction: column;
   gap: 40px;
   position: relative;
-  background: #F8F8F8;
 }
 
 body {

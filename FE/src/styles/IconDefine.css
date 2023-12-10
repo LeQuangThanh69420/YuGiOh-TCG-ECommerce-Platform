@@ -105,10 +105,12 @@
 
 .cards-stack {
   background-image: url("./../asset/stackCard.svg");
+  justify-content: center;
 }
 
 .cards-seperate {
   background-image: url("./../asset/seperateCard.svg");
+  justify-content: center;
 }
 
 .icon-1 {

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 
 import { Link } from "react-router-dom";
 
-import { getOwnedCardsSeperate, getOwnedCardsStack } from "../../api/apiUserCard"
+import { getOwnedCardsSeperate, getOwnedCardsStack } from "../../api/apiUserCard";
 
 import { AppData } from "../../Root";
 import CardDetails from "../Shared/CardDetails";
