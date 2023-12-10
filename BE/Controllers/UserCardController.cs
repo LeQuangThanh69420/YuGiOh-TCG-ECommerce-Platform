@@ -21,7 +21,7 @@ namespace BE.Controllers
             _context = context;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("SearchOwnedSeparate")]
         public async Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedSeparate([FromQuery] UserCardSearchOwnedInputDto input)
         {
@@ -51,7 +51,7 @@ namespace BE.Controllers
             return await userCard.ToListAsync();
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("SearchOwnedStack")]
         public async Task<ActionResult<List<UserCardSearchOwnedOutputDto>>> SearchOwnedStack([FromQuery] UserCardSearchOwnedInputDto input)
         {

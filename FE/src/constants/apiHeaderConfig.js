@@ -2,5 +2,5 @@ const TOKEN = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem
 
 export const HEADER = {
     "Content-Type": "application/json",
-    'Authorization': 'Bearer' + TOKEN,
+    'Authorization': 'Bearer ' + TOKEN,
 }

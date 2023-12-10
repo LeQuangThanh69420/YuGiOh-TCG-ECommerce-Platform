@@ -10,7 +10,8 @@ export default function Bubbles() {
                 width: `${bubble.size}px`,
                 height: `${bubble.size}px`,
                 left: `${bubble.left}%`,
-                top: `${bubble.top}%`
+                top: `${bubble.top}%`,
+                animation: `bubbling ${bubble.duration}s linear infinite`
             }} key={index}>
             </div>
         )}
