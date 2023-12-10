@@ -28,7 +28,7 @@ namespace BE.InterfaceController
         Task<ActionResult> ChangeEmail(UserChangeEmailInputDto input);
 
         //[HttpPost("ChangeAvatarUrl")]
-        Task<ActionResult> ChangeAvatarUrl();
+        Task<ActionResult> ChangeAvatarUrl(UserChangeAvatarUrlInputDto input);
 
         //[HttpGet("GetMoney")]
         Task<ActionResult> GetMoney(string Username);

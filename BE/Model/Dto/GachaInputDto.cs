@@ -9,5 +9,6 @@ namespace BE.Model.Dto
     public class GachaInputDto
     {
         [Required] public string Username { get; set; }
+        [Required] public string Pack { get; set; }
     }
 }

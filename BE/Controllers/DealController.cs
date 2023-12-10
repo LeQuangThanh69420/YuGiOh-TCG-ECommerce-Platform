@@ -24,6 +24,7 @@ namespace BE.Controllers
         [HttpGet("SearchDeal")]
         public async Task<ActionResult<List<DealSearchOutputDto>>> SearchDeal([FromQuery] DealSearchInputDto input)
         {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.MyUsername);
             var deal = from Deal in _context.Deal 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
             join Card in _context.Card on UserCard.CardId equals Card.CardId 
@@ -37,6 +38,7 @@ namespace BE.Controllers
             && (input.PriceFrom == null || input.PriceFrom == 0 || Deal.Price >= input.PriceFrom) && (input.PriceTo == null || Deal.Price <= input.PriceTo)
             && (input.DateFrom == null || Deal.CreateDate >= input.DateFrom) && (input.DateTo == null || Deal.CreateDate <= input.DateTo)
             && (Deal.BuyUserId == null)
+            && (User.Username != input.MyUsername)
             select new DealSearchOutputDto() {
                 DealId = Deal.DealId,
                 CardId = Card.CardId,
@@ -57,7 +59,7 @@ namespace BE.Controllers
         public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBuyedDeal([FromQuery] string Username)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == Username);
-            if (user == null) return BadRequest(new {message = "User not fould!"});
+            if (user == null) return BadRequest(new {message = "User not found!"});
             var deal = from Deal in _context.Deal 
             join User in _context.User on Deal.SellUserId equals User.UserId 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 

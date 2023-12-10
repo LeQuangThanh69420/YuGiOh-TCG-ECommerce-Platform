@@ -7,6 +7,7 @@ namespace BE.Model.Dto
 {
     public class DealSearchInputDto
     {
+        public string? MyUsername { get; set; }
         public string? SellUsername { get; set; }
         public string? CardName { get; set; }
         public string? CardTypeName { get; set; }
