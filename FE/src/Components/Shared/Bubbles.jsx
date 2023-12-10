@@ -9,8 +9,8 @@ export default function Bubbles() {
             <div className='bubble' style={{
                 width: `${bubble.size}px`,
                 height: `${bubble.size}px`,
-                left: `${bubble.left}px`,
-                top: `${bubble.top}px`
+                left: `${bubble.left}%`,
+                top: `${bubble.top}%`
             }} key={index}>
             </div>
         )}
