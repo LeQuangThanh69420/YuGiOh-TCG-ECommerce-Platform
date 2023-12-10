@@ -1,20 +1,28 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 
 import { AppData } from "../../Root"
 import UploadAvatar from "./UploadAvatar"
 import UserCards from "./UserCards"
 
 import './../../styles/User.css'
+import { getEmail } from "../../api/apiUser"
 
 export default function User() {
 
   const { userData } = useContext(AppData)
 
   const [isChanging, setIsChanging] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
 
   const handleOpenChangeAvatar = () => {
     setIsChanging(true);
   }
+
+  useEffect(() => {
+    getEmail(userData.username).then((data) => {
+      setUserEmail(data);
+    })
+  }, [])
 
   return (
     <div className="user-screen">
@@ -39,7 +47,7 @@ export default function User() {
                 </span>
               </div>
               <div className="info-row">
-                <span className="text-secondary user-title">Email: </span><span className="text-third user-value">email goes here</span>
+                <span className="text-secondary user-title">Email: </span><span className="text-third user-value">{userEmail}</span>
               </div>
             </div>
           </div>
