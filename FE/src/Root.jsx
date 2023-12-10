@@ -7,6 +7,7 @@ import { getMoney } from "./api/apiUser";
 import ToastMessages from "./Components/Shared/ToastMessage";
 import Header from "./Components/Shared/Header";
 import Footer from "./Components/Shared/Footer";
+import Bubbles from "./Components/Shared/Bubbles";
 
 export const AppData = createContext();
 
@@ -67,6 +68,7 @@ export default function Root() {
       <ToastMessages isDisplay={isShow} type={type} message={message} setIsDisplay={setIsShow} />
       <Footer />
       <ScrollRestoration />
+      <Bubbles />
     </AppData.Provider>
   );
 }
