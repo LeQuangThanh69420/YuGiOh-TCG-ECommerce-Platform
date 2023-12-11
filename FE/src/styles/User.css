@@ -221,11 +221,12 @@
 
 .user-cards-view-option {
   display: flex;
-  gap: 14px;
+  gap: 8px;
   align-items: center;
   cursor: pointer;
   padding: 0px 12px;
   border-radius: 8px;
+  font-size: 18px;
 }
 
 .user-cards-view-option:hover {
@@ -233,13 +234,19 @@
 }
 
 .not-owned {
-  filter: brightness(0.6);
+  filter: brightness(0.7) grayscale(70%);
+  cursor: default;
 }
 
-.not-owned {
-    cursor: default;
-}
 
 .not-owned:hover {
     transform: none;
+    box-shadow: none;
+}
+
+.user-cards-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

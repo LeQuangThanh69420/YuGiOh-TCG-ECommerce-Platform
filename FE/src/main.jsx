@@ -9,6 +9,7 @@ import NapRiuCoin from './Components/NapRiuCoin/NapRiuCoin.jsx'
 import Gacha from './Components/Gacha/Gacha.jsx'
 import AllDeals from './Components/AllDeals/AllDealsClientView.jsx'
 import User from './Components/User/User.jsx'
+import UserAllCards from './Components/User/UserAllCards.jsx'
 
 import './styles/index.css'
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter(
       <Route
       path='/user'
       element={<User />}
+      />
+      <Route 
+      path='/user/cards'
+      element={<UserAllCards />}
       />
     </Route>
   )
