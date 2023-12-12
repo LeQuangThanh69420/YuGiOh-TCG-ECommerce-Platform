@@ -23,6 +23,8 @@ export default function Root() {
 
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')) ? JSON.parse(localStorage.getItem('userData')) : {});
 
+  const [isScrollTop, setIsScrollTop] = useState(false)
+
   const timeOut1 = useRef();
 
   const showToast = () => {
@@ -61,9 +63,27 @@ export default function Root() {
     }))
   }, [userData.avatarURL])
 
+  useEffect(() => {
+    window.onscroll = () => {
+      if (window.scrollY > 300) {
+        setIsScrollTop(true);
+      } else {
+        setIsScrollTop(false)
+      }
+    }
+  }, [])
+
   return (
     <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute, userData, setUserData }}>
       {!(currentRoute === '/login' || currentRoute === '/sign-up') && <Header />}
+      {!(currentRoute === '/login' || currentRoute === '/sign-up') && isScrollTop &&
+        <div className="go-to-top" onClick={() => {
+          window.scroll({
+            top: 0,
+            behavior: 'smooth'
+          })}}>
+        </div>
+      }
       <Outlet />
       <ToastMessages isDisplay={isShow} type={type} message={message} setIsDisplay={setIsShow} />
       <Footer />

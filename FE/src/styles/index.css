@@ -124,6 +124,12 @@ body {
   width: 100%;
 }
 
+.line-2 {
+  background-color: #58555b;
+  height: 1px;
+  width: 100%;
+}
+
 .text-footer {
   color: #979797;
   font-size: 14px;
@@ -253,4 +259,8 @@ body {
 
 .link:hover {
   text-decoration: underline;
+}
+
+.go-to-top {
+  
 }
