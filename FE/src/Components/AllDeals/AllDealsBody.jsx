@@ -3,11 +3,19 @@ import '../../styles/AllDeals.css'
 import DealDetails from "../Shared/DealDetail";
 import { searchDeal } from '../../api/apiDeal'
 import Pagination from "../Shared/Pagination";
+import SearchAllCards from "../Shared/SearchSelections/SearchAllCards";
 
 function AllDealsBody({ deals, setDeals }) {
     const [selectedDeal, setSelectedDeal] = useState(null);
     const [isDealDetailsOpen, setDealDetailsOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const [searchObject, setSearchObject] = useState({
+        name: "",
+        cardTypeName: "",
+        cardOriginName: "",
+        cardElementName: "",
+        cardRarityName: "",
+    });
 
     const [pagedList, setPagedList] = useState([]);
 
@@ -29,6 +37,19 @@ function AllDealsBody({ deals, setDeals }) {
         else return 'Bucac'
     }
 
+    const handleSearch = () => {
+        setCurrentPage(1);
+        searchDeal(
+          searchObject.name,
+          searchObject.cardTypeName,
+          searchObject.cardOriginName,
+          searchObject.cardElementName,
+          searchObject.cardRarityName
+        ).then((data) => {
+          setDeals(data)
+        });
+    };
+
     useEffect(() => {
         searchDeal().then((response) => response.json()).then((data) => {
             setDeals(data)
@@ -39,10 +60,12 @@ function AllDealsBody({ deals, setDeals }) {
         <>
             <div className="AllDeals-body">
                 <div className="AllDeals-body-container-wrapper">
-                    <p className="all-deals-header">
-                        <span className="text-secondary">Avaiable</span>
-                        <span className="text-primary"> Deals</span>
-                    </p>
+                    <div className="all-deals-header">
+                        <div className="all-deals-header-text">
+                            <span className="text-secondary">Avaiable</span>
+                            <span className="text-primary"> Deals</span>
+                        </div>
+                    </div>
                     <div className="AllDeals-body-container">
                         {
                             pagedList.length ? pagedList.map((item, index) =>

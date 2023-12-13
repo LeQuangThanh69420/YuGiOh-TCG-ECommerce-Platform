@@ -20,7 +20,7 @@ function Gacha() {
                         <div className="Gacha-pulling-background">
                             <div className="Gacha-pulling-background-curve">
                                 <div className="Gacha-pulling-background-dots">
-                                    <div className="Gacha-pulling-img" style={{ backgroundImage: `url(${currentPack.img})` }}></div>
+                                    <div className="Gacha-pulling-img" style={{ backgroundImage: `url(${currentPack.img})` }} ></div>
                                     <div className="Gacha-pulling-right">
                                         <div className="Gacha-pulling-top"></div>
                                         <div className="Gacha-pulling-text">
