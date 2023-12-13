@@ -113,6 +113,33 @@
   justify-content: center;
 }
 
+.mail-white {
+  background-image: url("./../asset/mail-white.svg");
+}
+
+.lock-white {
+  background-image: url("./../asset/lock-white.svg");
+}
+
+.go-to-top {
+  background-image: url("./../asset/goToTop.svg");
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  bottom: 140px;
+  right: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.go-to-top:hover {
+  transform: scale(1.05);
+}
+
 .icon-1 {
   width: 24px;
   height: 24px;

@@ -1,0 +1,63 @@
+export const CHANGE_EMAIL_INPUTS = [
+  {
+    id: 1,
+    type: "password",
+    label: "Enter your password",
+    icon_class_name: "lock",
+    regex: "",
+    error_message: "",
+    data_key: "currentPassword",
+  },
+  {
+    id: 2,
+    type: "email",
+    label: "Enter the current Email",
+    icon_class_name: "mail",
+    regex: "",
+    error_message: "",
+    data_key: "currentEmail",
+  },
+  {
+    id: 3,
+    type: "email",
+    label: "Enter new Email",
+    icon_class_name: "mail",
+    regex: "",
+    error_message: "",
+    data_key: "newEmail",
+  },
+];
+
+export const CHANGE_PASSWORD_INPUTS = [
+  {
+    id: 1,
+    type: "password",
+    label: "Enter the current password",
+    icon_class_name: "lock",
+    is_regex: true,
+    regex: "",
+    error_message: "",
+    data_key: "currentPassword",
+  },
+  {
+    id: 2,
+    type: "password",
+    label: "Enter new password",
+    icon_class_name: "lock",
+    is_regex: true,
+    regex: "",
+    error_message: "",
+    data_key: "newPassword",
+  },
+  {
+    id: 3,
+    type: "password",
+    label: "Repeat new password",
+    icon_class_name: "key",
+    is_regex: false,
+    regex: "",
+    regex_key: "newPassword",
+    error_message: "Password repeated wrongly",
+    data_key: "repeatPassword",
+  },
+];

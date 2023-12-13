@@ -100,11 +100,11 @@ export const changePassword = async (
   const response = await fetch(`${API_URL}${API_ROUTES.CHANGE_PASSWROD}`, {
     method: "POST",
     headers: HEADER,
-    body: {
+    body: JSON.stringify({
       username: username,
       currentPassword: currentPassword,
       newPassword: newPassword,
-    },
+    }),
   });
   return response;
 };
