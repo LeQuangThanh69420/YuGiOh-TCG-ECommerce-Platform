@@ -3,13 +3,12 @@ import { getSomeThingOfCard } from "../../../api/apiCard"
 
 import './../../../styles/SearchBar.css'
 
-export default function SearchOption({ searchName, apiRoute, chosenOption, dataKey, setData }) {
+export default function SearchOption({ searchName, apiRoute, chosenOption, dataKey, setData, isOpen, setIsOpen }) {
 
   const [listOptions, setListOptions] = useState([]);
-  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
 
   const handleOpenDropDown = () => {
-    setIsOpenDropDown(!isOpenDropDown)
+      setIsOpen()
   }
 
   const handleChose = (data) => {
@@ -30,10 +29,10 @@ export default function SearchOption({ searchName, apiRoute, chosenOption, dataK
       <div className="search-name">
         {searchName}
       </div>
-      <div className={`chosen-option ${isOpenDropDown && 'chosing'}`} onClick={handleOpenDropDown}>
+      <div className={`chosen-option ${isOpen && 'chosing'}`} onClick={handleOpenDropDown}>
         {chosenOption ? chosenOption : 'Any'}
-        <div className={`${isOpenDropDown ? 'arrow-drop-up' : 'arrow-drop-down'} icon-7`}></div>
-        {isOpenDropDown && <div className="list-options">
+        <div className={`${isOpen ? 'arrow-drop-up' : 'arrow-drop-down'} icon-7`}></div>
+        {isOpen && <div className="list-options">
           {listOptions.map((option, index) =>
             <div key={index} className="list-option" onClick={() => handleChose(option[dataKey])}>{option[dataKey]}</div>
           )}

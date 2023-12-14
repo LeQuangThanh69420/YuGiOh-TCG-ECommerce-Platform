@@ -210,6 +210,13 @@
   flex-wrap: wrap;
 }
 
+.user-anything-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
 .user-anything-wrapper {
   background: white;
   display: flex;
@@ -266,4 +273,89 @@
 .your-cards-wrapper {
   display: flex;
   gap: 8px;
+}
+
+.user-anything-list-header {
+  display: flex;
+  width: 100%;
+  color: #979797;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.user-anything-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #58555b;
+}
+
+.list-col-no {
+  padding: 0px 12px;
+  min-width: 56px;
+  display: flex;
+  justify-content: center;
+}
+
+.list-col-solduser {
+  padding: 0px 12px;
+  min-width: 200px;
+}
+
+.list-col-soldcard {
+  padding: 0px 12px;
+  width: 100%;
+}
+
+.list-col-price {
+  padding: 0px 12px;
+  min-width: 140px;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.list-row:hover {
+  background-color: #F0F0F0;
+}
+
+.list-row-img {
+  width: 32px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.list-row-deal-info {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0px;
+}
+
+.list-row-title {
+  color: #3d3b3f;
+  font-weight: 500;
+}
+
+.list-row-value {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.list-row-deal-price {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.list-row-deal-price-text {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.list-row-no {
+  font-weight: 500;
 }

@@ -22,17 +22,17 @@ export const searchDeal = async (
 };
 
 export const getBoughtDeals = async (username) => {
-  const response = fetch(
+  const response = await fetch(
     `${API_URL}${API_ROUTES.GET_BOUGHT_DEAL}?Username=${username}`
   );
-  return response;
+  return response.json();
 };
 
 export const getSoldDeals = async (username) => {
-  const response = fetch(
+  const response = await fetch(
     `${API_URL}${API_ROUTES.GET_SOLD_DEAL}?Username=${username}`
   );
-  return response;
+  return response.json();
 };
 
 export const createDeal = async (sellUsername, userCardId, price) => {

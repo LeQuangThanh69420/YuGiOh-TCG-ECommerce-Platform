@@ -5,7 +5,7 @@
     align-items: center;
     gap: 24px;
     position: fixed;
-    right: 12px;
+    left: 12px;
     bottom: 28px;
     z-index: 10;
     background: white;
@@ -52,7 +52,7 @@
 
 @keyframes fade-in {
     from {
-        transform: translateX(200px);
+        transform: translateX(-200px);
     } to {
         transform: translateX(0px);
     }
