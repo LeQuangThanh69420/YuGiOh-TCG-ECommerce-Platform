@@ -23,8 +23,9 @@ namespace BE.Controllers
         }
 
         [HttpGet("SearchDeal")]
-        public async Task<ActionResult<List<DealSearchOutputDto>>> SearchDeal([FromQuery] DealSearchInputDto input)
+        public async Task<ActionResult<List<DealSearchOutputDto>>> SearchDeal([FromQuery] DealSearchInputDto input, bool sortByTime = false, bool sortByRarity = false, bool sortByPrice = false, bool sortAscending = true)
         {
+            var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.MyUsername);
             var deal = from Deal in _context.Deal 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
             join Card in _context.Card on UserCard.CardId equals Card.CardId 
@@ -38,6 +39,7 @@ namespace BE.Controllers
             && (input.PriceFrom == null || input.PriceFrom == 0 || Deal.Price >= input.PriceFrom) && (input.PriceTo == null || Deal.Price <= input.PriceTo)
             && (input.DateFrom == null || Deal.CreateDate >= input.DateFrom) && (input.DateTo == null || Deal.CreateDate <= input.DateTo)
             && (Deal.BuyUserId == null)
+            && (User.Username != input.MyUsername)
             select new DealSearchOutputDto() {
                 DealId = Deal.DealId,
                 CardId = Card.CardId,
@@ -51,6 +53,18 @@ namespace BE.Controllers
                 Price = Deal.Price,
                 CreateDate = Deal.CreateDate,
             };
+            if (sortByTime)
+            {
+                deal = sortAscending ? deal.OrderBy(d => d.CreateDate) : deal.OrderByDescending(d => d.CreateDate);
+            }
+            if (sortByRarity)
+            {
+                deal = sortAscending ? deal.OrderBy(d => d.CardRarityName) : deal.OrderByDescending(d => d.CardRarityName);
+            }
+            if (sortByPrice)
+            {
+                deal = sortAscending ? deal.OrderBy(d => d.Price) : deal.OrderByDescending(d => d.Price);
+            }
             return await deal.ToListAsync();
         }
 
