@@ -16,7 +16,8 @@ namespace BE.Controllers
     public class GachaController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly int price = ApiEnvironment.GachaPrice;
+        private readonly int normalPrice = ApiEnvironment.normalPrice;
+        private readonly int deluxePrice = ApiEnvironment.deluxePrice;
         public GachaController(DataContext context)
         {
             _context = context;
@@ -29,23 +30,44 @@ namespace BE.Controllers
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             Card randomCard;
             List<Card> allCards = new List<Card>();
-
-            if(user.Money >= price)
+            if(input.Pack == "normal")
             {
-                user.Money -= price;
-                _context.SaveChanges();
+                if(user.Money >= normalPrice)
+                {
+                    user.Money -= normalPrice;
+                    _context.SaveChanges();
+                }
+                else return BadRequest(new {message = "Account don't have enough money!"});
+
+                for (int i = 0; i < 10; i++)
+                {
+                    var rate = new Random().Next(1, 101);
+
+                    if (rate <= 40) randomCard = await GetRandomCardsByRarity("N");
+                    else if (rate <= 70) randomCard = await GetRandomCardsByRarity("R");
+                    else if (rate <= 95) randomCard = await GetRandomCardsByRarity("SR");
+                    else randomCard = await GetRandomCardsByRarity("UR");
+                    allCards.Add(randomCard);
+                }
             }
-            else return BadRequest(new {message = "Account don't have enough money!"});
-
-            for (int i = 0; i < 10; i++)
+            
+            if(input.Pack == "deluxe")
             {
-                var rate = new Random().Next(1, 101);
+                if(user.Money >= deluxePrice)
+                {
+                    user.Money -= deluxePrice;
+                    _context.SaveChanges();
+                }
+                else return BadRequest(new {message = "Account don't have enough money!"});
 
-                if (rate <= 40) randomCard = await GetRandomCardsByRarity("N");
-                else if (rate <= 70) randomCard = await GetRandomCardsByRarity("R");
-                else if (rate <= 95) randomCard = await GetRandomCardsByRarity("SR");
-                else randomCard = await GetRandomCardsByRarity("UR");
-                allCards.Add(randomCard);
+                for (int i = 0; i < 10; i++)
+                {
+                    var rate = new Random().Next(1, 101);
+
+                    if (rate <= 80) randomCard = await GetRandomCardsByRarity("SR");
+                    else randomCard = await GetRandomCardsByRarity("UR");
+                    allCards.Add(randomCard);
+                }
             }
 
             for (int i = 0; i < 10; i++)
