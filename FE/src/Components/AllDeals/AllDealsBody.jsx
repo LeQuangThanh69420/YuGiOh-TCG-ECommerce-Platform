@@ -84,7 +84,7 @@ function AllDealsBody({ deals, setDeals }) {
                     {<Pagination currentPage={currentPage} list={deals} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setPagedList} />}
                 </div>
             </div>
-            <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails} />
+            <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails} userAvatar={null}/>
         </>
     )
 }

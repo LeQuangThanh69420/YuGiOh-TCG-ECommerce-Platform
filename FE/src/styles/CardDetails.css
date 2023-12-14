@@ -41,7 +41,7 @@
     font-weight: 600;
     @media (min-height: 400px) {
         /* Adjust the styles for screens wider than 576px */
-        font-size: 22px;
+        font-size: 23px;
         /* Two NapTien divs per row */
     }
     
@@ -56,7 +56,7 @@
     font-size: 21px;
     @media (min-height: 400px) {
         /* Adjust the styles for screens wider than 576px */
-        font-size: 18px;
+        font-size: 19px;
         /* Two NapTien divs per row */
     }
     
