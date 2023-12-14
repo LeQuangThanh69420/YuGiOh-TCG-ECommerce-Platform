@@ -10,7 +10,7 @@ namespace BE.InterfaceController
     public interface IDealController
     {
         //[HttpGet("SearchDeal")]
-        Task<ActionResult<List<DealSearchOutputDto>>> SearchDeal(DealSearchInputDto input);
+        Task<ActionResult<List<DealSearchOutputDto>>> SearchDeal(DealSearchInputDto input, bool sortByTime, bool sortByRarity, bool sortByPrice, bool sortAscending);
 
         //[HttpGet("GetBuyedDeal")]
         Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBuyedDeal(string Username);

@@ -22,7 +22,7 @@ namespace BE.Controllers
         }
 
         [HttpGet("SearchDeal")]
-        public async Task<ActionResult<List<DealSearchOutputDto>>> SearchDeal([FromQuery] DealSearchInputDto input)
+        public async Task<ActionResult<List<DealSearchOutputDto>>> SearchDeal([FromQuery] DealSearchInputDto input, bool sortByTime = false, bool sortByRarity = false, bool sortByPrice = false, bool sortAscending = true)
         {
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.MyUsername);
             var deal = from Deal in _context.Deal 
@@ -52,6 +52,18 @@ namespace BE.Controllers
                 Price = Deal.Price,
                 CreateDate = Deal.CreateDate,
             };
+            if (sortByTime)
+            {
+                deal = sortAscending ? deal.OrderBy(d => d.CreateDate) : deal.OrderByDescending(d => d.CreateDate);
+            }
+            if (sortByRarity)
+            {
+                deal = sortAscending ? deal.OrderBy(d => d.CardRarityName) : deal.OrderByDescending(d => d.CardRarityName);
+            }
+            if (sortByPrice)
+            {
+                deal = sortAscending ? deal.OrderBy(d => d.Price) : deal.OrderByDescending(d => d.Price);
+            }
             return await deal.ToListAsync();
         }
 
