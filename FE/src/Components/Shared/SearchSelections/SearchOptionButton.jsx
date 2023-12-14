@@ -7,6 +7,7 @@ import "./../../../styles/SearchBar.css";
 export default function SearchOptionButton({ listSearchOptions, searchObject, setData, onSearch }) {
 
     const [isDisplay, setIsDisplay] = useState(false);
+    const [openedOptionId, setOpenedOptionId] = useState();
 
     const handleDisplaySearchOption = () => {
         setIsDisplay(!isDisplay);
@@ -35,12 +36,20 @@ export default function SearchOptionButton({ listSearchOptions, searchObject, se
             {isDisplay && <div className="search-options-container">
                 <div className="search-options-wrapper">
                     {listSearchOptions.map((option) =>
-                        <SearchOption
+                        <SearchOption  
                             searchName={option.search_name}
                             dataKey={option.data_key}
                             apiRoute={option.api_route}
                             chosenOption={searchObject[option.data_key]}
                             setData={setData}
+                            isOpen={option.id === openedOptionId}
+                            setIsOpen={() => {
+                                if(openedOptionId === option.id) {
+                                    setOpenedOptionId(undefined);
+                                } else {
+                                    setOpenedOptionId(option.id);
+                                }
+                            }}
                             key={option.id}
                         />
                     )}

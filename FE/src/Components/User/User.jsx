@@ -10,6 +10,8 @@ import UploadAvatar from "./UploadAvatar";
 import UserCards from "./UserCards";
 import FormModal from "../Shared/FormModal";
 import Input from "../Shared/Input/Input";
+import UserDealsSelling from "./UserDealsSelling";
+import UserDealsBought from "./UserDealsBought";
 
 import "./../../styles/User.css";
 import { changeEmail, changePassword, getEmail } from "../../api/apiUser";
@@ -37,7 +39,6 @@ export default function User() {
   };
 
   const handleOpenModal = (type) => {
-    console.log(type);
     if (type === "email") {
       setIsDisplayModal(true);
     } else if (type === "password") {
@@ -144,7 +145,9 @@ export default function User() {
           </div>
         </div>
       </div>
+      <UserDealsSelling />
       <UserCards />
+      <UserDealsBought />
       <FormModal
         title={
           <span className="text-secondary">
