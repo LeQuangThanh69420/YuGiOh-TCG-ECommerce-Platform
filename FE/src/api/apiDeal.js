@@ -18,7 +18,7 @@ export const searchDeal = async (
   const response = await fetch(
     `${API_URL}${API_ROUTES.SEARCH_DEAL}?SellUsername=${sellUsername}&CardName=${cardName}&CardTypeName=${type}&CardOriginName=${origin}&CardElementName=${element}&CardRarityName=${rarity}&PriceFrom=${priceFrom}&PriceTo=${priceTo}&DateFrom=${dataFrom}&DateTo=${dateTo}`
   );
-  return response;
+  return response.json();
 };
 
 export const getBoughtDeals = async (username) => {

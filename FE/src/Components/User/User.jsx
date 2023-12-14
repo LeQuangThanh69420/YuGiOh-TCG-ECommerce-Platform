@@ -10,6 +10,7 @@ import UploadAvatar from "./UploadAvatar";
 import UserCards from "./UserCards";
 import FormModal from "../Shared/FormModal";
 import Input from "../Shared/Input/Input";
+import UserDealsSelling from "./UserDealsSelling";
 
 import "./../../styles/User.css";
 import { changeEmail, changePassword, getEmail } from "../../api/apiUser";
@@ -144,6 +145,7 @@ export default function User() {
           </div>
         </div>
       </div>
+      <UserDealsSelling />
       <UserCards />
       <FormModal
         title={

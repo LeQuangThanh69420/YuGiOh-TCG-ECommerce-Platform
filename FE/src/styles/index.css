@@ -255,12 +255,15 @@ body {
 .link {
   color: #7400CC;
   font-weight: 500;
+  font-size: 16px;
 }
 
 .link:hover {
   text-decoration: underline;
 }
 
-.go-to-top {
-  
+.no-data-text {
+  width: 100%;
+  text-align: center;
+  color: #58555b;
 }

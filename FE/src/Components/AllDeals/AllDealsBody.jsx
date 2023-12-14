@@ -30,7 +30,7 @@ function AllDealsBody({ deals, setDeals }) {
     }
 
     useEffect(() => {
-        searchDeal().then((response) => response.json()).then((data) => {
+        searchDeal().then((data) => {
             setDeals(data)
         });
     }, [])
@@ -54,7 +54,10 @@ function AllDealsBody({ deals, setDeals }) {
                                         <img src={item.cardImageURL} alt="" className='AllDeals-deals-img' />
                                     </div>
                                     <div className="AllDeals-bottom">
-                                        <div className="AllDeals-price">{item.price}R$</div>
+                                        <div className="AllDeals-price">
+                                            <div className="riu-coin-icon icon-9"></div>
+                                            {item.price}
+                                        </div>
                                         <button className="AllDeals-buy">Buy</button>
                                     </div>
                                 </div>

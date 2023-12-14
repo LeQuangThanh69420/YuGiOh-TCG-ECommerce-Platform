@@ -46,10 +46,11 @@
 .AllDeals-deals {
     width: 200px;
     border-radius: 8px;
-    border: 1px solid rgb(213, 213, 213);
+    border: 1px solid #979797;
     display: flex;
     flex-direction: column;
-    padding: 18px;
+    gap: 14px;
+    padding: 12px 12px 14px 12px;
     align-items: flex-start;
     justify-content: space-between;
     position: relative;
@@ -58,27 +59,39 @@
 
 .AllDeals-deals:hover {
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
+}
+
+.AllDeals-deals:hover > .AllDeals-cards {
+    transform: scale(1.03);
 }
 
 .AllDeals-deals-img {
-    width: 164px;
-}
-
-.AllDeals-bottom {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     width: 100%;
 }
 
-.AllDeals-buy {
-    width: 70px;
+.AllDeals-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .AllDeals-price {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 20px;
-    color: green;
+    color: #ffc400;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.AllDeals-cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.AllDeals-time {
+    font-size: 14px;
+    font-weight: 500;
+    color: #58555b;
 }

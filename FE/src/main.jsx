@@ -10,6 +10,7 @@ import Gacha from './Components/Gacha/Gacha.jsx'
 import AllDeals from './Components/AllDeals/AllDealsClientView.jsx'
 import User from './Components/User/User.jsx'
 import UserAllCards from './Components/User/UserAllCards.jsx'
+import UserAllDeals from './Components/User/UserAllDeals.jsx'
 
 import './styles/index.css'
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter(
       <Route 
       path='/user/cards'
       element={<UserAllCards />}
+      />
+      <Route 
+      path='/user/deals'
+      element={<UserAllDeals />}
       />
     </Route>
   )

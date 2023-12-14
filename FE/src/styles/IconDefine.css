@@ -133,7 +133,7 @@
   background-size: contain;
   background-position: center;
   cursor: pointer;
-  z-index: 10;
+  z-index: 1;
 }
 
 .go-to-top:hover {
@@ -210,6 +210,15 @@
 .icon-8 {
   width: 40px;
   height: 40px;
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-9 {
+  width: 28px;
+  height: 28px;
   display: flex;
   background-repeat: no-repeat;
   background-position: center;

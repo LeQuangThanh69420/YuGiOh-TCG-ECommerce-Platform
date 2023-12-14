@@ -203,14 +203,14 @@
   gap: 8px;
 }
 
-.user-cards-container {
+.user-anything-container {
   display: flex;
   gap: 30px;
   width: 100%;
   flex-wrap: wrap;
 }
 
-.user-cards-wrapper {
+.user-anything-wrapper {
   background: white;
   display: flex;
   flex-direction: column;
@@ -223,12 +223,13 @@
   width: 100%;
 }
 
-.user-cards-title {
+.user-anything-title {
   font-weight: 600;
   font-size: 24px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .user-cards-view-option {
@@ -236,7 +237,7 @@
   gap: 8px;
   align-items: center;
   cursor: pointer;
-  padding: 0px 12px;
+  padding: 0px 8px;
   border-radius: 8px;
   font-size: 18px;
 }
@@ -250,15 +251,19 @@
   cursor: default;
 }
 
-
 .not-owned:hover {
-    transform: none;
-    box-shadow: none;
+  transform: none;
+  box-shadow: none;
 }
 
-.user-cards-footer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.user-anything-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.your-cards-wrapper {
+  display: flex;
+  gap: 8px;
 }
