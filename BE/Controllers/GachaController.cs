@@ -16,7 +16,8 @@ namespace BE.Controllers
     public class GachaController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly int price = ApiEnvironment.GachaPrice;
+        private readonly int normalPrice = ApiEnvironment.normalPrice;
+        private readonly int deluxePrice = ApiEnvironment.deluxePrice;
         public GachaController(DataContext context)
         {
             _context = context;
@@ -31,9 +32,9 @@ namespace BE.Controllers
             List<Card> allCards = new List<Card>();
             if(input.Pack == "normal")
             {
-                if(user.Money >= 1000)
+                if(user.Money >= normalPrice)
                 {
-                    user.Money -= 1000;
+                    user.Money -= normalPrice;
                     _context.SaveChanges();
                 }
                 else return BadRequest(new {message = "Account don't have enough money!"});
@@ -52,9 +53,9 @@ namespace BE.Controllers
             
             if(input.Pack == "deluxe")
             {
-                if(user.Money >= 5000)
+                if(user.Money >= deluxePrice)
                 {
-                    user.Money -= 5000;
+                    user.Money -= deluxePrice;
                     _context.SaveChanges();
                 }
                 else return BadRequest(new {message = "Account don't have enough money!"});
