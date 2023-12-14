@@ -34,20 +34,20 @@
 .CardDetails-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 .CardDetails-CardName-infoLabel {
     font-size: 27px;
     font-weight: 600;
     @media (min-height: 400px) {
         /* Adjust the styles for screens wider than 576px */
-        font-size: 17px;
+        font-size: 22px;
         /* Two NapTien divs per row */
     }
     
     @media (min-height: 800px) {
         /* Adjust the styles for screens wider than 768px */
-        font-size: 27px;
+        font-size: 33px;
         /* Three NapTien divs per row */
     }
 }
@@ -56,13 +56,13 @@
     font-size: 21px;
     @media (min-height: 400px) {
         /* Adjust the styles for screens wider than 576px */
-        font-size: 13px;
+        font-size: 18px;
         /* Two NapTien divs per row */
     }
     
     @media (min-height: 800px) {
         /* Adjust the styles for screens wider than 768px */
-        font-size: 21px;
+        font-size: 28px;
         /* Three NapTien divs per row */
     }
 }
@@ -71,13 +71,13 @@
     width: 300px;
     @media (min-height: 400px) {
         /* Adjust the styles for screens wider than 576px */
-        width: 200px;
+        width: 220px;
         /* Two NapTien divs per row */
     }
     
       @media (min-height: 800px) {
         /* Adjust the styles for screens wider than 768px */
-        width: 300px;
+        width: 280px;
         /* Three NapTien divs per row */
     }
 }
@@ -114,4 +114,10 @@
     display: flex;
     padding-bottom: 10px;
     justify-content: space-between;
+}
+
+.CardDetails-Feature{
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }

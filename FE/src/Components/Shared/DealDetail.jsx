@@ -2,6 +2,14 @@ import './../../styles/DealDetails.css';
 
 const DealDetails = ({ isOpen, selectedDeal, onClose }) => {
 
+  function checkRarity(selectedDeal) {
+    if (selectedDeal.cardRarityName == 'R') return 'Rare'
+    else if (selectedDeal.cardRarityName == 'N') return 'Normal'
+    else if (selectedDeal.cardRarityName == 'SR') return 'Super Rare'
+    else if (selectedDeal.cardRarityName == 'UR') return 'Ultra Rare'
+    else return 'Bucac'
+  }
+
   if (!isOpen) return null;
 
   return (
@@ -18,9 +26,6 @@ const DealDetails = ({ isOpen, selectedDeal, onClose }) => {
         </div>
         <div className="DealDetails-body">
           <div className="DealDetails-pic-preview">
-            <div className={`rarity ${selectedDeal.cardRarityName}`}>
-              {selectedDeal.cardRarityName}
-            </div>
             <div className="DealDetails-img" style={{ backgroundImage: `url(${selectedDeal.cardImageURL})` }}></div>
           </div>
           <div className="DealDetails-details-container">
@@ -31,6 +36,10 @@ const DealDetails = ({ isOpen, selectedDeal, onClose }) => {
             <div className="DealDetails-details-date">
               <div className="DealDetails-label text-secondary">Published Date: </div>
               <div className="DealDetails-name-info text-third">{selectedDeal.createDate}</div>
+            </div>
+            <div className="DealDetails-details">
+              <div className="DealDetails-label text-secondary">Rarity: </div>
+              <div className="DealDetails-name-info text-third">{checkRarity(selectedDeal)}</div>
             </div>
             <div className="DealDetails-details-name">
               <div className="DealDetails-label text-secondary">Card Name: </div>

@@ -43,7 +43,7 @@ const CardDetails = ({ isOpen, selectedCard, onClose }) => {
                   {selectedCard.cardName}
                 </div>
               </div>
-              <div className="CardDetails-CardType">
+              <div className="CardDetails-Feature">
                 <div className="CardDetails-CardName-infoLabel text-secondary">
                   Type:
                 </div>{" "}
@@ -51,7 +51,7 @@ const CardDetails = ({ isOpen, selectedCard, onClose }) => {
                   {selectedCard.cardTypeName}
                 </div>
               </div>
-              <div className="CardDetails-Rarity">
+              <div className="CardDetails-Feature">
                 <div className="CardDetails-CardName-infoLabel text-secondary">
                   Rarity:
                 </div>{" "}
@@ -59,7 +59,7 @@ const CardDetails = ({ isOpen, selectedCard, onClose }) => {
                   {checkRarity(selectedCard)}
                 </div>
               </div>
-              <div className="CardDetails-Origin">
+              <div className="CardDetails-Feature">
                 <div className="CardDetails-CardName-infoLabel text-secondary">
                   Origin:
                 </div>{" "}
@@ -69,7 +69,7 @@ const CardDetails = ({ isOpen, selectedCard, onClose }) => {
                     : selectedCard.cardOriginName}
                 </div>
               </div>
-              <div className="CardDetails-Element">
+              <div className="CardDetails-Feature">
                 <div className="CardDetails-CardName-infoLabel text-secondary">
                   Element:
                 </div>{" "}

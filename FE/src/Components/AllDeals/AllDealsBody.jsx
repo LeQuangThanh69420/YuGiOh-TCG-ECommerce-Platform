@@ -29,14 +29,6 @@ function AllDealsBody({ deals, setDeals }) {
         setDealDetailsOpen(false);
     };
 
-    function checkRarity(selectedDeal) {
-        if (selectedDeal.cardRarityName == 'R') return 'Rare'
-        else if (selectedDeal.cardRarityName == 'N') return 'Normal'
-        else if (selectedDeal.cardRarityName == 'SR') return 'Super Rare'
-        else if (selectedDeal.cardRarityName == 'UR') return 'Ultra Rare'
-        else return 'Bucac'
-    }
-
     const handleSearch = () => {
         setCurrentPage(1);
         searchDeal(
