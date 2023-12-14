@@ -44,6 +44,7 @@ namespace BE.Controllers
                 DealId = Deal.DealId,
                 CardId = Card.CardId,
                 SellUsername = User.Username,
+                SellUsernameAvatarUrl = User.AvatarUrl,
                 CardName = Card.CardName,
                 CardImageURL = Card.CardImageURL,
                 CardTypeName = Card.CardTypeName,
