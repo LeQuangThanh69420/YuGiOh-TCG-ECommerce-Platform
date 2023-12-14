@@ -8,7 +8,11 @@ import ad2 from './../asset/SmallAd2Laby.png'
 
 
 export const slides = [
-    slide1, slide2, slide3, slide4, slide5
+    {slide: slide1, linkTo: '/'},
+    {slide: slide2, linkTo: '/login'},
+    {slide: slide3, linkTo: '/sign-up'},
+    {slide: slide4, linkTo: '/gacha'},
+    {slide: slide5, linkTo: '/gacha'}
 ]
 
 export const Ad = [

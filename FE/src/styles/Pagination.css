@@ -1,0 +1,40 @@
+.pagination-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-weight: 500;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 8px;
+}
+
+.siblings {
+  display: flex;
+  gap: 8px;
+}
+
+.page-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: default;
+  user-select: none;
+}
+
+.current-page {
+  background: #7400cc;
+  border-radius: 50%;
+  color: white;
+}
+
+.nav-btn {
+  cursor: pointer;
+  user-select: none;
+  border-radius: 8px;
+  padding: 4px 8px;
+}

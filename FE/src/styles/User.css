@@ -1,0 +1,361 @@
+.user-screen {
+  width: 100%;
+  padding: 0px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.user-container {
+  width: 100%;
+  max-width: 1180px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.user-profile {
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  background: white;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 24px 32px;
+  align-items: center;
+}
+
+.user-avatar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.main-info-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title-profile {
+  font-weight: 600;
+  font-size: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 0px 12px;
+}
+
+.info-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  width: 100%;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+.info-row:hover {
+  background: #f0f0f0;
+}
+
+.user-title {
+  font-weight: 600;
+  font-size: 18px;
+  cursor: default;
+}
+
+.user-value {
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  align-items: center;
+  font-size: 17px;
+}
+
+.upload-avatar-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0px 40px;
+}
+
+.upload-avatar-container {
+  width: 1020px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 24px 32px 32px 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.upload-avatar-title {
+  font-weight: 600;
+  font-size: 26px;
+  text-align: center;
+  padding: 0px 12px;
+  width: 100%;
+}
+
+.upload-avatar-top {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar-preview {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar-btns {
+  display: flex;
+  gap: 14px;
+}
+
+.upload-avt-dropzone {
+  width: 100%;
+  height: 360px;
+  border: 1px solid #bcbcbc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dragging-over {
+  border: 1px solid #7400cc;
+}
+
+.dragging-over > div > span {
+  color: #7400cc;
+}
+
+.upload-text {
+  position: relative;
+}
+
+.upload-text::before {
+  content: "";
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  top: -20px;
+}
+
+.change-info-buttons {
+  display: flex;
+  gap: 14px;
+  padding: 12px;
+}
+
+.change-info-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-anything-container {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.user-anything-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.user-anything-wrapper {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 30px;
+  align-items: flex-end;
+  max-width: 1180px;
+  width: 100%;
+}
+
+.user-anything-title {
+  font-weight: 600;
+  font-size: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-cards-view-option {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  padding: 0px 8px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.user-cards-view-option:hover {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.not-owned {
+  filter: brightness(0.7) grayscale(70%);
+  cursor: default;
+}
+
+.not-owned:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.user-anything-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.your-cards-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.user-anything-list-header {
+  display: flex;
+  width: 100%;
+  color: #979797;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.user-anything-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #58555b;
+}
+
+.list-col-no {
+  padding: 0px 12px;
+  min-width: 56px;
+  display: flex;
+  justify-content: center;
+}
+
+.list-col-solduser {
+  padding: 0px 12px;
+  min-width: 200px;
+}
+
+.list-col-soldcard {
+  padding: 0px 12px;
+  width: 100%;
+}
+
+.list-col-price {
+  padding: 0px 12px;
+  min-width: 140px;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.list-row:hover {
+  background-color: #F0F0F0;
+}
+
+.list-row-img {
+  width: 32px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.list-row-deal-info {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0px;
+}
+
+.list-row-title {
+  color: #3d3b3f;
+  font-weight: 500;
+}
+
+.list-row-value {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.list-row-deal-price {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.list-row-deal-price-text {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.list-row-no {
+  font-weight: 500;
+}

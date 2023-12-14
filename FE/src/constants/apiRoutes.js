@@ -5,6 +5,8 @@ const API_ROUTES = {
     GET_ELEMENT: '/Card/GetCardElement',
     GET_RARITY: '/Card/GetCardRarity',
     SEARCH_DEAL: '/Deal/SearchDeal',
+    GET_BOUGHT_DEAL: '/Deal/GetBoughtDeal',
+    GET_SOLD_DEAL: '/Deal/GetSoldDeal',
     CREATE_DEAL: '/Deal/CreateDeal',
     EDIT_DEAL: '/Deal/EditDeal',
     DELETE_DEAL: '/Deal/DeleteDeal',
@@ -17,8 +19,8 @@ const API_ROUTES = {
     CHANGE_EMAIL: '/User/ChangeEmail',
     CHANGE_AVATAR: '/User/ChangeAvatarUrl',
     USERCARD_SEARCH_OWNED_SEPARATE: '/UserCard/SearchOwnedSeparate',
-    USERCARD_SEARCH_OWNED_STACK: '/UserCard/SearchOwnedSStack',
-    GET_MONEY: '/User/GetMoney',
+    USERCARD_SEARCH_OWNED_STACK: '/UserCard/SearchOwnedStack',
+    GET_INFO: '/User/GetInfo',
 }
 
 export default API_ROUTES

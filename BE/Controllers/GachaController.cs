@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using BE.Context;
 using BE.Model.Dto;
 using BE.Model.Entity;
+using BE.Model.ValueObject;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
@@ -14,10 +16,14 @@ namespace BE.Controllers
     public class GachaController : BaseApiController
     {
         private readonly DataContext _context;
+        private readonly int normalPrice = ApiEnvironment.normalPrice;
+        private readonly int deluxePrice = ApiEnvironment.deluxePrice;
         public GachaController(DataContext context)
         {
             _context = context;
         }
+
+        [Authorize]
         [HttpGet("Gacha")]
         public async Task<ActionResult<List<GachaOutputDto>>> Gacha([FromQuery] GachaInputDto input)
         {
@@ -26,9 +32,9 @@ namespace BE.Controllers
             List<Card> allCards = new List<Card>();
             if(input.Pack == "normal")
             {
-                if(user.Money >= 1000)
+                if(user.Money >= normalPrice)
                 {
-                    user.Money -= 1000;
+                    user.Money -= normalPrice;
                     _context.SaveChanges();
                 }
                 else return BadRequest(new {message = "Account don't have enough money!"});
@@ -47,9 +53,9 @@ namespace BE.Controllers
             
             if(input.Pack == "deluxe")
             {
-                if(user.Money >= 5000)
+                if(user.Money >= deluxePrice)
                 {
-                    user.Money -= 5000;
+                    user.Money -= deluxePrice;
                     _context.SaveChanges();
                 }
                 else return BadRequest(new {message = "Account don't have enough money!"});

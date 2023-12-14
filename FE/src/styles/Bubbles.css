@@ -1,0 +1,29 @@
+.bubbles-screen {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    background: red;
+    height: 100%;
+    padding: 64px 0px;
+    background: #F8F8F8;
+}
+
+.bubble {
+    position: relative;
+    background: rgba(181, 137, 198, 0.3);
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 25px #7400cc;
+}
+
+@keyframes bubbling {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.6);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

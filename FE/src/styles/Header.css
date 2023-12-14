@@ -2,7 +2,7 @@
   display: flex; /*chay sang ngang*/
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
-  z-index: 5;
+  z-index: 2;
   top: 0;
   width: 100%;
   justify-content: center;
@@ -16,6 +16,10 @@
   align-items: center;
   background: white;
   justify-content: space-between;
+  position: relative;
+  min-width: 500px;
+  z-index: 1;
+  height: 40px;
 }
 
 .search-bar {
@@ -45,6 +49,7 @@
   height: 40px;
   cursor: pointer;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .header-user-avt:hover {
@@ -55,6 +60,18 @@
 .header-nav-icons {
   display: flex;
   gap: 32px;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  justify-content: center;
+  z-index: 0;
+  padding: 0px 120px;
+}
+
+.header-dynamic-button {
+  position: absolute;
+  z-index: 1;
+  right: 0;
 }
 
 .header-user-option {
@@ -62,8 +79,8 @@
   flex-direction: column;
   gap: 12px;
   position: absolute;
-  right: 60px;
-  top: 72px;
+  right: -18px;
+  top: 56px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   background: white;
   border-radius: 8px;
@@ -81,6 +98,8 @@
 .header-user-avt-display {
   width: 32px;
   height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .user-info-child {

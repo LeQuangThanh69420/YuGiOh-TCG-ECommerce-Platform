@@ -23,15 +23,51 @@ button {
   font-weight: 500;
   cursor: pointer;
   font-size: 14px;
+  min-width:max-content;
+  padding: 0px 12px;
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 80px;
+  background: rgb(116, 0, 204);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  min-width:max-content;
+  padding: 0px 12px;
+}
+
+.button:hover {
+  background: rgb(100, 0, 176);
 }
 
 button:hover {
   background: rgb(100, 0, 176);
 }
 
+.button-2 {
+  background: white;
+  color: #7400CC;
+}
+
+.button-2:hover {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
 a {
   color: unset;
   text-decoration: none;
+}
+
+p {
+  margin: 0;
 }
 
 input {
@@ -54,7 +90,6 @@ input:focus {
   flex-direction: column;
   gap: 40px;
   position: relative;
-  background: #F8F8F8;
 }
 
 body {
@@ -64,59 +99,6 @@ body {
 
 .main-view {
   width: 100%;
-}
-
-.footer-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 24px 112px;
-  background: #F1F1F1;
-  gap: 24px;
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid #dcdcdc;
-  padding: 24px;
-  gap: 48px;
-}
-
-.footer-left-container {
-  display: flex;
-  gap: 48px;
-}
-
-.footer-right-container {
-  display: flex;
-  gap: 48px;
-}
-
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.footer-col-title {
-  font-size: 20px;
-  font-weight: 500;
-  margin: 0;
-  margin-bottom: 12px;
-}
-
-.footer-options {
-  margin: 0;
-  font-size: 14px;
-  color: #979797;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.footer-options:hover {
-  color: rgb(116, 0, 204);
-  text-decoration: none;
 }
 
 .social-medias {
@@ -138,6 +120,12 @@ body {
 
 .line {
   background-color: #dcdcdc;
+  height: 1px;
+  width: 100%;
+}
+
+.line-2 {
+  background-color: #58555b;
   height: 1px;
   width: 100%;
 }
@@ -252,8 +240,6 @@ body {
   background-size: 397px 580px;
 }
 
-/*define sizes*/
-
 .xl {
   width: 397px;
   height: 580px;
@@ -264,4 +250,20 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.link {
+  color: #7400CC;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.no-data-text {
+  width: 100%;
+  text-align: center;
+  color: #58555b;
 }

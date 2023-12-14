@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react"
+import { Link } from "react-router-dom";
 import './../../styles/ImageSlider.css'
 
 function ImageSlider({ slides }) {
@@ -40,7 +41,7 @@ function ImageSlider({ slides }) {
                 <div className="Slider-pic-container" style={{ width: 760 * slides.length, transform: `translateX(${-(currentIndex * 760)}px)` }}>
                     {slides.map((_, slideIndex) => (
                         <div className="Slider-pic" key={slideIndex}>
-                            <img src={slides[slideIndex]} alt="" />
+                            <Link to={slides[slideIndex].linkTo}><img src={slides[slideIndex].slide} alt="" /></Link>
                         </div>
                     ))}
                 </div>

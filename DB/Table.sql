@@ -16,7 +16,7 @@ CREATE TABLE "User" (
     Money int NOT NULL,
     Actived bit NOT NULL,
     ActiveCode int,
-    AvatarUrl nvarchar(180) NOT NULL,
+    AvatarUrl nvarchar(300) NOT NULL,
 );
 
 CREATE TABLE CardType (
@@ -90,5 +90,5 @@ begin
     and (@CardElementName ='' or @CardElementName IS NULL or CardElementName = @CardElementName)
     and (@CardRarityName = '' or @CardRarityName IS NULL or CardRarityName = @CardRarityName)
     GROUP by UserId, Card.CardId, CardName, CardImageURL, CardTypeName, CardOriginName, CardElementName, CardRarityName, OnDeal
-    ORDER BY Quantity DESC
+    ORDER BY  CardRarityName DESC, CardName, Quantity DESC
 end

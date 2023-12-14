@@ -5,7 +5,7 @@
     align-items: center;
     gap: 24px;
     position: fixed;
-    right: 12px;
+    left: 12px;
     bottom: 28px;
     z-index: 10;
     background: white;
@@ -13,7 +13,7 @@
     font-size: 18px;
     font-weight: 500;
     border-radius: 8px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
     animation: fade-in 0.3s linear;
 }
 
@@ -52,7 +52,7 @@
 
 @keyframes fade-in {
     from {
-        transform: translateX(200px);
+        transform: translateX(-200px);
     } to {
         transform: translateX(0px);
     }

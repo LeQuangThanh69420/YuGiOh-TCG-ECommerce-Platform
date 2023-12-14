@@ -1,4 +1,4 @@
-.AllDeals-main-content{
+.AllDeals-main-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,17 @@
     align-items: center;
 }
 
-.AllDeals-body{
+.all-deals-header {
+    font-weight: 600;
+    font-size: 24px;
+    text-align: left;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;  
+}
+
+.AllDeals-body {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -15,23 +25,32 @@
 }
 
 .AllDeals-body-container {
-    width: 1180px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 30px;
+    width: 100%;
     display: flex;
     gap: 30px 30px;
     flex-wrap: wrap;
+}
+
+.AllDeals-body-container-wrapper {
+    width: 1180px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    gap: 30px;
+    align-items: flex-end;
+    padding: 30px;
     background: white;
 }
 
 .AllDeals-deals {
     width: 200px;
     border-radius: 8px;
-    border: 1px solid rgb(213, 213, 213);
+    border: 1px solid #979797;
     display: flex;
     flex-direction: column;
-    padding: 18px;
+    gap: 14px;
+    padding: 12px 12px 14px 12px;
     align-items: flex-start;
     justify-content: space-between;
     position: relative;
@@ -39,27 +58,40 @@
 }
 
 .AllDeals-deals:hover {
-    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.AllDeals-deals:hover > .AllDeals-cards {
+    transform: scale(1.03);
 }
 
 .AllDeals-deals-img {
-    width: 164px;
-}
-
-.AllDeals-bottom{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     width: 100%;
 }
 
-.AllDeals-buy{
-    width: 70px;
+.AllDeals-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.AllDeals-price{
-    font-weight: 700;
+.AllDeals-price {
+    font-weight: 600;
     font-size: 20px;
-    color: green;
+    color: #ffc400;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.AllDeals-cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.AllDeals-time {
+    font-size: 14px;
+    font-weight: 500;
+    color: #58555b;
 }

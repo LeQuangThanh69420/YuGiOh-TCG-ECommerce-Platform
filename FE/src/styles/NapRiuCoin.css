@@ -15,67 +15,79 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 20px 10px;
+  align-items: center;
+  padding: 20px 100px;
+  gap: 30px;
 }
 
 .top-up-container {
+  width: 100%;
+  max-width: 1180px;
   display: flex;
   flex-wrap: wrap;
   /* Allow the NapTien divs to wrap to the next line on smaller screens */
-  justify-content: flex-end;
+  justify-content: center;
   /* Adjust as needed for your layout */
-  padding-top: 30px;
+  gap: 12px;
 }
 
 .NapTien {
   margin: 10px;
-  /* Add some spacing between the NapTien divs */
-  width: 100%;
-  /* Make each NapTien div take the full width of its container */
+  width: 330px;
+  height: 90px;
+  background-image: url('../asset/RiuCoin.svg');
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  cursor: pointer;
+}
 
-  @media (min-width: 700px) {
-    /* Adjust the styles for screens wider than 576px */
-    width: 42%;
-    /* Two NapTien divs per row */
-  }
-
-  @media (min-width: 1000px) {
-    /* Adjust the styles for screens wider than 768px */
-    width: 30%;
-    /* Three NapTien divs per row */
-  }
+.NapTien:hover {
+  transform: scale(1.03);
 }
 
 .RiuCoinAmount{
-  position: absolute;
   font-size: 30px;
   color: white;
-  padding-left: 100px;
-  padding-top: 25px;
+  z-index: 1;
+}
+
+.NapTienRiuCoinIcon{
+  width: 39px;
+  height: 39px;
   z-index: 1;
 }
 
 .Cost{
-  position: absolute;
   font-size: 25px;
   color: black;
-  padding-left: 215px;
-  padding-top: 27px;
-  z-index: 2;
+  z-index: 0;
+  text-align: center;
+  width: 100px;
+  height: 35px;
+  background-image: url('../asset/RiuCoinRectangle.svg');
+}
+
+.NapTienVaRiuCoin{
+  display: flex;
+  gap: 10px;
 }
 
 .QRcode-container{
   display: flex;
   justify-content: space-evenly;
-  padding-top: 30px;
+  gap: 30px;
+  align-items: center;
 }
 
 .QRcode{
   background-image: url("../asset/QRcodeRiuCoin.png");
   background-size: contain;
-  width: 200px;
-  height: 200px;
+  background-repeat: no-repeat;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 .QRcodeManual-head{
@@ -86,3 +98,9 @@
 .QRcodeManual-body{
   font-size: 20px;
 }
+
+.QRcodeManual-bottom{
+  font-size: 12px;
+}
+
+
