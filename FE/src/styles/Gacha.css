@@ -114,7 +114,9 @@
     border-radius: 8px;
 }
 
-.Gacha-selection-banner{
+.Gacha-selection-banner-activated{
+    background-color: #6400B0;
+    color: white;
     width: 80px;
     height: 30px;
     align-items: center;
@@ -123,6 +125,28 @@
     border-radius: 6px; 
     cursor: pointer;
     box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.Gacha-selection-banner-non-activated{
+    background-color: white; 
+    color: #6400B0; 
+    border: 1px solid #6400B0;
+    width: 80px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 6px; 
+    cursor: pointer;
+    box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.Gacha-selection-banner-activated:hover{
+    background-color: #50018d;
+}
+
+.Gacha-selection-banner-non-activated:hover{
+    background-color: rgb(240, 240, 240);
 }
 
 .Gacha-selection{

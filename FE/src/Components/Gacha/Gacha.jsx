@@ -20,7 +20,7 @@ function Gacha() {
                         <div className="Gacha-pulling-background">
                             <div className="Gacha-pulling-background-curve">
                                 <div className="Gacha-pulling-background-dots">
-                                    <div className="Gacha-pulling-img" style={{ backgroundImage: `url(${currentPack.img})` }}></div>
+                                    <div className="Gacha-pulling-img" style={{ backgroundImage: `url(${currentPack.img})` }} ></div>
                                     <div className="Gacha-pulling-right">
                                         <div className="Gacha-pulling-top"></div>
                                         <div className="Gacha-pulling-text">
@@ -42,7 +42,7 @@ function Gacha() {
                 </div>
                 <div className="Gacha-selection">
                     {banner.map((item, index) =>
-                        <div className="Gacha-selection-banner" onClick={() => {goToPack(item, index)}} style={currentIndex == index ? {backgroundColor: '#6400B0', color: 'white'} : {backgroundColor: '#979797', color: 'black'}} key={index}>{item.name}</div>
+                        <div className={currentIndex == index ? "Gacha-selection-banner-activated" : "Gacha-selection-banner-non-activated"} onClick={() => {goToPack(item, index)}} key={index}>{item.name}</div>
                     )}
                 </div>
                 <div className="Gacha-background">
@@ -55,4 +55,3 @@ function Gacha() {
 }
 
 export default Gacha
-// style={selectedPack === currentPack ? {backgroundColor: '#6400B0', color: 'white'} : {backgroundColor: '#6D6D6D', color: 'black'}}

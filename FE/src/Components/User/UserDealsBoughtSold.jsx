@@ -1,17 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
 
-import { getBoughtDeals } from '../../api/apiDeal';
-import renderDealsRow from '../../utils/renderDealsRow';
-
-import { HEADER } from '../../constants/userBoughtDeals';
-
 import { AppData } from '../../Root';
 import Pagination from '../Shared/Pagination';
 
 import './../../styles/User.css'
 
-export default function UserDealsBought() {
-
+export default function UserDealsBoughtSold({type, apiCall, headerArr, renderDealsRow}) {
     const { userData } = useContext(AppData)
 
     const [list, setList] = useState([]);
@@ -19,7 +13,7 @@ export default function UserDealsBought() {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        getBoughtDeals(userData.username).then((data) => {
+        apiCall(userData.username).then((data) => {
             setList(data)
         })
     }, [])
@@ -29,12 +23,12 @@ export default function UserDealsBought() {
             <div className='user-anything-title'>
                 <p>
                     <span className='text-primary'>Deals</span>
-                    <span className='text-secondary'> Bought</span>
+                    <span className='text-secondary'> {type}</span>
                 </p>
             </div>
             <div className='user-anything-list'>
                 <div className='user-anything-list-header'>
-                    {HEADER.map((col, index) =>
+                    {headerArr.map((col, index) =>
                         <div className={`list-col-${col.key}`} key={index}>
                             {col.label}
                         </div>
@@ -42,10 +36,10 @@ export default function UserDealsBought() {
                 </div>
                 <div className='line'></div>
                 <div className='user-anything-list-body'>
-                    {displayList.map((deal, dealIndex) => renderDealsRow(deal, dealIndex)).map((row) =>
-                        (<div className='list-row' key={row.no}>
-                            {HEADER.map((item) =>
-                                <div key={item.key} className={`list-col-${item.key}`}>
+                    {displayList.map((deal, dealIndex) => renderDealsRow(deal, dealIndex)).map((row, rowIndex) =>
+                        (<div className='list-row' key={rowIndex}>
+                            {headerArr.map((item, headerIndex) =>
+                                <div key={headerIndex} className={`list-col-${item.key}`}>
                                     {row[item.data_key]}
                                 </div>
                             )}

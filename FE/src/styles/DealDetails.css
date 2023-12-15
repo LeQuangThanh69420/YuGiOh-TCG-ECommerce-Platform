@@ -73,12 +73,13 @@
 .DealDetails-details-container{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 8px;
 }
 
 .DealDetails-details{
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 .DealDetails-label{
@@ -94,7 +95,7 @@
 }
 .DealDetails-bottom{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     padding-top: 20px;
     
 }
@@ -128,4 +129,15 @@
 .DealDetails-bottom-buttons{
     display: flex;
     gap: 15px;
+}
+
+.DealDetails-details-body-head{
+    display: flex;
+    gap: 10px;
+}
+
+.DealDetails-details-body-body{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
