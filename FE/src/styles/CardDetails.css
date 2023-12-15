@@ -36,57 +36,15 @@
     flex-direction: column;
     gap: 30px;
 }
-.CardDetails-CardName-infoLabel {
-    font-size: 27px;
-    font-weight: 600;
-    @media (min-height: 400px) {
-        /* Adjust the styles for screens wider than 576px */
-        font-size: 23px;
-        /* Two NapTien divs per row */
-    }
-    
-    @media (min-height: 800px) {
-        /* Adjust the styles for screens wider than 768px */
-        font-size: 33px;
-        /* Three NapTien divs per row */
-    }
-}
-
-.CardDetails-CardName-infoName {
-    font-size: 21px;
-    @media (min-height: 400px) {
-        /* Adjust the styles for screens wider than 576px */
-        font-size: 19px;
-        /* Two NapTien divs per row */
-    }
-    
-    @media (min-height: 800px) {
-        /* Adjust the styles for screens wider than 768px */
-        font-size: 28px;
-        /* Three NapTien divs per row */
-    }
-}
-
-.CardDetails-Image > img {
-    width: 300px;
-    @media (min-height: 400px) {
-        /* Adjust the styles for screens wider than 576px */
-        width: 220px;
-        /* Two NapTien divs per row */
-    }
-    
-      @media (min-height: 800px) {
-        /* Adjust the styles for screens wider than 768px */
-        width: 280px;
-        /* Three NapTien divs per row */
-    }
-}
 
 .CardDetails-Image{
     border: 3px solid #3d3b3f;
     padding: 7px;
     border-radius: 7px;
     display: flex;
+}
+.CardDetails-Image > img{
+    width: 230px;
 }
 
 .CardDetails-body{
@@ -120,4 +78,13 @@
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.CardDetails-CardName-infoLabel{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.CardDetails-CardName-infoName{
+    font-size: 18px;
 }

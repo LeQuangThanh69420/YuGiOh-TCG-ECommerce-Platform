@@ -35,7 +35,7 @@ const DealDetails = ({ isOpen, selectedDeal, onClose, userAvatar }) => {
           <div className="DealDetails-details-container">
             <div className="DealDetails-details-body-head">
               <div className="DealDetails-details-body-head-avatar">
-                <img src='' className="header-user-avt-display" style={{ width: '50px', height: '50px' }} />
+                <img src={selectedDeal.sellUsernameAvatarUrl} className="header-user-avt-display" style={{ width: '50px', height: '50px' }} />
               </div>
               <div className="DealDetails-details-body-head-info">
                 <div className="DealDetails-info text-third">{selectedDeal.sellUsername}</div>
