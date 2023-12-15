@@ -4,12 +4,18 @@ import "./../../../styles/Input.css";
 import './../../../styles/IconDefine.css'
 
 
-function Input({ label, type, icon, isRegexChecking = true, regex, errorMessage, setData }) {
+function Input({ label, type, icon, isRegexChecking = true, regex, errorMessage, setData, onSubmit }) {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
   const [eye, setEye] = useState("close");
   const [internalType, setInternalType] = useState("");
   const [internalErrorMessage, setInternalErrorMessage] = useState("");
+
+  const handleKeyDown = (event) => {
+    if(event.key == "Enter") {
+      onSubmit();
+    }
+  }
 
   useEffect(() => {
     setInternalErrorMessage(errorMessage);
@@ -67,6 +73,7 @@ function Input({ label, type, icon, isRegexChecking = true, regex, errorMessage,
           onChange={(event) => setInputValue(event.target.value)}
           onBlur={handleBlur}
           onFocus={handleFocus}
+          onKeyDown={(event) => handleKeyDown(event)}
         />
         {type === "password" && (
           <div className={`eye-icon ${eye}`} onClick={handleClickEye}></div>

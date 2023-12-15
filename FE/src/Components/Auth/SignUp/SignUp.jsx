@@ -100,6 +100,7 @@ function SignUp() {
                                 icon={"mail"}
                                 errorMessage="Email must have this format: 'abc@xyz.ijk'"
                                 setData={setEmail}
+                                onSubmit={handleSubmit}
                             />
                             <Input
                                 label={"Username"}
@@ -108,6 +109,7 @@ function SignUp() {
                                 icon={"person"}
                                 errorMessage="Username must be 8-16 characters!"
                                 setData={setUserName}
+                                onSubmit={handleSubmit}
                             />
                             <div className="password-container">
                                 <Input
@@ -119,6 +121,7 @@ function SignUp() {
                                         "Password must have 1 number, 1 uppercase, 1 special character and has 8-16 characters"
                                     }
                                     setData={setPassword}
+                                    onSubmit={handleSubmit}
                                 />
                             </div>
                             <div className="password-container">
@@ -132,6 +135,7 @@ function SignUp() {
                                         "Make sure to repeat password correctly!"
                                     }
                                     setData={setRepeatPassword}
+                                    onSubmit={handleSubmit}
                                 />
                             </div>
                             <div className="login-button-container">
