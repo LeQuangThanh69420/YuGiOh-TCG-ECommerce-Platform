@@ -28,26 +28,27 @@ namespace BE.Controllers
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == input.Username);
             if (user == null) return BadRequest(new { message = "User not found!" });
             var userCard = from UserCard in _context.UserCard
-                           join Card in _context.Card on UserCard.CardId equals Card.CardId
-                           where (UserCard.UserId == user.UserId)
-                           && (string.IsNullOrWhiteSpace(input.CardName) || Card.CardName.Contains(input.CardName))
-                           && (string.IsNullOrWhiteSpace(input.CardTypeName) || Card.CardTypeName == input.CardTypeName)
-                           && (string.IsNullOrWhiteSpace(input.CardOriginName) || Card.CardOriginName == input.CardOriginName)
-                           && (string.IsNullOrWhiteSpace(input.CardElementName) || Card.CardElementName == input.CardElementName)
-                           && (string.IsNullOrWhiteSpace(input.CardRarityName) || Card.CardRarityName == input.CardRarityName)
-                           orderby Card.CardRarityName descending, Card.CardName
-                           select new UserCardSearchOwnedOutputDto()
-                           {
-                               CardId = Card.CardId,
-                               CardName = Card.CardName,
-                               CardImageURL = Card.CardImageURL,
-                               CardTypeName = Card.CardTypeName,
-                               CardOriginName = Card.CardOriginName,
-                               CardElementName = Card.CardElementName,
-                               CardRarityName = Card.CardRarityName,
-                               OnDeal = UserCard.OnDeal,
-                               Quantity = 1,
-                           };
+                            join Card in _context.Card on UserCard.CardId equals Card.CardId
+                            where (UserCard.UserId == user.UserId)
+                            && (string.IsNullOrWhiteSpace(input.CardName) || Card.CardName.Contains(input.CardName))
+                            && (string.IsNullOrWhiteSpace(input.CardTypeName) || Card.CardTypeName == input.CardTypeName)
+                            && (string.IsNullOrWhiteSpace(input.CardOriginName) || Card.CardOriginName == input.CardOriginName)
+                            && (string.IsNullOrWhiteSpace(input.CardElementName) || Card.CardElementName == input.CardElementName)
+                            && (string.IsNullOrWhiteSpace(input.CardRarityName) || Card.CardRarityName == input.CardRarityName)
+                            orderby Card.CardRarityName descending, Card.CardName
+                            select new UserCardSearchOwnedOutputDto()
+                            {
+                                UserCardId = UserCard.UserCardId,
+                                CardId = Card.CardId,
+                                CardName = Card.CardName,
+                                CardImageURL = Card.CardImageURL,
+                                CardTypeName = Card.CardTypeName,
+                                CardOriginName = Card.CardOriginName,
+                                CardElementName = Card.CardElementName,
+                                CardRarityName = Card.CardRarityName,
+                                OnDeal = UserCard.OnDeal,
+                                Quantity = 1,
+                            };
             return await userCard.ToListAsync();
         }
 
@@ -72,6 +73,7 @@ namespace BE.Controllers
             {
                 UserCardSearchOwnedOutputDto uc = new UserCardSearchOwnedOutputDto()
                 {
+                    UserCardId = 0,
                     CardId = item.CardId,
                     CardName = item.CardName,
                     CardImageURL = item.CardImageURL,

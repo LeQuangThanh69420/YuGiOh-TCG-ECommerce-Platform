@@ -7,6 +7,7 @@ namespace BE.Model.Dto
 {
     public class UserCardSearchOwnedOutputDto
     {
+        public long UserCardId { get; set; }
         public long CardId { get; set; }
         public string CardName { get; set; }
         public string CardImageURL { get; set; }

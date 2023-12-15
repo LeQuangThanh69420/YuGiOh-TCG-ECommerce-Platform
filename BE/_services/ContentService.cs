@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BE._iservices;
 using BE.Controllers;
+using BE.Model.ValueObject;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE._services
@@ -20,7 +21,7 @@ namespace BE._services
                 "</head>" + 
                 "<body>" + 
                     "<h1 style='color:red;'>" + message + "</h1>" + 
-                    "<canvas id='live2d' width='560' height='600' class='live2d' style='position: absolute; bottom: 0px; left: 30%; width: 30%;'></canvas>" +
+                    "<a href='" + ApiEnvironment.ClientURL + "'>Home Page</a> | <a href='/assets/gg.html' target='_blank'>Music Player</a>" +
                 "</body>";
         }
     }
