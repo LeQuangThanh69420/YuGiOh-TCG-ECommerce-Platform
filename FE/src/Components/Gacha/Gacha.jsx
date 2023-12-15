@@ -42,7 +42,7 @@ function Gacha() {
                 </div>
                 <div className="Gacha-selection">
                     {banner.map((item, index) =>
-                        <div className={currentIndex == index ? "Gacha-selection-banner-activated" : "Gacha-selection-banner-non-activated"} onClick={() => {goToPack(item, index)}} key={index}>{item.name}</div>
+                        <div className={`Gacha-selection-banner ${currentIndex == index ? "Gacha-selection-activated" : ''}`} onClick={() => {goToPack(item, index)}} key={index}>{item.name}</div>
                     )}
                 </div>
                 <div className="Gacha-background">
