@@ -11,7 +11,7 @@ namespace BE._services
 {
     public class ContentService : IContentService
     {
-        public async Task<string> ContentWrite(string message)
+        public async Task<string> ContentWrite(string message, string messageImage)
         {
             return 
                 "<head>" + 
@@ -20,8 +20,10 @@ namespace BE._services
                     "<link rel='stylesheet' href='/assets/live2d/live2d.css'>" + 
                 "</head>" + 
                 "<body>" + 
-                    "<h1 style='color:red;'>" + message + "</h1>" + 
-                    "<a href='" + ApiEnvironment.ClientURL + "'>Home Page</a> | <a href='/assets/gg.html' target='_blank'>Music Player</a>" +
+                    "<h1 style='color:#7400CC;'><img style='width: 35px;' src='" + messageImage + "'>" + message + "</h1>" + 
+                    "<a href='" + ApiEnvironment.ClientURL + "'>Go To Home Page</a> | <a href='/assets/gg.html' target='_blank'>Music Player</a><br>" +
+                    "<img src='" + ApiEnvironment.imageBubble + "'>" +
+                    ApiEnvironment.live2dCanvas +
                 "</body>";
         }
     }

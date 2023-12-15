@@ -7,6 +7,6 @@ namespace BE._iservices
 {
     public interface IContentService
     {
-        Task<string> ContentWrite(string message);
+        Task<string> ContentWrite(string message, string messageImage);
     }
 }

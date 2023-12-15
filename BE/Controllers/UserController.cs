@@ -21,7 +21,6 @@ namespace BE.Controllers
         private readonly EmailController _email;
         private readonly IContentService _contentService;
         private readonly ITokenService _tokenService;
-
         public UserController(DataContext context, EmailController email, IContentService contentService, ITokenService tokenService)
         {
             _context = context;
@@ -55,7 +54,7 @@ namespace BE.Controllers
             {
                 To = input.Email,
                 Subject = "Active your YuGhiOh TCG account",
-                Body = "<h2>Dear" + input.Username + ", click the button to active your account!</h2><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #7400cc; color: white; border-radius: 6px; border: none;'>Click me!!!</button></a>",
+                Body = "<h2>Dear " + input.Username + ", click the button to active your account!</h2><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #7400cc; color: white; border-radius: 6px; border: none;'>Click me!!!</button></a>",
             });
             if ((int)rs.GetType().GetProperty("StatusCode").GetValue(rs, null) == 200)
             {
@@ -79,24 +78,28 @@ namespace BE.Controllers
         public async Task<ActionResult> ActiveUser(string username, int activeCode)
         {
             string message;
+            string messageImage;
             var user = await _context.User.SingleOrDefaultAsync(u => u.Username == username);
             if (user == null) 
             {
                 message = "URL not found!";
-                return Content(await _contentService.ContentWrite(message), "text/html");
+                messageImage = ApiEnvironment.imageNerd;
+                return Content(await _contentService.ContentWrite(message, messageImage), "text/html");
             }
             if (user.ActiveCode == activeCode)
             {
                 user.Actived = true;
                 user.ActiveCode = null;
                 await _context.SaveChangesAsync();
-                message = "Active account successfully!";
-                return Content(await _contentService.ContentWrite(message), "text/html");
+                message = "Active account successfully! You have recieved " + ApiEnvironment.defRegMoney + " RiuCoin! Go To Home Page to use now!";
+                messageImage = ApiEnvironment.imageDeptrai;
+                return Content(await _contentService.ContentWrite(message, messageImage), "text/html");
             }
             else 
             {
                 message = "URL not found!";
-                return Content(await _contentService.ContentWrite(message), "text/html");
+                messageImage = ApiEnvironment.imageNerd;
+                return Content(await _contentService.ContentWrite(message, messageImage), "text/html");
             }
         }
 
@@ -128,7 +131,7 @@ namespace BE.Controllers
                 {
                     To = user.Email,
                     Subject = "Forgot your password!",
-                    Body = "<h2>Dear" + user.Username + ", please don't share your password for anyone, even ADMIN!</h2><h3>Your password is:</h3>" + user.Password,
+                    Body = "<h2>Dear " + user.Username + ", please don't share your password for anyone, even ADMIN!</h2><h3>Your password is:</h3>" + user.Password,
                 });
             }
         }
