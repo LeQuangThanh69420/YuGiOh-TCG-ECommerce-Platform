@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>gg</title>
+</head>
+
+<body style="background-color: black; color: white;">
+  <div>
+    <p>Status</p>
+    <button onclick="playAudio()">play</button>
+    <button onclick="pauseAudio()">pause</button>
+    <select id="fileMusic" oninput="changeMusic()">
+      <option selected disabled>Chose</option>
+      <option value="https://res.cloudinary.com/dslzbnfu8/video/upload/v1691057482/samples/sound/Usagi_Flap.mp3">
+        UsagiFlap
+      </option>
+      <option value="https://res.cloudinary.com/dslzbnfu8/video/upload/v1693831697/samples/sound/GhostCityTokyo.mp3">
+        GhostCityTokyo
+      </option>
+      <option
+        value="https://res.cloudinary.com/dslzbnfu8/video/upload/v1691570516/samples/sound/LobotomyCorporationOSTSecondWarning.mp3">
+        LobotomyCorporationOSTSecondWarning</option>
+      <option
+        value="https://res.cloudinary.com/dslzbnfu8/video/upload/v1691570513/samples/sound/CourageTheCowardlyDogOSTCrisisTheme.mp3">
+        CourageTheCowardlyDogOSTCrisisTheme</option>
+    </select>
+    <br>
+
+    <p id="textDuration">Duration: ----------- / -----------</p>
+    <button onclick="resetAudio()">reset</button>
+    <input id="durationInput" type="range" min="0" max="100" oninput="goTo()" style="width: 330px;" class="slider">
+    <br>
+
+    <p>Volume:
+      <button onclick="mute()">Mute</button>
+      <input id="volumeInput" type="range" oninput="changeVolume()" style="width: 270px;">
+    </p>
+
+    <audio id="myAudio" oncanplay="ganMax()">
+      Your browser does not support the audio element.
+    </audio>
+
+    <input type="color" oninput="changeBackgroundColor(backgroundColorInput.value)" id="backgroundColorInput">Change background-color
+  </div>
+  <script>
+    var audio = document.getElementById("myAudio");
+    audio.ontimeupdate = function () { updateTime() };
+
+    var fileMusic = document.getElementById("fileMusic");
+
+    var durationInput = document.getElementById("durationInput");
+
+    var textDuration = document.getElementById("textDuration");
+
+    var volumeInput = document.getElementById("volumeInput");
+
+    var backgroundColorInput = document.getElementById("backgroundColorInput");
+
+    audio.volume = 0.2;
+    volumeInput.value = audio.volume * 100;
+
+    function playAudio() {
+      audio.play();
+    }
+
+    function pauseAudio() {
+      audio.pause();
+    }
+
+    function changeMusic() {
+      audio.src = fileMusic.value;
+      audio.play();
+    }
+
+    function ganMax() {
+      durationInput.max = audio.duration;
+    }
+
+    function resetAudio() {
+      audio.currentTime = 0;
+      audio.play();
+    }
+
+    function updateTime() {
+      durationInput.value = audio.currentTime;
+      textDuration.innerHTML = "Duration: " + audio.currentTime + " / " + audio.duration;
+    }
+
+    function goTo() {
+      audio.currentTime = durationInput.value;
+      audio.play();
+    }
+
+    function changeVolume() {
+      audio.volume = volumeInput.value / 100;
+      console.log(audio.volume)
+      console.log(volumeInput.value)
+    }
+
+    function mute() {
+      audio.muted = !audio.muted;
+    }
+
+    function changeBackgroundColor(input) {
+      document.body.style.backgroundColor = input;
+    }
+  </script>
+</html>

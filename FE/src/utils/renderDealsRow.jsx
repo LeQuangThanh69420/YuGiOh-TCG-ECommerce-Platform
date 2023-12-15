@@ -1,5 +1,5 @@
 
-export default function renderDealsRow(item, index) {
+export const renderDealsRow = (item, index) => {
     return {
         no: <span className="list-row-no">{index + 1}</span>,
         cardName: (<div className="list-row-deal-info">
@@ -15,7 +15,7 @@ export default function renderDealsRow(item, index) {
                 </div>
             </div>
         </div>),
-        sellUsername: item.sellUsername,
+        username: item.sellUsername ? item.sellUsername : item.buyUsername,
         price: (
             <div className="list-row-deal-price">
                 <div className="riu-coin-icon icon-9"></div>
