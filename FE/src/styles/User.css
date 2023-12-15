@@ -305,6 +305,7 @@
 .list-col-soldcard {
   padding: 0px 12px;
   width: 100%;
+  min-width: 230px;
 }
 
 .list-col-price {
