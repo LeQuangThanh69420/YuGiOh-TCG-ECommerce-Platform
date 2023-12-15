@@ -1,4 +1,4 @@
-export const HEADER = [
+export const HEADER_BOUGHT = [
     {
         key: 'no',
         label: 'No',
@@ -10,13 +10,36 @@ export const HEADER = [
         data_key: 'cardName',
     },
     {
-        key: 'solduser',
+        key: 'soldboughtuser',
         label: 'Sold Username',
-        data_key: 'sellUsername',
+        data_key: 'username',
     },
     {
         key: 'price',
         label: 'Bought Price',
+        data_key: 'price',
+    },
+]
+
+export const HEADER_SOLD = [
+    {
+        key: 'no',
+        label: 'No',
+        data_key: 'no'
+    },
+    {
+        key: 'soldcard',
+        label: 'Sold Card\'s name',
+        data_key: 'cardName',
+    },
+    {
+        key: 'soldboughtuser',
+        label: 'Bought Username',
+        data_key: 'username',
+    },
+    {
+        key: 'price',
+        label: 'Sold Price',
         data_key: 'price',
     },
 ]
