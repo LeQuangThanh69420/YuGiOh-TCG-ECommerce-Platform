@@ -4,6 +4,11 @@ import {
   CHANGE_EMAIL_INPUTS,
   CHANGE_PASSWORD_INPUTS,
 } from "../../constants/inputsUserInfo";
+import {HEADER_BOUGHT, HEADER_SOLD} from './../../constants/userBoughtDeals.js'
+
+import { changeEmail, changePassword, getEmail } from "../../api/apiUser";
+import { getSoldDeals, getBoughtDeals } from "../../api/apiDeal";
+import {renderDealsRow} from './../../utils/renderDealsRow.jsx'
 
 import { AppData } from "../../Root";
 import UploadAvatar from "./UploadAvatar";
@@ -11,10 +16,9 @@ import UserCards from "./UserCards";
 import FormModal from "../Shared/FormModal";
 import Input from "../Shared/Input/Input";
 import UserDealsSelling from "./UserDealsSelling";
-import UserDealsBought from "./UserDealsBought";
+import UserDealsBoughtSold from "./UserDealsBoughtSold";
 
 import "./../../styles/User.css";
-import { changeEmail, changePassword, getEmail } from "../../api/apiUser";
 
 export default function User() {
   const { userData, showToast, setType, setMessage } = useContext(AppData);
@@ -147,7 +151,8 @@ export default function User() {
       </div>
       <UserDealsSelling />
       <UserCards />
-      <UserDealsBought />
+      <UserDealsBoughtSold type={"Sold"} apiCall={getSoldDeals} headerArr={HEADER_SOLD} renderDealsRow={renderDealsRow}/>
+      <UserDealsBoughtSold type={"Bought"} apiCall={getBoughtDeals} headerArr={HEADER_BOUGHT} renderDealsRow={renderDealsRow}/>
       <FormModal
         title={
           <span className="text-secondary">
