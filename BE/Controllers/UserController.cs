@@ -8,6 +8,7 @@ using BE.Context;
 using BE.InterfaceController;
 using BE.Model.Dto;
 using BE.Model.Entity;
+using BE.Model.ValueObject;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -63,7 +64,7 @@ namespace BE.Controllers
                     Username = input.Username.ToLower(),
                     Password = input.Password,
                     Email = input.Email,
-                    Money = 0,
+                    Money = ApiEnvironment.defRegMoney,
                     Actived = false,
                     ActiveCode = activeCode,
                     AvatarUrl = "https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png",

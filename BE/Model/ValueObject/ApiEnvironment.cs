@@ -11,5 +11,6 @@ namespace BE.Model.ValueObject
         public const int normalPrice = 1000;
         public const int deluxePrice = 5000;
         public const string live2dCanvas = "<canvas id='live2d' width='560' height='600' class='live2d' style='position: absolute; bottom: 0px; left: 30%; width: 30%;'></canvas>";
+        public const int defRegMoney = 2000;
     }
 }
