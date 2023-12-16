@@ -16,8 +16,8 @@ namespace BE.Controllers
     public class GachaController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly int normalPrice = ApiEnvironment.normalPrice;
-        private readonly int deluxePrice = ApiEnvironment.deluxePrice;
+        private readonly int normalPrice = ApiEnvironment.normalPrice*ApiEnvironment.discountPercent/100;
+        private readonly int deluxePrice = ApiEnvironment.deluxePrice*ApiEnvironment.discountPercent/100;
         public GachaController(DataContext context)
         {
             _context = context;
