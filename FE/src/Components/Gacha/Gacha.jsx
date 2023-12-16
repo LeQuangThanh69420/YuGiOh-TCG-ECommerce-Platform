@@ -1,8 +1,9 @@
 import Header from "../Shared/Header"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import "../../styles/Gacha.css"
 import { banner } from "../../constants/gachaBannerInfo"
 import GachaPackDisplay from "./GachaPackDisplay"
+import { AppData } from "../../Root"
 
 function Gacha() {
     const [currentPack, setCurrentPack] = useState(banner[0])

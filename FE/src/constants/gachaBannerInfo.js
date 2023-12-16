@@ -16,9 +16,9 @@ export const banner = [
     price: 4500,
     type: 'deluxe',
     packimg: packimg2},
-    {name: 'Waifu',
+    /*{ name: 'Waifu',
     img: img3,
     price: 1800,
     type: 'waifu',
-    packimg: ''},
+    packimg: ''}*/,
 ]

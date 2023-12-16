@@ -8,6 +8,8 @@ import ToastMessages from "./Components/Shared/ToastMessage";
 import Header from "./Components/Shared/Header";
 import Footer from "./Components/Shared/Footer";
 import Bubbles from "./Components/Shared/Bubbles";
+import Gacha from "./Components/Gacha/Gacha";
+import { banner } from "./constants/gachaBannerInfo";
 
 export const AppData = createContext();
 
@@ -18,6 +20,8 @@ export default function Root() {
   const [isShow, setIsShow] = useState(false);
   const [type, setType] = useState('');
   const [message, setMessage] = useState('');
+
+  const [currentPack, setCurrentPack] = useState(banner[0])
 
   const [currentRoute, setCurrentRoute] = useState(location.pathname)
 
@@ -74,7 +78,7 @@ export default function Root() {
   }, [])
 
   return (
-    <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute, userData, setUserData }}>
+    <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute, userData, setUserData, currentPack }}>
       {!(currentRoute === '/login' || currentRoute === '/sign-up') && <Header />}
       {!(currentRoute === '/login' || currentRoute === '/sign-up') && isScrollTop &&
         <div className="go-to-top" onClick={() => {
@@ -89,6 +93,7 @@ export default function Root() {
       <Footer />
       <ScrollRestoration />
       <Bubbles />
+      <Gacha />
     </AppData.Provider>
   );
 }
