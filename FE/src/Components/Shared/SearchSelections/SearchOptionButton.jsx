@@ -11,6 +11,7 @@ export default function SearchOptionButton({ listSearchOptions, searchObject, se
 
     const handleDisplaySearchOption = () => {
         setIsDisplay(!isDisplay);
+        setOpenedOptionId(null)
     };
 
     const handleReset = () => {
