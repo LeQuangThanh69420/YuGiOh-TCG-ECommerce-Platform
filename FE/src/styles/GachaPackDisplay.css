@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     z-index: 2;
-    animation: background-blur 0.5s forwards;
+    animation: background-blur 0.35s forwards;
 }
 
 @keyframes background-blur{
@@ -21,7 +21,7 @@
     width: 250px;
     height: 400px;
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
-    animation: fade 0.5s, zoomout 0.5s;
+    animation: fade 0.35s, zoomout 0.35s;
     background-size: cover;
 }
 
