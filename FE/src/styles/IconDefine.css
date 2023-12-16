@@ -260,3 +260,9 @@
 .text-eighth {
   color: #bcbcbc;
 }
+
+.close-icon{
+  background-image: url('../asset/close.svg');
+  position: absolute;
+  right: 0px;
+}
