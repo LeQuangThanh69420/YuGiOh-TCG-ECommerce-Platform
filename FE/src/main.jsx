@@ -13,6 +13,7 @@ import UserAllCards from './Components/User/UserAllCards.jsx'
 import UserAllDeals from './Components/User/UserAllDeals.jsx'
 
 import './styles/index.css'
+import GachaPackOpenning from './Components/Gacha/GachaPackOpenning.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,6 +48,10 @@ const router = createBrowserRouter(
       <Route 
         path='/gacha'
         element={<Gacha />}
+      />
+      <Route 
+        path='/gacha/results'
+        element={<GachaPackOpenning />}
       />
       <Route
       path='/user'

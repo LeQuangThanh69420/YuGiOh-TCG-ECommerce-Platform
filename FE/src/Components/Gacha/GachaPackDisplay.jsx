@@ -19,7 +19,6 @@ function GachaPackDisplay({Pack, isOpen, onClose}) {
                 </div>
             </div>
             <ToastMessages type={"toast-success"} message='Purchase Successfully' isDisplay={isToastDisplay} setIsDisplay={setToastDisplay}/>
-            
         </>
     )
 }
