@@ -68,7 +68,7 @@ export default function UserCards() {
           <Link to={'/user/cards'} className="link">Mange your cards</Link>
         </div>
         <div className="user-anything-container">
-          {displayCards.map((card, index) =>
+          {cardOwned.length ? displayCards.map((card, index) =>
             <div className={`cards ${!card.quantity && 'not-owned'}`} key={index} onClick={() => handleOpenDetail(card)}>
               {card.onDeal && <div className="cards-on-deal">Selling</div>}
               <div className={`rarity ${card.cardRarityName}`}>{card.cardRarityName}</div>
@@ -77,7 +77,14 @@ export default function UserCards() {
                 <div className="cards-quantity">{card.quantity}</div>
               </div>
             </div>
-          )}
+          ) : 
+            <p className="no-data-text">
+              <span>You're not having any cards. Let's </span>
+              <Link className="link" to={"/"}>Buy Some</Link>
+              <span> or </span>
+              <Link className="link" to={"/gacha"}>Gacha</Link>
+            </p>
+          }
         </div>
         <div className="user-anything-footer">
           <Pagination currentPage={currentPage} list={cardOwned} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setDisplayCards} />

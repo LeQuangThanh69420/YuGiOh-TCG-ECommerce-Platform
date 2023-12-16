@@ -1,7 +1,9 @@
-import React from 'react'
+import './../../styles/UserAllDeals.css'
 
 export default function UserAllCards() {
   return (
-    <div>UserAllCards</div>
+    <div className='user-allcards-screen'>
+      <div className='user-anything-wrapper'>UserAllCards</div>
+    </div>
   )
 }
