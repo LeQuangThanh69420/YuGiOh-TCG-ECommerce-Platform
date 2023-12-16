@@ -109,6 +109,7 @@ function Login() {
                   icon={"person"}
                   errorMessage="Username can not be empty!"
                   setData={setUserName}
+                  onSubmit={handleSubmit}
                 />
                 <div className="password-container">
                   <Input
@@ -118,6 +119,7 @@ function Login() {
                     icon="lock"
                     errorMessage={"Password can not be empty!"}
                     setData={setPassword}
+                    onSubmit={handleSubmit}
                   />
                   <p className="links" onClick={() => setShowModalInput(true)}>
                     Forgot Password?
