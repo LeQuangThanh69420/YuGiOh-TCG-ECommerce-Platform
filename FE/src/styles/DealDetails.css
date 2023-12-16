@@ -77,7 +77,7 @@
 .DealDetails-details-container{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 18px;
     padding: 4px 0px;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .DealDetails-label{
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
 }
 .DealDetails-info{
@@ -96,7 +96,7 @@
     align-self: center;
 }
 .DealDetails-name-info{
-    font-size: 20px;
+    font-size: 18px;
 }
 .DealDetails-bottom{
     display: flex;
