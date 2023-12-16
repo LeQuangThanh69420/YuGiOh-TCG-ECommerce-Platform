@@ -55,7 +55,7 @@
 .DealDetails-head{
     display: flex;
     padding-bottom: 10px;
-    justify-content: space-between;
+    position: relative;
 }
 
 .DealDetails-img{
@@ -73,17 +73,17 @@
 .DealDetails-details-container{
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    justify-content: space-between;
 }
 
 .DealDetails-details{
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
 }
 
 .DealDetails-label{
-    font-size: 23px;
+    font-size: 22px;
     font-weight: 500;
 }
 .DealDetails-info{
