@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import '../../styles/AllDeals.css'
 import DealDetails from "../Shared/DealDetail";
 import { searchDeal } from '../../api/apiDeal'
 import Pagination from "../Shared/Pagination";
 import SearchAllCards from "../Shared/SearchSelections/SearchAllCards";
 import ConfirmModal from "../Shared/ConfirmModal";
+import { AppData } from "../../Root";
 
 function AllDealsBody({ deals, setDeals }) {
     const [selectedDeal, setSelectedDeal] = useState(null);
@@ -18,8 +19,8 @@ function AllDealsBody({ deals, setDeals }) {
         cardRarityName: "",
     });
     const [isConfirmOpen, setConfirmOpen] = useState(false)
-
     const [pagedList, setPagedList] = useState([]);
+    const {userData} = useContext(AppData)
 
     const openDealDetails = (deals) => {
         setSelectedDeal(deals);
@@ -53,6 +54,7 @@ function AllDealsBody({ deals, setDeals }) {
     }
 
     useEffect(() => {
+        const PassedUsername = userData.myUsername;
         searchDeal().then((data) => {
             setDeals(data)
         });
