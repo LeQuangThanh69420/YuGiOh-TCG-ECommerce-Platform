@@ -25,8 +25,7 @@ const DealDetails = ({ isOpen, selectedDeal, onClose, onBuy }) => {
             <span className="text-secondary">Deal</span>{" "}
             <span className="text-primary">Details</span>
           </div>
-          <div className="DealDetails-close close-icon icon-5" onClick={onClose} >
-        </div>
+          <div className="DealDetails-close close-icon icon-5" onClick={onClose} ></div>
         </div>
         <div className="DealDetails-body">
           <div className="DealDetails-pic-preview">

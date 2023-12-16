@@ -264,5 +264,6 @@
 .close-icon{
   background-image: url('../asset/close.svg');
   position: absolute;
-  right: 0px;
+  right: 20px;
+  top: 20px;
 }

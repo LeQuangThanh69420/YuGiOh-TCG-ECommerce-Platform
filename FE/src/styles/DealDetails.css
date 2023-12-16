@@ -55,7 +55,6 @@
 .DealDetails-head{
     display: flex;
     padding-bottom: 10px;
-    position: relative;
 }
 
 .DealDetails-img{
