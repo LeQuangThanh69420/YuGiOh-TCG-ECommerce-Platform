@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biểu đồ Thẻ Bài</title>
+  <!-- Bao gồm thư viện Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Đối tượng canvas để vẽ biểu đồ -->
+  <canvas id="myChart" width="400" height="150"></canvas>
+
+  <script>
+    // Mảng dữ liệu của bạn
+    var cards = [
+      { price: 100, date: "5-5-2023T10:00:00" },
+      { price: 200, date: "5-5-2023T11:00:00" },
+      { price: 300, date: "5-5-2023T12:00:00" },
+      { price: 200, date: "5-5-2023T13:00:00" },
+      { price: 100, date: "5-5-2023T14:00:00" },
+    ];
+
+    // Lấy ra các giá trị từ mảng cards để vẽ biểu đồ
+    var prices = cards.map(card => card.price);
+    var dates = cards.map(card => card.date);
+
+    // Lấy đối tượng canvas
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    // Tạo biểu đồ
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: dates,
+        datasets: [{
+          label: 'Biến động giá cả thẻ bài',
+          data: prices,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+          pointRadius: 5, // Kích thước của chấm
+          pointBackgroundColor: 'rgba(75, 192, 192, 1)', // Màu sắc của chấm
+          fill: false // Không tô màu dưới đồ thị
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
