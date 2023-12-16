@@ -13,5 +13,6 @@ namespace BE.Model.Entity
         public long UserCardId { get; set; }
         public int Price { get; set; }
         public DateTime CreateDate { get; set; }
+        public DateTime? AcceptedDate { get; set; }
     }
 }

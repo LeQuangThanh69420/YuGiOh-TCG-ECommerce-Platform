@@ -14,12 +14,15 @@ namespace BE.Controllers
 {
     public class DealController : BaseApiController, IDealController
     {
+        TimeZoneInfo vietnamTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+        DateTime vietnamTime;
         private readonly DataContext _context;
         private readonly UserCardController _userCard;
         public DealController(DataContext context, UserCardController userCard)
         {
             _context = context;
             _userCard = userCard;
+            vietnamTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, vietnamTimeZone);
         }
 
         [HttpGet("SearchDeal")]
@@ -79,7 +82,7 @@ namespace BE.Controllers
             join User in _context.User on Deal.SellUserId equals User.UserId 
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
             join Card in _context.Card on UserCard.CardId equals Card.CardId 
-            orderby Deal.CreateDate descending
+            orderby Deal.AcceptedDate descending
             where (Deal.BuyUserId != null)
             && (Deal.BuyUserId == user.UserId)
             select new DealGetBuyedOutputDto() {
@@ -94,6 +97,7 @@ namespace BE.Controllers
                 CardRarityName = Card.CardRarityName,
                 Price = Deal.Price,
                 CreateDate = Deal.CreateDate,
+                AcceptedDate = Deal.AcceptedDate,
             };
             return await deal.ToListAsync();
         }
@@ -110,7 +114,7 @@ namespace BE.Controllers
             join Card in _context.Card on UserCard.CardId equals Card.CardId 
             where (Deal.BuyUserId != null)
             && (Deal.SellUserId == user.UserId)
-            orderby Deal.CreateDate descending
+            orderby Deal.AcceptedDate descending
             select new DealGetSelledOutputDto() {
                 DealId = Deal.DealId,
                 BuyUsername = User.Username,
@@ -123,6 +127,7 @@ namespace BE.Controllers
                 CardRarityName = Card.CardRarityName,
                 Price = Deal.Price,
                 CreateDate = Deal.CreateDate,
+                AcceptedDate = Deal.AcceptedDate,
             };
             return await deal.ToListAsync();
         }
@@ -131,8 +136,6 @@ namespace BE.Controllers
         [HttpPost("CreateDeal")]
         public async Task<ActionResult> CreateDeal([FromBody] DealCreateInputDto input)
         {
-            TimeZoneInfo vietnamTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
-            DateTime vietnamTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, vietnamTimeZone);
             var selluser = await _context.User.SingleOrDefaultAsync(u => u.Username == input.SellUsername);
             if (selluser == null) return BadRequest(new {message = "User not found!"});
             var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId);
@@ -149,6 +152,7 @@ namespace BE.Controllers
                     UserCardId = usercard.UserCardId,
                     Price = input.Price,
                     CreateDate = vietnamTime,
+                    AcceptedDate = null,
                 };
                 _context.Deal.Add(newdeal);
                 await _userCard.MakeOnDeal(usercard.UserCardId);
@@ -214,6 +218,7 @@ namespace BE.Controllers
             else
             {
                 deal.BuyUserId = buyuser.UserId;
+                deal.AcceptedDate = vietnamTime;
                 await _userCard.ChangeOwner(deal.UserCardId, buyuser.UserId);
                 buyuser.Money -= deal.Price;
                 var selluser = await _context.User.SingleOrDefaultAsync(u => u.UserId == deal.SellUserId);

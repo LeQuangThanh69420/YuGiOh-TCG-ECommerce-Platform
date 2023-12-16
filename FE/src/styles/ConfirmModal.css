@@ -7,25 +7,30 @@
     top: 0;
     left: 0;
     backdrop-filter: blur(1px);
+    background: rgba(0, 0 ,0 ,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .confirm-modal-container {
-    padding: 24px;
+    padding: 20px;
     border-radius: 4px;
-    width: 600px;
-    min-width: 600px;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
     background: white;
+    box-shadow: 1px 2px 3px rgba(0, 0 ,0, 0.2);
+}
+
+.confirm-modal-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #3d3b3f;
 }
 
 .confirm-modal-content {
-    padding: 0px 8px;
     color: #58555b;
 }
 

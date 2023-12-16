@@ -23,12 +23,18 @@
     flex-direction: column;
     max-height: 800px;
     min-height: 300px;
+    gap: 16px;
     overflow: hidden; /* Prevent content overflow */
 }
 
 .DealDetails-close {
     cursor: pointer;
     z-index: 1;
+}
+
+.DealDetails-sell-user {
+    font-weight: 500;
+    font-size: 20px;
 }
 
 .DealDetails-info {
@@ -44,7 +50,7 @@
 
 .DealDetails-DuRiu{
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +60,6 @@
 
 .DealDetails-head{
     display: flex;
-    padding-bottom: 10px;
 }
 
 .DealDetails-img{
@@ -64,15 +69,16 @@
 }
 
 .DealDetails-pic-preview{
-    border: 3px solid rgb(199, 199, 199);
-    padding: 8px;
+    border: 2px solid #3d3b3f;
+    padding: 6px;
     border-radius: 8px;
 }
 
 .DealDetails-details-container{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 18px;
+    padding: 4px 0px;
 }
 
 .DealDetails-details{
@@ -82,7 +88,7 @@
 }
 
 .DealDetails-label{
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
 }
 .DealDetails-info{
@@ -90,18 +96,18 @@
     align-self: center;
 }
 .DealDetails-name-info{
-    font-size: 20px;
+    font-size: 18px;
 }
 .DealDetails-bottom{
     display: flex;
-    justify-content: flex-end;
-    padding-top: 20px;
-    
+    justify-content: flex-end;    
 }
 
 .DealDetails-bottom-price{
     display: flex;
-    gap: 5px;
+    gap: 6px;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .DealDetails-bottom-price > div{
@@ -137,9 +143,11 @@
 .DealDetails-details-body-body{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 4px;
 }
 
 .DealDetails-name-info-date{
     font-size: 14px;
+    display: flex;
+    gap: 8px;
 }
