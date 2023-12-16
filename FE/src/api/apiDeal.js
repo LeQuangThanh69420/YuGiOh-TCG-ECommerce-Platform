@@ -76,3 +76,15 @@ export const deleteDeal = async (sellUsername, dealId) => {
   });
   return response;
 };
+
+export const acceptDeal = async (buyUsername, dealId) => {
+  const response = fetch(`${API_URL}${API_ROUTES.ACCEPT_DEAL}`, {
+    method: 'POST',
+    headers: HEADER,
+    body: JSON.stringify({
+      buyUsername: buyUsername,
+      dealId: dealId,
+    })
+  })
+  return response;
+}
