@@ -1,6 +1,6 @@
 import './../../styles/DealDetails.css';
 
-const DealDetails = ({ isOpen, selectedDeal, onClose}) => {
+const DealDetails = ({ isOpen, selectedDeal, onClose, onBuy }) => {
 
   function checkRarity(selectedDeal) {
     if (selectedDeal.cardRarityName == 'R') return 'Rare'
@@ -17,6 +17,7 @@ const DealDetails = ({ isOpen, selectedDeal, onClose}) => {
   if (!isOpen) return null;
 
   return (
+    <>
     <div className="DealDetails">
       <div className="DealDetails-content">
         <div className="DealDetails-head">
@@ -68,11 +69,12 @@ const DealDetails = ({ isOpen, selectedDeal, onClose}) => {
         <div className="DealDetails-bottom">
           <div className="DealDetails-bottom-buttons">
             <button className="DealDetails-bottom-cancel" onClick={onClose}>Cancel</button>
-            <button className="DealDetails-bottom-buy">Buy</button>
+            <button className="DealDetails-bottom-buy" onClick={onBuy}>Buy</button>
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 };
 
