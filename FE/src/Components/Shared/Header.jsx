@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -19,8 +19,18 @@ function Header() {
 
     const [isOpenInfo, setIsOpenInfo] = useState(false);
 
+    const userOptionRef = useRef();
+
     const handleClickAvatar = () => {
-        setIsOpenInfo(!isOpenInfo);
+
+        if (isOpenInfo) {
+            userOptionRef.current.className += ' user-option-close'
+            setTimeout(() => {
+                setIsOpenInfo(false);
+            }, 200);
+        } else {
+            setIsOpenInfo(true);
+        }
     }
 
     const handleLogOut = () => {
@@ -61,7 +71,7 @@ function Header() {
                         : <img src={userData.avatarURL} className="header-user-avt" onClick={handleClickAvatar} />
                     }
                 </div>
-                {isOpenInfo && <div className="header-user-option">
+                {isOpenInfo && <div className="header-user-option" ref={userOptionRef}>
                     <div className="header-user-info">
                         <div className="user-info-child">
                             <img src={userData.avatarURL} className="header-user-avt-display" />
