@@ -2,14 +2,24 @@ import Header from "../Shared/Header"
 import { useState } from "react"
 import "../../styles/Gacha.css"
 import { banner } from "../../constants/gachaBannerInfo"
+import GachaPackDisplay from "./GachaPackDisplay"
 
 function Gacha() {
     const [currentPack, setCurrentPack] = useState(banner[0])
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [isPackOpen, setPackOpen] = useState(false)
 
     function goToPack(pack, index){
         setCurrentPack(pack)
         setCurrentIndex(index)
+    }
+
+    function openPack(){
+        setPackOpen(true)
+    }
+
+    function closePack(){
+        setPackOpen(false)
     }
 
     return (
@@ -32,7 +42,7 @@ function Gacha() {
                                                 <div className="Gacha-pulling-riu-price text-sixth">{currentPack.price}</div>
                                                 <div className="Gacha-pulling-riu-coin-icon riu-coin-icon"></div>
                                             </div>
-                                            <button className="Gacha-pulling-pull">Pull Card x10</button>
+                                            <button className="Gacha-pulling-pull" onClick={openPack}>Pull Card x10</button>
                                         </div>
                                     </div>
                                 </div>
@@ -50,6 +60,7 @@ function Gacha() {
                     <div className="Gacha-background-behind"></div>
                 </div>
             </div>
+            <GachaPackDisplay Pack={currentPack} isOpen={isPackOpen} onClose={closePack}/>
         </>
     )
 }

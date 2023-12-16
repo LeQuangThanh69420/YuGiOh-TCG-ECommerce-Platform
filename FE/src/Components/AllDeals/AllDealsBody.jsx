@@ -52,10 +52,9 @@ function AllDealsBody({ deals, setDeals }) {
     function handleConfirmOpen(){
         setConfirmOpen(true)
     }
-
+    
     useEffect(() => {
-        const PassedUsername = userData.myUsername;
-        searchDeal().then((data) => {
+        searchDeal(userData.myUsername).then((data) => {
             setDeals(data)
         });
     }, [])
