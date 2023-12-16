@@ -39,7 +39,7 @@ export const getSoldDeals = async (username) => {
 export const createDeal = async (sellUsername, userCardId, price) => {
   const response = fetch(`${API_URL}${API_ROUTES.CREATE_DEAL}`, {
     method: "POST",
-    headers: HEADER,
+    headers: HEADER(),
     body: JSON.stringify({
       sellUsername: sellUsername,
       userCardId: userCardId,
@@ -53,7 +53,7 @@ export const editDeal = async (sellUsername, dealId, userCardId, price) => {
   const response = async () => {
     fetch(`${API_URL}${API_ROUTES.EDIT_DEAL}`, {
       method: "PUT",
-      header: HEADER,
+      header: HEADER(),
       body: JSON.stringify({
         sellUsername: sellUsername,
         dealId: dealId,
@@ -68,7 +68,7 @@ export const editDeal = async (sellUsername, dealId, userCardId, price) => {
 export const deleteDeal = async (sellUsername, dealId) => {
   const response = fetch(`${API_URL}${API_ROUTES.DELETE_DEAL}`, {
     method: "DELETE",
-    header: HEADER,
+    header: HEADER(),
     body: JSON.stringify({
       sellUsername: sellUsername,
       dealId: dealId,
@@ -80,7 +80,7 @@ export const deleteDeal = async (sellUsername, dealId) => {
 export const acceptDeal = async (buyUsername, dealId) => {
   const response = fetch(`${API_URL}${API_ROUTES.ACCEPT_DEAL}`, {
     method: 'POST',
-    headers: HEADER,
+    headers: HEADER(),
     body: JSON.stringify({
       buyUsername: buyUsername,
       dealId: dealId,

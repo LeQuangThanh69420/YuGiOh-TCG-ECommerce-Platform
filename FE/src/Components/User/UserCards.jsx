@@ -7,6 +7,7 @@ import { getOwnedCardsSeperate, getOwnedCardsStack } from "../../api/apiUserCard
 import { AppData } from "../../Root";
 import CardDetails from "../Shared/CardDetails";
 import Pagination from "../Shared/Pagination";
+import ReusableCard from "../Shared/ReusableCard";
 
 import './../../styles/User.css'
 
@@ -69,14 +70,7 @@ export default function UserCards() {
         </div>
         <div className="user-anything-container">
           {cardOwned.length ? displayCards.map((card, index) =>
-            <div className={`cards ${!card.quantity && 'not-owned'}`} key={index} onClick={() => handleOpenDetail(card)}>
-              {card.onDeal && <div className="cards-on-deal">Selling</div>}
-              <div className={`rarity ${card.cardRarityName}`}>{card.cardRarityName}</div>
-              <div className="cards-img-wrapper">
-                <img src={card.cardImageURL} className="cards-img" />
-                <div className="cards-quantity">{card.quantity}</div>
-              </div>
-            </div>
+            <ReusableCard card={card} key={index} onClick={() => handleOpenDetail(card)}/>
           ) : 
             <p className="no-data-text">
               <span>You're not having any cards. Let's </span>

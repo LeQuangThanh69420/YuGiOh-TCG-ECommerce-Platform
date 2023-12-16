@@ -35,7 +35,19 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    padding: 0px 4px;
+}
+
+.CardDetails-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 4px 0px;
+}
+
+.CardDetails-buttons {
+    display: flex;
+    gap: 12px;
 }
 
 .CardDetails-Image{
@@ -82,7 +94,7 @@
 }
 
 .CardDetails-CardName-infoLabel{
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
 }
 

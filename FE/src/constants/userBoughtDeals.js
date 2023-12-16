@@ -10,6 +10,11 @@ export const HEADER_BOUGHT = [
         data_key: 'cardName',
     },
     {
+        key: 'accepted-date',
+        label: 'Bought Date',
+        data_key: 'acceptedDate',
+    },
+    {
         key: 'soldboughtuser',
         label: 'Sold Username',
         data_key: 'username',
@@ -31,6 +36,11 @@ export const HEADER_SOLD = [
         key: 'soldcard',
         label: 'Sold Card\'s name',
         data_key: 'cardName',
+    },
+    {
+        key: 'accepted-date',
+        label: 'Sold Date',
+        data_key: 'acceptedDate',
     },
     {
         key: 'soldboughtuser',

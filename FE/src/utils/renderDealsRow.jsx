@@ -1,3 +1,4 @@
+import dateTimeFormat from "./dateTimeFormat"
 
 export const renderDealsRow = (item, index) => {
     return {
@@ -15,6 +16,7 @@ export const renderDealsRow = (item, index) => {
                 </div>
             </div>
         </div>),
+        acceptedDate: <span>{dateTimeFormat(item.acceptedDate).date} {dateTimeFormat(item.acceptedDate).time}</span>,
         username: item.sellUsername ? item.sellUsername : item.buyUsername,
         price: (
             <div className="list-row-deal-price">

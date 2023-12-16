@@ -1,0 +1,13 @@
+
+.user-allcards-screen {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0px 100px;
+    justify-content: center;
+}
+
+.cards-management-wrapper {
+    display: flex;
+    gap: 8px;
+}
