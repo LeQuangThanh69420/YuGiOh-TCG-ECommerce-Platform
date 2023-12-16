@@ -1,6 +1,6 @@
 import './../../styles/DealDetails.css';
 
-const DealDetails = ({ isOpen, selectedDeal, onClose, userAvatar }) => {
+const DealDetails = ({ isOpen, selectedDeal, onClose}) => {
 
   function checkRarity(selectedDeal) {
     if (selectedDeal.cardRarityName == 'R') return 'Rare'

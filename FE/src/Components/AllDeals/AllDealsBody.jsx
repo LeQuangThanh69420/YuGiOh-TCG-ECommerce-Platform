@@ -4,6 +4,7 @@ import DealDetails from "../Shared/DealDetail";
 import { searchDeal } from '../../api/apiDeal'
 import Pagination from "../Shared/Pagination";
 import SearchAllCards from "../Shared/SearchSelections/SearchAllCards";
+import ConfirmModal from "../Shared/ConfirmModal";
 
 function AllDealsBody({ deals, setDeals }) {
     const [selectedDeal, setSelectedDeal] = useState(null);
@@ -16,6 +17,7 @@ function AllDealsBody({ deals, setDeals }) {
         cardElementName: "",
         cardRarityName: "",
     });
+    const [isConfirmOpen, setConfirmOpen] = useState(false)
 
     const [pagedList, setPagedList] = useState([]);
 
@@ -41,6 +43,14 @@ function AllDealsBody({ deals, setDeals }) {
           setDeals(data)
         });
     };
+
+    function handleAcceptDeal(){
+        
+    }
+
+    function handleConfirmOpen(){
+        setConfirmOpen(true)
+    }
 
     useEffect(() => {
         searchDeal().then((data) => {
@@ -73,7 +83,7 @@ function AllDealsBody({ deals, setDeals }) {
                                             <div className="riu-coin-icon icon-9"></div>
                                             {item.price}
                                         </div>
-                                        <button className="AllDeals-buy">Buy</button>
+                                        <button className="AllDeals-buy" onClick={handleConfirmOpen}>Buy</button>
                                     </div>
                                 </div>
                             ) : <p className='not-found text-secondary'>
@@ -84,7 +94,8 @@ function AllDealsBody({ deals, setDeals }) {
                     {<Pagination currentPage={currentPage} list={deals} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setPagedList} />}
                 </div>
             </div>
-            <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails} userAvatar={null}/>
+            <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails}/>
+            <ConfirmModal isOpen={isConfirmOpen} title={<span>Purchase Deal</span>} content={<span>Are you sure you want to purchase this deal</span>} setIsOpen={setConfirmOpen} onOK={handleAcceptDeal} />
         </>
     )
 }
