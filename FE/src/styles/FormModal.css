@@ -14,6 +14,7 @@
 .form-modal-container {
     display: flex;
     flex-direction: column;
+    width: 480px;
     min-width: 480px;
     gap: 28px;
     padding: 20px 28px 14px 28px;
