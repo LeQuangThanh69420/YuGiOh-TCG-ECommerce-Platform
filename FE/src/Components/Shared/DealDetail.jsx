@@ -1,3 +1,5 @@
+import dateTimeFormat from '../../utils/dateTimeFormat';
+
 import './../../styles/DealDetails.css';
 
 const DealDetails = ({ isOpen, selectedDeal, onClose, onBuy }) => {
@@ -7,7 +9,6 @@ const DealDetails = ({ isOpen, selectedDeal, onClose, onBuy }) => {
     else if (selectedDeal.cardRarityName == 'N') return 'Normal'
     else if (selectedDeal.cardRarityName == 'SR') return 'Super Rare'
     else if (selectedDeal.cardRarityName == 'UR') return 'Ultra Rare'
-    else return 'Bucac'
   }
 
   return (
@@ -30,7 +31,10 @@ const DealDetails = ({ isOpen, selectedDeal, onClose, onBuy }) => {
                 <img src={selectedDeal.sellUsernameAvatarUrl} className="header-user-avt-display" style={{ width: '50px', height: '50px' }} />
                 <div className="DealDetails-details-body-head-info">
                   <span className="DealDetails-sell-user text-third">{selectedDeal.sellUsername}</span>
-                  <div className="DealDetails-name-info-date text-forth">{selectedDeal.createDate}</div>
+                  <div className="DealDetails-name-info-date text-forth">
+                    <span className='DealDetails-time'>{dateTimeFormat(selectedDeal.createDate).time}</span>
+                    <span className='DealDetails-date'>{dateTimeFormat(selectedDeal.createDate).date}</span>
+                  </div>
                 </div>
               </div>
               <div className="DealDetails-details-body-body">
@@ -61,8 +65,8 @@ const DealDetails = ({ isOpen, selectedDeal, onClose, onBuy }) => {
           </div>
           <div className="DealDetails-bottom">
             <div className="DealDetails-bottom-buttons">
-              <button className="DealDetails-bottom-cancel" onClick={onClose}>Cancel</button>
-              <button className="DealDetails-bottom-buy" onClick={onBuy}>Buy</button>
+              <button className="button-2" onClick={onClose}>Cancel</button>
+              <button onClick={onBuy}>Buy</button>
             </div>
           </div>
         </div>

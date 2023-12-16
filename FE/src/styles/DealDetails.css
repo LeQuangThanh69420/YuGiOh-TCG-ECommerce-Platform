@@ -23,6 +23,7 @@
     flex-direction: column;
     max-height: 800px;
     min-height: 300px;
+    gap: 16px;
     overflow: hidden; /* Prevent content overflow */
 }
 
@@ -59,7 +60,6 @@
 
 .DealDetails-head{
     display: flex;
-    padding-bottom: 10px;
 }
 
 .DealDetails-img{
@@ -100,9 +100,7 @@
 }
 .DealDetails-bottom{
     display: flex;
-    justify-content: flex-end;
-    padding-top: 20px;
-    
+    justify-content: flex-end;    
 }
 
 .DealDetails-bottom-price{
@@ -150,4 +148,6 @@
 
 .DealDetails-name-info-date{
     font-size: 14px;
+    display: flex;
+    gap: 8px;
 }
