@@ -6,7 +6,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 export const getOwnedCardsSeperate = async (username, cardName = '', type = '', origin = '', element = '', rarity = '') => {
     const response = await fetch(`${API_URL}${API_ROUTES.USERCARD_SEARCH_OWNED_SEPARATE}/?Username=${username}&CardName=${cardName}&CardTypeName=${type}&CardOriginName=${origin}&CardElementName=${element}&CardRarityName=${rarity}`, {
         method: 'GET',
-        headers: HEADER,
+        headers: HEADER(),
     });
     return response.json();
 }
@@ -14,7 +14,7 @@ export const getOwnedCardsSeperate = async (username, cardName = '', type = '', 
 export const getOwnedCardsStack = async (username, cardName = '', type = '', origin = '', element = '', rarity = '') => {
     const response = await fetch(`${API_URL}${API_ROUTES.USERCARD_SEARCH_OWNED_STACK}/?Username=${username}&CardName=${cardName}&CardTypeName=${type}&CardOriginName=${origin}&CardElementName=${element}&CardRarityName=${rarity}`, {
         method: 'GET',
-        headers: HEADER,
+        headers: HEADER(),
     });
     return response.json();
 }
