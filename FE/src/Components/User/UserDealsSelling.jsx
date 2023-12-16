@@ -45,7 +45,7 @@ export default function UserDealsSelling() {
             </div>
           </div>
         ) :
-          <p className='no-data-text'>You aren't selling any deals. Let's <Link className='link' to={"/user/cards"}>Create One</Link></p>
+          <p className='no-data-text'>You aren't selling any deals. Let's <Link className='link' to={"/user/deals"}>Create One</Link></p>
         }
       </div>
       <div className='user-anything-footer'>

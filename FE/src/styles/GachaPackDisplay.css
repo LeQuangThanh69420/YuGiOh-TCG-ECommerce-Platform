@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 4;
     animation: background-blur 0.5s forwards;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .Gacha-pack-pop{
-    animation: popping 0.5s;
+    animation: popping 0.5s linear;
 }
 
 .Gacha-pack-display-img{
@@ -38,3 +38,97 @@
     from{opacity: 1; transform: scale(1) ;}
     to{opacity: 0; transform: scale(1.2);}
 }
+
+@keyframes pop-fade-zoom-in{
+    from{transform: scale(0.3); opacity: 0.3;}
+    to{transform: scale(1); opacity: 1;}
+}
+
+.Gacha-pack-card-flip{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    backdrop-filter: blur(3px)
+}
+
+.Gacha-pack-card-flip-wrapper{
+    background-color: white;
+    width: 1180px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 25px;
+    gap: 15px;
+    animation: pop-fade-zoom-in 0.3s linear;
+}
+
+.Gacha-pack-card-flip-wrapper > span{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.Gacha-pack-card-flip-skip{
+    background: white;
+    color: #7400CC;
+
+}
+.Gacha-pack-card-flip-skip:hover{
+    background: white;
+    color: #7400CC;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.Gacha-pack-card{
+    width: 191px;
+    height: 279px;
+    background-repeat: none;
+    background-size: cover;
+}
+
+.Gacha-pack-card-flip-body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+}
+
+.Gacha-pack-card-flip-skip-wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+.Gacha-pack-card-flip-single-card{
+    position: relative;
+}
+
+.Gacha-pack-cards-back{
+    position: relative;
+    width: 191px;
+    height: 279px;
+}
+
+.Gacha-pack-cards-back-wrapper{
+    width: 191px;
+    height: 279px;
+}
+
+.Gacha-pack-card-front{
+    position: relative;
+    width: 191px;
+    height: 279px;
+}
+
+.Gacha-pack-card-front-wrapper{
+    position: absolute;
+}
+
+
+

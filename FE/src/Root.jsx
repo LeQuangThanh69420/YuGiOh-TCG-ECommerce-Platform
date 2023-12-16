@@ -93,7 +93,6 @@ export default function Root() {
       <Footer />
       <ScrollRestoration />
       <Bubbles />
-      <Gacha />
     </AppData.Provider>
   );
 }
