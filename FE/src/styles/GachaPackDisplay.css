@@ -9,11 +9,28 @@
     justify-content: center;
     align-items: center;
     z-index: 2;
-    backdrop-filter: blur(3px);
+    animation: background-blur 0.5s forwards;
+}
+
+@keyframes background-blur{
+    from{backdrop-filter: blur(0px); background: rgba(255, 255, 255, 0);}
+    to{backdrop-filter: blur(3px); background: rgba(0, 0, 0, 0.2);}
 }
 
 .Gacha-pack-display-img{
     width: 250px;
     height: 400px;
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
+    animation: fade 0.5s, zoomout 0.5s;
+    background-size: cover;
+}
+
+@keyframes fade{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+@keyframes zoomout{
+    from{width: 400px; height: 640px;}
+    to{width: 250px; height: 400px;}
 }
