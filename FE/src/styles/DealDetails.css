@@ -44,7 +44,7 @@
 
 .DealDetails-DuRiu{
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,7 @@
 .DealDetails-head{
     display: flex;
     padding-bottom: 10px;
-    justify-content: space-between;
+    position: relative;
 }
 
 .DealDetails-img{
@@ -73,17 +73,17 @@
 .DealDetails-details-container{
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    justify-content: space-between;
 }
 
 .DealDetails-details{
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
 }
 
 .DealDetails-label{
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 500;
 }
 .DealDetails-info{
@@ -116,14 +116,13 @@
 }
 
 .DealDetails-bottom-cancel{
-    background-color: white;
-    color: blueviolet;
-    border: 3px solid blueviolet;
+    background: white;
+    color: #7400CC;
 }
 .DealDetails-bottom-cancel:hover{
-    background-color: rgb(218, 218, 218);
-    color: rgb(127, 54, 196);
-    border: 3px solid rgb(113, 36, 185);
+    color: #7400CC;
+    background: white;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 .DealDetails-bottom-buttons{
@@ -139,5 +138,9 @@
 .DealDetails-details-body-body{
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+}
+
+.DealDetails-name-info-date{
+    font-size: 14px;
 }
