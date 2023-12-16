@@ -31,6 +31,11 @@
     z-index: 1;
 }
 
+.DealDetails-sell-user {
+    font-weight: 500;
+    font-size: 20px;
+}
+
 .DealDetails-info {
     display: flex;
     flex-direction: column;
@@ -44,7 +49,7 @@
 
 .DealDetails-DuRiu{
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,8 +70,8 @@
 }
 
 .DealDetails-pic-preview{
-    border: 3px solid rgb(199, 199, 199);
-    padding: 8px;
+    border: 2px solid #3d3b3f;
+    padding: 6px;
     border-radius: 8px;
 }
 
@@ -74,6 +79,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 4px 0px;
 }
 
 .DealDetails-details{
@@ -102,7 +108,9 @@
 
 .DealDetails-bottom-price{
     display: flex;
-    gap: 5px;
+    gap: 6px;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .DealDetails-bottom-price > div{
@@ -138,7 +146,7 @@
 .DealDetails-details-body-body{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 4px;
 }
 
 .DealDetails-name-info-date{
