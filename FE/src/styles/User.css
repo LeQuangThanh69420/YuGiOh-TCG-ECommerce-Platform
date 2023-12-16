@@ -299,7 +299,10 @@
 
 .list-col-soldboughtuser {
   padding: 0px 12px;
-  min-width: 200px;
+  min-width: 180px;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .list-col-soldcard {
@@ -308,9 +311,15 @@
   min-width: 230px;
 }
 
+.list-col-accepted-date {
+  padding: 0px 12px;
+  min-width: 200px;
+  max-width: 200px;
+}
+
 .list-col-price {
   padding: 0px 12px;
-  min-width: 140px;
+  min-width: 130px;
 }
 
 .list-row {
