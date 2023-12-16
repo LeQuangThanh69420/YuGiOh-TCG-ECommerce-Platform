@@ -7,15 +7,21 @@
     top: 0;
     left: 0;
     backdrop-filter: blur(1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .confirm-modal-container {
     padding: 24px;
+    border-radius: 4px;
+    width: 600px;
     min-width: 600px;
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    background: white;
 }
 
 .confirm-modal-content {
