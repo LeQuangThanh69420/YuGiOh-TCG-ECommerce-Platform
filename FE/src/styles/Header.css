@@ -2,7 +2,7 @@
   display: flex; /*chay sang ngang*/
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   width: 100%;
   justify-content: center;
@@ -85,6 +85,11 @@
   background: white;
   border-radius: 8px;
   padding: 12px;
+  animation: fade-up 0.2s linear;
+}
+
+.user-option-close {
+  animation: fade-down 0.25s linear;
 }
 
 .header-user-info {
@@ -150,4 +155,24 @@
 }
 .info-text {
     font-weight: 500;
+}
+
+@keyframes fade-up {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  } to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-down {
+  from {
+    transform: translateY(0px);
+    opacity: 1;
+  } to {
+    transform: translateY(14px);
+    opacity: 0;
+  }
 }

@@ -37,6 +37,7 @@ export default function UserAllCards() {
 
   const handleToggleViewOption = () => {
     setIsStack(!isStack);
+    setCurrentPage(1)
   };
 
   const handleSearchCard = () => {

@@ -21,6 +21,7 @@
     background: white;
     border-radius: 4px;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+    animation: pop-up 0.5s;
 }
 
 .form-modal-title {
@@ -38,4 +39,16 @@
     display: flex;
     gap: 12px;
     justify-content: flex-end;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: scale(0.7);
+    }
+    40% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1.0);
+    }
 }
