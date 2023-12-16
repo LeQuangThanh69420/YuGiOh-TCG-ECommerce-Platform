@@ -18,7 +18,7 @@ export default function UserDealsSelling() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    searchDeal(userData.username).then(data => {
+    searchDeal( undefined, userData.username).then(data => {
       setDeals(data)
     })
   }, [])

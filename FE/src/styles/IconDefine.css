@@ -260,3 +260,15 @@
 .text-eighth {
   color: #bcbcbc;
 }
+
+.close-icon{
+  background-image: url('../asset/close.svg');
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.close-icon:hover {
+}

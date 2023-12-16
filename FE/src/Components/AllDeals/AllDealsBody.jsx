@@ -1,12 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import '../../styles/AllDeals.css'
 import DealDetails from "../Shared/DealDetail";
-import { searchDeal } from '../../api/apiDeal'
+import { acceptDeal, searchDeal } from '../../api/apiDeal'
 import Pagination from "../Shared/Pagination";
 import SearchAllCards from "../Shared/SearchSelections/SearchAllCards";
+import ConfirmModal from "../Shared/ConfirmModal";
+import { AppData } from "../../Root";
+import { getMoney } from "../../api/apiUser";
 
 function AllDealsBody({ deals, setDeals }) {
-    const [selectedDeal, setSelectedDeal] = useState(null);
+
+    const { userData, setUserData, setType, setMessage, showToast } = useContext(AppData);
+
+    const [selectedDeal, setSelectedDeal] = useState();
     const [isDealDetailsOpen, setDealDetailsOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchObject, setSearchObject] = useState({
@@ -16,7 +22,7 @@ function AllDealsBody({ deals, setDeals }) {
         cardElementName: "",
         cardRarityName: "",
     });
-
+    const [isConfirmOpen, setConfirmOpen] = useState(false)
     const [pagedList, setPagedList] = useState([]);
 
     const openDealDetails = (deals) => {
@@ -32,21 +38,55 @@ function AllDealsBody({ deals, setDeals }) {
     const handleSearch = () => {
         setCurrentPage(1);
         searchDeal(
-          searchObject.name,
-          searchObject.cardTypeName,
-          searchObject.cardOriginName,
-          searchObject.cardElementName,
-          searchObject.cardRarityName
+            searchObject.name,
+            searchObject.cardTypeName,
+            searchObject.cardOriginName,
+            searchObject.cardElementName,
+            searchObject.cardRarityName
         ).then((data) => {
-          setDeals(data)
+            setDeals(data)
         });
     };
 
+    const handleAcceptDeal = async () => {
+        const response = await acceptDeal(userData.username, selectedDeal.dealId);
+        response.json().then(data => {
+            if(response.status === 200) {
+                setType('toast-success');
+                setDealDetailsOpen(false);
+                getMoney(userData.username).then(money => {
+                    setUserData(prev => ({
+                        ...prev,
+                        money: money
+                    }))
+                })
+                setDeals(deals.filter(deal => deal.dealId !== selectedDeal.dealId))
+            } else {
+                setType('toast-error');
+            }
+            setMessage(data.message);
+            showToast();
+        })
+    }
+
+    function handleConfirmOpen(deal) {
+        if (!selectedDeal) {
+            setSelectedDeal(deal)
+        }
+        setConfirmOpen(true)
+    }
+
     useEffect(() => {
-        searchDeal().then((data) => {
+        searchDeal(userData.username).then((data) => {
             setDeals(data)
         });
     }, [])
+
+    useEffect(() => {
+        if (!isConfirmOpen && !isDealDetailsOpen) {
+            setSelectedDeal(null)
+        }
+    }, [isConfirmOpen])
 
     return (
         <>
@@ -73,7 +113,7 @@ function AllDealsBody({ deals, setDeals }) {
                                             <div className="riu-coin-icon icon-9"></div>
                                             {item.price}
                                         </div>
-                                        <button className="AllDeals-buy">Buy</button>
+                                        <button className="AllDeals-buy" onClick={() => handleConfirmOpen(item)}>Buy</button>
                                     </div>
                                 </div>
                             ) : <p className='not-found text-secondary'>
@@ -84,7 +124,8 @@ function AllDealsBody({ deals, setDeals }) {
                     {<Pagination currentPage={currentPage} list={deals} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setPagedList} />}
                 </div>
             </div>
-            <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails} userAvatar={null}/>
+            <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails} onBuy={() => handleConfirmOpen(selectedDeal)} />
+            <ConfirmModal isOpen={isConfirmOpen} title={<span>Purchase Deal</span>} content={<span>Are you sure you want to purchase this deal</span>} setIsOpen={setConfirmOpen} onOK={handleAcceptDeal} />
         </>
     )
 }

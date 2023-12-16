@@ -18,5 +18,6 @@ namespace BE.Model.Dto
         public string CardRarityName { get; set; }
         public int Price { get; set; }
         public DateTime CreateDate { get; set; }
+        public DateTime? AcceptedDate { get; set; }
     }
 }

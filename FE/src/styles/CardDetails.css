@@ -34,13 +34,14 @@
 .CardDetails-info {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 14px;
+    padding: 0px 4px;
 }
 
 .CardDetails-Image{
-    border: 3px solid #3d3b3f;
-    padding: 7px;
-    border-radius: 7px;
+    border: 2px solid #3d3b3f;
+    padding: 6px;
+    border-radius: 8px;
     display: flex;
 }
 .CardDetails-Image > img{
@@ -49,7 +50,7 @@
 
 .CardDetails-body{
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
 .CardDetails-DuRiu > img{
@@ -59,8 +60,8 @@
 }
 
 .CardDetails-DuRiu{
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +82,7 @@
 }
 
 .CardDetails-CardName-infoLabel{
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 500;
 }
 

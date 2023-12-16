@@ -57,7 +57,7 @@
 }
 
 .title-profile {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 24px;
   display: flex;
   gap: 14px;
@@ -231,7 +231,7 @@
 }
 
 .user-anything-title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 24px;
   width: 100%;
   display: flex;
