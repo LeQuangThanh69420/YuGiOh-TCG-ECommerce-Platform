@@ -70,8 +70,8 @@ const DealDetails = ({ isOpen, selectedDeal, onClose, userAvatar }) => {
         </div>
         <div className="DealDetails-bottom">
           <div className="DealDetails-bottom-buttons">
-            <button className="DealDetails-bottom-buy">Buy</button>
             <button className="DealDetails-bottom-cancel" onClick={onClose}>Cancel</button>
+            <button className="DealDetails-bottom-buy">Buy</button>
           </div>
         </div>
       </div>
