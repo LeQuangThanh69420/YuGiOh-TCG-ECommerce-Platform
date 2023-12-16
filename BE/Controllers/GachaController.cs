@@ -18,6 +18,7 @@ namespace BE.Controllers
         private readonly DataContext _context;
         private readonly int normalPrice = ApiEnvironment.normalPrice;
         private readonly int deluxePrice = ApiEnvironment.deluxePrice;
+        private readonly int waifuPrice = ApiEnvironment.waifuPrice;
         public GachaController(DataContext context)
         {
             _context = context;
@@ -70,6 +71,27 @@ namespace BE.Controllers
                 }
             }
 
+            if(input.Pack == "waifu")
+            {
+                if(user.Money >= waifuPrice)
+                {
+                    user.Money -= waifuPrice;
+                    _context.SaveChanges();
+                }
+                else return BadRequest(new {message = "Account don't have enough money!"});
+
+                for (int i = 0; i < 10; i++)
+                {
+                    var rate = new Random().Next(1, 101);
+
+                    if (rate <= 40) randomCard = await GetRandomCardsLabrynth("N");
+                    else if (rate <= 70) randomCard = await GetRandomCardsLabrynth("R");
+                    else if (rate <= 95) randomCard = await GetRandomCardsLabrynth("SR");
+                    else randomCard = await GetRandomCardsLabrynth("UR");
+                    allCards.Add(randomCard);
+                }
+            }
+
             for (int i = 0; i < 10; i++)
             {
                 var card = allCards[i];
@@ -96,5 +118,15 @@ namespace BE.Controllers
                 .Take(1)
                 .SingleOrDefaultAsync();
         }
+
+        private async Task<Card> GetRandomCardsLabrynth(string rarity)
+        {
+            return await _context.Card
+                .Where(c => c.CardRarityName == rarity && c.CardName.Contains("Labrynth"))
+                .OrderBy(c => Guid.NewGuid())
+                .Take(1)
+                .SingleOrDefaultAsync();
+        }
+
     }
 }
