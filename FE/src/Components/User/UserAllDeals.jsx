@@ -1,14 +1,19 @@
 import { useContext, useEffect, useState } from "react";
+
 import { searchDeal } from "../../api/apiDeal";
+import { checkSession } from "../../utils/checkSession";
+import { useNavigate } from 'react-router-dom'
+
 import { AppData } from "../../Root";
 import Pagination from "../Shared/Pagination";
 import DealDetails from "../Shared/DealDetail";
+import ConfirmModal from "../Shared/ConfirmModal";
 
 import "./../../styles/UserAllDeals.css";
-import ConfirmModal from "../Shared/ConfirmModal";
 
 export default function UserAllDeals() {
   const { userData } = useContext(AppData);
+  const navigate = useNavigate();
 
   const [deals, setDeals] = useState([]);
   const [displayDeals, setDisplayDeals] = useState([]);
@@ -40,6 +45,12 @@ export default function UserAllDeals() {
   const handleHoverDeal = (deal) => {
     setHoveredDeal(deal);
   };
+
+  useEffect(() => {
+    if(!checkSession()) {
+      navigate('/')
+    }
+  })
 
   useEffect(() => {
     searchDeal(undefined, userData.username).then((data) => {

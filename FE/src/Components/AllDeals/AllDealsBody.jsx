@@ -50,23 +50,28 @@ function AllDealsBody({ deals, setDeals }) {
 
     const handleAcceptDeal = async () => {
         const response = await acceptDeal(userData.username, selectedDeal.dealId);
-        response.json().then(data => {
-            if(response.status === 200) {
-                setType('toast-success');
-                setDealDetailsOpen(false);
-                getMoney(userData.username).then(money => {
-                    setUserData(prev => ({
-                        ...prev,
-                        money: money
-                    }))
-                })
-                setDeals(deals.filter(deal => deal.dealId !== selectedDeal.dealId))
-            } else {
-                setType('toast-error');
-            }
-            setMessage(data.message);
-            showToast();
-        })
+        if (response.status !== 401) {
+            response.json().then(data => {
+                if (response.status === 200) {
+                    setType('toast-success');
+                    setDealDetailsOpen(false);
+                    getMoney(userData.username).then(money => {
+                        setUserData(prev => ({
+                            ...prev,
+                            money: money
+                        }))
+                    })
+                    setDeals(deals.filter(deal => deal.dealId !== selectedDeal.dealId))
+                } else {
+                    setType('toast-error');
+                }
+                setMessage(data.message);
+            })
+        } else {
+            setType('toast-error');
+            setMessage('Please login to purchase this deal!')
+        }
+        showToast();
     }
 
     function handleConfirmOpen(deal) {
@@ -75,7 +80,7 @@ function AllDealsBody({ deals, setDeals }) {
         }
         setConfirmOpen(true)
     }
-    
+
     useEffect(() => {
         searchDeal(userData.username).then((data) => {
             setDeals(data)
