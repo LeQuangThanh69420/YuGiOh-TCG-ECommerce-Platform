@@ -22,6 +22,7 @@
     gap: 12px;
     background: white;
     box-shadow: 1px 2px 3px rgba(0, 0 ,0, 0.2);
+    animation: pop-up 0.5s;
 }
 
 .confirm-modal-title {
@@ -39,4 +40,16 @@
     display: flex;
     gap: 12px;
     justify-content: end;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: scale(0.7);
+    }
+    40% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1.0);
+    }
 }
