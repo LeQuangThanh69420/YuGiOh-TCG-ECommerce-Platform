@@ -204,7 +204,7 @@ namespace BE.Controllers
             return Ok(new {message = "Delete Deal successfully!"});
         }
         
-        //[Authorize]
+        [Authorize]
         [HttpPost("AcceptDeal")]
         public async Task<ActionResult> AcceptDeal([FromBody] DealAcceptInputDto input)
         {
