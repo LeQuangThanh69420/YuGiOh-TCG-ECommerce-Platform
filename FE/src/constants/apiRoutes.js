@@ -11,7 +11,7 @@ const API_ROUTES = {
     EDIT_DEAL: '/Deal/EditDeal',
     DELETE_DEAL: '/Deal/DeleteDeal',
     ACCEPT_DEAL: '/Deal/AcceptDeal',
-    GACHA: '/Gacha',
+    GACHA: '/Gacha/Gacha',
     REGISTER: '/User/Register',
     LOGIN: '/User/Login',
     FORGET_PASSWORD: '/User/ForgetPassword',
