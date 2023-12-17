@@ -75,7 +75,7 @@ function AllDealsBody({ deals, setDeals }) {
         }
         setConfirmOpen(true)
     }
-
+    
     useEffect(() => {
         searchDeal(userData.username).then((data) => {
             setDeals(data)

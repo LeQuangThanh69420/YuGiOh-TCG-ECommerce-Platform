@@ -1,15 +1,56 @@
 import Header from "../Shared/Header"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import "../../styles/Gacha.css"
 import { banner } from "../../constants/gachaBannerInfo"
+import GachaPackDisplay from "./GachaPackDisplay"
+import { AppData } from "../../Root"
+import ConfirmModal from "../Shared/ConfirmModal"
+import { gacha } from "../../api/apiGacha"
+import { getMoney } from "../../api/apiUser"
 
 function Gacha() {
     const [currentPack, setCurrentPack] = useState(banner[0])
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const {userData, setUserData, setType, setMessage, showToast } = useContext(AppData)
+    const [isPackOpen, setPackOpen] = useState(false)
+    const [gachaCardData, setGachaCardData] = useState()
 
     function goToPack(pack, index){
         setCurrentPack(pack)
         setCurrentIndex(index)
+    }
+
+    function openPack(){
+        setIsModalOpen(true)
+    }
+
+    function closePack(){
+        setPackOpen(false)
+    }
+
+    async function handlePullCard(){
+        const response = await gacha(userData.username, currentPack.type)
+        response.json().then(data => {
+            if(response.status === 200){
+                setType('toast-success')
+                setPackOpen(true)
+                getMoney(userData.username).then(money => {
+                    setUserData(prev => ({
+                        ...prev,
+                        money: money
+                    }))
+                })
+                setMessage('Purchase Successfully')
+            }
+            else{
+                setType('toast-error')
+                setMessage('Purchase Failed')
+            }
+            showToast()
+            setGachaCardData(data)
+        })
+        setPackOpen(true)
     }
 
     return (
@@ -32,7 +73,7 @@ function Gacha() {
                                                 <div className="Gacha-pulling-riu-price text-sixth">{currentPack.price}</div>
                                                 <div className="Gacha-pulling-riu-coin-icon riu-coin-icon"></div>
                                             </div>
-                                            <button className="Gacha-pulling-pull">Pull Card x10</button>
+                                            <button className="Gacha-pulling-pull" onClick={openPack}>Pull Card x10</button>
                                         </div>
                                     </div>
                                 </div>
@@ -50,6 +91,8 @@ function Gacha() {
                     <div className="Gacha-background-behind"></div>
                 </div>
             </div>
+            <GachaPackDisplay Pack={currentPack} isOpen={isPackOpen} onClose={closePack} gachaData={gachaCardData}/>
+            <ConfirmModal isOpen={isModalOpen} title={<span className="text-secondary">Purchasing <span className="text-primary">Pack</span></span>} content={<span>Are you sure you want to purchase this pack?</span>} setIsOpen={setIsModalOpen} onOK={handlePullCard}/>
         </>
     )
 }
