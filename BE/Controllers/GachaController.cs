@@ -16,16 +16,16 @@ namespace BE.Controllers
     public class GachaController : BaseApiController
     {
         private readonly DataContext _context;
-        private readonly int actualPercent = (100 - ApiEnvironment.discountPercent)/100;
+        private readonly int actualPercent = 100 - ApiEnvironment.discountPercent;
         private readonly int normalPrice;
         private readonly int deluxePrice;
         private readonly int waifuPrice;
         public GachaController(DataContext context)
         {
             _context = context;
-            normalPrice = ApiEnvironment.normalPrice*actualPercent;
-            deluxePrice = ApiEnvironment.deluxePrice*actualPercent;
-            waifuPrice = ApiEnvironment.waifuPrice*actualPercent;
+            normalPrice = ApiEnvironment.normalPrice*actualPercent/100;
+            deluxePrice = ApiEnvironment.deluxePrice*actualPercent/100;
+            waifuPrice = ApiEnvironment.waifuPrice*actualPercent/100;
         }
 
         [Authorize]
