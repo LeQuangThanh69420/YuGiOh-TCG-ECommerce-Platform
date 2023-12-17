@@ -140,6 +140,35 @@
   transform: scale(1.05);
 }
 
+.close-icon{
+  background-image: url('../asset/close.svg');
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.plus {
+  background-image: url('../asset/plus.svg');
+}
+
+.edit {
+  background-image: url('../asset/edit.svg');
+}
+
+.delete {
+  background-image: url('../asset/delete.svg');
+}
+
+.edit:hover {
+  transform: scale(1.1);
+}
+
+.delete:hover {
+  transform: scale(1.1);
+}
+
 .icon-1 {
   width: 24px;
   height: 24px;
@@ -261,14 +290,4 @@
   color: #bcbcbc;
 }
 
-.close-icon{
-  background-image: url('../asset/close.svg');
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  cursor: pointer;
-  border-radius: 4px;
-}
 
-.close-icon:hover {
-}

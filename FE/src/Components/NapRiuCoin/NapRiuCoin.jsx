@@ -28,8 +28,12 @@ function NapRiuCoin() {
                         <div className="QRcodeManual">
                             <div className="QRcodeManual-head text-secondary">Top-up code:</div>
                             <div className="QRcodeManual-body text-third">“Username” + transfer description <br />
-                                Example: thenthen nap RiuCoin goi 666k</div>
-                            <div className="QRcodeManual-bottom text-forth">*we will not take responsibilites for any errors in transfer description </div>
+                                Example: thenthen add fund 4.99$ for 500 RiuCoin</div>
+                            <div className="QRcodeManual-bottom text-forth">
+                                <i>*We will not take responsibilites for any errors in transfer description.</i>  
+                                <br />
+                                <i>Your RiuCoins will be updated after 00:00 am.</i>   
+                            </div>
                         </div>
                         <div className="QRcode-deptrai">
                             <img src={deptrai} alt="" />

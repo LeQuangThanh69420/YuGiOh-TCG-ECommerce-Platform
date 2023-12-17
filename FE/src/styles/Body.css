@@ -97,16 +97,16 @@
 
 .cards-on-deal {
   position: absolute;
-  top: 20px;
   left: 54%;
   background: #ffc400;
-  transform: rotate(45deg);
   z-index: 1;
   padding: 0px 32px;
   font-size: 16px;
   font-weight: 500;
   color: white;
   clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+  transform: rotate(45deg);
+  top: 20px;
 }
 
 .card-name {

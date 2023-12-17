@@ -25,6 +25,7 @@
     min-height: 300px;
     gap: 16px;
     overflow: hidden; /* Prevent content overflow */
+    animation: pop-up 0.4s;
 }
 
 .DealDetails-close {
@@ -34,13 +35,7 @@
 
 .DealDetails-sell-user {
     font-weight: 500;
-    font-size: 20px;
-}
-
-.DealDetails-info {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+    font-size: 18px;
 }
 
 .DealDetails-body{
@@ -77,7 +72,7 @@
 .DealDetails-details-container{
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
     padding: 4px 0px;
 }
 
@@ -88,7 +83,7 @@
 }
 
 .DealDetails-label{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
 }
 .DealDetails-info{
@@ -97,6 +92,8 @@
 }
 .DealDetails-name-info{
     font-size: 18px;
+    padding: 0px 4px;
+    font-style: italic;
 }
 .DealDetails-bottom{
     display: flex;
@@ -106,7 +103,7 @@
 .DealDetails-bottom-price{
     display: flex;
     gap: 6px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -140,14 +137,33 @@
     gap: 10px;
 }
 
+.DealDetails-details-body-head-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .DealDetails-details-body-body{
     display: flex;
     flex-direction: column;
     gap: 4px;
+    padding: 4px;
 }
 
 .DealDetails-name-info-date{
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     gap: 8px;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: scale(0.8);
+    }
+    40% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1.0);
+    }
 }

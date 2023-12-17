@@ -121,11 +121,11 @@ function AllDealsBody({ deals, setDeals }) {
                             </p>
                         }
                     </div>
-                    {<Pagination currentPage={currentPage} list={deals} numberItem={10} setCurrentPage={setCurrentPage} setPagedList={setPagedList} />}
+                    {<Pagination currentPage={currentPage} list={deals} numberItem={15} setCurrentPage={setCurrentPage} setPagedList={setPagedList} />}
                 </div>
             </div>
             <DealDetails isOpen={isDealDetailsOpen} selectedDeal={selectedDeal} onClose={closeDealDetails} onBuy={() => handleConfirmOpen(selectedDeal)} />
-            <ConfirmModal isOpen={isConfirmOpen} title={<span>Purchase Deal</span>} content={<span>Are you sure you want to purchase this deal</span>} setIsOpen={setConfirmOpen} onOK={handleAcceptDeal} />
+            <ConfirmModal isOpen={isConfirmOpen} title={<span>Purchase Deal</span>} content={<span>Are you sure you want to purchase this deal?</span>} setIsOpen={setConfirmOpen} onOK={handleAcceptDeal} />
         </>
     )
 }

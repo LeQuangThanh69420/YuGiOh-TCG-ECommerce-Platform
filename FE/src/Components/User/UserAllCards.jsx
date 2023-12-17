@@ -134,13 +134,15 @@ export default function UserAllCards() {
           />
         </div>
         <div className="user-anything-container">
-          {displayCards.map((card, index) => (
+          {cards.length ? displayCards.map((card, index) => (
             <ReusableCard
               key={index}
               card={card}
               onClick={() => handleOpenCardDetail(card)}
             />
-          ))}
+          )) : 
+            <p className="no-data-text">There is no result matching with your search options :(</p>
+          }
         </div>
         <Pagination
           currentPage={currentPage}
