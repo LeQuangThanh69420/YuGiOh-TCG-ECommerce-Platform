@@ -73,7 +73,7 @@ const CardDetails = ({ isOpen, selectedCard, onClose, isManaging = false, onAddD
                   </div>
                 </div>
               </div>
-              {isManaging && !selectedCard.onDeal && 
+              {isManaging && !selectedCard.onDeal && !!selectedCard.userCardId && 
               <div className='CardDetails-buttons'>
                 <button className='button-2' onClick={onClose}>Cancel</button>
                 <button onClick={onAddDeal}>Sell</button>
