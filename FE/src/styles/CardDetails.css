@@ -24,6 +24,7 @@
     max-height: 800px;
     min-height: 300px;
     overflow: hidden; /* Prevent content overflow */
+    animation: pop-up 0.4s;
 }
 
 .CardDetails-close {
@@ -100,4 +101,16 @@
 
 .CardDetails-CardName-infoName{
     font-size: 18px;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: scale(0.7);
+    }
+    40% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1.0);
+    }
 }

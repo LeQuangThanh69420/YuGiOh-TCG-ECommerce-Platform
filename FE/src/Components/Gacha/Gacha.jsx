@@ -41,16 +41,15 @@ function Gacha() {
                         money: money
                     }))
                 })
-                setMessage('Purchase Successfully')
+                setMessage('Purchase successfully!')
             }
             else{
+                setMessage(data.message);
                 setType('toast-error')
-                setMessage('Purchase Failed')
             }
             showToast()
             setGachaCardData(data)
         })
-        setPackOpen(true)
     }
 
     return (

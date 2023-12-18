@@ -1,23 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 
-import SearchAllCards from "../Shared/SearchSelections/SearchAllCards";
-
 import { AppData } from "../../Root";
-
-import "./../../styles/UserAllCards.css";
+import { createDeal } from "../../api/apiDeal";
 import {
   getOwnedCardsSeperate,
   getOwnedCardsStack,
 } from "../../api/apiUserCard";
+import { useNavigate } from 'react-router-dom'
+import { checkSession } from "../../utils/checkSession";
+
+import SearchAllCards from "../Shared/SearchSelections/SearchAllCards";
 import Pagination from "../Shared/Pagination";
 import ReusableCard from "../Shared/ReusableCard";
 import CardDetails from "../Shared/CardDetails";
 import FormModal from "../Shared/FormModal";
 import Input from "../Shared/Input/Input";
-import { createDeal } from "../../api/apiDeal";
+
+import "./../../styles/UserAllCards.css";
 
 export default function UserAllCards() {
   const { userData, setType, setMessage, showToast } = useContext(AppData);
+  const navigate = useNavigate()
 
   const [isStack, setIsStack] = useState(false);
   const [cards, setCards] = useState([]);
@@ -94,6 +97,13 @@ export default function UserAllCards() {
   }
 
   useEffect(() => {
+    if (!checkSession()) {
+      navigate('/')
+      console.log('vai l');
+    }
+  })
+
+  useEffect(() => {
     handleSearchCard();
   }, [isStack]);
 
@@ -134,13 +144,15 @@ export default function UserAllCards() {
           />
         </div>
         <div className="user-anything-container">
-          {displayCards.map((card, index) => (
+          {cards.length ? displayCards.map((card, index) => (
             <ReusableCard
               key={index}
               card={card}
               onClick={() => handleOpenCardDetail(card)}
             />
-          ))}
+          )) :
+            <p className="no-data-text">There is no result matching with your search options :(</p>
+          }
         </div>
         <Pagination
           currentPage={currentPage}
