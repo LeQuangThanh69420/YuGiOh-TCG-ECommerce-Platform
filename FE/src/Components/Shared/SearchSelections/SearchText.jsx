@@ -13,6 +13,13 @@ export default function SearchText({
     }));
   };
 
+  const handleDelete = () => {
+    setData((prev) => ({
+      ...prev,
+      [textDataKey]: "",
+    }));
+  }
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       onSearch();
@@ -32,12 +39,7 @@ export default function SearchText({
       />
       <div
         className="delete-input icon-5"
-        onClick={() =>
-          setData((prev) => ({
-            ...prev,
-            [textDataKey]: "",
-          }))
-        }
+        onClick={handleDelete}
       ></div>
     </div>
   );
