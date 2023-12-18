@@ -68,7 +68,7 @@ namespace BE._services
                                         "label: 'Price'," +
                                         "data: prices," +
                                         "borderWidth: 1," +
-                                        "pointRadius: 5," +
+                                        "pointRadius: 1," +
                                         "borderColor: 'rgba(116, 0, 204, 1)'," +
                                         "pointBackgroundColor: 'rgba(116, 0, 204, 1)'," +
                                         "fill: false" +
