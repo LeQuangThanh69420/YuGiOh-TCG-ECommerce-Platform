@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
 import { deleteDeal, searchDeal } from "../../api/apiDeal";
 import { checkSession } from "../../utils/checkSession";
-import { useNavigate } from 'react-router-dom'
+import dateTimeFormat from "../../utils/dateTimeFormat";
 
 import { AppData } from "../../Root";
 import Pagination from "../Shared/Pagination";
@@ -135,9 +136,9 @@ export default function UserAllDeals() {
                     <div className="riu-coin-icon icon-9"></div>
                     <span className="text-sixth">{deal.price}</span>
                   </div>
-                  <div>
-                    
-                  </div>
+                  <span className="AllDeals-time">
+                    {dateTimeFormat(deal.createDate).date}
+                  </span>
                 </div>
               </div>
             ))}

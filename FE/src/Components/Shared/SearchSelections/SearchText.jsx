@@ -9,7 +9,7 @@ export default function SearchText({
   onSearch,
 }) {
 
-  const handleChange = () => {
+  const handleChange = (event) => {
     setData((prev) => ({
       ...prev,
       [textDataKey]: event.target.value,
@@ -42,7 +42,7 @@ export default function SearchText({
         type="text"
         value={inputValue}
         placeholder={searchLabel}
-        onChange={handleChange}
+        onChange={(event) => handleChange(event)}
         onKeyDown={(event) => handleKeyDown(event)}
         className="search-text"
       />
