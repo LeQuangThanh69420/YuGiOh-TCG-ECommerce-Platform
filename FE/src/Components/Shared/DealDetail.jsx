@@ -3,7 +3,7 @@ import dateTimeFormat from '../../utils/dateTimeFormat';
 import './../../styles/DealDetails.css';
 
 const DealDetails = ({ isOpen, selectedDeal, onClose, onBuy }) => {
-
+  
   function checkRarity(selectedDeal) {
     if (selectedDeal.cardRarityName == 'R') return 'Rare'
     else if (selectedDeal.cardRarityName == 'N') return 'Normal'
@@ -44,16 +44,20 @@ const DealDetails = ({ isOpen, selectedDeal, onClose, onBuy }) => {
                     <div className="DealDetails-info text-third">{checkRarity(selectedDeal)}</div>
                   </div>
                   <div className="DealDetails-details-name">
-                    <div className="DealDetails-label text-secondary">Card Name: </div>
-                    <div className="DealDetails-name-info text-third">{selectedDeal.cardName}</div>
+                    <span className="DealDetails-label text-secondary">Card Name: </span>
+                    <span className="DealDetails-name-info text-third">{selectedDeal.cardName}</span>
+                  </div>
+                  <div className="DealDetails-details">
+                    <div className="DealDetails-label text-secondary">Card Type: </div>
+                    <div className="DealDetails-info text-third">{!selectedDeal.cardTypeName ? "None" : selectedDeal.cardTypeName}</div>
                   </div>
                   <div className="DealDetails-details">
                     <div className="DealDetails-label text-secondary">Card Element: </div>
-                    <div className="DealDetails-info text-third">{selectedDeal.cardElementName == null ? "None" : selectedDeal.cardElementName}</div>
+                    <div className="DealDetails-info text-third">{!selectedDeal.cardElementName ? "None" : selectedDeal.cardElementName}</div>
                   </div>
                   <div className="DealDetails-details">
                     <div className="DealDetails-label text-secondary">Card Origin: </div>
-                    <div className="DealDetails-info text-third">{selectedDeal.cardOriginName == null ? "None" : selectedDeal.cardOriginName}</div>
+                    <div className="DealDetails-info text-third">{!selectedDeal.cardOriginName ? "None" : selectedDeal.cardOriginName}</div>
                   </div>
                 </div>
                 <div className="DealDetails-details-body-bottom">

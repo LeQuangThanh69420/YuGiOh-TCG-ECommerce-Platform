@@ -40,7 +40,8 @@ export default function SearchOptionButton({ listSearchOptions, searchObject, se
                         <SearchOption  
                             searchName={option.search_name}
                             dataKey={option.data_key}
-                            apiRoute={option.api_route}
+                            apiRoute={option.api_route ? option.api_route : undefined}
+                            options={option.selections ? option.selections : undefined}
                             chosenOption={searchObject[option.data_key]}
                             setData={setData}
                             isOpen={option.id === openedOptionId}
