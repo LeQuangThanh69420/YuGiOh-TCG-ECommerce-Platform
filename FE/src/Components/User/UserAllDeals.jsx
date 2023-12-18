@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
-import { searchDeal } from "../../api/apiDeal";
+import { deleteDeal, searchDeal } from "../../api/apiDeal";
 import { checkSession } from "../../utils/checkSession";
 import { useNavigate } from 'react-router-dom'
 
@@ -8,11 +8,12 @@ import { AppData } from "../../Root";
 import Pagination from "../Shared/Pagination";
 import DealDetails from "../Shared/DealDetail";
 import ConfirmModal from "../Shared/ConfirmModal";
+import DealModal from "./DealModal";
 
 import "./../../styles/UserAllDeals.css";
 
 export default function UserAllDeals() {
-  const { userData } = useContext(AppData);
+  const { userData, setType, setMessage, showToast } = useContext(AppData);
   const navigate = useNavigate();
 
   const [deals, setDeals] = useState([]);
@@ -33,30 +34,53 @@ export default function UserAllDeals() {
     console.log("edit");
   };
 
-  const handleClickDeleteDeal = (event) => {
+  const handleClickDeleteDeal = (event, deal) => {
     event.stopPropagation();
     setIsOpenDeleteModal(true)
+    setSelectedDeal(deal);
   };
 
-  const handleDeleteDeal = () => {
-
+  const handleDeleteDeal = async () => {
+    const response = await deleteDeal(userData.username, selectedDeal.dealId)
+    response.json().then(data => {
+      if (response.status === 200) {
+        setType('toast-success');
+        searchOwnedDeal();
+      } else {
+        setType('toast-error')
+      }
+      setMessage(data.message);
+      showToast();
+    })
   }
 
   const handleHoverDeal = (deal) => {
     setHoveredDeal(deal);
   };
 
-  useEffect(() => {
-    if(!checkSession()) {
-      navigate('/')
-    }
-  })
-
-  useEffect(() => {
+  const searchOwnedDeal = () => {
     searchDeal(undefined, userData.username).then((data) => {
       setDeals(data);
     });
+  }
+
+  useEffect(() => {
+    if (!checkSession()) {
+      navigate('/')
+    }
+  }, [])
+
+  useEffect(() => {
+    searchOwnedDeal();
   }, []);
+
+  useEffect(() => {
+    if (!isOpenDeleteModal) {
+      if (!isOpenDetail) {
+        setSelectedDeal(null)
+      }
+    }
+  }, [isOpenDeleteModal, isOpenDetail])
 
   return (
     <div className="user-screen">
@@ -92,7 +116,7 @@ export default function UserAllDeals() {
                     <div className="edit-delete-icon-wrapper">
                       <div
                         className="delete icon-5"
-                        onClick={(event) => handleClickDeleteDeal(event)}
+                        onClick={(event) => handleClickDeleteDeal(event, deal)}
                       ></div>
                     </div>
                   </div>
@@ -105,6 +129,15 @@ export default function UserAllDeals() {
                     src={deal.cardImageURL}
                     className="user-all-deals-deal-img"
                   />
+                </div>
+                <div className="AllDeals-bottom">
+                  <div className="AllDeals-price">
+                    <div className="riu-coin-icon icon-9"></div>
+                    <span className="text-sixth">{deal.price}</span>
+                  </div>
+                  <div>
+                    
+                  </div>
                 </div>
               </div>
             ))}

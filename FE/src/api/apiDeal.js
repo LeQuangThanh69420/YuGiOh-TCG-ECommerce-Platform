@@ -70,7 +70,7 @@ export const editDeal = async (sellUsername, dealId, userCardId, price) => {
 export const deleteDeal = async (sellUsername = "", dealId) => {
   const response = fetch(`${API_URL}${API_ROUTES.DELETE_DEAL}`, {
     method: "DELETE",
-    header: HEADER(),
+    headers: HEADER(),
     body: JSON.stringify({
       sellUsername: sellUsername,
       dealId: dealId,

@@ -14,6 +14,7 @@ export default function SearchAllCards({ searchObject, setData, onSearch }) {
           inputValue={searchObject[searchText.data_key]}
           searchLabel={searchText.search_label}
           textDataKey={searchText.data_key}
+          searchObject={searchObject}
           setData={setData}
           onSearch={onSearch}
         />
