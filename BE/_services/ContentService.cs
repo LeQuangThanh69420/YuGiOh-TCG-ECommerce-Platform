@@ -53,7 +53,7 @@ namespace BE._services
                     "<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>" +    
                 "</head>" + 
                 "<body>" + 
-                    "<canvas id='myChart' width='400' height='150'></canvas>" +
+                    "<canvas id='myChart' width='400' height='100'></canvas>" +
                     "<script>" +
                         "var cards = [" + dealsArray + "];" +
                         "var prices = cards.map(card => card.price);" +
@@ -68,7 +68,7 @@ namespace BE._services
                                         "label: 'Price'," +
                                         "data: prices," +
                                         "borderWidth: 1," +
-                                        "pointRadius: 1," +
+                                        "pointRadius: 3," +
                                         "borderColor: 'rgba(116, 0, 204, 1)'," +
                                         "pointBackgroundColor: 'rgba(116, 0, 204, 1)'," +
                                         "fill: false" +
@@ -76,7 +76,13 @@ namespace BE._services
                                 "]" +
                             "}," +
                             "options: {" +
+                                "legend: {" + 
+                                    "display: false" + 
+                                "}" +  
                                 "scales: {" +
+                                    "x: {" +
+                                        "display: false" +
+                                    "}" +
                                     "y: {" +
                                         "beginAtZero: true" +
                                     "}" +
