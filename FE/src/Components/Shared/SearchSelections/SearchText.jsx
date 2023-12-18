@@ -1,7 +1,10 @@
+import { useEffect } from "react";
+
 export default function SearchText({
   inputValue,
   searchLabel,
   textDataKey,
+  searchObject,
   setData,
   onSearch,
 }) {
@@ -25,6 +28,12 @@ export default function SearchText({
       onSearch();
     }
   };
+
+  useEffect(() => {
+    if(searchObject[textDataKey] === '') {
+      onSearch();
+    }
+  }, [searchObject[textDataKey]])
 
   return (
     <div className="search-text-container">
