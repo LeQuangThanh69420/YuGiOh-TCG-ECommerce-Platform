@@ -178,6 +178,7 @@
   border: 1px solid #979797;
   cursor: default;
   user-select: none;
+  z-index: 2;
 }
 
 .sort-option {
