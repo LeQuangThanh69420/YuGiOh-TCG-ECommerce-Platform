@@ -65,7 +65,7 @@ namespace BE._services
                                 "labels: dates," +
                                 "datasets: [" +
                                     "{" +
-                                        "label: 'Price'," +
+                                        "label: 'Price in this year'," +
                                         "data: prices," +
                                         "borderWidth: 1," +
                                         "pointRadius: 3," +
@@ -76,13 +76,13 @@ namespace BE._services
                                 "]" +
                             "}," +
                             "options: {" +
-                                "legend: {" + 
+                                /*"legend: {" + 
                                     "display: false" + 
-                                "}" +  
+                                "}," + */  
                                 "scales: {" +
                                     "x: {" +
                                         "display: false" +
-                                    "}" +
+                                    "}," +
                                     "y: {" +
                                         "beginAtZero: true" +
                                     "}" +
