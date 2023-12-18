@@ -30,8 +30,6 @@ function Gacha() {
         setPackOpen(false)
     }
 
-    console.log(userData.username)
-
     async function handlePullCard(){
         const response = await gacha(userData.username, currentPack.type)
         response.json().then(data => {
