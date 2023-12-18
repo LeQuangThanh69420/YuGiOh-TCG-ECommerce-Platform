@@ -7,6 +7,7 @@ import { AppData } from "../../Root"
 import ConfirmModal from "../Shared/ConfirmModal"
 import { gacha } from "../../api/apiGacha"
 import { getMoney } from "../../api/apiUser"
+import { Link } from "react-router-dom"
 
 function Gacha() {
     const [currentPack, setCurrentPack] = useState(banner[0])
@@ -28,6 +29,8 @@ function Gacha() {
     function closePack(){
         setPackOpen(false)
     }
+
+    console.log(userData.username)
 
     async function handlePullCard(){
         const response = await gacha(userData.username, currentPack.type)
@@ -62,7 +65,9 @@ function Gacha() {
                                 <div className="Gacha-pulling-background-dots">
                                     <div className="Gacha-pulling-img" style={{ backgroundImage: `url(${currentPack.img})` }} ></div>
                                     <div className="Gacha-pulling-right">
-                                        <div className="Gacha-pulling-top"></div>
+                                        <div className="Gacha-pulling-top-wrapper">
+                                            <div className="Gacha-pulling-top"></div>
+                                        </div>
                                         <div className="Gacha-pulling-text">
                                             <div className="Gacha-pulling-text-top text-primary">{currentPack.name}</div>
                                             <div className="Gacha-pulling-text-bottom text-third">Pack</div>
@@ -72,9 +77,18 @@ function Gacha() {
                                                 <div className="Gacha-pulling-riu-price text-sixth">{currentPack.price}</div>
                                                 <div className="Gacha-pulling-riu-coin-icon riu-coin-icon"></div>
                                             </div>
-                                            <button className="Gacha-pulling-pull" onClick={openPack}>Pull Card x10</button>
+                                            {userData.username == null ? (
+                                                <button className="Gacha-pulling-pull-disabled" disabled onClick={openPack}>Pull Card x10</button>
+                                            ) : (
+                                                <button className="Gacha-pulling-pull" onClick={openPack}>Pull Card x10</button>
+                                            )}
                                         </div>
                                     </div>
+                                    {userData.username == null ? (
+                                        <span className="Gacha-authority-check text-third">You must <Link to={'/login'}><span className="text-primary">Login</span></Link> to use this feature</span>
+                                    ) : (
+                                        null
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -97,3 +111,4 @@ function Gacha() {
 }
 
 export default Gacha
+

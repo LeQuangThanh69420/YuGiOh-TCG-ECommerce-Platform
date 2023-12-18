@@ -46,6 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    position: relative;
 }
 
 .Gacha-pulling-img{
@@ -56,12 +57,23 @@
     background-position: bottom;
 }
 
+.Gacha-slide-in{
+    animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-in{
+    from{transform: translateX(100px); opacity: 0.5;}
+    to{transform: translateX(0px); opacity: 1;}
+}
+
 .Gacha-pulling-price-button{
     display: flex;
+    justify-content: space-between;
     gap: 70px;
     align-items: center;
     padding-bottom: 30px;
     padding-left: 40px;
+    padding-right: 40px;
 }
 
 .Gacha-pulling-riu-coin-icon{
@@ -112,6 +124,13 @@
     background-repeat: no-repeat;
     background-position: right top;
     border-radius: 8px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.Gacha-pulling-top-wrapper{
+    width: 350px; 
+    height: 30px;
 }
 
 .Gacha-selection-banner{
@@ -142,4 +161,18 @@
     display: flex;
     gap: 30px;
     justify-content: center;
+}
+
+.Gacha-pulling-pull-disabled{
+    background-color: #3d3b3f;
+}
+
+.Gacha-pulling-pull-disabled:hover{
+    background-color: #3d3b3f;
+}
+
+.Gacha-authority-check{
+    position: absolute;
+    bottom: 5px;
+    right: 35px;
 }
