@@ -84,6 +84,7 @@ namespace BE.Controllers
             where (UserCard.CardId == cardId)
             && (Deal.AcceptedDate.Value.Year == currentYear)
             && (Deal.BuyUserId != null)
+            orderby Deal.AcceptedDate
             select new Deal() {
                 Price = Deal.Price,
                 AcceptedDate = Deal.AcceptedDate
