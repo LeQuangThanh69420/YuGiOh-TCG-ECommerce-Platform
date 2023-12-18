@@ -81,8 +81,9 @@ namespace BE.Controllers
         {
             var deal = from Deal in _context.Deal
             join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
-            where UserCard.CardId == cardId
-            where Deal.AcceptedDate.Value.Year == currentYear
+            where (UserCard.CardId == cardId)
+            && (Deal.AcceptedDate.Value.Year == currentYear)
+            && (Deal.BuyUserId != null)
             select new Deal() {
                 Price = Deal.Price,
                 AcceptedDate = Deal.AcceptedDate
