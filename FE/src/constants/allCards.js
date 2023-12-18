@@ -30,7 +30,7 @@ export const ALL_CARDS_SEARCH_OPTIONS = [
 export const ALL_CARDS_SEARCH_TEXT = [
   {
     id: 1,
-    data_key: "name",
+    data_key: "cardName",
     search_label: "Search cards with name",
   },
 ];
