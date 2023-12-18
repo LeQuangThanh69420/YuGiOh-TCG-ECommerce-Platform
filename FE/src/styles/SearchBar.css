@@ -2,6 +2,7 @@
   color: #58555b;
   font-weight: 600;
   font-size: 16px;
+  min-width: fit-content;
 }
 
 .chosen-option {
@@ -9,6 +10,7 @@
   border-radius: 6px;
   border: 1px solid #58555b;
   width: 200px;
+  min-width: 200px;
   display: flex;
   align-items: center;
   padding: 8px 12px;
@@ -37,7 +39,7 @@
   left: -1px;
   top: 115%;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-  max-height: 200px;
+  max-height: 204px;
   overflow-y: overlay;
   border: 1px solid #58555b;
   overscroll-behavior: contain;
@@ -99,6 +101,7 @@
   align-items: flex-end;
   border-radius: 6px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  width: max-content;
 }
 
 .chosing {
@@ -153,3 +156,5 @@
 .search-text:focus {
   border: 1px solid #7400cc;
 }
+
+

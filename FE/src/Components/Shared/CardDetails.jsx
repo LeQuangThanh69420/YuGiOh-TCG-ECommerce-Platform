@@ -29,12 +29,10 @@ const CardDetails = ({ isOpen, selectedCard, onClose, isManaging = false, onAddD
             <div className='CardDetails-info-wrapper'>
               <div className="CardDetails-info">
                 <div className="CardDetails-CardName">
-                  <div className="CardDetails-CardName-infoLabel text-secondary">
-                    Name:
-                  </div>{" "}
-                  <div className="CardDetails-CardName-infoName text-third">
-                    {selectedCard.cardName}
-                  </div>
+                  <span className="CardDetails-CardName-infoLabel text-secondary">
+                    Name: 
+                  </span>
+                  <span className='CardDetails-CardName-infoName text-third'> {selectedCard.cardName}</span>
                 </div>
                 <div className="CardDetails-Feature">
                   <div className="CardDetails-CardName-infoLabel text-secondary">

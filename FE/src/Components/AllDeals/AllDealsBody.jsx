@@ -1,12 +1,17 @@
 import { useState, useEffect, useContext } from "react";
-import '../../styles/AllDeals.css'
-import DealDetails from "../Shared/DealDetail";
+
 import { acceptDeal, searchDeal } from '../../api/apiDeal'
-import Pagination from "../Shared/Pagination";
-import SearchAllCards from "../Shared/SearchSelections/SearchAllCards";
-import ConfirmModal from "../Shared/ConfirmModal";
-import { AppData } from "../../Root";
 import { getMoney } from "../../api/apiUser";
+import valueFromToFormat from "../../utils/valueFormToFormat";
+import dateRangeConfig from "../../utils/dateRangeConfig";
+
+import { AppData } from "../../Root";
+import DealDetails from "../Shared/DealDetail";
+import Pagination from "../Shared/Pagination";
+import ConfirmModal from "../Shared/ConfirmModal";
+import SearchAllDeals from "../Shared/SearchSelections/SearchAllDeals";
+
+import '../../styles/AllDeals.css'
 
 function AllDealsBody({ deals, setDeals }) {
 
@@ -16,14 +21,37 @@ function AllDealsBody({ deals, setDeals }) {
     const [isDealDetailsOpen, setDealDetailsOpen] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchObject, setSearchObject] = useState({
-        name: "",
+        sellUsername: '',
+        cardName: "",
         cardTypeName: "",
         cardOriginName: "",
         cardElementName: "",
         cardRarityName: "",
+        priceFromTo: '',
+        dateFromTo: '',
+        sortBy: '',
+        isAsc: false,
     });
     const [isConfirmOpen, setConfirmOpen] = useState(false)
     const [pagedList, setPagedList] = useState([]);
+
+    const searchDealCondition = () => {
+        searchDeal(userData.username, 
+            searchObject.sellUsername, 
+            searchObject.cardName, 
+            searchObject.cardTypeName, 
+            searchObject.cardOriginName, 
+            searchObject.cardElementName, 
+            searchObject.cardRarityName, 
+            valueFromToFormat(searchObject.priceFromTo).valueFrom, 
+            valueFromToFormat(searchObject.priceFromTo).valueTo, 
+            valueFromToFormat(searchObject.dateFromTo).valueFrom, 
+            valueFromToFormat(searchObject.dateFromTo).valueTo,
+            searchObject.sortBy,
+            searchObject.isAsc).then((data) => {
+            setDeals(data)
+        });
+    }
 
     const openDealDetails = (deals) => {
         setSelectedDeal(deals);
@@ -33,19 +61,6 @@ function AllDealsBody({ deals, setDeals }) {
     const closeDealDetails = () => {
         setSelectedDeal(null);
         setDealDetailsOpen(false);
-    };
-
-    const handleSearch = () => {
-        setCurrentPage(1);
-        searchDeal(
-            searchObject.name,
-            searchObject.cardTypeName,
-            searchObject.cardOriginName,
-            searchObject.cardElementName,
-            searchObject.cardRarityName
-        ).then((data) => {
-            setDeals(data)
-        });
     };
 
     const handleAcceptDeal = async () => {
@@ -81,10 +96,12 @@ function AllDealsBody({ deals, setDeals }) {
         setConfirmOpen(true)
     }
 
+    const handleApplySearch = () => {
+
+    }
+
     useEffect(() => {
-        searchDeal(userData.username).then((data) => {
-            setDeals(data)
-        });
+        searchDealCondition();
     }, [])
 
     useEffect(() => {
@@ -102,6 +119,7 @@ function AllDealsBody({ deals, setDeals }) {
                             <span className="text-secondary">Avaiable</span>
                             <span className="text-primary"> Deals</span>
                         </div>
+                        <SearchAllDeals searchObject={searchObject} setData={setSearchObject} onSearch={searchDealCondition} />
                     </div>
                     <div className="AllDeals-body-container">
                         {

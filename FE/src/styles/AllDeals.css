@@ -14,7 +14,9 @@
     width: 100%;
     border-radius: 8px;
     display: flex;
-    gap: 10px;  
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .AllDeals-body {

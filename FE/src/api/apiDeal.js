@@ -4,20 +4,22 @@ import { HEADER } from "../constants/apiHeaderConfig";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const searchDeal = async (
-  myUsername = '',
-  sellUsername = '',
-  cardName = '',
-  type = '',
-  origin = '',
-  element = '',
-  rarity = '',
-  priceFrom = '',
-  priceTo = '',
-  dataFrom = '',
-  dateTo = ''
+  myUsername = "",
+  sellUsername = "",
+  cardName = "",
+  type = "",
+  origin = "",
+  element = "",
+  rarity = "",
+  priceFrom = "",
+  priceTo = "",
+  dateFrom = "",
+  dateTo = "",
+  sortBy = "",
+  isAsc = false
 ) => {
   const response = await fetch(
-    `${API_URL}${API_ROUTES.SEARCH_DEAL}?MyUsername=${myUsername}&SellUsername=${sellUsername}&CardName=${cardName}&CardTypeName=${type}&CardOriginName=${origin}&CardElementName=${element}&CardRarityName=${rarity}&PriceFrom=${priceFrom}&PriceTo=${priceTo}&DateFrom=${dataFrom}&DateTo=${dateTo}`
+    `${API_URL}${API_ROUTES.SEARCH_DEAL}?MyUsername=${myUsername}&SellUsername=${sellUsername}&CardName=${cardName}&CardTypeName=${type}&CardOriginName=${origin}&CardElementName=${element}&CardRarityName=${rarity}&PriceFrom=${priceFrom}&PriceTo=${priceTo}&DateFrom=${dateFrom}&DateTo=${dateTo}&sort=${sortBy}&sortAscending=${isAsc}`
   );
   return response.json();
 };
@@ -65,13 +67,13 @@ export const editDeal = async (sellUsername, dealId, userCardId, price) => {
   return response;
 };
 
-export const deleteDeal = async (sellUsername = '', dealId) => {
+export const deleteDeal = async (sellUsername = "", dealId) => {
   const response = fetch(`${API_URL}${API_ROUTES.DELETE_DEAL}`, {
     method: "DELETE",
     header: HEADER(),
     body: JSON.stringify({
-      "sellUsername": sellUsername,
-      "dealId": dealId,
+      sellUsername: sellUsername,
+      dealId: dealId,
     }),
   });
   return response;
@@ -79,12 +81,12 @@ export const deleteDeal = async (sellUsername = '', dealId) => {
 
 export const acceptDeal = async (buyUsername, dealId) => {
   const response = fetch(`${API_URL}${API_ROUTES.ACCEPT_DEAL}`, {
-    method: 'POST',
+    method: "POST",
     headers: HEADER(),
     body: JSON.stringify({
       buyUsername: buyUsername,
       dealId: dealId,
-    })
-  })
+    }),
+  });
   return response;
-}
+};

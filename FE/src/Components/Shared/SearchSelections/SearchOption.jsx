@@ -3,25 +3,29 @@ import { getSomeThingOfCard } from "../../../api/apiCard"
 
 import './../../../styles/SearchBar.css'
 
-export default function SearchOption({ searchName, apiRoute, chosenOption, dataKey, setData, isOpen, setIsOpen }) {
+export default function SearchOption({ searchName, apiRoute, options, chosenOption, dataKey, setData, isOpen, setIsOpen }) {
 
   const [listOptions, setListOptions] = useState([]);
 
   const handleOpenDropDown = () => {
-      setIsOpen()
+    setIsOpen()
   }
 
   const handleChose = (data) => {
     setData(prev => ({
       ...prev,
-      [dataKey]: data
+      [dataKey]: data[dataKey]
     }))
   }
 
   useEffect(() => {
-    getSomeThingOfCard(apiRoute).then(data => {
-      setListOptions(data);
-    })
+    if (apiRoute) {
+      getSomeThingOfCard(apiRoute).then(data => {
+        setListOptions(data);
+      })
+    } else if(options) {
+      setListOptions(options)
+    }
   }, [])
 
   return (
@@ -34,7 +38,7 @@ export default function SearchOption({ searchName, apiRoute, chosenOption, dataK
         <div className={`${isOpen ? 'arrow-drop-up' : 'arrow-drop-down'} icon-7`}></div>
         {isOpen && <div className="list-options">
           {listOptions.map((option, index) =>
-            <div key={index} className="list-option" onClick={() => handleChose(option[dataKey])}>{option[dataKey]}</div>
+            <div key={index} className="list-option" onClick={() => handleChose(option)}>{option[dataKey]}</div>
           )}
         </div>}
       </div>
