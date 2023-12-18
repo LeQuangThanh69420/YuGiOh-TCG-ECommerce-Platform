@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BE._iservices;
 using BE.Controllers;
+using BE.Model.Entity;
 using BE.Model.ValueObject;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,59 @@ namespace BE._services
                     "<img src='" + ApiEnvironment.imageBubble + "'>" +
                     ApiEnvironment.live2dCanvas +
                 "</body>";
+        }
+
+        public async Task<string> PriceChartWrite(List<Deal> deals)
+        {
+            string dealsArray = "";
+            foreach(var item in deals)
+            {
+                dealsArray = dealsArray + "{ price: " + item.Price + ", date: '" + item.AcceptedDate + "' },";
+            }
+            return
+                "" +
+                "<!DOCTYPE html>" +
+                "<html lang='en'>" +
+                "<head>" + 
+                    "<meta charset='UTF-8'>" +
+                    "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+                    "<title>Card Price</title>" +
+                    "<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>" +    
+                "</head>" + 
+                "<body>" + 
+                    "<canvas id='myChart' width='400' height='150'></canvas>" +
+                    "<script>" +
+                        "var cards = [" + dealsArray + "];" +
+                        "var prices = cards.map(card => card.price);" +
+                        "var dates = cards.map(card => card.date);" +
+                        "var ctx = document.getElementById('myChart').getContext('2d');" +
+                        "var myChart = new Chart(ctx, {" +
+                            "type: 'line'," +
+                            "data: {" +
+                                "labels: dates," +
+                                "datasets: [" +
+                                    "{" +
+                                        "label: 'Price'," +
+                                        "data: prices," +
+                                        "borderWidth: 1," +
+                                        "pointRadius: 5," +
+                                        "borderColor: 'rgba(116, 0, 204, 1)'," +
+                                        "pointBackgroundColor: 'rgba(116, 0, 204, 1)'," +
+                                        "fill: false" +
+                                    "}" +
+                                "]" +
+                            "}," +
+                            "options: {" +
+                                "scales: {" +
+                                    "y: {" +
+                                        "beginAtZero: true" +
+                                    "}" +
+                                "}" +
+                            "}" +
+                        "});" +
+                    "</script>" +
+                "</body>" +
+                "</html>";
         }
     }
 }
