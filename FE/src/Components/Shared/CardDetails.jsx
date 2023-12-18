@@ -79,6 +79,7 @@ const CardDetails = ({ isOpen, selectedCard, onClose, isManaging = false, onAddD
               }
             </div>
           </div>
+          <iframe src={`http://localhost:5233/api/Deal/GetCardPrice/${selectedCard.cardId}/${new Date().getFullYear()}`} className='card-price-iframe'></iframe>
         </div>
       </div>}
     </>
