@@ -105,7 +105,7 @@
 
 .card-price-iframe {
     width: 100%;
-    max-height: 200px;
+    height: 160px;
     overflow-x: hidden;
     border: 1px solid #979797;
     border-radius: 4px;
