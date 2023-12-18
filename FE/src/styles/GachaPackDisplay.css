@@ -7,19 +7,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 4;
+    z-index: 3;
     animation: background-blur 0.5s forwards;
 }
 
 @keyframes background-blur{
     from{backdrop-filter: blur(0px); background: rgba(255, 255, 255, 0);}
-    to{backdrop-filter: blur(3px); background: rgba(0, 0, 0, 0.5);}
+    to{backdrop-filter: blur(3px); background: rgba(0, 0, 0, 0.6);}
 }
-
-.Gacha-pack-pop{
-    animation: popping 0.5s linear;
-}
-
 .Gacha-pack-display-img{
     width: 375px;
     height: 600px;
@@ -41,13 +36,19 @@
 
 @keyframes popping{
     from{opacity: 1; transform: scale(1) ;}
-    to{opacity: 0; transform: scale(1.2);}
+    to{opacity: 0; transform: scale(1.5);}
 }
 
 @keyframes pop-fade-zoom-in{
-    from{transform: scale(0.3); opacity: 0.3;}
-    to{transform: scale(1); opacity: 1;}
+    0%{transform: scale(0.7); opacity: 0.3;}
+    50%{transform: scale(1.08); opacity: 1;}
+    100%{transform: scale(1); opacity: 1;}
 }
+
+.Gacha-pack-pop{
+    animation: popping 0.5s linear;
+}
+
 
 .Gacha-pack-card-flip{
     position: fixed;
@@ -55,24 +56,20 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    z-index: 3;
+    z-index: 4;
     backdrop-filter: blur(3px)
 }
 
 .Gacha-pack-card-flip-wrapper{
-    background-color: white;
     width: 1180px;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
-    padding: 25px;
-    gap: 15px;
-    animation: pop-fade-zoom-in 0.3s linear;
 }
 
 .Gacha-pack-card-flip-wrapper > span{
@@ -80,22 +77,12 @@
     font-weight: 600;
 }
 
-.Gacha-pack-card-flip-skip{
-    background: white;
-    color: #7400CC;
-
-}
-.Gacha-pack-card-flip-skip:hover{
-    background: white;
-    color: #7400CC;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-}
-
 .Gacha-pack-card{
     width: 191px;
     height: 279px;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 }
 
 .Gacha-pack-card-flip-body{
@@ -103,15 +90,34 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 35px;
+    gap: 30px;
+}
+
+.Gacha-pack-card-flip-close{
+    background-color: white;
+    color: #7400CC;
+}
+
+.Gacha-pack-card-flip-close:hover{
+    background-color: white;
+    color: #7400CC;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.3);
 }
 
 .Gacha-pack-card-flip-skip-wrapper{
+    position: absolute;
     display: flex;
-    justify-content: flex-end;
+    gap: 10px;
+    bottom: 10px;
+    right: 10px;
 }
 .Gacha-pack-card-flip-single-card{
     position: relative;
+    animation: pop-fade-zoom-in 0.3s linear forwards;
+
+}
+.Gacha-pack-card-flip-single-card:hover{
+    transform: scale(1.03);
 }
 
 .Gacha-pack-cards-back{
@@ -133,6 +139,13 @@
 
 .Gacha-pack-card-front-wrapper{
     position: absolute;
+}
+
+.Gacha-pack-card-rarity{
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    transform: scale(1.3);
 }
 
 
