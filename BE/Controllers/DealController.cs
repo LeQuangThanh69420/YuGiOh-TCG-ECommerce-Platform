@@ -93,7 +93,7 @@ namespace BE.Controllers
             return Content(await _contentService.PriceChartWrite(await deal.ToListAsync()), "text/html");
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("GetBoughtDeal")]
         public async Task<ActionResult<List<DealGetBuyedOutputDto>>> GetBoughtDeal([FromQuery] string Username)
         {
@@ -123,7 +123,7 @@ namespace BE.Controllers
             return await deal.ToListAsync();
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("GetSoldDeal")]
         public async Task<ActionResult<List<DealGetSelledOutputDto>>> GetSoldDeal([FromQuery] string Username)
         {
@@ -153,7 +153,7 @@ namespace BE.Controllers
             return await deal.ToListAsync();
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("CreateDeal")]
         public async Task<ActionResult> CreateDeal([FromBody] DealCreateInputDto input)
         {
@@ -182,7 +182,7 @@ namespace BE.Controllers
             return Ok(new {message = "Create Deal successfully!"});
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPut("EditDeal")]
         public async Task<ActionResult> EditDeal([FromBody] DealEditInputDto input)
         {
@@ -207,7 +207,7 @@ namespace BE.Controllers
             return Ok(new {message = "Edit Deal successfully!"});
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpDelete("DeleteDeal")]
         public async Task<ActionResult> DeleteDeal([FromBody] DealDeleteInputDto input)
         {
