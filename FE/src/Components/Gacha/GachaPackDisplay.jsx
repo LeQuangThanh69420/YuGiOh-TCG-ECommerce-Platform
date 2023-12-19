@@ -90,8 +90,8 @@ function GachaPackDisplay({ Pack, isOpen, onClose, gachaData }) {
                     </div>
                 </div>
                 <div className='Gacha-pack-card-flip-skip-wrapper' onClick={(event) => { event.stopPropagation() }}>
-                    <button className='Gacha-pack-card-flip-close' onClick={handleGachaCardFlipClose}>Close</button>
                     <button className='Gacha-pack-card-flip-skip' onClick={handleSkip}>Skip</button>
+                    <button className='Gacha-pack-card-flip-close' onClick={handleGachaCardFlipClose}>Close</button>
                 </div>
             </div>}
         </>

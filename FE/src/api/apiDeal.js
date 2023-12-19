@@ -19,7 +19,7 @@ export const searchDeal = async (
   isAsc = false
 ) => {
   const response = await fetch(
-    `${API_URL}${API_ROUTES.SEARCH_DEAL}?MyUsername=${myUsername}&SellUsername=${sellUsername}&CardName=${cardName}&CardTypeName=${type}&CardOriginName=${origin}&CardElementName=${element}&CardRarityName=${rarity}&PriceFrom=${priceFrom}&PriceTo=${priceTo}&DateFrom=${dateFrom}&DateTo=${dateTo}&sort=${sortBy}&sortAscending=${isAsc}`
+    `${API_URL}${API_ROUTES.SEARCH_DEAL}?MyUsername=${myUsername}&SellUsername=${sellUsername}&CardName=${cardName}&CardTypeName=${type}&CardOriginName=${origin}&CardElementName=${element}&CardRarityName=${rarity}&PriceFrom=${priceFrom}&PriceTo=${priceTo}&DateFrom=${dateFrom}&DateTo=${dateTo}&sort=${sortBy}&sortAscending=${!!isAsc}`
   );
   return response.json();
 };
@@ -70,7 +70,7 @@ export const editDeal = async (sellUsername, dealId, userCardId, price) => {
 export const deleteDeal = async (sellUsername = "", dealId) => {
   const response = fetch(`${API_URL}${API_ROUTES.DELETE_DEAL}`, {
     method: "DELETE",
-    header: HEADER(),
+    headers: HEADER(),
     body: JSON.stringify({
       sellUsername: sellUsername,
       dealId: dealId,

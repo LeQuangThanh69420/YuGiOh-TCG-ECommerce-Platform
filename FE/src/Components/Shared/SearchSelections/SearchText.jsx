@@ -1,23 +1,39 @@
+import { useEffect } from "react";
+
 export default function SearchText({
   inputValue,
   searchLabel,
   textDataKey,
+  searchObject,
   setData,
   onSearch,
 }) {
 
-  const handleChange = () => {
+  const handleChange = (event) => {
     setData((prev) => ({
       ...prev,
       [textDataKey]: event.target.value,
     }));
   };
 
+  const handleDelete = () => {
+    setData((prev) => ({
+      ...prev,
+      [textDataKey]: "",
+    }));
+  }
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       onSearch();
     }
   };
+
+  useEffect(() => {
+    if(searchObject[textDataKey] === '') {
+      onSearch();
+    }
+  }, [searchObject[textDataKey]])
 
   return (
     <div className="search-text-container">
@@ -26,18 +42,13 @@ export default function SearchText({
         type="text"
         value={inputValue}
         placeholder={searchLabel}
-        onChange={handleChange}
+        onChange={(event) => handleChange(event)}
         onKeyDown={(event) => handleKeyDown(event)}
         className="search-text"
       />
       <div
         className="delete-input icon-5"
-        onClick={() =>
-          setData((prev) => ({
-            ...prev,
-            [textDataKey]: "",
-          }))
-        }
+        onClick={handleDelete}
       ></div>
     </div>
   );

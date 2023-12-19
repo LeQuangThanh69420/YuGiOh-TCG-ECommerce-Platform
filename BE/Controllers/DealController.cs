@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BE._iservices;
 using BE.Context;
 using BE.InterfaceController;
 using BE.Model.Dto;
@@ -18,10 +19,13 @@ namespace BE.Controllers
         DateTime vietnamTime;
         private readonly DataContext _context;
         private readonly UserCardController _userCard;
-        public DealController(DataContext context, UserCardController userCard)
+        private readonly IContentService _contentService;
+
+        public DealController(DataContext context, UserCardController userCard, IContentService contentService)
         {
             _context = context;
             _userCard = userCard;
+            _contentService = contentService;
             vietnamTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, vietnamTimeZone);
         }
 
@@ -70,6 +74,22 @@ namespace BE.Controllers
                 deal = sortAscending ? deal.OrderBy(d => d.Price) : deal.OrderByDescending(d => d.Price);
             }
             return await deal.ToListAsync();
+        }
+
+        [HttpGet("GetCardPrice/{cardId}/{currentYear}")]
+        public async Task<ActionResult> GetCardPrice(long cardId, int currentYear)
+        {
+            var deal = from Deal in _context.Deal
+            join UserCard in _context.UserCard on Deal.UserCardId equals UserCard.UserCardId 
+            where (UserCard.CardId == cardId)
+            && (Deal.AcceptedDate.Value.Year == currentYear)
+            && (Deal.BuyUserId != null)
+            orderby Deal.AcceptedDate
+            select new Deal() {
+                Price = Deal.Price,
+                AcceptedDate = Deal.AcceptedDate
+            };
+            return Content(await _contentService.PriceChartWrite(await deal.ToListAsync()), "text/html");
         }
 
         //[Authorize]

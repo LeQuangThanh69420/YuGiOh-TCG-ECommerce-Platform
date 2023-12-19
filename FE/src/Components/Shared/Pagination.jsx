@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import "./../../styles/Pagination.css";
 
 export default function Pagination({ currentPage, list, numberItem, setCurrentPage, setPagedList }) {
-
+    
     const finalPage = useMemo(() => Math.ceil(list.length / numberItem), [list]);
 
     const genarateSibling = () => {

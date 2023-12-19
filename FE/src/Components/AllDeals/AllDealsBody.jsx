@@ -2,8 +2,8 @@ import { useState, useEffect, useContext } from "react";
 
 import { acceptDeal, searchDeal } from '../../api/apiDeal'
 import { getMoney } from "../../api/apiUser";
-import valueFromToFormat from "../../utils/valueFormToFormat";
-import dateRangeConfig from "../../utils/dateRangeConfig";
+import dateRangeConfig from './../../utils/dateRangeConfig'
+import priceRangeConfig from "../../utils/priceRangeConfig";
 
 import { AppData } from "../../Root";
 import DealDetails from "../Shared/DealDetail";
@@ -36,6 +36,7 @@ function AllDealsBody({ deals, setDeals }) {
     const [pagedList, setPagedList] = useState([]);
 
     const searchDealCondition = () => {
+        setCurrentPage(1)
         searchDeal(userData.username, 
             searchObject.sellUsername, 
             searchObject.cardName, 
@@ -43,10 +44,10 @@ function AllDealsBody({ deals, setDeals }) {
             searchObject.cardOriginName, 
             searchObject.cardElementName, 
             searchObject.cardRarityName, 
-            valueFromToFormat(searchObject.priceFromTo).valueFrom, 
-            valueFromToFormat(searchObject.priceFromTo).valueTo, 
-            valueFromToFormat(searchObject.dateFromTo).valueFrom, 
-            valueFromToFormat(searchObject.dateFromTo).valueTo,
+            priceRangeConfig(searchObject.priceFromTo).valueFrom, 
+            priceRangeConfig(searchObject.priceFromTo).valueTo, 
+            dateRangeConfig(searchObject.dateFromTo).valueFrom, 
+            dateRangeConfig(searchObject.dateFromTo).valueTo,
             searchObject.sortBy,
             searchObject.isAsc).then((data) => {
             setDeals(data)
@@ -94,10 +95,6 @@ function AllDealsBody({ deals, setDeals }) {
             setSelectedDeal(deal)
         }
         setConfirmOpen(true)
-    }
-
-    const handleApplySearch = () => {
-
     }
 
     useEffect(() => {

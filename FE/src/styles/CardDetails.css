@@ -21,6 +21,7 @@
     color: black;
     display: flex;
     flex-direction: column;
+    gap: 20px;
     max-height: 800px;
     min-height: 300px;
     overflow: hidden; /* Prevent content overflow */
@@ -84,7 +85,6 @@
 
 .CardDetails-head{
     display: flex;
-    padding-bottom: 10px;
     justify-content: space-between;
 }
 
@@ -101,6 +101,14 @@
 
 .CardDetails-CardName-infoName{
     font-size: 18px;
+}
+
+.card-price-iframe {
+    width: 100%;
+    height: 160px;
+    overflow-x: hidden;
+    border: 1px solid #979797;
+    border-radius: 4px;
 }
 
 @keyframes pop-up {
