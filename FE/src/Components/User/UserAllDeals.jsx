@@ -4,12 +4,15 @@ import { useNavigate } from 'react-router-dom'
 import { deleteDeal, searchDeal } from "../../api/apiDeal";
 import { checkSession } from "../../utils/checkSession";
 import dateTimeFormat from "../../utils/dateTimeFormat";
+import priceRangeConfig from "../../utils/priceRangeConfig";
+import dateRangeConfig from "../../utils/dateRangeConfig";
 
 import { AppData } from "../../Root";
 import Pagination from "../Shared/Pagination";
 import DealDetails from "../Shared/DealDetail";
 import ConfirmModal from "../Shared/ConfirmModal";
 import DealModal from "./DealModal";
+import SearchAllDeals from "../Shared/SearchSelections/SearchAllDeals";
 
 import "./../../styles/UserAllDeals.css";
 
@@ -24,6 +27,38 @@ export default function UserAllDeals() {
   const [isOpenDetail, setIsOpenDetail] = useState(false);
   const [hoveredDeal, setHoveredDeal] = useState();
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const [isOpenDealModal, setIsOpenDealModal] = useState(false)
+  const [searchObject, setSearchObject] = useState({
+    sellUsername: '',
+    cardName: "",
+    cardTypeName: "",
+    cardOriginName: "",
+    cardElementName: "",
+    cardRarityName: "",
+    priceFromTo: '',
+    dateFromTo: '',
+    sortBy: '',
+    isAsc: false,
+  });
+
+  const searchDealOption = () => {
+    setCurrentPage(1)
+    searchDeal(undefined,
+      userData.username,
+      searchObject.cardName,
+      searchObject.cardTypeName,
+      searchObject.cardOriginName,
+      searchObject.cardElementName,
+      searchObject.cardRarityName,
+      priceRangeConfig(searchObject.priceFromTo).valueFrom,
+      priceRangeConfig(searchObject.priceFromTo).valueTo,
+      dateRangeConfig(searchObject.dateFromTo).valueFrom,
+      dateRangeConfig(searchObject.dateFromTo).valueTo,
+      searchObject.sortBy,
+      searchObject.isAsc).then((data) => {
+        setDeals(data)
+      });
+  }
 
   const handleOpenDetail = (deal) => {
     setIsOpenDetail(true);
@@ -46,7 +81,7 @@ export default function UserAllDeals() {
     response.json().then(data => {
       if (response.status === 200) {
         setType('toast-success');
-        searchOwnedDeal();
+        searchDealOption();
       } else {
         setType('toast-error')
       }
@@ -59,12 +94,6 @@ export default function UserAllDeals() {
     setHoveredDeal(deal);
   };
 
-  const searchOwnedDeal = () => {
-    searchDeal(undefined, userData.username).then((data) => {
-      setDeals(data);
-    });
-  }
-
   useEffect(() => {
     if (!checkSession()) {
       navigate('/')
@@ -72,7 +101,7 @@ export default function UserAllDeals() {
   }, [])
 
   useEffect(() => {
-    searchOwnedDeal();
+    searchDealOption();
   }, []);
 
   useEffect(() => {
@@ -91,9 +120,14 @@ export default function UserAllDeals() {
             <span className="text-primary">Deals</span>
             <span className="text-secondary"> Management</span>
           </p>
-          <div className="add-new-deal">
-            <div className="plus icon-5"></div>
-            <span className="text-third">Add new Deal</span>
+          <div className="user-deals-management-options">
+            <div className="">
+              <SearchAllDeals searchObject={searchObject} setData={setSearchObject} onSearch={searchDealOption} isManaging />
+            </div>
+            <div className="add-new-deal" onClick={() => setIsOpenDealModal(true)}>
+              <div className="plus icon-5"></div>
+              <span className="text-third">Add new Deal</span>
+            </div>
           </div>
         </div>
         <div className="user-anything-container">
@@ -167,6 +201,7 @@ export default function UserAllDeals() {
         content={"Are your sure you want to delete this deal?"}
         onOK={handleDeleteDeal}
       />
+      <DealModal isOpen={isOpenDealModal} setIsOpen={setIsOpenDealModal} title={<span className="text-secondary">Add new <span className="text-primary">Deal</span></span>}/>
     </div>
   );
 }
