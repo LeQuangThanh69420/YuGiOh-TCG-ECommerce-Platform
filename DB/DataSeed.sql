@@ -2,10 +2,10 @@
 Use TCG
 
 --User
-INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('thenthen', 'thenthen', 'then@gmail.com', 1000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
-INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('hoenghoeng', 'hoenghoeng', 'hoeng@gmail.com', 1000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
-INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('juanjuan', 'juanjuan', 'juan@gmail.com', 1000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
-INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('thengtheng', 'thengtheng', 'theng@gmail.com', 1000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
+INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('thenthen', 'thenthen', 'then@gmail.com', 100000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
+INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('hoenghoeng', 'hoenghoeng', 'hoeng@gmail.com', 100000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
+INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('juanjuan', 'juanjuan', 'juan@gmail.com', 100000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
+INSERT INTO "User"(Username, Password, Email, Money, Actived, ActiveCode, AvatarUrl) VALUES ('thengtheng', 'thengtheng', 'theng@gmail.com', 100000, 1, NULL, 'https://res.cloudinary.com/dslzbnfu8/image/upload/v1699185130/samples/DuRiu.png');
 
 -- Card Type
 INSERT INTO CardType (CardTypeName) VALUES ('Normal');
