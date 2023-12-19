@@ -67,7 +67,7 @@ function GachaPackDisplay({ Pack, isOpen, onClose, gachaData }) {
         <>
             {isOpen && <div className="Gacha-pack-display" onClick={onClose}>
                 <div className="Gacha-pack-display-wrapper" onClick={(event) => { event.stopPropagation() }}>
-                    <div className="Gacha-pack-display-img" ref={packOptionRef} style={{ backgroundImage: `url(${Pack.packimg})` }} onClick={handlePackOpen}></div>
+                    <div className="Gacha-pack-display-img" ref={packOptionRef} style={{ backgroundImage: `url(${Pack.packimg})` }} onClick={handlePackOpen} ></div>
                 </div>
             </div>}
             {isCardFlipOpen && isRenderCards && <div className='Gacha-pack-card-flip' onClick={handleGachaCardFlipClose}>
