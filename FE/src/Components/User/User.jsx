@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import {useNavigate} from 'react-router-dom'
 
 import {
   CHANGE_EMAIL_INPUTS,
@@ -9,6 +10,7 @@ import {HEADER_BOUGHT, HEADER_SOLD} from './../../constants/userBoughtDeals.js'
 import { changeEmail, changePassword, getEmail } from "../../api/apiUser";
 import { getSoldDeals, getBoughtDeals } from "../../api/apiDeal";
 import {renderDealsRow} from './../../utils/renderDealsRow.jsx'
+import { checkSession } from "../../utils/checkSession.js";
 
 import { AppData } from "../../Root";
 import UploadAvatar from "./UploadAvatar";
@@ -22,6 +24,7 @@ import "./../../styles/User.css";
 
 export default function User() {
   const { userData, showToast, setType, setMessage } = useContext(AppData);
+  const navigator = useNavigate();
 
   const [isChanging, setIsChanging] = useState(false);
   const [userEmail, setUserEmail] = useState("");
@@ -92,6 +95,12 @@ export default function User() {
       setUserEmail(data);
     });
   }, []);
+
+  useEffect(() => {
+    if(!checkSession()) {
+      navigator('/')
+    }
+  }, [])
 
   return (
     <div className="user-screen">
