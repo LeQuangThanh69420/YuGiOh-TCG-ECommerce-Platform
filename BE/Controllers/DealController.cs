@@ -49,9 +49,10 @@ namespace BE.Controllers
             && (User.Username != input.MyUsername)
             select new DealSearchOutputDto() {
                 DealId = Deal.DealId,
-                CardId = Card.CardId,
                 SellUsername = User.Username,
                 SellUsernameAvatarUrl = User.AvatarUrl,
+                UserCardId = UserCard.UserCardId,
+                CardId = Card.CardId,
                 CardName = Card.CardName,
                 CardImageURL = Card.CardImageURL,
                 CardTypeName = Card.CardTypeName,

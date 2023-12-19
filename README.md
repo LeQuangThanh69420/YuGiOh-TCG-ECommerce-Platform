@@ -34,3 +34,5 @@
 * Framework used:
   - React
   - Vite(build tool)
+  - Cubism Core
+  - Chart.js
