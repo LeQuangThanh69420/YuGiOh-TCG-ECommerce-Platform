@@ -5,7 +5,11 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export const getMoney = async (username) => {
   const response = await fetch(
-    `${API_URL}${API_ROUTES.GET_INFO}?Username=${username}`
+    `${API_URL}${API_ROUTES.GET_INFO}?Username=${username}`,
+    {
+      method: "GET",
+      headers: HEADER(),
+    }
   );
   const data = await response.json();
   return data.money;
@@ -13,14 +17,18 @@ export const getMoney = async (username) => {
 
 export const getEmail = async (username) => {
   const response = await fetch(
-    `${API_URL}${API_ROUTES.GET_INFO}?Username=${username}`
+    `${API_URL}${API_ROUTES.GET_INFO}?Username=${username}`,
+    {
+      method: "GET",
+      headers: HEADER(),
+    }
   );
   const data = await response.json();
   return data.email;
-}
+};
 
 export const logOut = async (cleanUpData) => {
-  localStorage.setItem("userData", '{}');
+  localStorage.setItem("userData", "{}");
   cleanUpData();
 };
 

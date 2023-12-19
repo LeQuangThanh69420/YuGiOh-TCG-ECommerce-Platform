@@ -26,14 +26,20 @@ export const searchDeal = async (
 
 export const getBoughtDeals = async (username) => {
   const response = await fetch(
-    `${API_URL}${API_ROUTES.GET_BOUGHT_DEAL}?Username=${username}`
+    `${API_URL}${API_ROUTES.GET_BOUGHT_DEAL}?Username=${username}`, {
+      method: 'GET',
+      headers: HEADER()
+    }
   );
   return response.json();
 };
 
 export const getSoldDeals = async (username) => {
   const response = await fetch(
-    `${API_URL}${API_ROUTES.GET_SOLD_DEAL}?Username=${username}`
+    `${API_URL}${API_ROUTES.GET_SOLD_DEAL}?Username=${username}`, {
+      method: 'GET',
+      headers: HEADER()
+    }
   );
   return response.json();
 };
