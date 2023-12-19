@@ -54,7 +54,7 @@ namespace BE.Controllers
             {
                 To = input.Email,
                 Subject = "Active your YuGhiOh TCG account",
-                Body = "<h2>Dear " + input.Username + ", click the button to active your account!</h2><a href='http://localhost:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #7400cc; color: white; border-radius: 6px; border: none;'>Click me!!!</button></a>",
+                Body = "<h2>Dear " + input.Username + ", click the button to active your account!</h2><a href='http://trai4chet2tlqserver.id.vn:5233/api/User/ActiveUser" + "/" + input.Username + "/" + activeCode + "'><button style='width: 200px; height: 40px; background-color: #7400cc; color: white; border-radius: 6px; border: none;'>Click me!!!</button></a>",
             });
             if ((int)rs.GetType().GetProperty("StatusCode").GetValue(rs, null) == 200)
             {

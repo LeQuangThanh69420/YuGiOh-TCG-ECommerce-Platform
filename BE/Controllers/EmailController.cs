@@ -34,7 +34,7 @@ namespace BE.Controllers
                     // Gửi email
                     await smtpClient.SendMailAsync(mail);
                 }
-                return Ok(new {message = "Email send successfully, please go check your Email!"});
+                return Ok(new {message = "Email send successfully, please go wait and check your Email!"});
             }
             catch (Exception ex)
             {
