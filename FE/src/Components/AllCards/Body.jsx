@@ -15,7 +15,7 @@ function Body({ cards, setCards }) {
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchObject, setSearchObject] = useState({
-    name: "",
+    cardName: "",
     cardTypeName: "",
     cardOriginName: "",
     cardElementName: "",
@@ -37,7 +37,7 @@ function Body({ cards, setCards }) {
   const handleSearch = () => {
     setCurrentPage(1);
     searchCard(
-      searchObject.name,
+      searchObject.cardName,
       searchObject.cardTypeName,
       searchObject.cardOriginName,
       searchObject.cardElementName,
