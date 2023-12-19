@@ -136,7 +136,7 @@ namespace BE.Controllers
             }
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("ChangePassword")]
         public async Task<ActionResult> ChangePassword([FromBody] UserChangePasswordInputDto input)
         {
@@ -151,7 +151,7 @@ namespace BE.Controllers
             }
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("ChangeEmail")]
         public async Task<ActionResult> ChangeEmail([FromBody] UserChangeEmailInputDto input)
         {
@@ -182,7 +182,7 @@ namespace BE.Controllers
             return Ok(new {message = "Change Avatar successful!"});
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("GetInfo")]
         public async Task<ActionResult> GetInfo([FromQuery] string Username)
         {
