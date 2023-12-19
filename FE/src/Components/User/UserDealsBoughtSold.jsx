@@ -48,7 +48,7 @@ export default function UserDealsBoughtSold({ type, apiCall, headerArr, renderDe
                             </div>)
                             )}
                         </div>
-                    </>) : <p className='no-data-text'>You haven't {type.toLowerCase()} and cards yet!</p>
+                    </>) : <p className='no-data-text'>You haven't {type.toLowerCase()} any cards yet!</p>
                 }
             </div>
             <div className='user-anything-footer'>

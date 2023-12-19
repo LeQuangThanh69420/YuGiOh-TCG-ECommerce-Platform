@@ -5,11 +5,11 @@ import SortOption from "./SortOption"
 
 import './../../../styles/SearchBar.css'
 
-export default function SearchAllDeals({ searchObject, setData, onSearch }) {
+export default function SearchAllDeals({ searchObject, setData, onSearch, isManaging = false }) {
 
     return (
         <div className='search-bar-container'>
-            {ALL_DEAL_SEARCH_TEXT.map((item) =>
+            {!isManaging && ALL_DEAL_SEARCH_TEXT.map((item) =>
                 <SearchText
                     key={item.id}
                     searchLabel={item.search_label}

@@ -48,3 +48,89 @@
     border-radius: 4px;
     background: white;
 }
+
+.user-deals-management-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.deal-modal-screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 100px;
+}
+
+.deal-modal-container {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+    min-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.deal-modal-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.deal-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.deal-modal-card-choser {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    max-height: 280px;
+    overflow-y: auto;
+    flex-wrap: wrap;
+    border: 1px solid #979797;
+}
+
+.deal-modal-card-choser::-webkit-scrollbar {
+    width: 10px;
+}
+
+.deal-modal-card-choser::-webkit-scrollbar-thumb {
+    background: #979797;
+    border-radius: 8px;
+}
+
+.deal-modal-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.deal-modal-card-img {
+    width: 92px;
+    cursor: pointer;
+}
+
+.deal-modal-card-img:hover {
+    transform: scale(1.05);
+}
+
+.deal-modal-card-wrapper {
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid #979797;
+    padding: 2px;
+}
