@@ -61,13 +61,13 @@ function Gacha() {
                         <div className="Gacha-pulling-background">
                             <div className="Gacha-pulling-background-curve">
                                 <div className="Gacha-pulling-background-dots">
-                                    <div className="Gacha-pulling-img" style={{ backgroundImage: `url(${currentPack.img})` }} ></div>
+                                    <div className="Gacha-pulling-img Gacha-slide-in" key={currentPack.name} style={{ backgroundImage: `url(${currentPack.img})` }} ></div>
                                     <div className="Gacha-pulling-right">
                                         <div className="Gacha-pulling-top-wrapper">
                                             <div className="Gacha-pulling-top"></div>
                                         </div>
                                         <div className="Gacha-pulling-text">
-                                            <div className="Gacha-pulling-text-top text-primary">{currentPack.name}</div>
+                                            <div className="Gacha-pulling-text-top text-primary Gacha-slide-in" key={currentPack.name}>{currentPack.name}</div>
                                             <div className="Gacha-pulling-text-bottom text-third">Pack</div>
                                         </div>
                                         <div className="Gacha-pulling-price-button">
