@@ -39,6 +39,7 @@ export const getSoldDeals = async (username) => {
 };
 
 export const createDeal = async (sellUsername, userCardId, price) => {
+  console.log('call api');
   const response = fetch(`${API_URL}${API_ROUTES.CREATE_DEAL}`, {
     method: "POST",
     headers: HEADER(),
@@ -52,10 +53,9 @@ export const createDeal = async (sellUsername, userCardId, price) => {
 };
 
 export const editDeal = async (sellUsername, dealId, userCardId, price) => {
-  const response = async () => {
-    fetch(`${API_URL}${API_ROUTES.EDIT_DEAL}`, {
+  const response = await fetch(`${API_URL}${API_ROUTES.EDIT_DEAL}`, {
       method: "PUT",
-      header: HEADER(),
+      headers: HEADER(),
       body: JSON.stringify({
         sellUsername: sellUsername,
         dealId: dealId,
@@ -63,7 +63,6 @@ export const editDeal = async (sellUsername, dealId, userCardId, price) => {
         price: price,
       }),
     });
-  };
   return response;
 };
 
