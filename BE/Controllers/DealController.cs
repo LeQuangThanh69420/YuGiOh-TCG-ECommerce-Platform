@@ -194,7 +194,7 @@ namespace BE.Controllers
             var usercard = await _context.UserCard.SingleOrDefaultAsync(uc => uc.UserCardId == input.UserCardId);
             if (usercard == null) return BadRequest(new {message = "Your Card not found!"});
             if (usercard.UserId != selluser.UserId) return BadRequest(new {message = "You don't owned this Card!"});
-            if (usercard.OnDeal == true) return BadRequest(new {message = "Card already on another Deal!"});
+            if (usercard.OnDeal == true && usercard.UserCardId != deal.UserCardId) return BadRequest(new {message = "Card already on another Deal!"});
             if (input.Price <= 0) return BadRequest(new {message = "Price invalid!"});
             else
             {
