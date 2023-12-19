@@ -10,6 +10,7 @@ namespace BE.Model.Dto
         public long DealId { get; set; }
         public string SellUsername { get; set; }
         public string SellUsernameAvatarUrl { get; set; }
+        public long UserCardId { get; set; }
         public long CardId { get; set; }
         public string CardName { get; set; }
         public string CardImageURL { get; set; }

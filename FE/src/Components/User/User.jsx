@@ -78,6 +78,7 @@ export default function User() {
         setMessage(data.message)
         if(response.status === 200) {
           setType('toast-success')
+          setIsDisplayModal2(false)
         } else {
           setType('toast-error')
         }
