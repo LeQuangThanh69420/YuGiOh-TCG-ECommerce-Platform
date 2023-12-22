@@ -266,3 +266,48 @@ body {
   text-align: center;
   color: #58555b;
 }
+
+.loading-screen {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.loading-icon {
+  background-image: url('././../asset/loadingIcon.svg');
+  width: 80px;
+  height: 80px;
+  display: flex;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: spin 2s infinite;
+}
+
+.loading-text {
+  font-weight: 600;
+  font-size: 18px;
+  color: white;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg);
+  } 100% {
+    transform: rotateZ(360deg);
+  }
+}

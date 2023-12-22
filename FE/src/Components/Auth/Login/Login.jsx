@@ -15,7 +15,7 @@ import "./../../../styles/Login.css";
 function Login() {
   const navigate = useNavigate();
 
-  const { showToast, setMessage, setType, setUserData } = useContext(AppData);
+  const { showToast, setMessage, setType, setUserData, setIsLoading } = useContext(AppData);
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -55,9 +55,11 @@ function Login() {
   };
 
   const handleSubmitForget = async () => {
+    setIsLoading(true);
     const response = await forgetPassword(modalFormValues.recoveryUsername, modalFormValues.recoveryEmail);
     response.json().then((data) => {
       if (response.status === 200) {
+        setIsLoading(false)
         setShowModalInput(false);
         setType("toast-success");
         setMessage(data.message);

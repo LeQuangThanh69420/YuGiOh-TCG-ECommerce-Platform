@@ -11,10 +11,9 @@ import './../../../styles/IconDefine.css'
 import './../../../styles/SignUp.css'
 
 function SignUp() {
-
     const navigate = useNavigate();
 
-    const { showToast, setType, setMessage } = useContext(AppData)
+    const { showToast, setType, setMessage, setIsLoading } = useContext(AppData)
 
     const [email, setEmail] = useState("")
     const [userName, setUserName] = useState("");
@@ -26,6 +25,7 @@ function SignUp() {
 
     const handleSubmit = () => {
         let status;
+        setIsLoading(true)
         if (password === repeatPassword) {
             fetch(import.meta.env.VITE_API_URL + "/User/Register", {
                 method: "POST",
@@ -44,6 +44,7 @@ function SignUp() {
                 })
                 .then((data) => {
                     if (status === 200) {
+                        setIsLoading(false)
                         showToast();
                         setType('toast-success');
                         setMessage('Sign up successfully, please check your email!')
