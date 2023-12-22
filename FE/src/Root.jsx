@@ -27,7 +27,8 @@ export default function Root() {
 
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')) ? JSON.parse(localStorage.getItem('userData')) : {});
 
-  const [isScrollTop, setIsScrollTop] = useState(false)
+  const [isScrollTop, setIsScrollTop] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const timeOut1 = useRef();
 
@@ -78,14 +79,23 @@ export default function Root() {
   }, [])
 
   return (
-    <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute, userData, setUserData, currentPack }}>
+    <AppData.Provider value={{ showToast, setType, setMessage, currentRoute, setCurrentRoute, userData, setUserData, currentPack, isLoading, setIsLoading }}>
       {!(currentRoute === '/login' || currentRoute === '/sign-up') && <Header />}
       {!(currentRoute === '/login' || currentRoute === '/sign-up') && isScrollTop &&
         <div className="go-to-top" onClick={() => {
           window.scroll({
             top: 0,
             behavior: 'smooth'
-          })}}>
+          })
+        }}>
+        </div>
+      }
+      {isLoading &&
+        <div className="loading-screen">
+          <div className="loading-container">
+            <div className="loading-icon"></div>
+            <span className="loading-text">Loading, please wait...</span>
+          </div>
         </div>
       }
       <Outlet />
