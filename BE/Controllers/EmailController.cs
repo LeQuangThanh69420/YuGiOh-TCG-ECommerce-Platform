@@ -22,6 +22,7 @@ namespace BE.Controllers
                 using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
                 {
                     smtpClient.Port = 587;
+                    //Truy cập https://myaccount.google.com/lesssecureapps để cho phép ứng dụng kém an toàn, cần là tài khoản đuôi khác @gmail.com
                     smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "THANHLONGLOLlol123123123123123123");
                     smtpClient.EnableSsl = true;
                     // Tạo đối tượng MailMessage để cấu hình email
