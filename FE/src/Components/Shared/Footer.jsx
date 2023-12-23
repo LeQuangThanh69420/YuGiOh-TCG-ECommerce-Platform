@@ -75,7 +75,7 @@ export default function Footer() {
                             <div className="icon-20 discord"></div>
                             <a
                                 className="footer-options"
-                                href="https://discord.gg/XMggUdNRG"
+                                href="https://discord.gg/7Evqn6NAYW"
                                 target="blank"
                             >
                                 Discord
