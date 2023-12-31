@@ -23,12 +23,12 @@ namespace BE.Controllers
                 {
                     smtpClient.Port = 587;
                     //Truy cập https://myaccount.google.com/lesssecureapps để cho phép ứng dụng kém an toàn, cần là tài khoản đuôi khác @gmail.com
-                    smtpClient.Credentials = new NetworkCredential("thanh0204466@huce.edu.vn", "THANHLONGLOLlol123123123123123123");
+                    smtpClient.Credentials = new NetworkCredential("yourEmailAdress", "yourEmailPassword");
                     smtpClient.EnableSsl = true;
                     // Tạo đối tượng MailMessage để cấu hình email
                     MailMessage mail = new MailMessage();
                     mail.IsBodyHtml = true;
-                    mail.From = new MailAddress("thanh0204466@huce.edu.vn");
+                    mail.From = new MailAddress("yourEmailAdress");
                     mail.To.Add(emailModel.To);
                     mail.Subject = emailModel.Subject;
                     mail.Body = emailModel.Body;
