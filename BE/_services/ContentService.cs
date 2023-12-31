@@ -29,7 +29,7 @@ namespace BE._services
                 "</head>" + 
                 "<body>" + 
                     "<h1 style='color:#7400CC;'><img style='width: 35px;' src='" + messageImage + "'>" + message + "</h1>" + 
-                    "<a href='" + ApiEnvironment.ClientURL + "'>Go To Home Page</a> | <a href='/assets/gg.html' target='_blank'>Music Player</a><br>" + 
+                    "<a href='" + ApiEnvironment.ClientURL + "'>Go To Home Page</a> | <a href='/assets/music.html' target='_blank'>Music Player</a><br>" + 
                     "<img src='" + ApiEnvironment.imageBubble + "'>" + 
                     ApiEnvironment.live2dCanvas + 
                 "</body>";
