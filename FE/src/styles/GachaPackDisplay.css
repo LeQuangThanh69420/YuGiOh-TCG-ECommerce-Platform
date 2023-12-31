@@ -49,6 +49,14 @@
     animation: popping 0.5s linear;
 }
 
+@keyframes slide-in{
+    from{transform: translateX(40px); opacity: 0.7;}
+    to{transform: translateX(0px); opacity: 1;}
+}
+
+.Gacha-slide-in{
+    animation: slide-in 0.5s ease;
+}
 
 .Gacha-pack-card-flip{
     position: fixed;
@@ -119,7 +127,7 @@
     position: absolute;
     display: flex;
     gap: 10px;
-    bottom: 10px;
+    top: 10px;
     right: 10px;
 }
 .Gacha-pack-card-flip-single-card{

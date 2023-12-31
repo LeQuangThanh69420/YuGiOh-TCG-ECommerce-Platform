@@ -4,7 +4,7 @@ import "./../../../styles/Input.css";
 import './../../../styles/IconDefine.css'
 
 
-function Input({ label, type, icon, isRegexChecking = true, regex, errorMessage, setData, onSubmit }) {
+function Input({ value, label, type, icon, isRegexChecking = true, regex, errorMessage, setData, onSubmit }) {
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
   const [eye, setEye] = useState("close");
@@ -28,6 +28,12 @@ function Input({ label, type, icon, isRegexChecking = true, regex, errorMessage,
   useEffect(() => {
     setData(inputValue);
   }, [inputValue]);
+
+  useEffect(() => {
+    if(value) {
+      setInputValue(value)
+    }
+  }, [value])
 
   const handleBlur = () => {
     if (isRegexChecking) {

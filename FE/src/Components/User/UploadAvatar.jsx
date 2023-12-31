@@ -11,7 +11,7 @@ export default function UploadAvatar({ onClose }) {
 
     const dropZoneRef = useRef();
 
-    const { userData, setUserData, showToast, setType, setMessage } = useContext(AppData)
+    const { userData, setUserData, showToast, setType, setMessage, setIsLoading } = useContext(AppData)
 
     const [chosingAvatar, setChosingAvatar] = useState(userData.avatarURL);
     const [chosenFile, setChosenFile] = useState();
@@ -55,9 +55,11 @@ export default function UploadAvatar({ onClose }) {
 
     const handleSaveAvatar = async () => {
         if (chosenFile) {
+            setIsLoading(true);
             try {
                 uploadFile(chosenFile).then((URL) => {
                     handleChangeAvatarURL(URL)
+                    setIsLoading(false)
                 })
             } catch (error) {
                 console.log(error);
