@@ -85,7 +85,7 @@ app.UseHttpsRedirection();
 // Add cors
 app.UseCors("CorsPolicy");
 //app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:5173"));
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://trai4chet2tlqserver.id.vn:5173"));
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://yourExternalIPAdressOrDomainName.id.vn:5173"));
 //app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().SetIsOriginAllowed(origin => true));
 
 app.UseAuthentication();
