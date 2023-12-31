@@ -93,14 +93,16 @@ export default function DealModal({ isOpen, setIsOpen, title, chosingCards, setC
               <SearchAllCards searchObject={searchObject} setData={setSearchObject} onSearch={handleSearch} />
             </div>
             <div className='deal-modal-card-choser'>
-              {chosingCards.filter(card => filterCards(card)).map(card =>
+              {chosingCards.length ? chosingCards.filter(card => filterCards(card)).map(card =>
                 <div key={card.userCardId} className='deal-modal-card-wrapper' onClick={() => setChosenCard(card)}>
                   <img src={card.cardImageURL} className={`${chosenCard.userCardId === card.userCardId ? 'chosen-card-for-deal' : ''} deal-modal-card-img`} />
                   {chosenCard.userCardId === card.userCardId && <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" className='chosen-card-icon' viewBox="0 0 512 512">
                     <path fill="#7400cc" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
                   </svg>}
                 </div>
-              )}
+              ) : 
+                <p className='no-data-text'>Sorry we couldn't find what you wanted :(</p>
+              }
             </div>
           </div>
           <div className='deal-modal-buttons'>

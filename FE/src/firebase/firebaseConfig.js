@@ -6,14 +6,16 @@ import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+//Nhap API cua firebase de su dung
 const firebaseConfig = {
-  apiKey: "AIzaSyDfdeVmPPB-In2mRlZAhuiUK-vQtIJ817g",
-  authDomain: "upload-file-ac9d3.firebaseapp.com",
-  projectId: "upload-file-ac9d3",
-  storageBucket: "upload-file-ac9d3.appspot.com",
-  messagingSenderId: "681928462243",
-  appId: "1:681928462243:web:d4cca61c1fad5330b7d416",
-  measurementId: "G-LTECRK913F"
+  apiKey: "apiKey",
+  authDomain: "authDomain",
+  projectId: "projectId",
+  storageBucket: "storageBucket",
+  messagingSenderId: "messagingSenderId",
+  appId: "appId",
+  measurementId: "measurementId"
 };
 
 // Initialize Firebase
