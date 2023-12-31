@@ -1,4 +1,5 @@
 import './../../styles/CardDetails.css';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const CardDetails = ({ isOpen, selectedCard, onClose, isManaging = false, onAddDeal }) => {
 
@@ -79,7 +80,7 @@ const CardDetails = ({ isOpen, selectedCard, onClose, isManaging = false, onAddD
               }
             </div>
           </div>
-          <iframe src={`http://localhost:5233/api/Deal/GetCardPrice/${selectedCard.cardId}/${new Date().getFullYear()}`} className='card-price-iframe'></iframe>
+          <iframe src={`${API_URL}/Deal/GetCardPrice/${selectedCard.cardId}/${new Date().getFullYear()}`} className='card-price-iframe'></iframe>
         </div>
       </div>}
     </>
